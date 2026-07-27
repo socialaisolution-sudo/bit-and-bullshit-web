@@ -4,7 +4,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -23,9 +23,57 @@ const categoryLabels: Record<string, string> = {
   learning: "Bitcoin verstehen",
   denkfehler: "Der große Bitcoin-Denkfehler",
 };
+
+// OG image: use post-specific image (optimized to landscape-ish for social cards) or fall back
+let ogImagePath: string | undefined;
+if (post.data.image) {
+  const optimized = await getImage({
+    src: post.data.image,
+    width: 1200,
+    format: "jpg",
+  });
+  ogImagePath = optimized.src;
+}
+
+// JSON-LD Article schema for Google
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: "de-DE",
+  url: new URL(`/${post.id}`, site).toString(),
+  mainEntityOfPage: new URL(`/${post.id}`, site).toString(),
+  articleSection: categoryLabels[post.data.category],
+  keywords: post.data.keyword,
+  image: ogImagePath
+    ? new URL(ogImagePath, site).toString()
+    : new URL("/og-default.png", site).toString(),
+  author: {
+    "@type": "Organization",
+    name: "Bit & Bullshit",
+    url: site.toString(),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Bit & Bullshit",
+    url: site.toString(),
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/apple-touch-icon.png", site).toString(),
+    },
+  },
+};
 ---
 
-<Layout title={`${post.data.title} — Bit & Bullshit`} description={post.data.description}>
+<Layout
+  title={`${post.data.title} — Bit & Bullshit`}
+  description={post.data.description}
+  ogImage={ogImagePath}
+  ogType="article"
+  jsonLd={jsonLd}
+>
   <SiteHeader />
 
   <main class="mx-auto max-w-3xl px-5 py-16 md:py-24">

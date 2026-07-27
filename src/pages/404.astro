@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<Layout
+  title="Nicht gefunden — Bit & Bullshit"
+  description="Diese Seite gibt's nicht. Aber jede Menge anderen ehrlichen Kram — schau dich um."
+>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-3xl px-5 py-24 text-center md:py-32">
+    <p class="display text-xs tracking-[0.3em] text-orange">// 404</p>
+    <h1 class="display mt-6 text-6xl leading-[0.9] md:text-8xl">
+      Nix da.<br />
+      <span class="drip-underline">Nur Bullshit.</span>
+    </h1>
+    <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-paper/80">
+      Diese Seite gibt&apos;s nicht. Vielleicht ein Tippfehler in der URL,
+      vielleicht ist der Artikel umgezogen. Kein Drama — hier sind zwei
+      Startpunkte, die garantiert existieren.
+    </p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-full border border-orange bg-orange px-5 py-3 text-sm uppercase tracking-widest text-ink transition hover:bg-orange-deep"
+      >
+        Zur Startseite
+      </a>
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm uppercase tracking-widest text-paper transition hover:border-orange hover:text-orange"
+      >
+        Alle Snippets ansehen
+      </a>
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>

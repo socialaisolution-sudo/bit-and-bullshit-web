@@ -5,18 +5,21 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogType?: "website" | "article";
+  jsonLd?: unknown;
 }
 
 const {
   title = "Bit & Bullshit — Bitcoin. Makro. Geld. Wir entlarven den Bullshit.",
   description = "Bitcoin, Makro und Geld ohne Rendite-Bullshit. Kurze Erklär-Snippets, ehrlicher Ton, keine Signale.",
-  ogImage,
+  ogImage = "/og-default.png",
+  ogType = "website",
+  jsonLd,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://bitandbullshit.com").toString();
-const ogImageUrl = ogImage
-  ? new URL(ogImage, Astro.site ?? "https://bitandbullshit.com").toString()
-  : undefined;
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const canonical = new URL(Astro.url.pathname, site).toString();
+const ogImageUrl = new URL(ogImage, site).toString();
 ---
 
 <!doctype html>
@@ -31,19 +34,29 @@ const ogImageUrl = ogImage
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&display=swap"
     />
+    <meta property="og:site_name" content="Bit & Bullshit" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:url" content={canonical} />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    {
+      jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
     <title>{title}</title>
   </head>
   <body class="bg-ink text-paper">

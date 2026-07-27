@@ -6,9 +6,24 @@ import SocialLinks from "../components/SocialLinks.astro";
 import StickerWall from "../components/StickerWall.astro";
 import mascot from "../assets/mascot-hero.png";
 import { Image } from "astro:assets";
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Bit & Bullshit",
+  url: site.toString(),
+  logo: new URL("/apple-touch-icon.png", site).toString(),
+  description:
+    "Bitcoin, Makro und Geld ohne Rendite-Bullshit. Kurze Erklär-Snippets, ehrlicher Ton, keine Signale.",
+  sameAs: [
+    "https://www.tiktok.com/@bitandbullshit",
+    "https://www.instagram.com/bitandbullshit",
+  ],
+};
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
   <SiteHeader />
 
   <main class="relative overflow-hidden">
