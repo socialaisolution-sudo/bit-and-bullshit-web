@@ -4,22 +4,30 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
-  title = "Triple B — build the bot yourself",
-  description = "Free guide. No fluff, no signals, no monthly subscription. The honest starting point for building your own crypto trading bot.",
+  title = "Bit & Bullshit — Bitcoin. Makro. Geld. Wir entlarven den Bullshit.",
+  description = "Bitcoin, Makro und Geld ohne Rendite-Bullshit. Kurze Erklär-Snippets, ehrlicher Ton, keine Signale.",
+  ogImage,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://bitandbullshit.com").toString();
+const ogImageUrl = ogImage
+  ? new URL(ogImage, Astro.site ?? "https://bitandbullshit.com").toString()
+  : undefined;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a0a0a" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,6 +37,10 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:url" content={canonical} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body class="bg-ink text-paper">

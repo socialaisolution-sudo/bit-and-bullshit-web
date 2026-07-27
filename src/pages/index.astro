@@ -1,10 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SignupForm from "../components/SignupForm.astro";
-import mascot from "../assets/mascot-placeholder.svg?url";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import StickerWall from "../components/StickerWall.astro";
+import mascot from "../assets/mascot-hero.png";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
+  <SiteHeader />
+
   <main class="relative overflow-hidden">
     <div
       class="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]"
@@ -14,121 +20,113 @@ import mascot from "../assets/mascot-placeholder.svg?url";
     </div>
     <div class="pointer-events-none absolute -top-32 -right-32 -z-10 size-[28rem] rounded-full bg-orange/15 blur-3xl" aria-hidden="true"></div>
 
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
-      <a href="/" class="display text-xl tracking-tight">
-        Bit <span class="text-orange">&amp;</span> Bullshit
-      </a>
-      <span class="hidden text-xs uppercase tracking-widest text-paper/50 sm:block">
-        Triple B — the honest starter guide
-      </span>
-    </nav>
-
-    <section class="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-6 md:grid-cols-[1.1fr_1fr] md:gap-10 md:pb-24 md:pt-10">
-      <div>
+    <section class="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-10 md:grid-cols-[1fr_1.05fr] md:gap-14 md:pb-24 md:pt-16">
+      <div class="order-2 md:order-1">
         <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-widest text-paper/70">
           <span class="size-1.5 rounded-full bg-orange"></span>
-          Free guide · No signals · No subscription
+          Bitcoin · Makro · Geld
         </p>
-        <h1 class="display text-[clamp(2.4rem,7vw,4.6rem)]">
-          Your feed is full of <span class="text-orange">crypto signal sellers.</span><br />
-          Here's how to <span class="drip-underline text-ink">build the bot yourself.</span>
+        <h1 class="display text-[clamp(2.4rem,7vw,4.8rem)]">
+          Bitcoin. Makro. Geld.<br />
+          Wir entlarven den <span class="text-orange">Bullshit.</span>
         </h1>
-        <p class="mt-6 max-w-xl text-lg text-paper/80 leading-relaxed">
-          Free guide. No fluff, no signals, no monthly subscription. Just the honest
-          starting point for building your own crypto trading bot — even if you've
-          never written a line of code.
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
+          Frech, kurz, ehrlich. Kein Signaldienst, keine „100 % Rendite"-Märchen,
+          keine Monatsabos. Nur die unbequemen Fragen zu Geldsystem, Staat und
+          Krypto — verständlich aufbereitet.
         </p>
-        <SignupForm id="signup-hero" />
+
+        <div class="mt-8">
+          <SocialLinks size="lg" />
+        </div>
+
+        <p class="mt-6 text-sm text-paper/50">
+          Du willst tiefer einsteigen? Echtes Fachwissen zu Bitcoin gibt&apos;s auf
+          <a href="https://bitcoinaera.de" class="drip-underline text-paper hover:text-orange" rel="noopener">bitcoinaera.de</a>.
+        </p>
       </div>
 
-      <div class="flex justify-center md:justify-end">
-        <img
-          src={mascot}
-          alt="Bit & Bullshit mascot — graffiti drip smiley with a Bitcoin cap"
-          width="320"
-          height="320"
-          class="mascot w-64 sm:w-80 md:w-[22rem]"
-        />
+      <div class="order-1 flex justify-center md:order-2 md:justify-end">
+        <div class="hero-sticker w-64 sm:w-80 md:w-[26rem]">
+          <Image
+            src={mascot}
+            alt="Bit & Bullshit Maskottchen zeigt auf dich mit Graffiti-Claim „Mehr Bitcoin. Weniger Bullshit.“"
+            widths={[320, 480, 640, 800]}
+            sizes="(min-width: 768px) 26rem, 18rem"
+            class="block h-auto w-full"
+            loading="eager"
+          />
+        </div>
       </div>
     </section>
 
     <section class="border-t border-white/10 bg-white/[0.02]">
-      <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
-        <h2 class="display text-3xl text-paper md:text-5xl">
-          What you actually get.
-        </h2>
-        <ul class="mt-10 grid gap-6 md:grid-cols-2">
-          <li class="group rounded-2xl border border-white/10 bg-ink/60 p-6 transition hover:border-orange/60">
-            <p class="display text-2xl text-orange">01</p>
-            <p class="mt-3 text-lg text-paper">
-              The 5 building blocks of a bot, in plain language — what each one is and why it matters.
-            </p>
-          </li>
-          <li class="group rounded-2xl border border-white/10 bg-ink/60 p-6 transition hover:border-orange/60">
-            <p class="display text-2xl text-orange">02</p>
-            <p class="mt-3 text-lg text-paper">
-              What it really costs to start (spoiler: less than one month of a signal subscription).
-            </p>
-          </li>
-          <li class="group rounded-2xl border border-white/10 bg-ink/60 p-6 transition hover:border-orange/60">
-            <p class="display text-2xl text-orange">03</p>
-            <p class="mt-3 text-lg text-paper">
-              The honest part: what's hard, what's easy, and whether this is even for you.
-            </p>
-          </li>
-          <li class="group rounded-2xl border border-white/10 bg-ink/60 p-6 transition hover:border-orange/60">
-            <p class="display text-2xl text-orange">04</p>
-            <p class="mt-3 text-lg text-paper">
-              Zero signals. Zero "get rich" promises. The machine is yours — what you do with it is on you.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="relative">
-      <div class="mx-auto max-w-3xl px-5 py-20 md:py-28">
-        <p class="display text-xs tracking-[0.3em] text-orange">// REAL TALK</p>
+      <div class="mx-auto max-w-4xl px-5 py-16 md:py-24">
+        <p class="display text-xs tracking-[0.3em] text-orange">// WER / WAS</p>
         <h2 class="display mt-4 text-3xl md:text-5xl">
-          Real talk before you sign up.
+          Wer oder was ist Bit &amp; Bullshit?
         </h2>
-        <p class="mt-6 text-lg text-paper/80 leading-relaxed">
-          If you want a magic button that prints money while you sleep —
-          <span class="text-paper">close this tab.</span>
-          That's the exact bullshit we're against. But if you want to actually
-          <span class="drip-underline text-ink">understand and own the machine</span>
-          instead of renting someone else's signals forever — you're in the right place.
-        </p>
-      </div>
-    </section>
-
-    <section id="get-the-guide" class="border-t border-white/10 bg-gradient-to-b from-ink to-black">
-      <div class="mx-auto max-w-2xl px-5 py-20 md:py-28">
-        <h2 class="display text-3xl md:text-5xl">
-          Get the <span class="text-orange">honest starter guide.</span>
-        </h2>
-        <p class="mt-4 text-base text-paper/70">
-          One email. The guide lands in your inbox after you confirm.
-        </p>
-        <SignupForm id="signup-cta" cta="Send me the free guide" />
-      </div>
-    </section>
-
-    <footer class="border-t border-white/10 bg-black">
-      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 text-sm text-paper/60 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="display text-base text-paper">
-            Bit <span class="text-orange">&amp;</span> Bullshit
+        <div class="mt-8 grid gap-6 text-lg leading-relaxed text-paper/80 md:grid-cols-2">
+          <p>
+            Ein Kanal für Leute, die keine Lust mehr auf Rendite-Gurus,
+            Signal-Verkäufer und „Number-go-up"-Predigten haben.
+            Wir nehmen ein Thema — Fiatgeld, Staatsschulden, Halving,
+            Chatkontrolle, Memecoins — und erklären in 60 Sekunden, was
+            wirklich dahinter steckt.
           </p>
-          <p class="mt-1 max-w-xl text-xs leading-relaxed">
-            Educational content only. Not financial advice. We don't sell signals or manage money.
+          <p>
+            Kein Signaldienst. Kein Bot-Verkauf. Kein „Kauf jetzt sofort".
+            Sondern: das Werkzeug, mit dem du selbst besser einordnen kannst,
+            was gerade in Politik, Wirtschaft und Krypto passiert —
+            und wo der Bullshit anfängt.
           </p>
         </div>
-        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest">
-          <a href="/impressum" class="hover:text-orange">Impressum</a>
-          <a href="/datenschutz" class="hover:text-orange">Datenschutz</a>
-        </nav>
       </div>
-    </footer>
+    </section>
+
+    <section class="relative border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="display text-xs tracking-[0.3em] text-orange">// SNIPPETS</p>
+            <h2 class="display mt-4 text-3xl md:text-5xl">
+              Kurz erklärt. <span class="text-orange">Klick rein.</span>
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-paper/70">
+              Die Snippets als Wand. Jede Kachel ist ein Artikel — zum Nachlesen,
+              wenn dir das Video zu schnell war.
+            </p>
+          </div>
+          <a
+            href="/blog"
+            class="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-widest text-paper/80 transition hover:border-orange hover:text-orange"
+          >
+            Alle Snippets &rarr;
+          </a>
+        </div>
+
+        <div class="mt-10 md:mt-14">
+          <StickerWall limit={9} />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative border-t border-white/10">
+      <div class="mx-auto max-w-3xl px-5 py-20 md:py-28 text-center">
+        <p class="display text-xs tracking-[0.3em] text-orange">// FOLLOW</p>
+        <h2 class="display mt-4 text-3xl md:text-5xl">
+          Die Snippets gibt&apos;s auf <span class="text-orange">TikTok &amp; Insta.</span>
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
+          Neue Videos regelmäßig. Wer lieber liest: die Skripte landen als
+          Kurz-Artikel im <a href="/blog" class="drip-underline text-paper hover:text-orange">Blog</a>.
+        </p>
+        <div class="mt-8 flex justify-center">
+          <SocialLinks size="lg" />
+        </div>
+      </div>
+    </section>
   </main>
+
+  <SiteFooter />
 </Layout>

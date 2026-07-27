@@ -1,0 +1,166 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  limit?: number;
+}
+const { limit = 9 } = Astro.props;
+
+const all = await getCollection("blog");
+const featured = all.filter((p) => p.data.featured);
+const rest = all
+  .filter((p) => !p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+const posts = [...featured, ...rest].slice(0, limit);
+
+const categoryMeta: Record<string, { label: string; toneClass: string }> = {
+  entlarven: { label: "Entlarven", toneClass: "sticker-tone-entlarven" },
+  learning: { label: "Learning", toneClass: "sticker-tone-learning" },
+  denkfehler: { label: "Denkfehler", toneClass: "sticker-tone-denkfehler" },
+};
+---
+
+<div class="sticker-wall">
+  {
+    posts.map((post) => {
+      const meta = categoryMeta[post.data.category];
+      return (
+        <a href={`/${post.id}`} class:list={["sticker", meta.toneClass]}>
+          <span class="sticker-kicker">
+            <span class="sticker-num">
+              #{String(post.data.order).padStart(2, "0")}
+            </span>
+            <span class="sticker-cat">{meta.label}</span>
+          </span>
+          <span class="sticker-title">{post.data.title}</span>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .sticker-wall {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 1rem 0;
+  }
+  @media (min-width: 640px) {
+    .sticker-wall {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+    }
+  }
+  @media (min-width: 900px) {
+    .sticker-wall {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  .sticker {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    min-height: 12rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    background: #f5f4ef;
+    color: #0a0a0a;
+    box-shadow:
+      0 12px 24px -8px rgba(0, 0, 0, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.35);
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 220ms ease;
+    text-decoration: none;
+    position: relative;
+    will-change: transform;
+  }
+
+  /* Rotation-Cycle für den „an-die-Wand-geworfen"-Look */
+  .sticker-wall > .sticker:nth-child(6n + 1) { transform: rotate(-2.4deg); }
+  .sticker-wall > .sticker:nth-child(6n + 2) { transform: rotate(1.6deg); }
+  .sticker-wall > .sticker:nth-child(6n + 3) { transform: rotate(-1deg); }
+  .sticker-wall > .sticker:nth-child(6n + 4) { transform: rotate(2.2deg); }
+  .sticker-wall > .sticker:nth-child(6n + 5) { transform: rotate(-1.8deg); }
+  .sticker-wall > .sticker:nth-child(6n + 6) { transform: rotate(1deg); }
+
+  .sticker:hover,
+  .sticker:focus-visible {
+    transform: rotate(0deg) translateY(-6px) scale(1.03);
+    box-shadow:
+      0 24px 48px -12px rgba(247, 147, 26, 0.35),
+      0 4px 8px rgba(0, 0, 0, 0.4);
+    outline: none;
+  }
+
+  .sticker-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-family: "Archivo Black", "Impact", system-ui, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .sticker-num { color: rgba(10, 10, 10, 0.5); }
+  .sticker-cat {
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.08);
+  }
+
+  .sticker-title {
+    font-family: "Archivo Black", "Impact", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    font-size: 1.1rem;
+    color: #0a0a0a;
+  }
+  @media (min-width: 900px) {
+    .sticker-title { font-size: 1.2rem; }
+  }
+
+  /* Ton pro Kategorie – nur die Akzente, nicht das ganze Sticker-Papier */
+  .sticker-tone-entlarven {
+    background:
+      linear-gradient(180deg, #ffe9c9 0%, #f5f4ef 40%);
+  }
+  .sticker-tone-entlarven .sticker-cat {
+    background: #f7931a;
+    color: #0a0a0a;
+  }
+
+  .sticker-tone-learning {
+    background:
+      linear-gradient(180deg, #e6efff 0%, #f5f4ef 40%);
+  }
+  .sticker-tone-learning .sticker-cat {
+    background: #0a0a0a;
+    color: #f5f4ef;
+  }
+
+  .sticker-tone-denkfehler {
+    background:
+      linear-gradient(180deg, #ffd9b0 0%, #f5f4ef 40%);
+  }
+  .sticker-tone-denkfehler .sticker-cat {
+    background: #c46f00;
+    color: #f5f4ef;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sticker,
+    .sticker:hover,
+    .sticker:focus-visible {
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

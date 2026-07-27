@@ -1,70 +1,179 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 ---
 
-<Layout title="Datenschutzerklärung — Bit & Bullshit" description="Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.">
-  <main class="mx-auto max-w-3xl px-5 py-16">
-    <a href="/" class="text-sm uppercase tracking-widest text-paper/60 hover:text-orange">&larr; Back</a>
-    <h1 class="display mt-6 text-4xl md:text-5xl">Datenschutz&shy;erklärung</h1>
-    <p class="mt-4 text-sm text-paper/60">Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO.</p>
+<Layout
+  title="Datenschutzerklärung — Bit & Bullshit"
+  description="Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO, BDSG und TTDSG."
+>
+  <SiteHeader />
 
-    <section class="mt-10 space-y-6 text-paper/80">
-      <p class="rounded-lg border border-orange/40 bg-orange/10 p-4 text-sm text-paper">
-        <strong class="text-orange">TODO Denny:</strong> Finalen Datenschutztext einsetzen
-        (idealerweise mit einem DSGVO-Generator + anwaltlicher Prüfung).
-        Pflicht-Punkte unten als Gerüst, müssen aber an die tatsächliche Verarbeitung
-        angepasst werden.
-      </p>
+  <main class="mx-auto max-w-3xl px-5 py-16 md:py-24">
+    <p class="display text-xs tracking-[0.3em] text-orange">// DATENSCHUTZ</p>
+    <h1 class="display mt-4 text-4xl md:text-6xl">
+      Datenschutz&shy;<span class="drip-underline">erklärung</span>
+    </h1>
+    <p class="mt-4 text-sm text-paper/60">Stand: Juli 2026</p>
 
-      <div>
-        <h2 class="display text-xl text-paper">1. Verantwortlicher</h2>
-        <p class="mt-2 text-sm">Siehe <a href="/impressum" class="underline decoration-orange/60">Impressum</a>.</p>
-      </div>
+    <p class="mt-8 text-base leading-relaxed text-paper/85">
+      Wir nehmen den Schutz personenbezogener Daten ernst und behandeln diese
+      vertraulich gemäß den gesetzlichen Vorschriften (DSGVO, BDSG, TTDSG) sowie
+      dieser Datenschutzerklärung.
+    </p>
 
-      <div>
-        <h2 class="display text-xl text-paper">2. Newsletter / Lead-Magnet (Double-Opt-In)</h2>
-        <p class="mt-2 text-sm">
-          Wenn du dich für unseren kostenlosen Starter-Guide anmeldest, verarbeiten wir
-          deine E-Mail-Adresse zum Zweck des Versands des Guides sowie nachfolgender
-          informativer E-Mails rund um Triple B (Art. 6 Abs. 1 lit. a DSGVO — Einwilligung).
-          Die Anmeldung erfolgt im Double-Opt-In-Verfahren: nach Eintragung erhältst du
-          eine Bestätigungsmail; erst nach Klick auf den darin enthaltenen Link wird deine
-          Adresse aktiviert.
+    <div class="legal-body mt-12 space-y-10">
+      <section>
+        <p class="legal-num display">01</p>
+        <h2 class="legal-h">Verantwortlicher</h2>
+        <p>
+          Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der DSGVO:
         </p>
-        <p class="mt-2 text-sm">
-          Versanddienstleister: <strong>MailerLite</strong> (MailerLite Limited, Irland).
-          Mit MailerLite besteht ein Auftragsverarbeitungsvertrag. Details siehe
-          <a href="https://www.mailerlite.com/legal/privacy-policy" class="underline decoration-orange/60" target="_blank" rel="noopener">MailerLite Privacy Policy</a>.
+        <p>
+          Denny Gulman<br />
+          Altendorfer Straße 28<br />
+          09113 Chemnitz<br />
+          Deutschland<br />
+          E-Mail: <a href="mailto:hello@bitandbullshit.com" class="legal-link">hello@bitandbullshit.com</a>
         </p>
-        <p class="mt-2 text-sm">
-          Du kannst die Einwilligung jederzeit widerrufen — dazu reicht ein Klick auf den
-          Abmeldelink in jeder E-Mail oder eine formlose Nachricht an uns.
+        <p>
+          Bei dieser Website handelt es sich um ein rein informatives,
+          nicht-kommerzielles Non-Profit-Projekt. Es werden keine Produkte oder
+          Dienstleistungen verkauft und keine kommerziellen Zwecke verfolgt.
         </p>
-      </div>
+      </section>
 
-      <div>
-        <h2 class="display text-xl text-paper">3. Hosting</h2>
-        <p class="mt-2 text-sm">
-          Diese Seite wird über <strong>Cloudflare Pages</strong> (Cloudflare, Inc., USA)
-          ausgeliefert. Cloudflare verarbeitet bei jedem Aufruf u.a. IP-Adresse,
-          User-Agent und Zeitstempel zur Bereitstellung und Sicherung der Seite
-          (Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an einem stabilen,
-          sicheren Betrieb).
+      <section>
+        <p class="legal-num display">02</p>
+        <h2 class="legal-h">Allgemeine Hinweise</h2>
+        <p>
+          Personenbezogene Daten sind alle Informationen, die sich auf eine
+          identifizierte oder identifizierbare natürliche Person beziehen
+          (Art. 4 Nr. 1 DSGVO). Wir verarbeiten personenbezogene Daten nur in
+          dem Umfang, wie es für die Bereitstellung einer funktionsfähigen
+          Website erforderlich ist. Diese Website dient ausschließlich der
+          Information; es findet keine aktive Erhebung personenbezogener Daten
+          über Formulare, Anmeldungen oder Tracking statt.
         </p>
-      </div>
+        <p>
+          Wir setzen technische und organisatorische Maßnahmen ein, um Daten
+          gegen Verlust, Manipulation und unberechtigten Zugriff zu schützen.
+          Eine vollständige Sicherheit kann bei der Datenübertragung über das
+          Internet nicht garantiert werden.
+        </p>
+      </section>
 
-      <div>
-        <h2 class="display text-xl text-paper">4. Deine Rechte</h2>
-        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
-          <li>Auskunft (Art. 15 DSGVO)</li>
-          <li>Berichtigung (Art. 16 DSGVO)</li>
-          <li>Löschung (Art. 17 DSGVO)</li>
-          <li>Einschränkung (Art. 18 DSGVO)</li>
-          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-          <li>Widerspruch (Art. 21 DSGVO)</li>
-          <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
-        </ul>
-      </div>
-    </section>
+      <section>
+        <p class="legal-num display">03</p>
+        <h2 class="legal-h">Hosting &amp; Bereitstellung</h2>
+        <p>Diese Website wird über Cloudflare Pages bereitgestellt:</p>
+        <p>
+          Cloudflare, Inc.<br />
+          101 Townsend Street<br />
+          San Francisco, CA 94107, USA
+        </p>
+        <p>
+          Cloudflare verarbeitet im Rahmen der Auslieferung der Inhalte
+          technische Daten (Server-Logs), darunter: gekürzte/anonymisierte
+          IP-Adresse, Datum und Uhrzeit des Aufrufs, aufgerufene URL und
+          HTTP-Statuscode, übertragene Datenmenge, User-Agent (Browser,
+          Betriebssystem) und Referrer-URL.
+        </p>
+        <p>
+          Die Verarbeitung erfolgt zur Wahrung unseres berechtigten Interesses
+          an einer sicheren und stabilen Bereitstellung der Website
+          (Art. 6 Abs. 1 lit. f DSGVO). Mit Cloudflare besteht ein
+          Auftragsverarbeitungsvertrag (DPA). Bei Datentransfers in die USA
+          werden EU-Standardvertragsklauseln angewendet. Server-Logs werden für
+          maximal 30 Tage gespeichert.
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">04</p>
+        <h2 class="legal-h">Schriftarten</h2>
+        <p>
+          Die auf dieser Website verwendeten Schriftarten sind lokal auf dem
+          Server eingebunden und werden direkt von dort ausgeliefert. Es findet
+          keine Verbindung zu externen Anbietern (z.&nbsp;B. Google Fonts) und
+          keine Übermittlung Ihrer IP-Adresse an Dritte statt.
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">05</p>
+        <h2 class="legal-h">Externe Links</h2>
+        <p>
+          Diese Website verlinkt auf externe Profile bei TikTok
+          (TikTok Technology Limited / ByteDance) und Instagram (Meta Platforms
+          Ireland Ltd.) sowie auf die Website bitcoinaera.de. Erst mit einem
+          Klick auf einen dieser Links werden Daten an den jeweiligen Anbieter
+          übertragen. Es findet <strong>kein automatisches Einbetten</strong>
+          von Social-Media-Inhalten auf dieser Website statt. Für die
+          Datenverarbeitung auf den verlinkten Seiten sind ausschließlich deren
+          Betreiber verantwortlich.
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">06</p>
+        <h2 class="legal-h">Kontaktaufnahme per E-Mail</h2>
+        <p>
+          Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen
+          übermittelten Daten (E-Mail-Adresse, Inhalt Ihrer Nachricht, ggf.
+          weitere freiwillige Angaben) ausschließlich zur Bearbeitung Ihrer
+          Anfrage (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO). Die Daten werden
+          gelöscht, sobald sie für den Zweck nicht mehr benötigt werden und
+          keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">07</p>
+        <h2 class="legal-h">Cookies &amp; Tracking</h2>
+        <p>
+          Diese Website verwendet keine Cookies, kein Tracking und keine
+          Analyse- oder Marketing-Tools. Es findet keine Profilbildung und
+          keine Auswertung Ihres Nutzerverhaltens statt.
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">08</p>
+        <h2 class="legal-h">Ihre Rechte</h2>
+        <p>
+          Ihnen stehen nach DSGVO folgende Rechte zu: Auskunft (Art. 15),
+          Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der
+          Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch
+          gegen die Verarbeitung (Art. 21) sowie Widerruf erteilter
+          Einwilligungen (Art. 7 Abs. 3). Zur Ausübung wenden Sie sich formlos
+          an die oben genannte E-Mail-Adresse.
+        </p>
+        <p>
+          Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde
+          zu beschweren. Zuständig ist:
+        </p>
+        <p>
+          Der Sächsische Datenschutzbeauftragte<br />
+          Devrientstraße 5<br />
+          01067 Dresden<br />
+          E-Mail: <a href="mailto:saechsdsb@slt.sachsen.de" class="legal-link">saechsdsb@slt.sachsen.de</a>
+        </p>
+      </section>
+
+      <section>
+        <p class="legal-num display">09</p>
+        <h2 class="legal-h">Änderungen dieser Erklärung</h2>
+        <p>
+          Wir behalten uns vor, diese Datenschutzerklärung anzupassen, wenn
+          sich die Rechtslage, unsere Verarbeitungsprozesse oder eingesetzte
+          Dienste ändern. Die jeweils aktuelle Fassung ist auf dieser Seite
+          abrufbar.
+        </p>
+      </section>
+    </div>
   </main>
+
+  <SiteFooter />
 </Layout>
