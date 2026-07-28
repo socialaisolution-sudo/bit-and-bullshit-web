@@ -1,0 +1,336 @@
+---
+// Live-Suche über alle Snippet-Artikel. Nutzt Pagefind (statischer Post-Build-Index).
+// Öffnet als Modal via Header-Button oder Cmd/Ctrl+K, schließt mit Esc.
+---
+
+<button
+  type="button"
+  id="search-open"
+  class="search-trigger"
+  aria-label="Suche öffnen"
+  data-pagefind-ignore
+>
+  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" stroke-linecap="round" />
+  </svg>
+  <span class="hidden sm:inline">Suche</span>
+  <kbd class="hidden md:inline">⌘K</kbd>
+</button>
+
+<dialog id="search-dialog" class="search-dialog" aria-label="Snippets durchsuchen" data-pagefind-ignore>
+  <div class="search-panel">
+    <div class="search-input-row">
+      <svg class="size-5 text-paper/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" stroke-linecap="round" />
+      </svg>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Snippet suchen — z. B. „Fiatgeld", „Cantillon", „Wallet""
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button type="button" id="search-close" class="search-close" aria-label="Schließen">Esc</button>
+    </div>
+    <div id="search-results" class="search-results" aria-live="polite"></div>
+    <p class="search-hint">
+      Pfeiltasten zum Springen · Enter zum Öffnen · Esc zum Schließen
+    </p>
+  </div>
+</dialog>
+
+<script>
+  const trigger = document.getElementById("search-open") as HTMLButtonElement | null;
+  const dialog = document.getElementById("search-dialog") as HTMLDialogElement | null;
+  const input = document.getElementById("search-input") as HTMLInputElement | null;
+  const closeBtn = document.getElementById("search-close") as HTMLButtonElement | null;
+  const results = document.getElementById("search-results") as HTMLElement | null;
+
+  if (!trigger || !dialog || !input || !closeBtn || !results) {
+    console.warn("[search] elements missing");
+  } else {
+    // Lazy-load pagefind on first open (nicht schon beim Seitenaufruf)
+    let pagefindPromise: Promise<any> | null = null;
+    const loadPagefind = () => {
+      if (!pagefindPromise) {
+        // URL als String zur Runtime — Vite/Rollup soll das nicht statisch analysieren
+        // (pagefind.js existiert erst nach `pagefind --site dist` post-build).
+        const pfUrl = new URL("/pagefind/pagefind.js", window.location.origin).href;
+        pagefindPromise = import(/* @vite-ignore */ pfUrl)
+          .then(async (pf) => {
+            await pf.options({ excerptLength: 24 });
+            await pf.init();
+            return pf;
+          })
+          .catch((err) => {
+            console.error("[search] pagefind not available (build first)", err);
+            results.innerHTML = `<p class="search-empty">Suche nur nach npm run build verfügbar.</p>`;
+            return null;
+          });
+      }
+      return pagefindPromise;
+    };
+
+    const open = () => {
+      if (!dialog.open) dialog.showModal();
+      loadPagefind();
+      setTimeout(() => input.focus(), 30);
+    };
+    const close = () => {
+      if (dialog.open) dialog.close();
+      input.value = "";
+      results.innerHTML = "";
+    };
+
+    trigger.addEventListener("click", open);
+    closeBtn.addEventListener("click", close);
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) close();
+    });
+
+    // Global Cmd/Ctrl+K
+    document.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        dialog.open ? close() : open();
+      }
+      if (e.key === "Escape" && dialog.open) {
+        close();
+      }
+    });
+
+    // Live search with debounce
+    let debounce: number | undefined;
+    input.addEventListener("input", () => {
+      window.clearTimeout(debounce);
+      debounce = window.setTimeout(runSearch, 120);
+    });
+
+    const runSearch = async () => {
+      const q = input.value.trim();
+      if (q.length < 2) {
+        results.innerHTML = "";
+        return;
+      }
+      const pf = await loadPagefind();
+      if (!pf) return;
+      const search = await pf.search(q);
+      if (!search || search.results.length === 0) {
+        results.innerHTML = `<p class="search-empty">Kein Treffer für „${escapeHtml(q)}".</p>`;
+        return;
+      }
+      const top = await Promise.all(search.results.slice(0, 8).map((r: any) => r.data()));
+      const catTone: Record<string, string> = {
+        "Entlarven & Mechanik": "cat-entlarven",
+        "Bitcoin verstehen": "cat-learning",
+        "Der große Bitcoin-Denkfehler": "cat-denkfehler",
+      };
+      results.innerHTML = top
+        .map((d: any) => {
+          const cat = d.meta?.category ?? "";
+          const tone = catTone[cat] ?? "";
+          return `
+          <a class="search-hit ${tone}" href="${d.url}">
+            <p class="search-hit-cat">${escapeHtml(cat)}</p>
+            <h3 class="search-hit-title">${escapeHtml(d.meta?.title ?? "")}</h3>
+            <p class="search-hit-excerpt">${d.excerpt}</p>
+          </a>`;
+        })
+        .join("");
+    };
+
+    const escapeHtml = (s: string) =>
+      s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+  }
+</script>
+
+<style>
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgb(from var(--color-paper) r g b / 0.8);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .search-trigger:hover {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+  }
+  .search-trigger kbd {
+    font-family: inherit;
+    font-size: 0.65rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    letter-spacing: 0;
+  }
+
+  .search-dialog {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    color: var(--color-paper);
+  }
+  .search-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(4px);
+  }
+  .search-panel {
+    max-width: 42rem;
+    margin: 5vh auto 0;
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .search-input-row input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-paper);
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .search-input-row input::placeholder {
+    color: rgb(from var(--color-paper) r g b / 0.4);
+  }
+  .search-close {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgb(from var(--color-paper) r g b / 0.7);
+    border: none;
+    cursor: pointer;
+  }
+  .search-close:hover {
+    color: var(--color-orange);
+  }
+
+  .search-results {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+  .search-empty {
+    padding: 1.5rem 1rem;
+    color: rgb(from var(--color-paper) r g b / 0.6);
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .search-hit {
+    display: block;
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    color: var(--color-paper);
+    transition: background 150ms ease, border-color 150ms ease;
+  }
+  .search-hit:hover,
+  .search-hit:focus-visible {
+    background: rgba(255, 255, 255, 0.04);
+    outline: none;
+  }
+  .search-hit + .search-hit {
+    margin-top: 0.25rem;
+  }
+  .search-hit-cat {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(from var(--color-paper) r g b / 0.5);
+    margin-bottom: 0.35rem;
+  }
+  .search-hit-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .search-hit-excerpt {
+    font-size: 0.85rem;
+    color: rgb(from var(--color-paper) r g b / 0.7);
+    line-height: 1.5;
+  }
+  .search-hit-excerpt :global(mark) {
+    background: rgba(247, 147, 26, 0.35);
+    color: var(--color-paper);
+    padding: 0 0.15em;
+    border-radius: 2px;
+  }
+
+  /* Kategorie-Farbstreifen wie auf Blog-Karten */
+  .search-hit.cat-entlarven {
+    border-left-color: rgba(247, 147, 26, 0.55);
+  }
+  .search-hit.cat-entlarven:hover {
+    border-left-color: #f7931a;
+  }
+  .search-hit.cat-entlarven .search-hit-cat {
+    color: #f7931a;
+  }
+
+  .search-hit.cat-learning {
+    border-left-color: rgba(180, 200, 230, 0.55);
+  }
+  .search-hit.cat-learning:hover {
+    border-left-color: #b4c8e6;
+  }
+  .search-hit.cat-learning .search-hit-cat {
+    color: #b4c8e6;
+  }
+
+  .search-hit.cat-denkfehler {
+    border-left-color: rgba(196, 111, 0, 0.7);
+  }
+  .search-hit.cat-denkfehler:hover {
+    border-left-color: #c46f00;
+  }
+  .search-hit.cat-denkfehler .search-hit-cat {
+    color: #e6a24a;
+  }
+
+  .search-hint {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.7rem;
+    color: rgb(from var(--color-paper) r g b / 0.4);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+</style>
