@@ -108,31 +108,3 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   <SiteFooter />
 </Layout>
-
-<style is:global>
-  .legal-body { color: rgb(from var(--color-paper) r g b / 0.82); line-height: 1.7; }
-  .legal-body p + p { margin-top: 0.85em; }
-  .legal-num {
-    font-size: 0.9rem;
-    letter-spacing: 0.25em;
-    color: var(--color-orange);
-    margin-bottom: 0.4rem;
-  }
-  .legal-h {
-    font-family: var(--font-display);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    color: var(--color-paper);
-    font-size: 1.35rem;
-    line-height: 1.15;
-    margin-bottom: 0.75rem;
-  }
-  .legal-link {
-    color: var(--color-paper);
-    text-decoration: underline;
-    text-decoration-color: rgb(from var(--color-orange) r g b / 0.7);
-    text-underline-offset: 0.15em;
-  }
-  .legal-link:hover { color: var(--color-orange); }
-</style>
