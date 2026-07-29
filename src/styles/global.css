@@ -236,6 +236,100 @@ body::after {
   opacity: 0.9;
 }
 
+/* Stempel-Variante für dunklen Grund — orange-deep hat auf Beton zu wenig
+   Kontrast, deshalb das hellere Marken-Orange. */
+.stamp-dark {
+  border-color: rgb(from var(--color-orange) r g b / 0.55);
+  color: var(--color-orange);
+}
+
+/* ===== Wand-Layout ========================================================
+   Sektions-Gerüst der Streetart-Seiten (Start, Blog, Über). Muss global
+   liegen — Page-Styles werden pro Seite gebündelt. */
+
+/* Geister-Tag hinter dem Hero.
+   z-index 0 statt -1: body trägt eine deckende Hintergrundfarbe, ein negativer
+   Index würde den Tag dahinter schieben und unsichtbar machen. Die Textebenen
+   darüber bekommen deshalb explizit .hero-layer mit z-index 1. */
+.wall-ghost {
+  position: absolute;
+  top: 2.5rem;
+  right: -1.5rem;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 16vw, 11rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(from var(--color-paper) r g b / 0.07);
+  transform: rotate(-7deg);
+  user-select: none;
+  white-space: nowrap;
+}
+.hero-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Aussage-Tag: der Satz, der aus dem Fließtext an die Wand wandert */
+.wall-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  font-size: clamp(1.5rem, 5.2vw, 3.1rem);
+  transform: rotate(-1.4deg);
+}
+.wall-tag span {
+  display: inline-block;
+}
+.wall-tag-hit {
+  color: var(--color-ink);
+  background: var(--color-orange);
+  padding: 0.1em 0.35em 0.16em;
+  transform: rotate(1.1deg);
+  box-shadow: 0 8px 20px -6px rgba(247, 147, 26, 0.45);
+}
+
+/* Sektion + Kopf mit Schablonen-Ziffer */
+.wall-sec {
+  position: relative;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+@media (min-width: 768px) {
+  .wall-sec {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+}
+.wall-head {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+}
+.wall-head-num {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  flex: none;
+}
+.wall-h {
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
+  line-height: 1.02;
+  transform: rotate(-0.8deg);
+}
+
+/* Hero-Stempel (Kicker-Chip über der Startseiten-Headline) */
+.hero-stamp {
+  display: inline-block;
+  transform: rotate(-1.8deg);
+}
+
 /* ===== Hero-Sticker =======================================================
    Das Startseiten-Maskottchen als „auf den Bildschirm geklebter" Sticker:
    kein Rahmen, transparenter PNG-Hintergrund direkt auf dem Beton, leichte
