@@ -89,7 +89,7 @@ const jsonLd = {
       <p class="display text-xs tracking-[0.3em] text-orange" data-pagefind-ignore>
         // {categoryLabels[post.data.category]}
       </p>
-      <h1 class="display mt-4 text-3xl leading-[1.05] md:text-5xl">
+      <h1 class="post-h1 display mt-4 text-3xl md:text-5xl">
         {post.data.title}
       </h1>
       <p class="mt-5 text-lg leading-relaxed text-paper/80">
@@ -161,6 +161,15 @@ const jsonLd = {
 </Layout>
 
 <style is:global>
+  /* Artikel-Headline: Das deutsche öffnende „ reicht in Archivo Black weit
+     unter die Grundlinie. Bei zu engem Durchschuss stößt es in die Folgezeile
+     und liest sich wie ein verirrtes Zeichen. 1.3 gibt ihm Platz,
+     text-wrap: balance verteilt die Zeilen gleichmäßiger. */
+  .post-h1 {
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
   .post-hero-image {
     position: relative;
     max-width: 28rem;
