@@ -19,7 +19,9 @@ const links = [
       Bit <span class="text-orange">&amp;</span> Bullshit
     </a>
     <div class="flex items-center gap-3 sm:gap-6">
-      <ul class="flex items-center gap-4 text-xs uppercase tracking-widest sm:gap-6">
+      {/* Ab 520px die volle Leiste — darunter passen Logo + 4 Links + Suche
+          nicht mehr nebeneinander und „Sticker" wurde abgeschnitten. */}
+      <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[520px]:flex sm:gap-6">
         {
           links.map((link) => (
             <li>
@@ -37,6 +39,178 @@ const links = [
         }
       </ul>
       <Search />
+      <button
+        type="button"
+        id="nav-toggle"
+        class="burger"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Menü öffnen"
+      >
+        <span class="burger-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
     </div>
   </nav>
+
+  <div id="mobile-nav" class="mobile-nav" hidden>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={["mobile-nav-link", isActive(link.href) && "is-active"]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const panel = document.getElementById("mobile-nav");
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+      toggle.classList.toggle("is-open", open);
+      panel.hidden = !open;
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Esc schließt und gibt den Fokus zurück auf den Button
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Beim Wechsel auf die breite Leiste darf kein offenes Panel zurückbleiben
+    const wide = window.matchMedia("(min-width: 520px)");
+    wide.addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgb(from var(--color-paper) r g b / 0.8);
+    cursor: pointer;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .burger:hover,
+  .burger:focus-visible {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+  }
+
+  .burger-bars {
+    position: relative;
+    display: block;
+    width: 1.05rem;
+    height: 0.75rem;
+  }
+  .burger-bars span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 140ms ease;
+  }
+  .burger-bars span:nth-child(1) { top: 0; }
+  .burger-bars span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .burger-bars span:nth-child(3) { bottom: 0; }
+
+  /* Offen: die drei Striche werden zum ✕ */
+  .burger.is-open .burger-bars span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .burger.is-open .burger-bars span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.is-open .burger-bars span:nth-child(3) {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgb(from var(--color-paper) r g b / 0.03);
+  }
+  .mobile-nav[hidden] {
+    display: none;
+  }
+  .mobile-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 0.7rem 1.25rem 0.7rem 1.5rem;
+    border-left: 3px solid transparent;
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.95rem;
+    color: rgb(from var(--color-paper) r g b / 0.75);
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus-visible {
+    color: var(--color-orange);
+    border-left-color: rgb(from var(--color-orange) r g b / 0.6);
+    outline: none;
+  }
+  .mobile-nav-link.is-active {
+    color: var(--color-orange);
+    border-left-color: var(--color-orange);
+  }
+
+  /* Ein- und Ausblenden bewusst hier statt per Tailwind-Variante: Astro scopt
+     Komponenten-Styles mit einem Attribut-Selektor, dadurch schlägt das
+     display aus diesem Block jede Utility-Klasse gleicher Spezifität. */
+  @media (min-width: 520px) {
+    .burger,
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .burger-bars span {
+      transition: none;
+    }
+  }
+</style>
