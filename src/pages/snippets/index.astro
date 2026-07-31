@@ -33,7 +33,7 @@ const groups = [
 ---
 
 <Layout
-  title="Blog — Bit & Bullshit"
+  title="Snippets — Bit & Bullshit"
   description="Bitcoin, Makro, Geld — Kurz-Artikel im Bit-&-Bullshit-Ton. Von Fiatgeld über Cantillon-Effekt bis Chatkontrolle."
 >
   <SiteHeader />
@@ -41,7 +41,7 @@ const groups = [
   <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
     <header class="relative max-w-3xl">
       <span class="wall-ghost" aria-hidden="true">SNIPPETS</span>
-      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// BLOG</p>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// SNIPPETS</p>
       <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
         Snippets zum <span class="marker">Nachlesen.</span>
       </h1>
@@ -73,7 +73,7 @@ const groups = [
                 {items.map((post) => (
                   <li>
                     <a
-                      href={`/${post.id}`}
+                      href={`/snippets/${post.id}`}
                       class:list={[
                         "post-card group block h-full rounded-md border border-white/10 bg-ink/60 p-6 transition",
                         group.toneClass,

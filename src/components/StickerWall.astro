@@ -25,7 +25,7 @@ const categoryMeta: Record<string, { label: string; toneClass: string }> = {
     posts.map((post) => {
       const meta = categoryMeta[post.data.category];
       return (
-        <a href={`/${post.id}`} class:list={["sticker", meta.toneClass]}>
+        <a href={`/snippets/${post.id}`} class:list={["sticker", meta.toneClass]}>
           <span class="sticker-kicker">
             <span class="sticker-num">
               #{String(post.data.order).padStart(2, "0")}
