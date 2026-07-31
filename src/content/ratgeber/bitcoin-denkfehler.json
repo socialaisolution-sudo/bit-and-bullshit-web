@@ -1,0 +1,29 @@
+{
+  "nummer": 1,
+  "titel": "Der große Bitcoin-Denkfehler",
+  "kurztitel": "Bitcoin-Denkfehler",
+  "einleitung": "Fünf Denkfehler, die fast jeder mitbringt, der zum ersten Mal ernsthaft über Bitcoin nachdenkt. Nicht die Fehler der Ahnungslosen — die der Vorsichtigen. Wer sie kennt, stellt bessere Fragen.",
+  "teile": [
+    {
+      "nr": 1,
+      "titel": "„Zu spät“ gibt es nicht",
+      "slug": "zu-spaet-gibt-es-nicht"
+    },
+    {
+      "nr": 2,
+      "titel": "Das falsche Werkzeug: Warum Bitcoin keine Aktie ist"
+    },
+    {
+      "nr": 3,
+      "titel": "Teil 3 — Titel folgt"
+    },
+    {
+      "nr": 4,
+      "titel": "Teil 4 — Titel folgt"
+    },
+    {
+      "nr": 5,
+      "titel": "Teil 5 — Titel folgt"
+    }
+  ]
+}

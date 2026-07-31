@@ -7,6 +7,7 @@ const isActive = (href: string) =>
 
 const links = [
   { href: "/", label: "Start" },
+  { href: "/ratgeber", label: "Ratgeber" },
   { href: "/snippets", label: "Snippets" },
   { href: "/ueber-uns", label: "Über" },
   { href: "/sticker", label: "Sticker" },
@@ -19,9 +20,9 @@ const links = [
       Bit <span class="text-orange">&amp;</span> Bullshit
     </a>
     <div class="flex items-center gap-3 sm:gap-6">
-      {/* Ab 520px die volle Leiste — darunter passen Logo + 4 Links + Suche
+      {/* Ab 560px die volle Leiste — darunter passen Logo + 4 Links + Suche
           nicht mehr nebeneinander und „Sticker" wurde abgeschnitten. */}
-      <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[520px]:flex sm:gap-6">
+      <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[560px]:flex sm:gap-6">
         {
           links.map((link) => (
             <li>
@@ -99,7 +100,7 @@ const links = [
     });
 
     // Beim Wechsel auf die breite Leiste darf kein offenes Panel zurückbleiben
-    const wide = window.matchMedia("(min-width: 520px)");
+    const wide = window.matchMedia("(min-width: 560px)");
     wide.addEventListener("change", (e) => {
       if (e.matches) setOpen(false);
     });
@@ -201,7 +202,7 @@ const links = [
   /* Ein- und Ausblenden bewusst hier statt per Tailwind-Variante: Astro scopt
      Komponenten-Styles mit einem Attribut-Selektor, dadurch schlägt das
      display aus diesem Block jede Utility-Klasse gleicher Spezifität. */
-  @media (min-width: 520px) {
+  @media (min-width: 560px) {
     .burger,
     .mobile-nav {
       display: none;

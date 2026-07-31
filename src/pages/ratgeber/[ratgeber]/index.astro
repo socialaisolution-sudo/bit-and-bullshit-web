@@ -1,0 +1,243 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import RatgeberFortschritt from "../../../components/RatgeberFortschritt.astro";
+import RatgeberBenachrichtigung from "../../../components/RatgeberBenachrichtigung.astro";
+import { ladeRatgeber } from "../../../lib/ratgeber";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const alle = await ladeRatgeber();
+  return alle.map((r) => ({ params: { ratgeber: r.id }, props: { r } }));
+};
+
+const { r } = Astro.props;
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const hubUrl = new URL(`/ratgeber/${r.id}/`, site).toString();
+
+// Topic Cluster: Der Hub weist die veröffentlichten Teile als Sammlung aus.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: r.data.titel,
+  description: r.data.einleitung,
+  inLanguage: "de-DE",
+  url: hubUrl,
+  hasPart: r.teile
+    .filter((t) => t.veroeffentlicht)
+    .map((t) => ({
+      "@type": "Article",
+      headline: t.cornerstone!.data.title,
+      url: new URL(`/ratgeber/${r.id}/${t.slug}/`, site).toString(),
+    })),
+};
+---
+
+<Layout
+  title={`${r.data.titel} — Bit & Bullshit`}
+  description={r.data.einleitung}
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-4xl overflow-hidden px-5 py-16 md:py-24">
+    <a href="/ratgeber/" class="text-xs uppercase tracking-widest text-paper/60 hover:text-orange">
+      &larr; Alle Ratgeber
+    </a>
+
+    <header class="relative mt-6">
+      <span class="wall-ghost" aria-hidden="true">TEIL {r.fertig}</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">
+        // RATGEBER {String(r.data.nummer).padStart(2, "0")}
+      </p>
+      <h1 class="display spray-head hero-layer mt-4 text-3xl md:text-5xl">
+        {r.data.titel}
+      </h1>
+      <p class="hero-layer mt-7 max-w-2xl text-lg leading-relaxed text-paper/80">
+        {r.data.einleitung}
+      </p>
+      <div class="hero-layer mt-8 max-w-xs">
+        <RatgeberFortschritt fertig={r.fertig} gesamt={r.gesamt} />
+      </div>
+    </header>
+
+    <ol class="teile mt-12">
+      {
+        r.teile.map((t) =>
+          t.veroeffentlicht ? (
+            <li>
+              <a href={`/ratgeber/${r.id}/${t.slug}/`} class="teil teil-offen">
+                <span class="teil-nr display">{String(t.nr).padStart(2, "0")}</span>
+                <span class="teil-inhalt">
+                  <span class="display teil-titel">{t.cornerstone!.data.title}</span>
+                  {t.cornerstone!.data.untertitel && (
+                    <span class="teil-lede">{t.cornerstone!.data.untertitel}</span>
+                  )}
+                </span>
+                <span class="teil-status display">Lesen &rarr;</span>
+              </a>
+            </li>
+          ) : (
+            <li>
+              <div class="teil teil-geplant">
+                <span class="teil-nr display">{String(t.nr).padStart(2, "0")}</span>
+                <span class="teil-inhalt">
+                  <span class="display teil-titel">{t.titel}</span>
+                </span>
+                <span class="teil-status display">In Arbeit</span>
+              </div>
+            </li>
+          ),
+        )
+      }
+    </ol>
+
+    {
+      r.komplett && r.data.pdf ? (
+        <div class="pdf-box tape">
+          <p class="display pdf-kicker">// Komplett</p>
+          <p class="pdf-text">
+            Alle {r.gesamt} Teile stehen. Wer lieber am Stück liest oder etwas
+            zum Ausdrucken braucht:
+          </p>
+          <a href={r.data.pdf} class="pdf-link display" download>
+            Ratgeber als PDF laden
+          </a>
+        </div>
+      ) : (
+        <RatgeberBenachrichtigung ratgeberTitel={r.data.titel} />
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .teile {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    counter-reset: none;
+  }
+
+  .teil {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.1);
+    border-left-width: 3px;
+    border-radius: 0.35rem;
+    text-decoration: none;
+  }
+
+  .teil-nr {
+    flex: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgb(from var(--color-orange) r g b / 0.5);
+  }
+  .teil-inhalt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+    min-width: 0;
+  }
+  .teil-titel {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  .teil-lede {
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: rgb(from var(--color-paper) r g b / 0.6);
+  }
+  .teil-status {
+    flex: none;
+    align-self: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+
+  /* Veröffentlicht */
+  .teil-offen {
+    border-left-color: var(--color-orange);
+    background: rgb(from var(--color-paper) r g b / 0.03);
+    color: var(--color-paper);
+    transition:
+      transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 200ms ease;
+  }
+  .teil-offen .teil-status {
+    color: var(--color-orange);
+  }
+  .teil-offen:hover,
+  .teil-offen:focus-visible {
+    transform: translateX(4px);
+    border-color: rgb(from var(--color-orange) r g b / 0.5);
+    border-left-color: var(--color-orange);
+    outline: none;
+  }
+
+  /* Geplant — sichtbar, aber erkennbar noch nicht da */
+  .teil-geplant {
+    border-style: dashed;
+    border-left-color: rgb(from var(--color-paper) r g b / 0.2);
+    background: transparent;
+  }
+  .teil-geplant .teil-nr {
+    -webkit-text-stroke-color: rgb(from var(--color-paper) r g b / 0.25);
+  }
+  .teil-geplant .teil-titel {
+    color: rgb(from var(--color-paper) r g b / 0.45);
+  }
+  .teil-geplant .teil-status {
+    color: rgb(from var(--color-paper) r g b / 0.35);
+  }
+
+  .pdf-box {
+    margin-top: 2.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.12);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-paper) r g b / 0.03);
+    transform: rotate(-0.5deg);
+  }
+  .pdf-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--color-orange);
+  }
+  .pdf-text {
+    margin-top: 0.85rem;
+    max-width: 34rem;
+    line-height: 1.65;
+    color: rgb(from var(--color-paper) r g b / 0.8);
+  }
+  .pdf-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 0.3rem;
+    background: var(--color-orange);
+    color: var(--color-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .teil-offen,
+    .teil-offen:hover {
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

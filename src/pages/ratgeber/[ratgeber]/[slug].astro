@@ -1,0 +1,276 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import RatgeberFortschritt from "../../../components/RatgeberFortschritt.astro";
+import { ladeRatgeber } from "../../../lib/ratgeber";
+import { render } from "astro:content";
+import { Image, getImage } from "astro:assets";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const alle = await ladeRatgeber();
+  return alle.flatMap((r) =>
+    r.teile
+      .filter((t) => t.veroeffentlicht)
+      .map((t) => ({
+        params: { ratgeber: r.id, slug: t.slug! },
+        props: { r, teil: t },
+      })),
+  );
+};
+
+const { r, teil } = Astro.props;
+const cs = teil.cornerstone!;
+const { Content } = await render(cs);
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const url = new URL(`/ratgeber/${r.id}/${teil.slug}/`, site).toString();
+const hubUrl = new URL(`/ratgeber/${r.id}/`, site).toString();
+
+let ogImagePath = "/og-default.png";
+if (cs.data.image) {
+  const og = await getImage({ src: cs.data.image, width: 1200, format: "jpg" });
+  ogImagePath = og.src;
+}
+
+const naechster = r.teile.find((t) => t.nr === teil.nr + 1);
+const voriger = r.teile.find((t) => t.nr === teil.nr - 1);
+
+// Topic Cluster: Der Cornerstone weist den Hub als übergeordnetes Werk aus.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: cs.data.title,
+  description: cs.data.description,
+  inLanguage: "de-DE",
+  url,
+  mainEntityOfPage: url,
+  articleSection: r.data.titel,
+  keywords: cs.data.keyword,
+  image: ogImagePath,
+  isPartOf: {
+    "@type": "CollectionPage",
+    name: r.data.titel,
+    url: hubUrl,
+  },
+};
+---
+
+<Layout
+  title={`${cs.data.title} — ${r.data.kurztitel} · Bit & Bullshit`}
+  description={cs.data.description}
+  ogImage={ogImagePath}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-3xl px-5 py-12 md:py-16">
+    <a href={`/ratgeber/${r.id}/`} class="text-xs uppercase tracking-widest text-paper/60 hover:text-orange">
+      &larr; {r.data.titel}
+    </a>
+
+    <article class="mt-8" data-pagefind-body data-pagefind-meta={`category:${r.data.titel}`}>
+      <p class="display text-xs tracking-[0.3em] text-orange" data-pagefind-ignore>
+        // Teil {teil.nr} von {r.gesamt}
+      </p>
+      <h1 class="post-h1 display mt-4 text-3xl md:text-5xl">{cs.data.title}</h1>
+      {
+        cs.data.untertitel && (
+          <p class="cs-untertitel mt-5">{cs.data.untertitel}</p>
+        )
+      }
+
+      {
+        cs.data.image && (
+          <figure class="cs-hero mt-10">
+            <Image
+              src={cs.data.image}
+              alt={cs.data.imageAlt ?? `Illustration zu: ${cs.data.title}`}
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 768px) 46rem, 92vw"
+              class="block h-auto w-full object-cover"
+              loading="eager"
+            />
+          </figure>
+        )
+      }
+
+      <div class="post-body mt-10">
+        <Content />
+      </div>
+
+      {
+        cs.data.ausblick && naechster && (
+          <div class="cs-ausblick" data-pagefind-ignore>
+            <p class="display cs-ausblick-kicker">
+              // Teil {naechster.nr}
+              {!naechster.veroeffentlicht && " · in Arbeit"}
+            </p>
+            <p class="cs-ausblick-text">{cs.data.ausblick}</p>
+            {naechster.veroeffentlicht && (
+              <a href={`/ratgeber/${r.id}/${naechster.slug}/`} class="display cs-ausblick-link">
+                Weiterlesen &rarr;
+              </a>
+            )}
+          </div>
+        )
+      }
+
+      <nav class="cs-nav" data-pagefind-ignore aria-label="Weitere Teile">
+        {
+          voriger?.veroeffentlicht ? (
+            <a href={`/ratgeber/${r.id}/${voriger.slug}/`} class="cs-nav-link">
+              <span class="cs-nav-label display">&larr; Teil {voriger.nr}</span>
+              <span class="cs-nav-titel">{voriger.cornerstone!.data.title}</span>
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          naechster?.veroeffentlicht && (
+            <a href={`/ratgeber/${r.id}/${naechster.slug}/`} class="cs-nav-link cs-nav-rechts">
+              <span class="cs-nav-label display">Teil {naechster.nr} &rarr;</span>
+              <span class="cs-nav-titel">{naechster.cornerstone!.data.title}</span>
+            </a>
+          )
+        }
+      </nav>
+
+      <div class="cs-hub" data-pagefind-ignore>
+        <div>
+          <p class="display text-xs tracking-[0.3em] text-orange">// Ratgeber</p>
+          <p class="display cs-hub-titel">{r.data.titel}</p>
+        </div>
+        <div class="cs-hub-stand">
+          <RatgeberFortschritt fertig={r.fertig} gesamt={r.gesamt} klein />
+          <a href={`/ratgeber/${r.id}/`} class="display cs-hub-link">
+            Alle Teile &rarr;
+          </a>
+        </div>
+      </div>
+
+      <p class="mt-10 text-xs leading-relaxed text-paper/50" data-pagefind-ignore>
+        Nur Meinung &amp; Unterhaltung. Keine Finanz-, Steuer- oder Rechtsberatung.
+      </p>
+    </article>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .cs-untertitel {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: rgb(from var(--color-paper) r g b / 0.7);
+  }
+
+  /* 16:9 — die Cornerstone-Bilder sind Querformat, nicht Hochformat wie
+     die Snippet-Maskottchen. */
+  .cs-hero {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 0.4rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.1);
+    box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.65);
+  }
+  .cs-hero :global(img) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cs-ausblick {
+    margin-top: 3.5rem;
+    padding: 1.5rem 1.35rem 1.35rem;
+    border: 1px dashed rgb(from var(--color-orange) r g b / 0.35);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-orange) r g b / 0.04);
+  }
+  .cs-ausblick-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--color-orange);
+  }
+  .cs-ausblick-text {
+    margin-top: 0.75rem;
+    line-height: 1.65;
+    color: rgb(from var(--color-paper) r g b / 0.82);
+  }
+  .cs-ausblick-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--color-orange);
+  }
+
+  .cs-nav {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .cs-nav {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .cs-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.1);
+    border-radius: 0.35rem;
+    text-decoration: none;
+    transition: border-color 200ms ease;
+  }
+  .cs-nav-link:hover {
+    border-color: rgb(from var(--color-orange) r g b / 0.5);
+  }
+  .cs-nav-rechts {
+    text-align: right;
+  }
+  .cs-nav-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    color: var(--color-orange);
+  }
+  .cs-nav-titel {
+    font-size: 0.9rem;
+    line-height: 1.35;
+    color: rgb(from var(--color-paper) r g b / 0.8);
+  }
+
+  .cs-hub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgb(from var(--color-paper) r g b / 0.1);
+  }
+  .cs-hub-titel {
+    margin-top: 0.4rem;
+    font-size: 1.15rem;
+    line-height: 1.15;
+  }
+  .cs-hub-stand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 11rem;
+  }
+  .cs-hub-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-orange);
+  }
+</style>

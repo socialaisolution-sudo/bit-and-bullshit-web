@@ -1,0 +1,62 @@
+---
+interface Props {
+  fertig: number;
+  gesamt: number;
+  /** Kompakte Variante für Karten in Übersichten. */
+  klein?: boolean;
+}
+const { fertig, gesamt, klein = false } = Astro.props;
+const anteil = gesamt > 0 ? Math.round((fertig / gesamt) * 100) : 0;
+const komplett = fertig === gesamt && gesamt > 0;
+---
+
+<div
+  class:list={["fortschritt", klein && "ist-klein"]}
+  role="img"
+  aria-label={`Teil ${fertig} von ${gesamt} veröffentlicht`}
+>
+  <div class="fortschritt-balken">
+    {
+      Array.from({ length: gesamt }, (_, i) => (
+        <span class:list={["segment", i < fertig && "ist-fertig"]} />
+      ))
+    }
+  </div>
+  <p class="fortschritt-text display">
+    {komplett ? `Komplett · ${gesamt} Teile` : `Teil ${fertig} von ${gesamt}`}
+  </p>
+</div>
+
+<style>
+  .fortschritt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .fortschritt-balken {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .segment {
+    height: 0.35rem;
+    flex: 1;
+    border-radius: 2px;
+    background: rgb(from var(--color-paper) r g b / 0.12);
+  }
+  .segment.ist-fertig {
+    background: var(--color-orange);
+    box-shadow: 0 0 12px rgb(from var(--color-orange) r g b / 0.35);
+  }
+  .fortschritt-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: rgb(from var(--color-paper) r g b / 0.55);
+  }
+
+  .ist-klein .segment {
+    height: 0.25rem;
+  }
+  .ist-klein .fortschritt-text {
+    font-size: 0.65rem;
+  }
+</style>

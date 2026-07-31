@@ -1,0 +1,132 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import RatgeberFortschritt from "../../components/RatgeberFortschritt.astro";
+import { ladeRatgeber } from "../../lib/ratgeber";
+
+const ratgeber = await ladeRatgeber();
+---
+
+<Layout
+  title="Ratgeber — Bit & Bullshit"
+  description="Fünf Ratgeber zu Bitcoin, Geld und den Denkfehlern drumherum. Je fünf Teile, zum Durchlesen statt Durchscrollen."
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-5xl overflow-hidden px-5 py-16 md:py-24">
+    <header class="relative max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">RATGEBER</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// RATGEBER</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Zum <span class="marker">Durchlesen.</span>
+      </h1>
+      <p class="hero-layer mt-8 text-lg leading-relaxed text-paper/80">
+        Snippets erklären ein Thema in 60 Sekunden. Die Ratgeber nehmen sich
+        Zeit: je fünf Teile, die aufeinander aufbauen. Für die Fragen, bei
+        denen eine Minute nicht reicht.
+      </p>
+    </header>
+
+    <div class="ratgeber-grid mt-14">
+      {
+        ratgeber.map((r) => (
+          <a href={`/ratgeber/${r.id}/`} class="ratgeber-karte">
+            <span class="stencil-num karten-num" aria-hidden="true">
+              {String(r.data.nummer).padStart(2, "0")}
+            </span>
+            <h2 class="display karten-titel">{r.data.titel}</h2>
+            <p class="karten-lede">{r.data.einleitung}</p>
+            <div class="karten-fuss">
+              <RatgeberFortschritt fertig={r.fertig} gesamt={r.gesamt} klein />
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      ratgeber.length === 0 && (
+        <p class="mt-12 text-paper/60">
+          Noch kein Ratgeber veröffentlicht. Die Snippets gibt es schon —
+          <a href="/snippets" class="drip-underline text-paper hover:text-orange">
+            hier entlang
+          </a>.
+        </p>
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .ratgeber-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 700px) {
+    .ratgeber-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  .ratgeber-karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: hidden;
+    padding: 1.6rem 1.4rem 1.4rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.12);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-paper) r g b / 0.03);
+    text-decoration: none;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 220ms ease;
+  }
+  .ratgeber-karte:hover,
+  .ratgeber-karte:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgb(from var(--color-orange) r g b / 0.45);
+    outline: none;
+  }
+
+  .karten-num {
+    position: absolute;
+    top: -0.7rem;
+    right: 0.4rem;
+    font-size: 4.5rem;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(from var(--color-orange) r g b / 0.2);
+  }
+  .karten-titel {
+    position: relative;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: var(--color-paper);
+    max-width: 80%;
+  }
+  .karten-lede {
+    position: relative;
+    color: rgb(from var(--color-paper) r g b / 0.72);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  .karten-fuss {
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ratgeber-karte,
+    .ratgeber-karte:hover {
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
