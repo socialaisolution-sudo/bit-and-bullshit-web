@@ -5,6 +5,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import StickerWall from "../components/StickerWall.astro";
 import mascot from "../assets/mascot-hero.png";
+import comicPanel from "../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug.webp";
 import { Image } from "astro:assets";
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
@@ -102,6 +103,42 @@ const jsonLd = {
       </div>
     </section>
 
+    {/* Comic vor den Snippets. Es ist das stärkste Bild der Seite und der
+        beste Grund zu bleiben — es gehört nicht zwei Klicks tief unter einen
+        Ratgeber-Teil. Kein eigener Menüpunkt, solange es einen einzigen gibt:
+        Eine Leiste, die einen Bereich verspricht und auf eine Einzelseite
+        führt, wirkt unfertig. */}
+    <section class="relative border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+        <div class="comic-teaser">
+          <a href="/comic/zu-spaet-gibt-es-nicht/" class="comic-teaser-bild">
+            <Image
+              src={comicPanel}
+              alt="Comic-Panel: Das Maskottchen sieht einem Zug zu, der auf einem Kreisgleis fährt statt abzufahren."
+              widths={[480, 720, 960]}
+              sizes="(min-width: 900px) 30rem, 92vw"
+              class="block h-auto w-full"
+              loading="lazy"
+            />
+          </a>
+          <div class="comic-teaser-text">
+            <p class="display text-xs tracking-[0.3em] text-orange">// COMIC</p>
+            <h2 class="display spray-head mt-4 text-3xl md:text-5xl">
+              Zu spät gibt es <span class="text-orange">nicht.</span>
+            </h2>
+            <div class="spray-rule mt-5 max-w-[14rem]"></div>
+            <p class="mt-5 text-base leading-relaxed text-paper/70">
+              Der große Bitcoin-Denkfehler, Teil 1 — als Comic zum
+              Durchscrollen. Fünf Panels, ein Zug, der im Kreis fährt.
+            </p>
+            <a href="/comic/zu-spaet-gibt-es-nicht/" class="comic-teaser-link">
+              Comic ansehen &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="relative border-t border-white/10">
       <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -153,6 +190,52 @@ const jsonLd = {
 </Layout>
 
 <style>
+  .comic-teaser {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .comic-teaser {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem;
+    }
+  }
+  .comic-teaser-bild {
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.9);
+    transform: rotate(-1.2deg);
+    transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .comic-teaser-bild:hover,
+  .comic-teaser-bild:focus-visible {
+    transform: rotate(0deg);
+    outline: none;
+  }
+  .comic-teaser-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--color-orange);
+    border-bottom: 2px solid rgb(from var(--color-orange) r g b / 0.5);
+    padding-bottom: 0.3rem;
+  }
+  .comic-teaser-link:hover {
+    border-bottom-color: var(--color-orange);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .comic-teaser-bild,
+    .comic-teaser-bild:hover {
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* Der Hero-Ghost sitzt hinter der Headline-Spalte, nicht hinter dem
      Maskottchen — sonst kämpfen zwei Grafiken um dieselbe Fläche. */
   .wall-ghost {

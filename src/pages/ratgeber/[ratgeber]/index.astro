@@ -77,6 +77,15 @@ const jsonLd = {
                 </span>
                 <span class="teil-status display">Lesen &rarr;</span>
               </a>
+              {t.cornerstone!.data.comic && (
+                <a href={t.cornerstone!.data.comic} class="teil-comic">
+                  <span class="display teil-comic-label">Auch als Comic</span>
+                  <span class="teil-comic-text">
+                    Dieselbe Geschichte in fünf Panels zum Durchscrollen
+                  </span>
+                  <span class="display teil-comic-pfeil">&rarr;</span>
+                </a>
+              )}
             </li>
           ) : (
             <li>
@@ -200,6 +209,53 @@ const jsonLd = {
   }
   .teil-geplant .teil-status {
     color: rgb(from var(--color-paper) r g b / 0.35);
+  }
+
+  /* Zweites Format zum selben Teil. Sitzt eingerückt unter der Textzeile,
+     damit erkennbar bleibt: eine Geschichte, zwei Wege hinein. */
+  .teil-comic {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.4rem 0 0 2.5rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px dashed rgb(from var(--color-orange) r g b / 0.4);
+    border-radius: 0.3rem;
+    background: rgb(from var(--color-orange) r g b / 0.05);
+    text-decoration: none;
+    transition: border-color 180ms ease;
+  }
+  .teil-comic:hover,
+  .teil-comic:focus-visible {
+    border-color: var(--color-orange);
+    outline: none;
+  }
+  .teil-comic-label {
+    flex: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    color: var(--color-orange);
+  }
+  .teil-comic-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: rgb(from var(--color-paper) r g b / 0.6);
+  }
+  .teil-comic-pfeil {
+    flex: none;
+    font-size: 0.8rem;
+    color: var(--color-orange);
+  }
+  @media (max-width: 560px) {
+    .teil-comic {
+      margin-left: 0;
+      flex-wrap: wrap;
+    }
+    .teil-comic-text {
+      flex-basis: 100%;
+    }
   }
 
   .pdf-box {
