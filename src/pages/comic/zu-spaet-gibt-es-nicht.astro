@@ -1,0 +1,385 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SocialLinks from "../../components/SocialLinks.astro";
+import { Image } from "astro:assets";
+
+import p1 from "../../assets/comic/zu-spaet-gibt-es-nicht/01-leere-station.png";
+import p2 from "../../assets/comic/zu-spaet-gibt-es-nicht/02-und-trotzdem-kaputt.png";
+import p3standbild from "../../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug-standbild.png";
+import p4 from "../../assets/comic/zu-spaet-gibt-es-nicht/04-spiegel.png";
+import p5 from "../../assets/comic/zu-spaet-gibt-es-nicht/05-sonnenuntergang.png";
+
+/**
+ * Vertikaler Scroll-Comic zum Cornerstone „Zu spät gibt es nicht“.
+ *
+ * Aufbau: Panel — Text — Panel. Die Panels sind das Argument, der Text ist
+ * das Scharnier dazwischen. Deshalb laufen sie über die volle Breite und der
+ * Text in einer schmalen Spalte: Wer nur scrollt, versteht die Geschichte
+ * trotzdem.
+ *
+ * Panel 3 ist animiert. Bild und Video werden im Layout gleich behandelt —
+ * dieselbe Klasse, dasselbe Seitenverhältnis, kein Beschnitt.
+ */
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const cornerstoneUrl = "/ratgeber/bitcoin-denkfehler/zu-spaet-gibt-es-nicht/";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ComicStory",
+  name: "Zu spät gibt es nicht",
+  headline: "Zu spät gibt es nicht — der Comic",
+  inLanguage: "de-DE",
+  url: new URL("/comic/zu-spaet-gibt-es-nicht/", site).toString(),
+  about:
+    "Warum die Frage nach dem richtigen Einstiegszeitpunkt bei Bitcoin falsch gestellt ist.",
+  isPartOf: {
+    "@type": "Article",
+    name: "Der große Bitcoin-Denkfehler · Teil 1",
+    url: new URL(cornerstoneUrl, site).toString(),
+  },
+};
+---
+
+<Layout
+  title="Zu spät gibt es nicht — der Comic | Bit & Bullshit"
+  description="Der große Bitcoin-Denkfehler, Teil 1 als Comic: Warum „zu spät“ ein Ende voraussetzt, das es auf einem Markt nicht gibt. Fünf Panels zum Durchscrollen."
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="comic">
+    <header class="comic-kopf">
+      <p class="display text-xs tracking-[0.3em] text-orange">
+        // DER GROSSE BITCOIN-DENKFEHLER · TEIL 1
+      </p>
+      <h1 class="display comic-titel">Zu spät<br />gibt es nicht</h1>
+    </header>
+
+    <p class="comic-text comic-intro">
+      Es gibt eine Frage, die unter fast jedem meiner Videos auftaucht. Sie
+      klingt vernünftig — und trotzdem stimmt mit ihr etwas nicht.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p1}
+        alt="Das Maskottchen steht allein auf einem regennassen, leeren Bahnsteig. Über ihm die Sprechblase „Ist es nicht längst zu spät?“, darunter „Diese Frage kriege ich unter fast jedem Video.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="eager"
+      />
+    </figure>
+
+    <p class="comic-text">
+      Sie fühlt sich an wie gesunder Menschenverstand. Nach Zurückhaltung, nach
+      jemandem, der sich nicht überrumpeln lässt. Aber die Frage ist kaputt —
+      nicht weil die Antwort „nein“ wäre, sondern weil sie selbst nicht
+      funktioniert.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p2}
+        alt="Das Maskottchen mit verschränkten Armen, dahinter ein Bewerbungsgespräch, ein zerbrochenes Herz und ein Kalender mit dem Eintrag „Deadline Prüfung“. Text: „Sie fühlt sich vernünftig an. Nach gesundem Menschenverstand. Und trotzdem ist sie kaputt.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text">
+      „Zu spät“ passt auf ein Bewerbungsgespräch. Auf eine Beziehung. Auf eine
+      Anmeldefrist. Auf Dinge mit einem festen Ende, an dem der Zug abfährt. Auf
+      einen Markt passt es nicht.
+    </p>
+
+    {/* Animiertes Panel. Ohne Ton, ohne Bedienelemente — es ist ein Bild, das
+        sich bewegt, kein Video, das man startet. Das Standbild dient als
+        Poster, damit vor dem Laden nichts springt. */}
+    <figure class="panel">
+      <video
+        class="panel-medium"
+        src="/comic/zu-spaet-gibt-es-nicht/03-kreiszug.mp4"
+        poster={p3standbild.src}
+        width="1536"
+        height="1024"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Das Maskottchen steht auf einem Bahnsteig und sieht einem Zug zu, der auf einem Kreisgleis fährt statt abzufahren. Text: „Ein Markt hat keine Abfahrtszeit. Keinen letzten Waggon. Der Zug fährt nicht ab. Er fährt im Kreis.“"
+      >
+      </video>
+    </figure>
+
+    <p class="comic-text">
+      Ein Markt hat keine Abfahrtszeit und keinen letzten Waggon. Er hat nur
+      einen Preis, der sich in jedem Moment neu bildet. Der Zug fährt nicht ab —
+      er fährt im Kreis, und du kannst an jeder Station ein- und aussteigen, so
+      oft du willst. Was du also eigentlich fragst, ist nicht „bin ich zu
+      spät?“, sondern „steigt der Preis von hier aus noch?“. Und das weiß
+      niemand.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p4}
+        alt="Das Maskottchen steht vor einem gesprungenen Spiegel, im Spiegelbild leuchten orangefarbene Fragezeichen. Text: „Die Fragen, die zählen, sind nach innen gerichtet. Wie viel kannst du einsetzen, ohne dass dein Leben davon abhängt?“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text">
+      Die Frage nach „zu spät“ schützt dich vor einer unbequemeren. Denn die
+      Fragen, die wirklich zählen, sind alle nach innen gerichtet: Wie viel Geld
+      kann ich einsetzen, ohne dass es mein Leben verändert, wenn es weg ist?
+      Wie reagiere ich, wenn sich das halbiert? Über welchen Zeitraum rede ich?
+      Und verstehe ich überhaupt, was ich da vor mir habe? Keine davon hat mit
+      dem heutigen Kurs zu tun.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p5}
+        alt="Das Maskottchen sitzt bei Sonnenuntergang am Bahnsteig, der Zug zieht seine Kreisbahn über der Stadt. Text: „,Zu spät‘ setzt ein Ende voraus, das es nicht gibt. Der Zug fährt im Kreis. Steig ein, wann du willst — oder gar nicht. Beides ist okay.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text comic-schluss">
+      „Zu spät“ setzt ein Ende voraus, das es nicht gibt. Ersetz die Frage durch
+      eine einzige: Was von meinem Geld kann ich hier einsetzen, ohne dass mein
+      Leben davon abhängt — und über welchen Zeitraum? Ist die Antwort null, ist
+      auch das eine Antwort. Ist sie nicht null, hast du eine Zahl, mit der du
+      arbeiten kannst — und der heutige Kurs verliert seinen Schrecken.
+    </p>
+
+    <footer class="comic-fuss">
+      <a href={cornerstoneUrl} class="comic-langfassung">
+        Die ausführliche Fassung zum Nachlesen
+      </a>
+
+      <div class="comic-naechster">
+        <p class="display text-xs tracking-[0.3em] text-orange">// Nächster Teil</p>
+        <p class="comic-naechster-text">
+          Warum du Bitcoin mit dem falschen Werkzeug bewertest.
+        </p>
+        <a href="/ratgeber/bitcoin-denkfehler/" class="comic-hub-link display">
+          Alle Teile &rarr;
+        </a>
+      </div>
+
+      <div class="comic-cta">
+        <p class="comic-cta-text">
+          Kurzform täglich auf TikTok &amp; Insta:
+          <strong>@bitandbullshit</strong>
+        </p>
+        <SocialLinks size="lg" />
+      </div>
+
+      {/* Platzhalter für die TikTok-Einbettung. Sobald die Video-ID feststeht,
+          hier das blockquote von TikTok einsetzen — bis dahin bleibt der
+          Bereich leer statt einen toten Rahmen zu zeigen. */}
+
+      <p class="comic-disclaimer">
+        Nur Meinung &amp; Unterhaltung. Keine Finanz-, Steuer- oder
+        Rechtsberatung.
+      </p>
+    </footer>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<script>
+  // Wer Bewegung reduziert haben will, bekommt das Standbild. Das Poster
+  // bleibt stehen, sobald das Video pausiert.
+  const leise = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const anwenden = () => {
+    document.querySelectorAll<HTMLVideoElement>(".panel video").forEach((v) => {
+      if (leise.matches) {
+        v.pause();
+        v.removeAttribute("autoplay");
+      } else if (v.paused) {
+        v.play().catch(() => {});
+      }
+    });
+  };
+  anwenden();
+  leise.addEventListener("change", anwenden);
+</script>
+
+<style>
+  /* Schwarzer Grund, damit die Panels leuchten. Bewusst dunkler als das
+     Seiten-Ink der übrigen Seiten. */
+  .comic {
+    background: #111111;
+    padding-bottom: 4rem;
+  }
+
+  /* Linke Kante auf dem Panel-Raster, damit Kopf und erstes Panel bündig
+     stehen. Der Erzähltext läuft bewusst schmaler und mittig — dieser
+     Versatz ist der Rhythmus der Seite, keine Unachtsamkeit. */
+  .comic-kopf {
+    max-width: 62rem;
+    margin-inline: auto;
+    padding: 3.5rem 0.75rem 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .comic-kopf {
+      padding: 5rem 1.5rem 3rem;
+    }
+  }
+  .comic-titel {
+    margin-top: 1.25rem;
+    font-size: clamp(2.6rem, 11vw, 5.5rem);
+    line-height: 0.92;
+    color: var(--color-paper);
+    text-shadow:
+      3px 4px 0 rgba(0, 0, 0, 0.9),
+      4px 5px 0 rgb(from var(--color-orange-deep) r g b / 0.45);
+  }
+
+  /* --- Panels ------------------------------------------------------------
+     Volle Breite mit Gutter, Seitenverhältnis bleibt. Bild und Video tragen
+     dieselbe Klasse und verhalten sich identisch. */
+  .panel {
+    margin: 0 auto;
+    padding: 1.75rem 0.75rem;
+    max-width: 62rem;
+  }
+  @media (min-width: 768px) {
+    .panel {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+  .panel :global(.panel-medium) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.9);
+  }
+
+  /* --- Erzähltext --------------------------------------------------------- */
+  .comic-text {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 1.75rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgb(from var(--color-paper) r g b / 0.82);
+  }
+  @media (min-width: 768px) {
+    .comic-text {
+      font-size: 1.15rem;
+      padding-block: 2rem 2.5rem;
+    }
+  }
+  .comic-intro {
+    padding-top: 0;
+    font-size: 1.2rem;
+    color: rgb(from var(--color-paper) r g b / 0.95);
+  }
+  .comic-schluss {
+    position: relative;
+    margin-top: 1rem;
+    padding-left: 2.75rem;
+    color: rgb(from var(--color-paper) r g b / 0.95);
+  }
+  .comic-schluss::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 1.6rem;
+    bottom: 2.1rem;
+    width: 4px;
+    border-radius: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--color-orange),
+      rgb(from var(--color-orange-deep) r g b / 0.25)
+    );
+  }
+
+  /* --- Fuß ---------------------------------------------------------------- */
+  .comic-fuss {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    padding-inline: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .comic-langfassung {
+    align-self: flex-start;
+    font-size: 0.95rem;
+    color: var(--color-paper);
+    text-decoration: underline;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.2em;
+  }
+  .comic-langfassung:hover {
+    color: var(--color-orange);
+  }
+
+  .comic-naechster {
+    padding: 1.5rem 1.35rem;
+    border: 1px dashed rgb(from var(--color-orange) r g b / 0.35);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-orange) r g b / 0.04);
+  }
+  .comic-naechster-text {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.9);
+  }
+  .comic-hub-link {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-orange);
+  }
+
+  .comic-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .comic-cta-text {
+    font-size: 1rem;
+    color: rgb(from var(--color-paper) r g b / 0.8);
+  }
+  .comic-cta-text strong {
+    color: var(--color-orange);
+  }
+
+  .comic-disclaimer {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.45);
+  }
+</style>

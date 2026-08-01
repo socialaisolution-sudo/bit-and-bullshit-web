@@ -69,6 +69,12 @@ const cornerstones = defineCollection({
       imageAlt: z.string().optional(),
       /** Anriss auf den Folgeteil, erscheint am Textende. */
       ausblick: z.string().optional(),
+      /**
+       * Pfad zur Comic-Fassung. Gibt es keine, entfällt der Verweis
+       * vollständig — ein Link auf eine Seite, die es nicht gibt, ist
+       * schlimmer als kein Link.
+       */
+      comic: z.string().optional(),
     }),
 });
 

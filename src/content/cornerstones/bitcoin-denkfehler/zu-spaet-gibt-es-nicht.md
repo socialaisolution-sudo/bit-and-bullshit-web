@@ -7,6 +7,7 @@ teil: 1
 draft: false
 image: "../../../assets/cornerstones/bitcoin-denkfehler/zu-spaet-gibt-es-nicht.png"
 imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich auf einem regennassen Bahnsteig, während im Hintergrund ein Zug auf einem Kreisgleis fährt statt abzufahren — Schriftzug „Zu spät gibt es nicht"'
+comic: "/comic/zu-spaet-gibt-es-nicht/"
 ausblick: "Warum du Bitcoin mit dem falschen Werkzeug bewertest — und was passiert, wenn du aufhörst, ihn wie eine Aktie zu lesen."
 ---
 

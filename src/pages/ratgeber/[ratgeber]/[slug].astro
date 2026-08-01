@@ -97,6 +97,18 @@ const jsonLd = {
         )
       }
 
+      {
+        cs.data.comic && (
+          <a href={cs.data.comic} class="cs-comic" data-pagefind-ignore>
+            <span class="display cs-comic-kicker">// Auch als Comic</span>
+            <span class="cs-comic-text">
+              Dieselbe Geschichte in fünf Panels zum Durchscrollen.
+            </span>
+            <span class="display cs-comic-link">Comic ansehen &rarr;</span>
+          </a>
+        )
+      }
+
       <div class="post-body mt-10">
         <Content />
       </div>
@@ -205,6 +217,37 @@ const jsonLd = {
     display: inline-block;
     margin-top: 1rem;
     font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--color-orange);
+  }
+
+  .cs-comic {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 2.25rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgb(from var(--color-orange) r g b / 0.35);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-orange) r g b / 0.05);
+    text-decoration: none;
+    transition: border-color 200ms ease;
+  }
+  .cs-comic:hover {
+    border-color: var(--color-orange);
+  }
+  .cs-comic-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--color-orange);
+  }
+  .cs-comic-text {
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.85);
+  }
+  .cs-comic-link {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     color: var(--color-orange);
   }
