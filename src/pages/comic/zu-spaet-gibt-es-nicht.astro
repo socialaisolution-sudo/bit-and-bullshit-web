@@ -5,9 +5,9 @@ import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
 import { Image } from "astro:assets";
 
-import p1 from "../../assets/comic/zu-spaet-gibt-es-nicht/01-leere-station.webp";
+import p1poster from "../../assets/comic/zu-spaet-gibt-es-nicht/01-leere-station.webp";
 import p2 from "../../assets/comic/zu-spaet-gibt-es-nicht/02-und-trotzdem-kaputt.webp";
-import p3standbild from "../../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug-standbild.webp";
+import p3 from "../../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug.webp";
 import p4 from "../../assets/comic/zu-spaet-gibt-es-nicht/04-spiegel.webp";
 import p5 from "../../assets/comic/zu-spaet-gibt-es-nicht/05-sonnenuntergang.webp";
 
@@ -64,15 +64,24 @@ const jsonLd = {
       klingt vernünftig — und trotzdem stimmt mit ihr etwas nicht.
     </p>
 
+    {/* Das erste Panel ist das animierte. Ohne Ton, ohne Bedienelemente —
+        es ist ein Bild, das sich bewegt, kein Video, das man startet. Das
+        Standbild dient als Poster, damit vor dem Laden nichts springt. */}
     <figure class="panel">
-      <Image
-        src={p1}
-        alt="Das Maskottchen steht allein auf einem regennassen, leeren Bahnsteig. Über ihm die Sprechblase „Ist es nicht längst zu spät?“, darunter „Diese Frage kriege ich unter fast jedem Video.“"
-        widths={[640, 960, 1280, 1536]}
-        sizes="(min-width: 900px) 860px, 94vw"
+      <video
         class="panel-medium"
-        loading="eager"
-      />
+        src="/comic/zu-spaet-gibt-es-nicht/01-leere-station.mp4"
+        poster={p1poster.src}
+        width="1536"
+        height="1024"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Das Maskottchen steht allein auf einem regennassen, leeren Bahnsteig, im Hintergrund ziehen Lichter vorbei. Über ihm die Sprechblase „Ist es nicht längst zu spät?“, darunter „Diese Frage kriege ich unter fast jedem Video.“"
+      >
+      </video>
     </figure>
 
     <p class="comic-text">
@@ -99,24 +108,15 @@ const jsonLd = {
       einen Markt passt es nicht.
     </p>
 
-    {/* Animiertes Panel. Ohne Ton, ohne Bedienelemente — es ist ein Bild, das
-        sich bewegt, kein Video, das man startet. Das Standbild dient als
-        Poster, damit vor dem Laden nichts springt. */}
     <figure class="panel">
-      <video
+      <Image
+        src={p3}
+        alt="Das Maskottchen steht auf einem Bahnsteig und sieht einem Zug zu, der auf einem Kreisgleis fährt statt abzufahren. Text: „Ein Markt hat keine Abfahrtszeit. Keinen letzten Waggon. Der Zug fährt nicht ab. Er fährt im Kreis.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
         class="panel-medium"
-        src="/comic/zu-spaet-gibt-es-nicht/03-kreiszug.mp4"
-        poster={p3standbild.src}
-        width="1536"
-        height="1024"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-label="Das Maskottchen steht auf einem Bahnsteig und sieht einem Zug zu, der auf einem Kreisgleis fährt statt abzufahren. Text: „Ein Markt hat keine Abfahrtszeit. Keinen letzten Waggon. Der Zug fährt nicht ab. Er fährt im Kreis.“"
-      >
-      </video>
+        loading="lazy"
+      />
     </figure>
 
     <p class="comic-text">
@@ -258,12 +258,12 @@ const jsonLd = {
      dieselbe Klasse und verhalten sich identisch. */
   .panel {
     margin: 0 auto;
-    padding: 1.75rem 0.75rem;
+    padding: 2.25rem 0.75rem;
     max-width: 62rem;
   }
   @media (min-width: 768px) {
     .panel {
-      padding: 2.5rem 1.5rem;
+      padding: 3rem 1.5rem;
     }
   }
   .panel :global(.panel-medium) {
@@ -277,45 +277,80 @@ const jsonLd = {
     box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.9);
   }
 
-  /* --- Erzähltext --------------------------------------------------------- */
+  /* --- Erzähltext als Caption-Kasten ---------------------------------------
+     Die Panels sprechen in weißen Kästen mit abtropfender Farbe. Der Text
+     zwischen ihnen tut dasselbe, statt als Web-Fließtext danebenzustehen —
+     dadurch liest sich die Seite als ein Stück, nicht als Bildergalerie mit
+     Bildunterschriften.
+
+     Papier auf Schwarz, leichte Schräglage, Farbnase an der Unterkante. Die
+     Schräglage wechselt die Richtung, damit die Kästen nicht wie eine Reihe
+     aussehen. */
   .comic-text {
+    position: relative;
     max-width: 600px;
-    margin: 0 auto;
-    padding: 1.25rem 1.5rem 1.75rem;
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: rgb(from var(--color-paper) r g b / 0.82);
+    /* Gutter wie bei den Panels. Ohne ihn stehen die gedrehten Ecken auf
+       schmalen Viewports über den Rand hinaus. */
+    width: calc(100% - 1.75rem);
+    margin-inline: auto;
+    padding: 1.5rem 1.5rem 1.75rem;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: 500;
+    transform: rotate(-0.7deg);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
+  }
+  .comic-text + .panel,
+  .panel + .comic-text {
+    margin-top: 0;
   }
   @media (min-width: 768px) {
     .comic-text {
-      font-size: 1.15rem;
-      padding-block: 2rem 2.5rem;
+      font-size: 1.1875rem;
+      padding: 2rem 2.25rem 2.25rem;
     }
   }
-  .comic-intro {
-    padding-top: 0;
-    font-size: 1.2rem;
-    color: rgb(from var(--color-paper) r g b / 0.95);
-  }
-  .comic-schluss {
-    position: relative;
-    margin-top: 1rem;
-    padding-left: 2.75rem;
-    color: rgb(from var(--color-paper) r g b / 0.95);
-  }
-  .comic-schluss::before {
+  /* Abtropfende Unterkante — dasselbe Vokabular wie die Kästen im Bild. */
+  .comic-text::after {
     content: "";
     position: absolute;
-    left: 1.5rem;
-    top: 1.6rem;
-    bottom: 2.1rem;
-    width: 4px;
-    border-radius: 2px;
-    background: linear-gradient(
-      180deg,
-      var(--color-orange),
-      rgb(from var(--color-orange-deep) r g b / 0.25)
-    );
+    left: 0;
+    right: 0;
+    bottom: -0.85rem;
+    height: 0.9rem;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><g fill='%23f5f4ef'><rect x='0' y='0' width='300' height='3'/><path d='M28 2 L28 11 Q28 14 30 15.5 Q31 16.5 30 17.5 L26 17.5 Q25 16.5 26 15.5 Q28 14 28 11 Z'/><path d='M96 2 L96 8 Q96 10.5 98 11.5 L94 11.5 Q96 10.5 96 8 Z'/><path d='M170 2 L170 13 Q170 15 171.5 16.5 Q172.5 17.5 171.5 18 L168.5 18 Q167.5 17.5 168.5 16.5 Q170 15 170 13 Z'/><path d='M246 2 L246 7 Q246 9 247.5 10.5 L244.5 10.5 Q246 9 246 7 Z'/></g></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  /* Jeder zweite Kasten kippt andersherum. */
+  .comic-text:nth-of-type(even) {
+    transform: rotate(0.6deg);
+  }
+
+  .comic-intro {
+    font-size: 1.15rem;
+  }
+  @media (min-width: 768px) {
+    .comic-intro {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Der Schlusskasten trägt die Pointe — er bekommt den Orange-Balken und
+     steht gerade, weil hier nichts mehr wackeln soll. */
+  .comic-schluss {
+    transform: none !important;
+    border-left: 6px solid var(--color-orange);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .comic-text,
+    .comic-text:nth-of-type(even) {
+      transform: none;
+    }
   }
 
   /* --- Fuß ---------------------------------------------------------------- */
