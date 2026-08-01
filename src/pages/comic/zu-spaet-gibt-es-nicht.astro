@@ -277,58 +277,73 @@ const jsonLd = {
     box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.9);
   }
 
-  /* --- Erzähltext als Caption-Kasten ---------------------------------------
-     Die Panels sprechen in weißen Kästen mit abtropfender Farbe. Der Text
-     zwischen ihnen tut dasselbe, statt als Web-Fließtext danebenzustehen —
-     dadurch liest sich die Seite als ein Stück, nicht als Bildergalerie mit
-     Bildunterschriften.
+  /* --- Erzähltext als Klebezettel -----------------------------------------
+     Die Panels sprechen in weißen Kästen mit abtropfender Farbe. Die Texte
+     dazwischen sind das, was jemand daneben an die Wand geheftet hat:
+     Papier, schief, mit Klebestreifen oben drauf.
 
-     Papier auf Schwarz, leichte Schräglage, Farbnase an der Unterkante. Die
-     Schräglage wechselt die Richtung, damit die Kästen nicht wie eine Reihe
-     aussehen. */
+     Das .tape-Primitiv der Seite ist für dunklen Grund gebaut und auf Papier
+     unsichtbar — dieser Streifen hier ist eigens dafür gemacht. Er sitzt
+     über der Oberkante und wirft einen kurzen Schatten auf den Zettel.
+
+     Rotation, Streifenposition und -winkel wechseln pro Zettel. Fünf exakt
+     gleich gekippte Blätter sehen aus wie ein Raster, nicht wie eine Wand. */
   .comic-text {
     position: relative;
     max-width: 600px;
-    /* Gutter wie bei den Panels. Ohne ihn stehen die gedrehten Ecken auf
+    /* Gutter wie bei den Panels — sonst stehen die gekippten Ecken auf
        schmalen Viewports über den Rand hinaus. */
-    width: calc(100% - 1.75rem);
+    width: calc(100% - 2.25rem);
     margin-inline: auto;
-    padding: 1.5rem 1.5rem 1.75rem;
+    padding: 1.75rem 1.5rem 1.6rem;
     background: var(--color-paper);
     color: var(--color-ink);
     font-size: 1.05rem;
     line-height: 1.6;
     font-weight: 500;
-    transform: rotate(-0.7deg);
-    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
-  }
-  .comic-text + .panel,
-  .panel + .comic-text {
-    margin-top: 0;
+    box-shadow:
+      0 16px 34px -16px rgba(0, 0, 0, 0.95),
+      0 2px 4px rgba(0, 0, 0, 0.5);
   }
   @media (min-width: 768px) {
     .comic-text {
       font-size: 1.1875rem;
-      padding: 2rem 2.25rem 2.25rem;
+      padding: 2.25rem 2.25rem 2rem;
     }
   }
-  /* Abtropfende Unterkante — dasselbe Vokabular wie die Kästen im Bild. */
-  .comic-text::after {
+
+  /* Klebestreifen. Milchig, leicht wärmer als das Papier, damit er sich
+     abhebt, ohne wie ein zweites Element zu wirken. */
+  .comic-text::before {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -0.85rem;
-    height: 0.9rem;
+    top: -0.7rem;
+    width: 6.5rem;
+    height: 1.6rem;
+    background: linear-gradient(
+      104deg,
+      rgba(214, 208, 188, 0.85),
+      rgba(232, 227, 210, 0.6) 45%,
+      rgba(210, 204, 184, 0.82)
+    );
+    border-left: 1px dashed rgba(10, 10, 10, 0.22);
+    border-right: 1px dashed rgba(10, 10, 10, 0.22);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
     pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 18' preserveAspectRatio='none'><g fill='%23f5f4ef'><rect x='0' y='0' width='300' height='3'/><path d='M28 2 L28 11 Q28 14 30 15.5 Q31 16.5 30 17.5 L26 17.5 Q25 16.5 26 15.5 Q28 14 28 11 Z'/><path d='M96 2 L96 8 Q96 10.5 98 11.5 L94 11.5 Q96 10.5 96 8 Z'/><path d='M170 2 L170 13 Q170 15 171.5 16.5 Q172.5 17.5 171.5 18 L168.5 18 Q167.5 17.5 168.5 16.5 Q170 15 170 13 Z'/><path d='M246 2 L246 7 Q246 9 247.5 10.5 L244.5 10.5 Q246 9 246 7 Z'/></g></svg>");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
   }
-  /* Jeder zweite Kasten kippt andersherum. */
-  .comic-text:nth-of-type(even) {
-    transform: rotate(0.6deg);
-  }
+
+  /* Jeder Zettel hängt anders. */
+  .comic-text:nth-of-type(1) { transform: rotate(-1.1deg); }
+  .comic-text:nth-of-type(1)::before { left: 1.5rem; transform: rotate(-7deg); }
+
+  .comic-text:nth-of-type(2) { transform: rotate(0.8deg); }
+  .comic-text:nth-of-type(2)::before { right: 2rem; transform: rotate(6deg); }
+
+  .comic-text:nth-of-type(3) { transform: rotate(-0.6deg); }
+  .comic-text:nth-of-type(3)::before { left: 50%; transform: translateX(-50%) rotate(-3deg); }
+
+  .comic-text:nth-of-type(4) { transform: rotate(1.2deg); }
+  .comic-text:nth-of-type(4)::before { left: 2.5rem; transform: rotate(9deg); }
 
   .comic-intro {
     font-size: 1.15rem;
@@ -339,16 +354,43 @@ const jsonLd = {
     }
   }
 
-  /* Der Schlusskasten trägt die Pointe — er bekommt den Orange-Balken und
-     steht gerade, weil hier nichts mehr wackeln soll. */
+  /* Der Schlusszettel trägt die Pointe: gerade angeheftet, zwei Streifen,
+     Orange-Balken. Hier soll nichts mehr wackeln. */
   .comic-schluss {
     transform: none !important;
     border-left: 6px solid var(--color-orange);
   }
+  .comic-schluss::before {
+    left: 2rem !important;
+    right: auto !important;
+    transform: rotate(-5deg) !important;
+  }
+  .comic-schluss::after {
+    content: "";
+    position: absolute;
+    top: -0.7rem;
+    right: 2rem;
+    width: 6.5rem;
+    height: 1.6rem;
+    background: linear-gradient(
+      104deg,
+      rgba(214, 208, 188, 0.85),
+      rgba(232, 227, 210, 0.6) 45%,
+      rgba(210, 204, 184, 0.82)
+    );
+    border-left: 1px dashed rgba(10, 10, 10, 0.22);
+    border-right: 1px dashed rgba(10, 10, 10, 0.22);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg);
+    pointer-events: none;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .comic-text,
-    .comic-text:nth-of-type(even) {
+    .comic-text:nth-of-type(1),
+    .comic-text:nth-of-type(2),
+    .comic-text:nth-of-type(3),
+    .comic-text:nth-of-type(4) {
       transform: none;
     }
   }
