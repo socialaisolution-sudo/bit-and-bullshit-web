@@ -4,7 +4,7 @@ description: "Was ist das Bitcoin-Halving und warum ist es so wichtig? Einfach e
 keyword: "Bitcoin Halving erklärt"
 category: learning
 order: 21
-aeraLink: "https://bitcoinaera.de/halving"
+aeraLink: "https://bitcoinaera.de/bitcoin/halving/"
 draft: false
 ---
 

@@ -4,7 +4,7 @@ description: "Warum kann es nie mehr als 21 Millionen Bitcoin geben? Einfach erk
 keyword: "21 Millionen Bitcoin"
 category: learning
 order: 22
-aeraLink: "https://bitcoinaera.de/21-millionen"
+aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"
 draft: false
 ---
 

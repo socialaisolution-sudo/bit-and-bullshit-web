@@ -4,7 +4,7 @@ description: "Was ist Bitcoin-Mining eigentlich? Einfach erklärt, wie neue Bitc
 keyword: "Bitcoin Mining erklärt"
 category: learning
 order: 25
-aeraLink: "https://bitcoinaera.de/mining"
+aeraLink: "https://bitcoinaera.de/technologie/mining/"
 draft: false
 ---
 

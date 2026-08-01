@@ -4,7 +4,7 @@ description: "Was ist die Hashrate bei Bitcoin? Einfach erklärt, warum sie die 
 keyword: "Hashrate erklärt"
 category: learning
 order: 29
-aeraLink: "https://bitcoinaera.de/hashrate"
+aeraLink: "https://bitcoinaera.de/glossar/hashrate/"
 draft: false
 ---
 

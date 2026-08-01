@@ -4,7 +4,7 @@ description: "Was heißt HODL und woher kommt der Begriff? Die lustige Herkunft 
 keyword: "HODL Bedeutung"
 category: learning
 order: 27
-aeraLink: "https://bitcoinaera.de/hodl"
+aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 draft: false
 image: "../../assets/mascots/was-bedeutet-hodl.jpeg"
 imageAlt: "Bit & Bullshit Maskottchen zeigt Handy mit bitcoinaera.de unter dem Graffiti-Schriftzug „Was heißt HODL?“"

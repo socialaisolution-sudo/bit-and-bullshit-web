@@ -4,7 +4,7 @@ description: "Was ist eine Seed-Phrase und warum ist sie so wichtig? Einfach erk
 keyword: "Seed Phrase erklärt"
 category: learning
 order: 26
-aeraLink: "https://bitcoinaera.de/seed-phrase"
+aeraLink: "https://bitcoinaera.de/glossar/seed-phrase/"
 draft: false
 ---
 

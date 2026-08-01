@@ -4,7 +4,7 @@ description: "Hot Wallet oder Cold Wallet? Einfach erklärt, wo deine Bitcoin wi
 keyword: "Cold Wallet Hot Wallet Unterschied"
 category: learning
 order: 24
-aeraLink: "https://bitcoinaera.de/wallets"
+aeraLink: "https://bitcoinaera.de/praxis/hardware-wallets/"
 draft: false
 ---
 

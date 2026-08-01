@@ -4,7 +4,7 @@ description: "Was ist ein Satoshi? Einfach erklärt, warum du nie einen ganzen B
 keyword: "Satoshi Einheit Bitcoin"
 category: learning
 order: 28
-aeraLink: "https://bitcoinaera.de/satoshi"
+aeraLink: "https://bitcoinaera.de/glossar/satoshi/"
 draft: false
 image: "../../assets/mascots/was-ist-ein-satoshi.png"
 imageAlt: "Bit & Bullshit Maskottchen hält Handy mit bitcoinaera.de hoch — schon mit wenig dabei"

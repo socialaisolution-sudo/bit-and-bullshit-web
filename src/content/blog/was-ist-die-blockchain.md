@@ -4,7 +4,7 @@ description: "Was ist die Blockchain eigentlich? Einfach erklärt, ohne Technik-
 keyword: "Blockchain einfach erklärt"
 category: learning
 order: 23
-aeraLink: "https://bitcoinaera.de/blockchain"
+aeraLink: "https://bitcoinaera.de/bitcoin/was-ist-bitcoin/"
 draft: false
 ---
 
