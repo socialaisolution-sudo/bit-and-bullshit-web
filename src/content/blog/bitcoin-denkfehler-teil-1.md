@@ -15,4 +15,4 @@ Denn hinter dieser Idee steckt eine versteckte Annahme: dass da irgendjemand obe
 
 Bitcoin dreht dieses Prinzip komplett um. Niemand verteilt. Niemand teilt zu. Es gibt keine Zentrale, die entscheidet, wer was bekommt. Bitcoin war vom allerersten Tag an für jeden offen, sich selbst welches zu holen — ohne Erlaubnis, ohne Antrag, ohne Chef, der zustimmen muss. „Für alle offen" statt „an alle verteilt". Das ist ein feiner, aber gewaltiger Unterschied.
 
-Warum genau das kein Nachteil, sondern der ganze Sinn dahinter ist — und warum „für alle offen" am Ende fairer ist als „an alle verteilt" — dröseln wir in dieser Serie Stück für Stück auf. In [Teil 2](/bitcoin-denkfehler-teil-2) schauen wir uns an, wie Geld normalerweise entsteht, und warum das „von oben" so ein Problem ist.
+Warum genau das kein Nachteil, sondern der ganze Sinn dahinter ist — und warum „für alle offen" am Ende fairer ist als „an alle verteilt" — dröseln wir in dieser Serie Stück für Stück auf. In [Teil 2](/snippets/bitcoin-denkfehler-teil-2/) schauen wir uns an, wie Geld normalerweise entsteht, und warum das „von oben" so ein Problem ist.
