@@ -5,8 +5,8 @@ keyword: "Quantencomputer Bitcoin"
 category: entlarven
 order: 9
 draft: false
-image: "../../assets/mascots/quantencomputer-bitcoin-gefahr.png"
-imageAlt: "Bit & Bullshit Maskottchen zwinkert cool mit verschränkten Armen — Quantencomputer-Panik unter Kontrolle"
+image: "../../assets/mascots/quantencomputer-bitcoin-gefahr.webp"
+imageAlt: 'Bit & Bullshit Maskottchen steht gelassen mit verschränkten Armen und zwinkert — links der gesprühte Schriftzug „Quanten killen Bitcoin?"'
 ---
 
 Hey, diese Schlagzeile taucht alle paar Monate zuverlässig wieder auf: „Quantencomputer knacken bald Bitcoin!" Panik, Weltuntergang, verkauf alles. Ok, atmen wir kurz durch und schauen uns das nüchtern an — denn die Sache ist deutlich weniger dramatisch, als sie verkauft wird.
