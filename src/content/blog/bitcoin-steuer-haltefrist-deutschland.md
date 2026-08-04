@@ -6,6 +6,8 @@ category: entlarven
 order: 11
 aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false
+image: "../../assets/mascots/bitcoin-steuer-haltefrist-deutschland.webp"
+imageAlt: 'Bit & Bullshit Maskottchen hockt nachdenklich vor einem Kalenderblatt mit der Aufschrift „1 Jahr" und einem großen Paragrafenzeichen, im Hintergrund die Umrisse Deutschlands — links der Schriftzug „Bitcoin-Steuer in Deutschland: Fällt die einjährige Haltefrist?" und darunter vier Punkte: ein Jahr Haltefrist aktuell, geplante Änderungen im Check, Steuerregeln einfach erklärt, Auswirkungen für Investoren'
 ---
 
 Ok, mal ehrlich, das betrifft in Deutschland fast jeden, der Krypto hält: Jahrelang hieß es „lang halten, nicht zocken, Geduld haben". Und der eine echte Vorteil dafür war die Haltefrist — wer seine Bitcoin länger als ein Jahr hält, kassiert die Gewinne steuerfrei. Und ausgerechnet die soll jetzt kippen. Riecht komisch, oder?
