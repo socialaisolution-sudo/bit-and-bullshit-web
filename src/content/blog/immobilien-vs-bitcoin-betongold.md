@@ -6,6 +6,8 @@ category: entlarven
 order: 14
 aeraLink: "https://bitcoinaera.de/makro/positionierung/"
 draft: false
+image: "../../assets/mascots/immobilien-vs-bitcoin-betongold.webp"
+imageAlt: 'Bit & Bullshit Maskottchen steht mit den Händen in den Taschen vor einer Betonwand, rechts daneben Wohnblocks mit einem roten Abwärtspfeil, ein rissiges Euro-Zeichen und mehrere Krypto-Münzen — links der Schriftzug „Immobilien oder Bitcoin? Warum Betongold nicht automatisch sicher ist"'
 ---
 
 Hey, in Deutschland ist eine Sache quasi heilig: das eigene Haus als Altersvorsorge. „Betongold", sicher wie sonst nichts, hat schließlich schon immer funktioniert. Ok — aber genau dieses „hat schon immer" ist oft der Anfang eines Denkfehlers. Also schauen wir mal nüchtern drauf, ohne Ideologie in beide Richtungen.
