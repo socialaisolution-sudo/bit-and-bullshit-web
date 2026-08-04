@@ -6,6 +6,8 @@ category: learning
 order: 21
 aeraLink: "https://bitcoinaera.de/bitcoin/halving/"
 draft: false
+image: "../../assets/mascots/was-ist-das-halving.webp"
+imageAlt: 'Bit & Bullshit Maskottchen zeigt auf ein Fließband: links eine Maschine mit der Aufschrift „Vor dem Halving 6,25 BTC pro Block", in der Mitte eine entzweibrechende Bitcoin-Münze, rechts „Nach dem Halving 3,125 BTC pro Block" mit sichtbar weniger Münzen — darüber der Schriftzug „Was ist das Bitcoin-Halving? Einfach erklärt"'
 ---
 
 Hey, wenn du dich mit Bitcoin beschäftigst, stolperst du früher oder später über dieses eine Wort: Halving. Und keine Sorge, das ist viel einfacher, als es klingt. Es ist sogar einer der cleversten Bausteine im ganzen System — und der Grund, warum Bitcoin knapper ist als Gold.
