@@ -5,6 +5,8 @@ keyword: "Schuldenspirale Staat"
 category: entlarven
 order: 1
 draft: false
+image: "../../assets/mascots/staatsschulden-zinsen-erklaert.webp"
+imageAlt: 'Bit & Bullshit Maskottchen lehnt mit einer Zigarre an einem Tresor mit der Aufschrift „Zinsen"; daneben ein Gebäude mit der Aufschrift „Staat", aus dem eine Druckmaschine endlos Papier mit dem Aufdruck „Neue Schulden" ausspuckt, und links ein Kreislauf aus Pfeilen zwischen „Neue Schulden", „Zinsen" und „Alte Schulden" — darüber der Schriftzug „Warum macht der Staat neue Schulden, nur um alte Zinsen zu zahlen?"'
 ---
 
 Ok, mal ehrlich: Stell dir vor, du gehst zur Bank und sagst „Ich brauch einen Kredit. Nicht fürs Auto, nicht fürs Haus. Sondern um die Zinsen von meinem letzten Kredit zu zahlen." Die würden dich auslachen und danach höflich rauswerfen. Bei dir heißt sowas Privatinsolvenz. Beim Staat heißt es Haushaltspolitik.
