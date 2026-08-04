@@ -5,8 +5,8 @@ keyword: "ist Bitcoin für Kriminelle"
 category: entlarven
 order: 4
 draft: false
-image: "../../assets/mascots/bitcoin-kriminelle-mythos.jpeg"
-imageAlt: "Bit & Bullshit Maskottchen zeigt auf einen Bargeld-Koffer neben Sturmhauben-Graffiti — Bitcoin oder Bargeld?"
+image: "../../assets/mascots/bitcoin-kriminelle-mythos.webp"
+imageAlt: 'Bit & Bullshit Maskottchen zeigt auf den Betrachter, rechts neben ihm ein offener Koffer voller Geldbündel, links ein Glas mit leuchtendem Bitcoin-Zeichen und ein Sturmhauben-Graffiti — darüber der Schriftzug „Geld für Kriminelle?"'
 ---
 
 Hey, den Spruch hast du garantiert schon gehört: „Bitcoin? Das ist doch nur was für Kriminelle und das Darknet." Klingt logisch, wird sogar von seriösen Medien nachgeplappert. Ist aber, wenn man kurz nachdenkt, ziemlicher Unsinn. Und zwar aus einem simplen Grund.
