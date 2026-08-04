@@ -5,8 +5,8 @@ keyword: "Bitcoin Verbot Deutschland"
 category: entlarven
 order: 12
 draft: false
-image: "../../assets/mascots/bitcoin-verbot-deutschland.png"
-imageAlt: "Bit & Bullshit Maskottchen wütend mit geballten Fäusten — Krypto-Verbot-Pläne der Parteien"
+image: "../../assets/mascots/bitcoin-verbot-deutschland.webp"
+imageAlt: 'Bit & Bullshit Maskottchen steht wütend mit geballten Fäusten vor einem rot an die Wand gesprühten Verbotsschild — links der Schriftzug „Bitcoin verbieten?"'
 ---
 
 Hey, das muss man erstmal sacken lassen: Gleich mehrere Parteien im Bundestag haben sich ziemlich zeitgleich auf Bitcoin eingeschossen. Die einen wollen die Steuerfreiheit kippen. Die nächsten wollen jeden Gewinn besteuern, egal wie lange du hältst. Und eine will Bitcoin am liebsten komplett verbieten. Handelsverbot, ganz oder gar nicht. Drei Angriffe, ein Ziel — und das soll Zufall sein?
