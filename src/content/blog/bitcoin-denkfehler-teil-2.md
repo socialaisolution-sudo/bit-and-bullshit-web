@@ -5,8 +5,8 @@ keyword: "wie entsteht Geld"
 category: denkfehler
 order: 31
 draft: false
-image: "../../assets/mascots/bitcoin-denkfehler-teil-2.png"
-imageAlt: "Bit & Bullshit Maskottchen zwinkert selbstbewusst mit Händen in den Hüften — Bitcoin-Denkfehler Teil 2"
+image: "../../assets/mascots/bitcoin-denkfehler-teil-2.webp"
+imageAlt: 'Bit & Bullshit Maskottchen steht zwinkernd mit den Händen in den Taschen, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Von oben oder von unten?"'
 ---
 
 Ok, [im ersten Teil](/snippets/bitcoin-denkfehler-teil-1/) haben wir festgehalten: Niemand verteilt Bitcoin, es war von Anfang an für alle offen. Heute die logische Anschlussfrage — wie entsteht Geld eigentlich normalerweise? Denn erst wenn du das verstehst, siehst du, warum Bitcoin so ein radikal anderer Ansatz ist.
