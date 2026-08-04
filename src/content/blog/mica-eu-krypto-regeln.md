@@ -6,6 +6,8 @@ category: entlarven
 order: 13
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false
+image: "../../assets/mascots/mica-eu-krypto-regeln.webp"
+imageAlt: 'Bit & Bullshit Maskottchen steht mit den Händen in den Taschen vor einer Betonwand, rechts daneben die Umrisse Europas mit einem Kranz aus Sternen und davor mehrere Krypto-Münzen — links der Schriftzug „MiCA einfach erklärt: Was die EU-Regeln für deine Krypto bedeuten"'
 ---
 
 Ok, MiCA klingt nach einem dieser sperrigen EU-Kürzel, an denen man sofort weiterscrollt. Aber das Ding betrifft dich direkt, also kurz mal hinschauen. MiCA ist das neue, EU-weite Regelwerk für Krypto. Und plötzlich verlässt die größte Börse der Welt die EU, andere dürfen nur noch eingeschränkt arbeiten, und du sollst „deine Börse überdenken". Läuft.
