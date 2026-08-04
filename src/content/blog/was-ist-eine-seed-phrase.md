@@ -6,6 +6,8 @@ category: learning
 order: 26
 aeraLink: "https://bitcoinaera.de/glossar/seed-phrase/"
 draft: false
+image: "../../assets/mascots/was-ist-eine-seed-phrase.webp"
+imageAlt: 'Bit & Bullshit Maskottchen hält eine Metallplatte hoch, in die zwölf durchnummerierte Beispielwörter eingestanzt sind, und zeigt darauf; am Boden liegt eine Hardware-Wallet — links der Schriftzug „Was ist eine Seed-Phrase? Die 12 Wörter, die alles entscheiden"'
 ---
 
 Ok, wenn du eine Sache über Bitcoin-Sicherheit wissen musst, dann diese: Es gibt eine Handvoll Wörter, die über dein komplettes Vermögen entscheiden. Klingt unspektakulär, ist aber das Wichtigste überhaupt. Und wer das nicht kapiert, verliert schneller alles, als ihm lieb ist.
