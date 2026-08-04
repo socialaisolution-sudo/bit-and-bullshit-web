@@ -6,6 +6,8 @@ category: learning
 order: 25
 aeraLink: "https://bitcoinaera.de/technologie/mining/"
 draft: false
+image: "../../assets/mascots/was-ist-bitcoin-mining.webp"
+imageAlt: 'Bit & Bullshit Maskottchen schlägt mit einer Spitzhacke auf einen Brocken, aus dem ein orangefarbenes Bitcoin-Zeichen bricht, daneben liegen Münzen und rechts steht ein Mining-Rechner mit Lüftern — links der Schriftzug „Was ist Bitcoin-Mining? So entstehen neue Bitcoin."'
 ---
 
 Hey, „Bitcoin schürfen" — das klingt, als würde irgendwo jemand mit der Spitzhacke nach digitalen Münzen buddeln. Tut aber keiner. Der Begriff führt ein bisschen in die Irre, dahinter steckt was ganz anderes und eigentlich ziemlich Schlaues. Schauen wir's uns kurz an.
