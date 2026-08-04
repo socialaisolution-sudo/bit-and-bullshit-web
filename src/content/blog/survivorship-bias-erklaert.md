@@ -5,6 +5,8 @@ keyword: "Survivorship Bias einfach"
 category: entlarven
 order: 17
 draft: false
+image: "../../assets/mascots/survivorship-bias-erklaert.webp"
+imageAlt: 'Bit & Bullshit Maskottchen sitzt zurückgelehnt im Sessel und tippt sich an die Schläfe; rechts im Hintergrund ein Siegertreppchen, auf dem eine Figur die Arme hochreißt, während die übrigen im Schatten daneben stehen — links der Schriftzug „Survivorship Bias: Warum du nur von den Gewinnern hörst"'
 ---
 
 Ok, kennst du diese Geschichten? „Typ investiert 150 Euro und macht 200.000 draus!" Klingt nach „das kann ich auch". Und genau da tappst du in eine der ältesten Denkfallen überhaupt. Die hat sogar einen Namen: Survivorship Bias. Und wenn du die einmal verstanden hast, siehst du sie überall.
