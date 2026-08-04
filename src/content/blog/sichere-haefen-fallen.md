@@ -4,7 +4,10 @@ description: "Gold, Silber und Bitcoin fallen zusammen, während Aktien steigen.
 keyword: "sichere Häfen fallen"
 category: entlarven
 order: 5
+aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 draft: false
+image: "../../assets/mascots/sichere-haefen-fallen.webp"
+imageAlt: 'Ein Goldbarren, ein Silberbarren und eine Bitcoin-Münze versinken in einem dunklen Strudel, rechts steht das Bit-&-Bullshit-Maskottchen nachdenklich am Ufer vor einer Skyline; in einer Sprechblase steht „Nicht weil sie schwach sind, sondern weil Liquidität alles bewegt!" — unten eine Kette in vier Schritten: Liquidität zieht sich zurück, Assets werden verkauft, Cash ist König in Krisenzeiten, ruhig bleiben — verstehen, stärken, warten'
 ---
 
 Ok, das ist wirklich zum Kopfkratzen: Genau die drei Dinge, die dir jahrzehntelang als „sicher" verkauft wurden — Gold, Silber, Bitcoin — rauschen gleichzeitig runter. Und die Zocker-Aktien? Steigen munter weiter. Liegt das an dir, weil du falsch investiert hast? Nein. Aber die Sache ist schräg genug, um mal genauer hinzuschauen.
