@@ -5,8 +5,8 @@ keyword: "Strategy Todesspirale Saylor"
 category: entlarven
 order: 8
 draft: false
-image: "../../assets/mascots/too-big-to-fail-bitcoin.jpeg"
-imageAlt: "Bit & Bullshit Maskottchen zeigt auf einen kippenden Bitcoin-Jenga-Turm mit Schriftzug „Todesspirale?“"
+image: "../../assets/mascots/too-big-to-fail-bitcoin.webp"
+imageAlt: 'Bit & Bullshit Maskottchen zeigt auf den Betrachter, rechts hinter ihm ein schwankender Turm aus Bitcoin-Klötzen, von dem bereits Münzen und Trümmer herunterfallen — links der gesprühte Schriftzug „Todesspirale?"'
 ---
 
 Ok, ernste Sache mal ehrlich auseinandergenommen: Kann ein einziges Unternehmen den kompletten Bitcoin-Markt ins Wanken bringen? Kurze Antwort: leider ja. Aber — und das ist wichtig — das liegt nicht an Bitcoin. Das liegt an der Gier von Einzelnen, die aus einer guten Idee ein Klumpenrisiko basteln.
