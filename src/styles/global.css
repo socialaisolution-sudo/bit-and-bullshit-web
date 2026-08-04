@@ -405,6 +405,18 @@ body::after {
   width: 100%;
   height: auto;
 }
+
+/* Querformat darf breiter laufen. 28rem sind für ein 9:16-Maskottchen richtig
+   und für ein 16:9-Panel Verschwendung — bei gleicher Deckelung wäre das Bild
+   nur halb so hoch wie die Hochformate daneben. Die Lesespalte darunter bleibt
+   unangetastet. */
+.post-hero-image.ist-quer {
+  max-width: 44rem;
+  transform: rotate(-0.8deg);
+}
+.post-hero-image.ist-quer::before {
+  width: 108px;
+}
 @media (prefers-reduced-motion: reduce) {
   .post-hero-image,
   .post-hero-image:hover {

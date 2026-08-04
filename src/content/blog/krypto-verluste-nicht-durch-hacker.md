@@ -5,8 +5,8 @@ keyword: "Krypto Verluste gestohlene Schlüssel"
 category: entlarven
 order: 33
 draft: false
-image: "../../assets/mascots/krypto-verluste-nicht-durch-hacker.png"
-imageAlt: "Bit & Bullshit Maskottchen zeigt schelmisch auf dich, daneben ein Angelhaken mit orangenem Schlüssel als Köder — Phishing-Metapher"
+image: "../../assets/mascots/krypto-verluste-nicht-durch-hacker.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit erhobenem Zeigefinger, links davon ein Angelhaken mit einem orange leuchtenden Schlüssel als Köder und eine schemenhafte Kapuzengestalt — rechts der gesprühte Schriftzug „Nicht gehackt — ausgetrickst"'
 ---
 
 Ok, hier ist eine Zahl, die dich kurz schlucken lässt: Allein in einem einzigen Quartal wurden im Krypto-Bereich fast 764 Millionen Dollar gestohlen. Klingt nach genialen Hackern im Kapuzenpulli, die sich durch irgendeinen Super-Code wühlen, oder? Hey, genau das ist der Denkfehler. Die Wahrheit ist viel unbequemer.

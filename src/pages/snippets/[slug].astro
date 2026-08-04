@@ -25,6 +25,16 @@ const categoryLabels: Record<string, string> = {
 };
 
 // OG image: use post-specific image (optimized to landscape-ish for social cards) or fall back
+/**
+ * Seitenverhältnis des Maskottchens. Die Reihe lief bis Juli 2026 hochkant,
+ * die neueren Motive kommen im Querformat. Statt jedes Bild einzeln zu
+ * behandeln, entscheidet das Bild selbst: Querformat darf breiter laufen,
+ * Hochformat bleibt bei der schmalen Spalte, in der es gut aussieht.
+ */
+const istQuer = Boolean(
+  post.data.image && post.data.image.width > post.data.image.height,
+);
+
 let ogImagePath: string | undefined;
 if (post.data.image) {
   const optimized = await getImage({
@@ -107,13 +117,13 @@ const jsonLd = {
 
       {
         post.data.image && (
-          <figure class="post-hero-image mt-10">
+          <figure class:list={["post-hero-image", "mt-10", istQuer && "ist-quer"]}>
             <Image
               src={post.data.image}
               alt={post.data.imageAlt ?? `Bit & Bullshit Maskottchen zum Snippet: ${post.data.title}`}
-              widths={[360, 540, 720]}
-              sizes="(min-width: 768px) 28rem, 88vw"
-              class="block h-auto w-full object-cover"
+              widths={istQuer ? [480, 720, 1024, 1440] : [360, 540, 720]}
+              sizes={istQuer ? "(min-width: 768px) 44rem, 92vw" : "(min-width: 768px) 28rem, 88vw"}
+              class="block h-auto w-full"
               loading="eager"
             />
           </figure>
