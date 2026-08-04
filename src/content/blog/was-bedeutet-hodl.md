@@ -6,8 +6,8 @@ category: learning
 order: 27
 aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 draft: false
-image: "../../assets/mascots/was-bedeutet-hodl.jpeg"
-imageAlt: "Bit & Bullshit Maskottchen zeigt Handy mit bitcoinaera.de unter dem Graffiti-Schriftzug „Was heißt HODL?“"
+image: "../../assets/mascots/was-bedeutet-hodl.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit erhobenem Zeigefinger vor einer Betonwand, in der Sprechblase „HODL the line. Trust the plan." — links der gesprühte Schriftzug „Was heißt HODL?" und darunter die Erklärung: HODL ist ein Kryptowährungs-Begriff und bedeutet Hold On for Dear Life, halte durch und verkaufe nicht, egal was passiert'
 ---
 
 Hey, wenn du in der Bitcoin-Welt unterwegs bist, liest du ständig dieses eine Wort: HODL. Und die meisten schreiben's falsch — mit Absicht. Klingt wie ein Tippfehler? Ist es tatsächlich. Dahinter steckt eine ziemlich witzige Geschichte, die gleichzeitig das wichtigste Prinzip der Szene erklärt.
