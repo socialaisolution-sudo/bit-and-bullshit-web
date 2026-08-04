@@ -6,6 +6,8 @@ category: learning
 order: 29
 aeraLink: "https://bitcoinaera.de/glossar/hashrate/"
 draft: false
+image: "../../assets/mascots/was-ist-die-hashrate.webp"
+imageAlt: 'Bit & Bullshit Maskottchen spannt den Bizeps neben einem Zeigerinstrument mit der Beschriftung „Hashrate", dessen Skala von TH/s über PH/s und EH/s bis ZH/s reicht und dessen Nadel im oberen Bereich steht; links ein Gestell voller Mining-Geräte mit Lüftern — darüber der Schriftzug „Was ist die Hashrate? Die Muskelkraft des Bitcoin-Netzwerks"'
 ---
 
 Hey, bei jedem Bitcoin-Crash taucht dieses Wort in den Artikeln auf: Hashrate. Klingt nach schwerem Technik-Kram, ist aber eigentlich leicht zu verstehen — und ziemlich aufschlussreich, wenn du wissen willst, wie gesund das Netzwerk gerade ist.
