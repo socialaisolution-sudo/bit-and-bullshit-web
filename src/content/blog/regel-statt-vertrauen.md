@@ -4,6 +4,7 @@ description: "Warum unser Geld auf Vertrauen basiert und Bitcoin auf einer feste
 keyword: "Bitcoin Vertrauen Geldsystem"
 category: entlarven
 order: 6
+aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 draft: false
 ---
 

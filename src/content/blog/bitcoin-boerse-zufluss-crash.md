@@ -4,6 +4,7 @@ description: "Das Bitcoin-Guthaben auf einer großen Börse stieg um 1,5 Mrd. Do
 keyword: "Bitcoin Börse Zufluss Ausverkauf"
 category: entlarven
 order: 35
+aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 draft: false
 image: "../../assets/mascots/bitcoin-boerse-zufluss-crash.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links davon ein roter Abwärts-Chart mit Kerzen — rechts der gesprühte Schriftzug „Kommt der nächste Crash?"'

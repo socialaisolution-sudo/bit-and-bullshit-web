@@ -4,6 +4,7 @@ description: "Fast 764 Mio. Dollar in einem Quartal gestohlen — aber 88 % übe
 keyword: "Krypto Verluste gestohlene Schlüssel"
 category: entlarven
 order: 33
+aeraLink: "https://bitcoinaera.de/praxis/self-custody/"
 draft: false
 image: "../../assets/mascots/krypto-verluste-nicht-durch-hacker.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit erhobenem Zeigefinger, links davon ein Angelhaken mit einem orange leuchtenden Schlüssel als Köder und eine schemenhafte Kapuzengestalt — rechts der gesprühte Schriftzug „Nicht gehackt — ausgetrickst"'

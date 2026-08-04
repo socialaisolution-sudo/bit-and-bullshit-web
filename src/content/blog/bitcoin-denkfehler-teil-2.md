@@ -4,6 +4,7 @@ description: "Wie entsteht Geld eigentlich? Warum es „von oben“ zu dir tröp
 keyword: "wie entsteht Geld"
 category: denkfehler
 order: 31
+aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false
 image: "../../assets/mascots/bitcoin-denkfehler-teil-2.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht zwinkernd mit den Händen in den Taschen, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Von oben oder von unten?"'

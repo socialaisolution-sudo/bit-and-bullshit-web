@@ -4,6 +4,7 @@ description: "Ist Bitcoin das Zahlungsmittel für Kriminelle? Warum das Gegentei
 keyword: "ist Bitcoin für Kriminelle"
 category: entlarven
 order: 4
+aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false
 image: "../../assets/mascots/bitcoin-kriminelle-mythos.webp"
 imageAlt: 'Bit & Bullshit Maskottchen zeigt auf den Betrachter, rechts neben ihm ein offener Koffer voller Geldbündel, links ein Glas mit leuchtendem Bitcoin-Zeichen und ein Sturmhauben-Graffiti — darüber der Schriftzug „Geld für Kriminelle?"'

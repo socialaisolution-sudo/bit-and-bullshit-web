@@ -4,6 +4,7 @@ description: "Der Staat nimmt neue Schulden auf, nur um die Zinsen alter Schulde
 keyword: "Schuldenspirale Staat"
 category: entlarven
 order: 1
+aeraLink: "https://bitcoinaera.de/geldsystem/schulden-kreditzyklen/"
 draft: false
 image: "../../assets/mascots/staatsschulden-zinsen-erklaert.webp"
 imageAlt: 'Bit & Bullshit Maskottchen lehnt mit einer Zigarre an einem Tresor mit der Aufschrift „Zinsen"; daneben ein Gebäude mit der Aufschrift „Staat", aus dem eine Druckmaschine endlos Papier mit dem Aufdruck „Neue Schulden" ausspuckt, und links ein Kreislauf aus Pfeilen zwischen „Neue Schulden", „Zinsen" und „Alte Schulden" — darüber der Schriftzug „Warum macht der Staat neue Schulden, nur um alte Zinsen zu zahlen?"'

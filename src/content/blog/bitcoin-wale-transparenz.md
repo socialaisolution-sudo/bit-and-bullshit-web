@@ -4,6 +4,7 @@ description: "Bei Bitcoin ist jede Bewegung öffentlich sichtbar — sogar die d
 keyword: "Bitcoin Wal Transaktion sichtbar"
 category: entlarven
 order: 7
+aeraLink: "https://bitcoinaera.de/glossar/markt/"
 draft: false
 ---
 

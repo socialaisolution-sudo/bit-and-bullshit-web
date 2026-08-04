@@ -4,6 +4,7 @@ description: "„Bitcoin hätte man gerecht an alle verteilen müssen“ — war
 keyword: "Bitcoin gerecht verteilt"
 category: denkfehler
 order: 30
+aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"
 draft: false
 image: "../../assets/mascots/bitcoin-denkfehler-teil-1.webp"
 imageAlt: 'Bit & Bullshit Maskottchen tippt sich zwinkernd an die Schläfe, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Warum wurde Bitcoin nicht an alle verteilt?"'

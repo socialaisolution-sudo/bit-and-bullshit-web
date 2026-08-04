@@ -4,6 +4,7 @@ description: 'Drei Nutzer verloren 1,8 Mio. Dollar über eine gefälschte Wallet
 keyword: "gefälschte Wallet App Store Bitcoin"
 category: entlarven
 order: 34
+aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 draft: false
 image: "../../assets/mascots/fake-wallet-app-store.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit erhobenem Zeigefinger, rechts daneben ein Smartphone mit einer gefälschten „Bitcoin Wallet"-App: Vier-Sterne-Bewertung, rotes Warndreieck über dem Guthaben und ein Senden-Knopf — links der gesprühte Schriftzug „Fake-App im Store?"'

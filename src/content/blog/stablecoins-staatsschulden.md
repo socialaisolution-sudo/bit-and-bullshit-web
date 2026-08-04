@@ -4,6 +4,7 @@ description: "Warum hinter fast jedem großen Stablecoin US-Staatsschulden steck
 keyword: "Stablecoin US-Staatsanleihen"
 category: entlarven
 order: 18
+aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
 draft: false
 ---
 

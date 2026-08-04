@@ -4,6 +4,7 @@ description: "Von Steuer-Hammer bis Total-Verbot — warum gleich mehrere Partei
 keyword: "Bitcoin Verbot Deutschland"
 category: entlarven
 order: 12
+aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false
 image: "../../assets/mascots/bitcoin-verbot-deutschland.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht wütend mit geballten Fäusten vor einem rot an die Wand gesprühten Verbotsschild — links der Schriftzug „Bitcoin verbieten?"'

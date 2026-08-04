@@ -4,6 +4,7 @@ description: "Ein anonymer Trader machte aus 875 Dollar fast 797.000 mit einem e
 keyword: "Krypto Trader Insiderwissen Gewinn"
 category: entlarven
 order: 38
+aeraLink: "https://bitcoinaera.de/glossar/volatilitaet/"
 draft: false
 image: "../../assets/mascots/875-dollar-797000-insider.webp"
 imageAlt: 'Bit & Bullshit Maskottchen tippt sich grinsend an die Schläfe, dahinter der gesprühte Schriftzug „875 € → 797.000 €?" auf einer Betonwand'

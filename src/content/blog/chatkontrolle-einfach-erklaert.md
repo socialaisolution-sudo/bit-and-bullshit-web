@@ -4,6 +4,7 @@ description: "Chatkontrolle — liest bald jemand deine WhatsApp mit? Was wirkli
 keyword: "Chatkontrolle Verschlüsselung"
 category: entlarven
 order: 10
+aeraLink: "https://bitcoinaera.de/macht/kapitalverkehr/"
 draft: false
 ---
 

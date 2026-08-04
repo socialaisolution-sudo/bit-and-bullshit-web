@@ -4,6 +4,7 @@ description: "Machen Quantencomputer Bitcoin bald kaputt? Warum die Panik-Schlag
 keyword: "Quantencomputer Bitcoin"
 category: entlarven
 order: 9
+aeraLink: "https://bitcoinaera.de/technologie/sicherheit/"
 draft: false
 image: "../../assets/mascots/quantencomputer-bitcoin-gefahr.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht gelassen mit verschränkten Armen und zwinkert — links der gesprühte Schriftzug „Quanten killen Bitcoin?"'

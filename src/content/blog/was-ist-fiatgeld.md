@@ -4,6 +4,7 @@ description: "Was ist Fiatgeld eigentlich? Warum unser Geld nur bedrucktes Papie
 keyword: "Fiatgeld erklärt"
 category: entlarven
 order: 3
+aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false
 ---
 

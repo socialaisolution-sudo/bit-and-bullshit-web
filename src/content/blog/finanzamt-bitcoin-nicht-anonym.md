@@ -4,6 +4,7 @@ description: "Ist Bitcoin wirklich privat? Warum das Finanzamt jede Transaktion 
 keyword: "Finanzamt Bitcoin sehen"
 category: entlarven
 order: 32
+aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false
 image: "../../assets/mascots/finanzamt-bitcoin-nicht-anonym.webp"
 imageAlt: 'Bit & Bullshit Maskottchen schleicht davon und blickt über die Schulter, rechts hinter ihm ein großes an die Wand gemaltes Auge — links der gesprühte Schriftzug „Das Finanzamt liest mit"'

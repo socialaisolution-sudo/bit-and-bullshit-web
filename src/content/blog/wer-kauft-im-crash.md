@@ -4,6 +4,7 @@ description: "Warum liest du bei jedem Crash „Panik“, aber nie, wer dir das 
 keyword: "Crash verkaufen wer kauft"
 category: entlarven
 order: 15
+aeraLink: "https://bitcoinaera.de/glossar/angebot-und-nachfrage/"
 draft: false
 image: "../../assets/mascots/wer-kauft-im-crash.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht grinsend und zwinkernd mit den Händen in den Taschen vor einer Betonwand — rechts der gesprühte Schriftzug „Wem nützt deine Panik?"'

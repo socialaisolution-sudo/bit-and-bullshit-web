@@ -4,6 +4,7 @@ description: "Ist „Betongold“ wirklich die sicherste Geldanlage? Warum ein H
 keyword: "Betongold vs Bitcoin"
 category: entlarven
 order: 14
+aeraLink: "https://bitcoinaera.de/makro/positionierung/"
 draft: false
 ---
 

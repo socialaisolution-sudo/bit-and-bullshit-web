@@ -4,6 +4,7 @@ description: "Der Cantillon-Effekt erklärt, warum die einen beim Gelddrucken re
 keyword: "Cantillon-Effekt"
 category: entlarven
 order: 2
+aeraLink: "https://bitcoinaera.de/geldsystem/cantillon-effekt/"
 draft: false
 ---
 

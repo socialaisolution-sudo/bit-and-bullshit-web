@@ -4,6 +4,7 @@ description: "Kann ein einzelnes Unternehmen den ganzen Bitcoin-Markt gefährden
 keyword: "Strategy Todesspirale Saylor"
 category: entlarven
 order: 8
+aeraLink: "https://bitcoinaera.de/glossar/allzeithoch-drawdown/"
 draft: false
 image: "../../assets/mascots/too-big-to-fail-bitcoin.webp"
 imageAlt: 'Bit & Bullshit Maskottchen zeigt auf den Betrachter, rechts hinter ihm ein schwankender Turm aus Bitcoin-Klötzen, von dem bereits Münzen und Trümmer herunterfallen — links der gesprühte Schriftzug „Todesspirale?"'

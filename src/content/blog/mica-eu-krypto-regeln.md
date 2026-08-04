@@ -4,6 +4,7 @@ description: "MiCA, die neuen EU-Krypto-Regeln — echter Verbraucherschutz oder
 keyword: "MiCA Verordnung erklärt"
 category: entlarven
 order: 13
+aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false
 ---
 

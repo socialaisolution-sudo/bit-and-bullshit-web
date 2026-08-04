@@ -4,6 +4,7 @@ description: "Wird die einjährige Haltefrist für Bitcoin in Deutschland abgesc
 keyword: "Bitcoin Steuer Haltefrist"
 category: entlarven
 order: 11
+aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false
 ---
 
