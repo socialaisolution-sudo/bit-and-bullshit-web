@@ -4,9 +4,17 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import StickerWall from "../components/StickerWall.astro";
+import RatgeberKarten from "../components/RatgeberKarten.astro";
+import RatgeberFortschritt from "../components/RatgeberFortschritt.astro";
+import { aktuellerCornerstone } from "../lib/ratgeber";
 import mascot from "../assets/mascot-hero.png";
 import comicPanel from "../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug.webp";
 import { Image } from "astro:assets";
+
+/* Der zuletzt veröffentlichte Cornerstone ist der Aufmacher. Fehlt er
+   (frische Installation, alles auf draft), entfällt der Abschnitt still —
+   ein leerer Kasten mit „demnächst" ist schlechter als keiner. */
+const aufmacher = await aktuellerCornerstone();
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
 const jsonLd = {
@@ -70,6 +78,92 @@ const jsonLd = {
             class="block h-auto w-full"
             loading="eager"
           />
+        </div>
+      </div>
+    </section>
+
+    {/* Der lange Text steht vor allem anderen. Die Snippets bringen die
+        Leute her, aber sie sind nicht der Grund zu bleiben — der aktuelle
+        Ratgeber-Teil ist es. */}
+    {
+      aufmacher && (
+        <section class="relative border-t border-white/10">
+          <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+            <div class="aufmacher">
+              <a
+                href={`/ratgeber/${aufmacher.ratgeber.id}/${aufmacher.teil.slug}/`}
+                class="aufmacher-bild"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                {aufmacher.teil.cornerstone!.data.image && (
+                  <Image
+                    src={aufmacher.teil.cornerstone!.data.image}
+                    alt=""
+                    widths={[480, 720, 960]}
+                    sizes="(min-width: 900px) 32rem, 92vw"
+                    class="block h-auto w-full"
+                    loading="lazy"
+                  />
+                )}
+              </a>
+              <div>
+                <p class="display text-xs tracking-[0.3em] text-orange">
+                  // RATGEBER {String(aufmacher.ratgeber.data.nummer).padStart(2, "0")} ·
+                  TEIL {aufmacher.teil.nr}
+                </p>
+                <h2 class="display spray-head mt-4 text-3xl md:text-5xl">
+                  {aufmacher.teil.cornerstone!.data.title}
+                </h2>
+                <div class="spray-rule mt-5 max-w-[14rem]" />
+                <p class="mt-5 text-base leading-relaxed text-paper/70">
+                  {aufmacher.teil.cornerstone!.data.untertitel ??
+                    aufmacher.teil.cornerstone!.data.description}
+                </p>
+                <div class="mt-7 max-w-[16rem]">
+                  <RatgeberFortschritt
+                    fertig={aufmacher.ratgeber.fertig}
+                    gesamt={aufmacher.ratgeber.gesamt}
+                    klein
+                  />
+                </div>
+                <a
+                  href={`/ratgeber/${aufmacher.ratgeber.id}/${aufmacher.teil.slug}/`}
+                  class="aufmacher-link"
+                >
+                  Teil {aufmacher.teil.nr} lesen &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="relative border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="display text-xs tracking-[0.3em] text-orange">// RATGEBER</p>
+            <h2 class="display spray-head mt-4 text-3xl md:text-5xl">
+              Zum <span class="text-orange">Durchlesen.</span>
+            </h2>
+            <div class="spray-rule mt-5 max-w-[14rem]"></div>
+            <p class="mt-5 text-base leading-relaxed text-paper/70">
+              Wo eine Minute nicht reicht: je fünf Teile, die aufeinander
+              aufbauen.
+            </p>
+          </div>
+          <a
+            href="/ratgeber"
+            class="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-widest text-paper/80 transition hover:border-orange hover:text-orange"
+          >
+            Alle Ratgeber &rarr;
+          </a>
+        </div>
+
+        <div class="mt-10 md:mt-14">
+          <RatgeberKarten limit={4} stufe={3} />
         </div>
       </div>
     </section>
@@ -190,6 +284,38 @@ const jsonLd = {
 </Layout>
 
 <style>
+  /* Bild links, Text rechts — gespiegelt zum Comic-Teaser darunter, damit
+     die beiden Blöcke nicht wie zweimal dasselbe wirken. */
+  .aufmacher {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .aufmacher {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .aufmacher-bild {
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.1);
+    border-radius: 0.4rem;
+    box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.65);
+  }
+  .aufmacher-link {
+    display: inline-block;
+    margin-top: 1.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-orange);
+    text-decoration: none;
+  }
+  .aufmacher-link:hover {
+    text-decoration: underline;
+  }
+
   .comic-teaser {
     display: grid;
     gap: 2rem;

@@ -1,0 +1,110 @@
+---
+/**
+ * Die Ratgeber als Karten. Steht auf /ratgeber/ und auf der Startseite —
+ * deshalb hier und nicht zweimal als Kopie. `limit` schneidet für die
+ * Startseite ab, damit die Karten dort nicht die halbe Seite füllen.
+ */
+import RatgeberFortschritt from "./RatgeberFortschritt.astro";
+import { ladeRatgeber } from "../lib/ratgeber";
+
+interface Props {
+  limit?: number;
+  /** Auf /ratgeber/ folgen die Karten direkt auf die h1, auf der Startseite
+   *  auf eine Abschnitts-h2. Ohne das übersprünge eine der beiden Seiten
+   *  eine Ebene. */
+  stufe?: 2 | 3;
+}
+
+const { limit, stufe = 2 } = Astro.props;
+const Titel = `h${stufe}` as "h2" | "h3";
+const alle = await ladeRatgeber();
+const ratgeber = limit ? alle.slice(0, limit) : alle;
+---
+
+<div class="ratgeber-grid">
+  {
+    ratgeber.map((r) => (
+      <a href={`/ratgeber/${r.id}/`} class="ratgeber-karte">
+        <span class="stencil-num karten-num" aria-hidden="true">
+          {String(r.data.nummer).padStart(2, "0")}
+        </span>
+        <Titel class="display karten-titel">{r.data.titel}</Titel>
+        <p class="karten-lede">{r.data.einleitung}</p>
+        <div class="karten-fuss">
+          <RatgeberFortschritt fertig={r.fertig} gesamt={r.gesamt} klein />
+        </div>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .ratgeber-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 700px) {
+    .ratgeber-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  .ratgeber-karte {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: hidden;
+    padding: 1.6rem 1.4rem 1.4rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.12);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-paper) r g b / 0.03);
+    text-decoration: none;
+    transition:
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 220ms ease;
+  }
+  .ratgeber-karte:hover,
+  .ratgeber-karte:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgb(from var(--color-orange) r g b / 0.45);
+    outline: none;
+  }
+
+  .karten-num {
+    position: absolute;
+    top: -0.7rem;
+    right: 0.4rem;
+    font-size: 4.5rem;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(from var(--color-orange) r g b / 0.2);
+  }
+  .karten-titel {
+    position: relative;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: var(--color-paper);
+    max-width: 80%;
+  }
+  .karten-lede {
+    position: relative;
+    color: rgb(from var(--color-paper) r g b / 0.72);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  .karten-fuss {
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ratgeber-karte,
+    .ratgeber-karte:hover {
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
