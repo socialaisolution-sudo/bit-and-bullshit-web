@@ -6,6 +6,8 @@ category: learning
 order: 24
 aeraLink: "https://bitcoinaera.de/praxis/hardware-wallets/"
 draft: false
+image: "../../assets/mascots/hot-wallet-cold-wallet.webp"
+imageAlt: 'Bit & Bullshit Maskottchen hält in der einen Hand ein leuchtendes Smartphone mit Wallet-App und WLAN-Signal, in der anderen eine unscheinbare Hardware-Wallet; hinter der Hand mit dem Handy ein vernetzter Globus, hinter der anderen ein Tresor und ein Schutzschild — links der Schriftzug „Hot Wallet vs. Cold Wallet: Wo liegen deine Bitcoin sicher?"'
 ---
 
 Ok, eine Frage, die über Wohl und Wehe deiner Bitcoin entscheidet, und trotzdem kaum jemand richtig beantworten kann: Wo liegen deine Coins eigentlich? Und warum ist „einfach auf der Börse" so ziemlich die schlechteste Antwort? Das solltest du wissen, bevor du auch nur einen Euro reinsteckst.
