@@ -6,6 +6,8 @@ category: entlarven
 order: 10
 aeraLink: "https://bitcoinaera.de/macht/kapitalverkehr/"
 draft: false
+image: "../../assets/mascots/chatkontrolle-einfach-erklaert.webp"
+imageAlt: 'Bit & Bullshit Maskottchen hält eine große Lupe vor sich, unter der eine Sprechblase mit drei Punkten liegt; auf der Kappe leuchtet ein geschlossenes Vorhängeschloss — links der Schriftzug „Chatkontrolle einfach erklärt: Was wirklich beschlossen wurde"'
 ---
 
 Ok, erstmal Entwarnung, weil gerade die halbe Republik durchdreht: Nein, „Uschi" liest ab morgen nicht deine WhatsApp. Trotzdem solltest du bei dem Thema hellhörig werden — nur eben aus einem anderen Grund, als gerade alle glauben. Denn die Bubble regt sich lautstark über die falsche Sache auf.
