@@ -6,6 +6,8 @@ category: entlarven
 order: 7
 aeraLink: "https://bitcoinaera.de/glossar/markt/"
 draft: false
+image: "../../assets/mascots/bitcoin-wale-transparenz.webp"
+imageAlt: 'Bit & Bullshit Maskottchen sitzt mit einem Fernglas am Ufer und beobachtet einen riesigen Wal, der aus dem Wasser bricht; im Hintergrund eine Weltkarte mit Verbindungslinien und eingeblendete Bewegungen wie „Wallet → Exchange", „Cold Wallet" und „OTC Desk" — unten eine Kette in vier Schritten: alles auf der Blockchain, transparent für alle, jeder Transaktionspfad sichtbar, Daten, die niemand verbergen kann. Links der Schriftzug „Kann man Bitcoin-Wale beobachten? Warum jede Bewegung öffentlich ist"'
 ---
 
 Hey, wusstest du, dass du live zuschauen kannst, wenn ein Bitcoin-Millionär nach acht Jahren Dornröschenschlaf plötzlich aufwacht und Millionen bewegt? Bei deiner Bank? Vergiss es. Da erfährst du nicht mal, was dein Nachbar macht. Bei Bitcoin ist genau das öffentlich — und das ist eine ziemlich unterschätzte Sache.
