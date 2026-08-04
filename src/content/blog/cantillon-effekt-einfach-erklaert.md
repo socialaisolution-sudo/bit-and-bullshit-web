@@ -6,6 +6,8 @@ category: entlarven
 order: 2
 aeraLink: "https://bitcoinaera.de/geldsystem/cantillon-effekt/"
 draft: false
+image: "../../assets/mascots/cantillon-effekt-einfach-erklaert.webp"
+imageAlt: 'Bit & Bullshit Maskottchen zeigt auf ein Fließband: Aus einer Maschine mit der Aufschrift „Neu gedrucktes Geld" laufen Scheine zuerst zu Staat und Großbanken, dann zu Unternehmen und Investoren, zuletzt zu einer kleinen Figur mit Einkaufswagen unter der Beschriftung „Du & ich"; darunter Tonnen für Lebensmittel, Mieten und Energie mit steigenden Prozentwerten und ein Behälter „Ersparnisse" mit einem Sparschwein mit X-Augen — darüber der Schriftzug „Cantillon-Effekt einfach erklärt: Warum du trotz Sparen ärmer wirst"'
 ---
 
 Hey, kurze Frage: Du sparst, gehst arbeiten, machst alles richtig — und trotzdem reicht dein Geld irgendwie jedes Jahr ein bisschen weniger weit. Liegt das an dir? Nein. Das hat sogar einen Namen, den kaum einer kennt: der Cantillon-Effekt.
