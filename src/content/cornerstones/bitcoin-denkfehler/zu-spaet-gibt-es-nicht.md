@@ -8,7 +8,7 @@ draft: false
 image: "../../../assets/cornerstones/bitcoin-denkfehler/zu-spaet-gibt-es-nicht.png"
 imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich auf einem regennassen Bahnsteig, während im Hintergrund ein Zug auf einem Kreisgleis fährt statt abzufahren — Schriftzug „Zu spät gibt es nicht"'
 comic: "/comic/zu-spaet-gibt-es-nicht/"
-ausblick: "Warum du Bitcoin mit dem falschen Werkzeug bewertest — und was passiert, wenn du aufhörst, ihn wie eine Aktie zu lesen."
+ausblick: 'Warum die Frage nach der „gerechten Verteilung“ eine Hand voraussetzt, die es bei Bitcoin gar nicht gibt — und warum sie deshalb ins Leere läuft.'
 ---
 
 Es gibt einen Kommentar, der unter fast jedem Video auftaucht, das ich mache. Er kommt in Varianten, aber der Kern ist immer derselbe:
