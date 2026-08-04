@@ -6,6 +6,8 @@ category: entlarven
 order: 3
 aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false
+image: "../../assets/mascots/was-ist-fiatgeld.webp"
+imageAlt: 'Infografik: Fiatgeld ist Geld ohne inneren Wert, nicht durch Gold oder Silber gedeckt, sein Wert entsteht allein aus Vertrauen und Akzeptanz. Eine Kette in fünf Schritten zeigt, wie es entsteht — der Staat braucht Geld, die Zentralbank schafft es aus dem Nichts, der Staat gibt es aus, wir nutzen es, dadurch hat es Wert. Als Problem genannt: Zentralbanken können unbegrenzt drucken, mehr Geld bedeutet weniger Kaufkraft, Inflation zehrt Erspartes auf; daneben ein 100-Euro-Schein heute und zerfallend in zehn Jahren. Rechts das Bit-&-Bullshit-Maskottchen mit brennendem Geldschein über einer Tonne mit der Aufschrift „Fiat System"'
 ---
 
 Ok, mal ganz ehrlich hingeschaut: Der 50-Euro-Schein in deiner Tasche ist… bedrucktes Baumwollpapier. Das war's. Der reine Materialwert liegt bei ein paar Cent. Den ganzen Rest, die vollen 50 Euro, gibt ihm nur eine einzige Sache: dein Vertrauen, dass der Schein auch morgen noch was wert ist.
