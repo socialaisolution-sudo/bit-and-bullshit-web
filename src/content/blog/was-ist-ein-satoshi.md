@@ -6,8 +6,8 @@ category: learning
 order: 28
 aeraLink: "https://bitcoinaera.de/glossar/satoshi/"
 draft: false
-image: "../../assets/mascots/was-ist-ein-satoshi.png"
-imageAlt: "Bit & Bullshit Maskottchen hält Handy mit bitcoinaera.de hoch — schon mit wenig dabei"
+image: "../../assets/mascots/was-ist-ein-satoshi.webp"
+imageAlt: 'Bit & Bullshit Maskottchen hält ein Handy hoch, auf dem die Makro-Seite von bitcoinaera.de zu sehen ist, rechts hinter ihm ein bröckelnder Turm aus Bitcoin-Klötzen — links der Schriftzug „Nie einen ganzen Bitcoin?"'
 ---
 
 Ok, der größte Irrtum, der Einsteiger abschreckt: „Ein Bitcoin kostet zehntausende Euro, das kann ich mir nie leisten." Verständlicher Gedanke — aber kompletter Denkfehler. Und wenn du verstehst, warum, ändert das alles. Der Schlüssel dazu heißt: Satoshi.
