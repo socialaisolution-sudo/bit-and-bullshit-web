@@ -6,6 +6,8 @@ category: entlarven
 order: 6
 aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 draft: false
+image: "../../assets/mascots/regel-statt-vertrauen.webp"
+imageAlt: 'Bit & Bullshit Maskottchen springt mit ausgestreckten Armen und Victory-Zeichen vor einem großen, orange leuchtenden Bitcoin-Zeichen auf nasser Straße — links der Schriftzug „Regel statt Vertrauen: Warum Bitcoin ohne Vertrauen funktioniert"'
 ---
 
 Ok, eine Sache, über die kaum jemand mal nachdenkt: Unser ganzes Geldsystem läuft auf einem einzigen Wort. Vertrauen. Du vertraust darauf, dass die Zentralbank nicht zu viel druckt. Dass der Staat seine Schulden im Griff hat. Dass dein Erspartes morgen noch was wert ist. Alles Vertrauen. Und jetzt mal ehrlich: Wie oft wurde genau dieses Vertrauen in der Geschichte schon richtig enttäuscht?
