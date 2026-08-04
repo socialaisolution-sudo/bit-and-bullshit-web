@@ -5,6 +5,8 @@ keyword: "Politiker Krypto Gewinne"
 category: entlarven
 order: 19
 draft: false
+image: "../../assets/mascots/politiker-krypto-interessenkonflikt.webp"
+imageAlt: 'Bit & Bullshit Maskottchen unterschreibt am Schreibtisch ein Papier mit der Aufschrift „Krypto-Regulierung“ und hält dabei eine Bitcoin-Münze hoch; daneben ein Schild „Regeln machen. Gewinne kassieren.“, ein offener Geldkoffer und eine Tasse mit der Aufschrift „Power, Profits, Privilegien“. Im Hintergrund ein Parlamentsgebäude, drei Anzugträger mit einem Dokument „Bill passed“ und der Schriftzug „Insider Deals“ — links der Schriftzug „Politiker und Krypto: Wenn die Regelmacher selbst mitverdienen“'
 ---
 
 Hey, ist dir das auch schon aufgefallen? Die Leute, die die Regeln für einen Markt schreiben, besitzen erstaunlich oft genau das, was sie da regulieren. Zufall? Kann sein. Aber es passiert so auffällig oft, dass man mal genauer hinschauen darf, ganz ohne Verschwörungsbrille.

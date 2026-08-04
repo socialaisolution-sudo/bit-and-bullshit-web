@@ -5,6 +5,8 @@ keyword: "Memecoin Verlust Promi"
 category: entlarven
 order: 20
 draft: false
+image: "../../assets/mascots/promi-coins-memecoin-verluste.webp"
+imageAlt: 'Bit & Bullshit Maskottchen zeigt mit dem Finger auf den Betrachter und hält ein Schild mit der Aufschrift „Promis profitieren. Du verlierst.“; links vier ratlose Menschen mit Sprechblasen wie „Wo ist mein Geld?“ und „−90 % Verlust“, rechts ein Kursverlauf, der unter „Promo & Hype“ steil steigt und nach „Insider verkaufen“ ebenso steil fällt, darunter „Du kaufst zu teuer“ gegen „Sie kassieren, du bleibst auf dem Rest“ — links der Schriftzug „Promi-Coins: Warum fast alle Anleger bei Memecoins verlieren“'
 ---
 
 Ok, das Muster ist so alt und so zuverlässig, dass es fast schon langweilig ist — und trotzdem fallen jedes Mal aufs Neue Hunderttausende drauf rein. Ein Promi, ein berühmter Name, klatscht sein Gesicht auf einen Coin. Die Fans stürmen rein, weil sie dem Namen vertrauen. Und am Ende? Bluten fast alle. Schauen wir uns an, warum das immer gleich abläuft.
