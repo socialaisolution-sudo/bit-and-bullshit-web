@@ -5,6 +5,8 @@ keyword: "KI Trading Bot Betrug"
 category: entlarven
 order: 16
 draft: false
+image: "../../assets/mascots/ki-trading-bot-betrug.webp"
+imageAlt: 'Bit & Bullshit Maskottchen lehnt zwinkernd mit einem Handy in der Hand an einem Schreibtisch, auf dessen Bildschirm ein steil steigender Chart mit dem Aufkleber „100 % Rendite" und einer Warnung „zu gut um wahr zu sein" läuft; darüber ein Roboterkopf mit X-Augen und ein Warndreieck — links der Schriftzug „KI-Trading-Bots: Warum 100 % Rendite fast immer ein Betrug ist"'
 ---
 
 Hey, die Werbung kennst du: irgendein „KI-Trading-Bot", der dir angeblich 100 % Rendite in ein paar Wochen macht, während du entspannt am Strand liegst. Klingt geil, oder? Genau deshalb funktioniert die Masche so gut. Ok, lass uns das mal auseinandernehmen, bevor dich der nächste Bot um dein Erspartes bringt.
