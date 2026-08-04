@@ -22,6 +22,16 @@ Denn schau dir an, was in diesem Satz versteckt steckt: die Annahme, dass es jem
 
 Und genau hier liegt der Haken — denn diese Denkweise ist uns so tief eingebrannt, dass wir sie für die einzig mögliche halten.
 
+## Spiel es einmal durch
+
+Machen wir den Gedanken ernst. Nehmen wir an, jemand hätte es tatsächlich gerecht verteilt. 21 Millionen Bitcoin, aufgeteilt auf gut acht Milliarden Menschen. Macht rund 0,0026 Bitcoin pro Kopf, etwa 260.000 Satoshi. Klingt nach einer sauberen Rechnung.
+
+Dann fangen die Fragen an. An wen genau? An alle Menschen — schön, aber wer steht auf dieser Liste? Wer keine Papiere hat, ist nicht drauf. Wer in einem Land lebt, das nicht mitmacht, ist nicht drauf. Und die Kinder, die morgen geboren werden, bekommen die noch was, oder war der Stichtag gestern? Wer prüft, dass sich nicht jemand fünfmal anmeldet? Und wer verwahrt die 21 Millionen eigentlich so lange, bis jeder Einzelne sein Päckchen abgeholt hat?
+
+Jede dieser Fragen braucht eine Antwort. Und jede Antwort braucht jemanden, der sie gibt. Ein Register. Eine Prüfstelle. Eine Frist. Eine Verwahrung.
+
+Merkst du, was da gerade entstanden ist? Genau die Instanz, die es bei Bitcoin nicht gibt. Die gerechte Verteilung erschafft das Oben, vor dem sie eigentlich schützen sollte. Und wer entscheiden darf, wer auf die Liste kommt, kann eben auch entscheiden, wer runterfliegt.
+
 ## Warum uns das so selbstverständlich vorkommt
 
 Kein Wunder, ehrlich gesagt. Unser gesamtes Geldleben funktioniert genau so. Geld wird von oben geschaffen und nach unten verteilt. Eine Zentralbank entscheidet, wie viel es gibt. Der Staat entscheidet, wohin es zuerst fließt. Banken entscheiden, wer einen Kredit bekommt und wer nicht.
