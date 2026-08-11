@@ -15,8 +15,8 @@ import p4 from "../../assets/comic/niemand-verteilt-bitcoin/04-offene-tuer.webp"
  *
  * Aufbau und Stil folgen Comic 1 („Zu spät gibt es nicht“) eins zu eins:
  * Panel — Text — Panel, Panels über die volle Breite, Erzähltext als
- * angeklebter Zettel in schmaler Spalte. Der gerissene Rahmen sitzt in den
- * Motiven selbst, das Layout legt nur die Hairline darum.
+ * angeklebter Zettel in schmaler Spalte. Der weiße Rissrahmen sitzt wie bei
+ * Comic 1 in den Motiven selbst, das Layout legt nur die Hairline darum.
  *
  * Panel 1 ist animiert. Bild und Video werden im Layout gleich behandelt —
  * dieselbe Klasse, dasselbe Seitenverhältnis, kein Beschnitt.
@@ -69,22 +69,20 @@ const jsonLd = {
         es ist ein Bild, das sich bewegt, kein Video, das man startet. Das
         Standbild dient als Poster, damit vor dem Laden nichts springt. */}
     <figure class="panel">
-      <div class="panel-rahmen">
-        <video
-          class="panel-medium"
-          src="/comic/niemand-verteilt-bitcoin/01-kommentar.mp4"
-          poster={p1poster.src}
-          width="1536"
-          height="1024"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-label="Das Maskottchen steht nachdenklich vor einer nächtlichen Stadtkulisse mit Brücke, über ihm schwebt eine Kommentar-Sprechblase. Text: „Hätte man Bitcoin nicht gerecht an alle verteilen müssen?“ und „Klingt fair. Ist der Denkfehler.“"
-        >
-        </video>
-      </div>
+      <video
+        class="panel-medium"
+        src="/comic/niemand-verteilt-bitcoin/01-kommentar.mp4"
+        poster={p1poster.src}
+        width="1536"
+        height="1024"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-label="Das Maskottchen steht nachdenklich vor einer nächtlichen Stadtkulisse mit Brücke, über ihm schwebt eine Kommentar-Sprechblase. Text: „Hätte man Bitcoin nicht gerecht an alle verteilen müssen?“ und „Klingt fair. Ist der Denkfehler.“"
+      >
+      </video>
     </figure>
 
     <p class="comic-text">
@@ -95,16 +93,14 @@ const jsonLd = {
     </p>
 
     <figure class="panel">
-      <div class="panel-rahmen">
-        <Image
-          src={p2}
-          alt="Eine riesige Hand greift aus Gewitterwolken herab und lässt Geldscheine auf eine Pyramide aus Anzugträgern fallen, ganz unten steht das Maskottchen allein zwischen Hochhäusern mit den Schriftzügen „Bank“ und „Government“. Text: „Unser Geld kommt immer von oben.“ und „Eine Hand teilt aus. Du stehst unten.“"
-          widths={[640, 960, 1280, 1536]}
-          sizes="(min-width: 900px) 860px, 94vw"
-          class="panel-medium"
-          loading="lazy"
-        />
-      </div>
+      <Image
+        src={p2}
+        alt="Eine riesige Hand greift aus Gewitterwolken herab und lässt Geldscheine auf eine Pyramide aus Anzugträgern fallen, ganz unten steht das Maskottchen allein zwischen Hochhäusern mit den Schriftzügen „Bank“ und „Government“. Text: „Unser Geld kommt immer von oben.“ und „Eine Hand teilt aus. Du stehst unten.“"
+        widths={[480, 768]}
+        sizes="(min-width: 900px) 860px, 94vw"
+      class="panel-medium"
+        loading="lazy"
+      />
     </figure>
 
     <p class="comic-text">
@@ -116,16 +112,14 @@ const jsonLd = {
     </p>
 
     <figure class="panel">
-      <div class="panel-rahmen">
-        <Image
-          src={p3}
-          alt="Die verteilende Hand ist orange durchgestrichen und zerbricht, ein Lichtstrahl bricht durch die Wolken. Eine bunt gemischte Menge — Kinder, Erwachsene, eine Person im Rollstuhl — greift frei nach orange leuchtenden Bitcoin-Münzen, mittendrin das Maskottchen mit erhobener Hand. Text: „Bitcoin hat keine Hand, die verteilt.“ und „Es gibt kein Oben.“"
-          widths={[640, 960, 1280, 1536]}
-          sizes="(min-width: 900px) 860px, 94vw"
-          class="panel-medium"
-          loading="lazy"
-        />
-      </div>
+      <Image
+        src={p3}
+        alt="Die verteilende Hand ist orange durchgestrichen und zerbricht, ein Lichtstrahl bricht durch die Wolken. Eine bunt gemischte Menge — Kinder, Erwachsene, eine Person im Rollstuhl — greift frei nach orange leuchtenden Bitcoin-Münzen, mittendrin das Maskottchen mit erhobener Hand. Text: „Bitcoin hat keine Hand, die verteilt.“ und „Es gibt kein Oben.“"
+        widths={[480, 768]}
+        sizes="(min-width: 900px) 860px, 94vw"
+      class="panel-medium"
+        loading="lazy"
+      />
     </figure>
 
     <p class="comic-text">
@@ -137,16 +131,14 @@ const jsonLd = {
     </p>
 
     <figure class="panel">
-      <div class="panel-rahmen">
-        <Image
-          src={p4}
-          alt="Das Maskottchen steht mit offenen Armen in einer geöffneten Tür, dahinter geht über der Stadt die Sonne auf. An den Wänden Graffiti: „Freedom“, „Decentralized“, „Open Source“, „For All“, „Trust nobody, verify everything“. Text: „Nicht ,an alle verteilt.‘“ und „Sondern für alle offen. Von Tag eins.“"
-          widths={[640, 960, 1280, 1536]}
-          sizes="(min-width: 900px) 860px, 94vw"
-          class="panel-medium"
-          loading="lazy"
-        />
-      </div>
+      <Image
+        src={p4}
+        alt="Das Maskottchen steht mit offenen Armen in einer geöffneten Tür, dahinter geht über der Stadt die Sonne auf. An den Wänden Graffiti: „Freedom“, „Decentralized“, „Open Source“, „For All“, „Trust nobody, verify everything“. Text: „Nicht ,an alle verteilt.‘“ und „Sondern für alle offen. Von Tag eins.“"
+        widths={[480, 768]}
+        sizes="(min-width: 900px) 860px, 94vw"
+      class="panel-medium"
+        loading="lazy"
+      />
     </figure>
 
     <p class="comic-text comic-schluss">
@@ -259,28 +251,6 @@ const jsonLd = {
       padding: 3rem 1.5rem;
     }
   }
-  /* Notnagel-Rahmen. Bei Comic 1 ist der weiße Rissrand in die Motive
-     hineingemalt; diese Motive bringen stattdessen einen schwarzen mit, der
-     auf schwarzem Grund verschwindet. Deshalb hier ein Papierrand aus CSS:
-     ein weißes Blatt mit ausgerissener Kante, auf dem das Panel liegt.
-
-     Die beiden Polygone sind bewusst unterschiedlich gezackt — gleiche
-     Kanten außen und innen sähen aus wie ein Bilderrahmen, nicht wie Papier. */
-  .panel-rahmen {
-    position: relative;
-    padding: clamp(7px, 1.15vw, 15px);
-    background:
-      linear-gradient(
-        163deg,
-        #f4f2ec 0%,
-        #e9e6dd 38%,
-        #f2efe8 62%,
-        #e4e0d6 100%
-      );
-    clip-path: polygon(0% 0.47%, 5.56% 0.31%, 11.11% 0.77%, 16.67% 0.23%, 22.22% 0.67%, 27.78% 0.51%, 33.33% 0.22%, 38.89% 0.64%, 44.44% 0.2%, 50% 0.57%, 55.56% 0.23%, 61.11% 0.25%, 66.67% 0.56%, 72.22% 0.94%, 77.78% 0.28%, 83.33% 0.37%, 88.89% 0.75%, 94.44% 1.05%, 100% 0.7%, 99.46% 8.33%, 98.92% 16.67%, 99.79% 25%, 99.03% 33.33%, 99.56% 41.67%, 99.7% 50%, 99.72% 58.33%, 99.55% 66.67%, 99.07% 75%, 99.67% 83.33%, 99.29% 91.67%, 99.24% 100%, 94.44% 99.49%, 88.89% 99.32%, 83.33% 99.78%, 77.78% 99.78%, 72.22% 99.64%, 66.67% 99.2%, 61.11% 99.44%, 55.56% 99.54%, 50% 99.29%, 44.44% 99.41%, 38.89% 99.55%, 33.33% 99.09%, 27.78% 99.18%, 22.22% 99.61%, 16.67% 99.3%, 11.11% 99.34%, 5.56% 99.02%, 0% 99.15%, 0.43% 91.67%, 1.08% 83.33%, 0.28% 75%, 0.56% 66.67%, 0.87% 58.33%, 0.31% 50%, 0.62% 41.67%, 0.2% 33.33%, 0.79% 25%, 0.88% 16.67%, 0.7% 8.33%);
-    filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.9));
-  }
-
   .panel :global(.panel-medium) {
     display: block;
     width: 100%;
@@ -288,7 +258,8 @@ const jsonLd = {
     aspect-ratio: 3 / 2;
     object-fit: contain;
     background: #0a0a0a;
-    clip-path: polygon(0% 1.31%, 6.25% 1.34%, 12.5% 1.27%, 18.75% 0.31%, 25% 0.91%, 31.25% 0.71%, 37.5% 0.84%, 43.75% 0.37%, 50% 0.44%, 56.25% 0.74%, 62.5% 0.47%, 68.75% 0.75%, 75% 0.24%, 81.25% 0.31%, 87.5% 1.05%, 93.75% 0.71%, 100% 0.82%, 98.92% 9.09%, 99.36% 18.18%, 99.72% 27.27%, 98.86% 36.36%, 99.09% 45.45%, 99.01% 54.55%, 99.05% 63.64%, 98.63% 72.73%, 99.36% 81.82%, 98.89% 90.91%, 99.35% 100%, 93.75% 99.11%, 87.5% 99%, 81.25% 99.42%, 75% 99.69%, 68.75% 99.23%, 62.5% 98.94%, 56.25% 99.09%, 50% 99.26%, 43.75% 99.03%, 37.5% 99.57%, 31.25% 99.58%, 25% 99.41%, 18.75% 98.82%, 12.5% 99.56%, 6.25% 99.65%, 0% 99.67%, 0.26% 90.91%, 0.54% 81.82%, 0.89% 72.73%, 1.19% 63.64%, 0.6% 54.55%, 0.65% 45.45%, 0.55% 36.36%, 0.57% 27.27%, 1.14% 18.18%, 0.86% 9.09%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.9);
   }
 
   /* --- Erzähltext als Klebezettel -----------------------------------------
