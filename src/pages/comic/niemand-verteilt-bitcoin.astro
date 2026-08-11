@@ -1,0 +1,447 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SocialLinks from "../../components/SocialLinks.astro";
+import { Image } from "astro:assets";
+
+import p1poster from "../../assets/comic/niemand-verteilt-bitcoin/01-kommentar.webp";
+import p2 from "../../assets/comic/niemand-verteilt-bitcoin/02-hand-von-oben.webp";
+import p3 from "../../assets/comic/niemand-verteilt-bitcoin/03-kein-oben.webp";
+import p4 from "../../assets/comic/niemand-verteilt-bitcoin/04-offene-tuer.webp";
+
+/**
+ * Vertikaler Scroll-Comic zum Cornerstone „Niemand verteilt Bitcoin“.
+ *
+ * Aufbau und Stil folgen Comic 1 („Zu spät gibt es nicht“) eins zu eins:
+ * Panel — Text — Panel, Panels über die volle Breite, Erzähltext als
+ * angeklebter Zettel in schmaler Spalte. Der gerissene Rahmen sitzt in den
+ * Motiven selbst, das Layout legt nur die Hairline darum.
+ *
+ * Panel 1 ist animiert. Bild und Video werden im Layout gleich behandelt —
+ * dieselbe Klasse, dasselbe Seitenverhältnis, kein Beschnitt.
+ */
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const cornerstoneUrl = "/ratgeber/bitcoin-denkfehler/niemand-verteilt-bitcoin/";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ComicStory",
+  name: "Niemand verteilt Bitcoin",
+  headline: "Niemand verteilt Bitcoin — der Comic",
+  inLanguage: "de-DE",
+  url: new URL("/comic/niemand-verteilt-bitcoin/", site).toString(),
+  about:
+    "Warum die Frage nach der gerechten Verteilung von Bitcoin eine Hand voraussetzt, die es gar nicht gibt.",
+  isPartOf: {
+    "@type": "Article",
+    name: "Der große Bitcoin-Denkfehler · Teil 2",
+    url: new URL(cornerstoneUrl, site).toString(),
+  },
+};
+---
+
+<Layout
+  title="Niemand verteilt Bitcoin — der Comic | Bit & Bullshit"
+  description="Der große Bitcoin-Denkfehler, Teil 2 als Comic: „Hätte man Bitcoin nicht gerecht an alle verteilen müssen?“ Warum die Frage eine Hand voraussetzt, die es nicht gibt."
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="comic">
+    <header class="comic-kopf">
+      <p class="display text-xs tracking-[0.3em] text-orange">
+        // DER GROSSE BITCOIN-DENKFEHLER · TEIL 2
+      </p>
+      <h1 class="display comic-titel">Niemand<br />verteilt Bitcoin</h1>
+    </header>
+
+    <p class="comic-text comic-intro">
+      Unter einem meiner Videos stand neulich ein Satz, dem fast jeder zustimmen
+      würde: „Wenn Bitcoin ein besseres Geld wäre, hätte man es doch gerecht an
+      alle verteilen müssen.“ Klingt fair. Und ist trotzdem der Kern eines
+      Denkfehlers.
+    </p>
+
+    {/* Das erste Panel ist das animierte. Ohne Ton, ohne Bedienelemente —
+        es ist ein Bild, das sich bewegt, kein Video, das man startet. Das
+        Standbild dient als Poster, damit vor dem Laden nichts springt. */}
+    <figure class="panel">
+      <video
+        class="panel-medium"
+        src="/comic/niemand-verteilt-bitcoin/01-kommentar.mp4"
+        poster={p1poster.src}
+        width="1536"
+        height="1024"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Das Maskottchen steht nachdenklich vor einer nächtlichen Stadtkulisse mit Brücke, über ihm schwebt eine Kommentar-Sprechblase. Text: „Hätte man Bitcoin nicht gerecht an alle verteilen müssen?“ und „Klingt fair. Ist der Denkfehler.“"
+      >
+      </video>
+    </figure>
+
+    <p class="comic-text">
+      Denn in diesem Satz steckt eine versteckte Annahme: dass es überhaupt
+      jemanden geben muss, der verteilt. Eine Hand von oben, die entscheidet,
+      wer wie viel bekommt. Erst wenn du diese Hand voraussetzt, ergibt die
+      Frage „warum nicht gerecht verteilt?“ überhaupt Sinn.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p2}
+        alt="Eine riesige Hand greift aus Gewitterwolken herab und lässt Geldscheine auf eine Pyramide aus Anzugträgern fallen, ganz unten steht das Maskottchen allein zwischen Hochhäusern mit den Schriftzügen „Bank“ und „Government“. Text: „Unser Geld kommt immer von oben.“ und „Eine Hand teilt aus. Du stehst unten.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text">
+      Kein Wunder, dass wir so denken. Unser gesamtes Geldleben funktioniert
+      genau so. Eine Zentralbank entscheidet, wie viel es gibt. Der Staat,
+      wohin es zuerst fließt. Banken, wer einen Kredit bekommt. Von der ersten
+      Sekunde an lernst du: Geld ist etwas, das dir jemand gibt oder verwehrt.
+      Immer steht eine Instanz dazwischen.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p3}
+        alt="Die verteilende Hand ist orange durchgestrichen und zerbricht, ein Lichtstrahl bricht durch die Wolken. Eine bunt gemischte Menge — Kinder, Erwachsene, eine Person im Rollstuhl — greift frei nach orange leuchtenden Bitcoin-Münzen, mittendrin das Maskottchen mit erhobener Hand. Text: „Bitcoin hat keine Hand, die verteilt.“ und „Es gibt kein Oben.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text">
+      Und genau da macht Bitcoin etwas radikal Neues. Es gibt keine Hand, die
+      verteilt. Keine Zentrale, die zuteilt. Niemand hat je entschieden, wer wie
+      viel bekommt, weil es schlicht niemanden gibt, der das könnte. Bitcoin lag
+      von Tag eins offen da, für jeden zugänglich, der bereit war hinzuschauen.
+      Kein Antrag, keine Erlaubnis, kein Chef, der nickt.
+    </p>
+
+    <figure class="panel">
+      <Image
+        src={p4}
+        alt="Das Maskottchen steht mit offenen Armen in einer geöffneten Tür, dahinter geht über der Stadt die Sonne auf. An den Wänden Graffiti: „Freedom“, „Decentralized“, „Open Source“, „For All“, „Trust nobody, verify everything“. Text: „Nicht ,an alle verteilt.‘“ und „Sondern für alle offen. Von Tag eins.“"
+        widths={[640, 960, 1280, 1536]}
+        sizes="(min-width: 900px) 860px, 94vw"
+        class="panel-medium"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="comic-text comic-schluss">
+      Deshalb ist „gerecht an alle verteilen“ gar nicht das Gegenteil von dem,
+      was passiert ist — es ist die falsche Kategorie. „An alle verteilt“ heißt:
+      Einer steht oben und teilt aus. „Für alle offen“ heißt: Es gibt kein Oben.
+      Der Unterschied ist fein, aber gewaltig. Das eine ist Zuteilung durch eine
+      Macht. Das andere ist Zugang ohne eine Macht. Und wer das begreift, für
+      den zerfällt die ganze Frage nach der „gerechten Verteilung“ von selbst —
+      weil es niemanden gibt, dem man Ungerechtigkeit vorwerfen könnte.
+    </p>
+
+    <footer class="comic-fuss">
+      <a href={cornerstoneUrl} class="comic-langfassung">
+        Die ausführliche Fassung zum Nachlesen
+      </a>
+
+      <div class="comic-naechster">
+        <p class="display text-xs tracking-[0.3em] text-orange">// Nächster Teil</p>
+        <p class="comic-naechster-text">
+          Von oben oder von unten? Wie Geld normal entsteht — und warum du fast
+          immer der Letzte in der Reihe bist.
+        </p>
+        <a href="/ratgeber/bitcoin-denkfehler/" class="comic-hub-link display">
+          Alle Teile &rarr;
+        </a>
+      </div>
+
+      <div class="comic-cta">
+        <p class="comic-cta-text">
+          Kurzform täglich auf TikTok &amp; Insta:
+          <strong>@bitandbullshit</strong>
+        </p>
+        <SocialLinks size="lg" />
+      </div>
+
+      {/* Platzhalter für die TikTok-Einbettung. Sobald die Video-ID feststeht,
+          hier das blockquote von TikTok einsetzen — bis dahin bleibt der
+          Bereich leer statt einen toten Rahmen zu zeigen. */}
+
+      <p class="comic-disclaimer">
+        Nur Meinung &amp; Unterhaltung. Keine Finanz-, Steuer- oder
+        Rechtsberatung.
+      </p>
+    </footer>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<script>
+  // Wer Bewegung reduziert haben will, bekommt das Standbild. Das Poster
+  // bleibt stehen, sobald das Video pausiert.
+  const leise = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const anwenden = () => {
+    document.querySelectorAll<HTMLVideoElement>(".panel video").forEach((v) => {
+      if (leise.matches) {
+        v.pause();
+        v.removeAttribute("autoplay");
+      } else if (v.paused) {
+        v.play().catch(() => {});
+      }
+    });
+  };
+  anwenden();
+  leise.addEventListener("change", anwenden);
+</script>
+
+<style>
+  /* Schwarzer Grund, damit die Panels leuchten. Bewusst dunkler als das
+     Seiten-Ink der übrigen Seiten. */
+  .comic {
+    background: #111111;
+    padding-bottom: 4rem;
+  }
+
+  /* Linke Kante auf dem Panel-Raster, damit Kopf und erstes Panel bündig
+     stehen. Der Erzähltext läuft bewusst schmaler und mittig — dieser
+     Versatz ist der Rhythmus der Seite, keine Unachtsamkeit. */
+  .comic-kopf {
+    max-width: 62rem;
+    margin-inline: auto;
+    padding: 3.5rem 0.75rem 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .comic-kopf {
+      padding: 5rem 1.5rem 3rem;
+    }
+  }
+  .comic-titel {
+    margin-top: 1.25rem;
+    font-size: clamp(2.6rem, 11vw, 5.5rem);
+    line-height: 0.92;
+    color: var(--color-paper);
+    text-shadow:
+      3px 4px 0 rgba(0, 0, 0, 0.9),
+      4px 5px 0 rgb(from var(--color-orange-deep) r g b / 0.45);
+  }
+
+  /* --- Panels ------------------------------------------------------------
+     Volle Breite mit Gutter, Seitenverhältnis bleibt. Bild und Video tragen
+     dieselbe Klasse und verhalten sich identisch. */
+  .panel {
+    margin: 0 auto;
+    padding: 2.25rem 0.75rem;
+    max-width: 62rem;
+  }
+  @media (min-width: 768px) {
+    .panel {
+      padding: 3rem 1.5rem;
+    }
+  }
+  .panel :global(.panel-medium) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.9);
+  }
+
+  /* --- Erzähltext als Klebezettel -----------------------------------------
+     Die Panels sprechen in weißen Kästen mit abtropfender Farbe. Die Texte
+     dazwischen sind das, was jemand daneben an die Wand geheftet hat:
+     Papier, schief, mit Klebestreifen oben drauf.
+
+     Das .tape-Primitiv der Seite ist für dunklen Grund gebaut und auf Papier
+     unsichtbar — dieser Streifen hier ist eigens dafür gemacht. Er sitzt
+     über der Oberkante und wirft einen kurzen Schatten auf den Zettel.
+
+     Rotation, Streifenposition und -winkel wechseln pro Zettel. Vier exakt
+     gleich gekippte Blätter sehen aus wie ein Raster, nicht wie eine Wand. */
+  .comic-text {
+    position: relative;
+    max-width: 600px;
+    /* Gutter wie bei den Panels — sonst stehen die gekippten Ecken auf
+       schmalen Viewports über den Rand hinaus. */
+    width: calc(100% - 2.25rem);
+    margin-inline: auto;
+    padding: 1.75rem 1.5rem 1.6rem;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: 500;
+    box-shadow:
+      0 16px 34px -16px rgba(0, 0, 0, 0.95),
+      0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  @media (min-width: 768px) {
+    .comic-text {
+      font-size: 1.1875rem;
+      padding: 2.25rem 2.25rem 2rem;
+    }
+  }
+
+  /* Klebestreifen. Milchig, leicht wärmer als das Papier, damit er sich
+     abhebt, ohne wie ein zweites Element zu wirken. */
+  .comic-text::before {
+    content: "";
+    position: absolute;
+    top: -0.7rem;
+    width: 6.5rem;
+    height: 1.6rem;
+    background: linear-gradient(
+      104deg,
+      rgba(214, 208, 188, 0.85),
+      rgba(232, 227, 210, 0.6) 45%,
+      rgba(210, 204, 184, 0.82)
+    );
+    border-left: 1px dashed rgba(10, 10, 10, 0.22);
+    border-right: 1px dashed rgba(10, 10, 10, 0.22);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  /* Jeder Zettel hängt anders. */
+  .comic-text:nth-of-type(1) { transform: rotate(-1.1deg); }
+  .comic-text:nth-of-type(1)::before { left: 1.5rem; transform: rotate(-7deg); }
+
+  .comic-text:nth-of-type(2) { transform: rotate(0.8deg); }
+  .comic-text:nth-of-type(2)::before { right: 2rem; transform: rotate(6deg); }
+
+  .comic-text:nth-of-type(3) { transform: rotate(-0.6deg); }
+  .comic-text:nth-of-type(3)::before { left: 50%; transform: translateX(-50%) rotate(-3deg); }
+
+  .comic-text:nth-of-type(4) { transform: rotate(1.2deg); }
+  .comic-text:nth-of-type(4)::before { left: 2.5rem; transform: rotate(9deg); }
+
+  .comic-intro {
+    font-size: 1.15rem;
+  }
+  @media (min-width: 768px) {
+    .comic-intro {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Der Schlusszettel trägt die Pointe: gerade angeheftet, zwei Streifen,
+     Orange-Balken. Hier soll nichts mehr wackeln. */
+  .comic-schluss {
+    transform: none !important;
+    border-left: 6px solid var(--color-orange);
+  }
+  .comic-schluss::before {
+    left: 2rem !important;
+    right: auto !important;
+    transform: rotate(-5deg) !important;
+  }
+  .comic-schluss::after {
+    content: "";
+    position: absolute;
+    top: -0.7rem;
+    right: 2rem;
+    width: 6.5rem;
+    height: 1.6rem;
+    background: linear-gradient(
+      104deg,
+      rgba(214, 208, 188, 0.85),
+      rgba(232, 227, 210, 0.6) 45%,
+      rgba(210, 204, 184, 0.82)
+    );
+    border-left: 1px dashed rgba(10, 10, 10, 0.22);
+    border-right: 1px dashed rgba(10, 10, 10, 0.22);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg);
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .comic-text,
+    .comic-text:nth-of-type(1),
+    .comic-text:nth-of-type(2),
+    .comic-text:nth-of-type(3),
+    .comic-text:nth-of-type(4) {
+      transform: none;
+    }
+  }
+
+  /* --- Fuß ---------------------------------------------------------------- */
+  .comic-fuss {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    padding-inline: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .comic-langfassung {
+    align-self: flex-start;
+    font-size: 0.95rem;
+    color: var(--color-paper);
+    text-decoration: underline;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.2em;
+  }
+  .comic-langfassung:hover {
+    color: var(--color-orange);
+  }
+
+  .comic-naechster {
+    padding: 1.5rem 1.35rem;
+    border: 1px dashed rgb(from var(--color-orange) r g b / 0.35);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-orange) r g b / 0.04);
+  }
+  .comic-naechster-text {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.9);
+  }
+  .comic-hub-link {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-orange);
+  }
+
+  .comic-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .comic-cta-text {
+    font-size: 1rem;
+    color: rgb(from var(--color-paper) r g b / 0.8);
+  }
+  .comic-cta-text strong {
+    color: var(--color-orange);
+  }
+
+  .comic-disclaimer {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.45);
+  }
+</style>
