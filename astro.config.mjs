@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import fs from "node:fs";
+import rehypeBegriffe from "./plugins/rehype-begriffe.mjs";
 
 /**
  * Schreibt `dist/_redirects` für Cloudflare Pages.
@@ -47,6 +48,9 @@ function legacyRedirects() {
 export default defineConfig({
   site: "https://bitandbullshit.com",
   integrations: [sitemap(), legacyRedirects()],
+  markdown: {
+    rehypePlugins: [rehypeBegriffe],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

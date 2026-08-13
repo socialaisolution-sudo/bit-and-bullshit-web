@@ -10,7 +10,7 @@ image: "../../assets/mascots/krypto-bridge-hack-schwaechstes-glied.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter eine Brücke, aus der mittig Steine herausbrechen — Graffiti-Schriftzug „Nicht die Kette — die Brücke“'
 ---
 
-Ok, „schon wieder ein Krypto-Hack“ liest man gefühlt jede Woche, und bei jeder dieser Schlagzeilen denken viele reflexhaft: Also ist Bitcoin, ist die Blockchain doch unsicher. Genau diesen Reflex lohnt es sich mal zu hinterfragen, denn er führt fast immer in die Irre. Auch bei dem frischen Fall in dieser Nacht, bei dem rund 200.000 Dollar erbeutet wurden.
+Ok, „schon wieder ein Krypto-Hack“ liest man gefühlt jede Woche, und bei jeder dieser Schlagzeilen denken viele reflexhaft: Also ist Bitcoin, ist die Blockchain doch unsicher. Genau diesen Reflex lohnt es sich mal zu hinterfragen, denn er führt fast immer in die Irre. Auch bei dem Fall im August 2026, bei dem rund 200.000 Dollar erbeutet wurden.
 
 Denn schau genau hin, was da eigentlich geknackt wurde. Es war nicht die Blockchain selbst. Die eigentliche Kette, das Herzstück, blieb unangetastet und sicher. Getroffen wurde eine sogenannte „Bridge“, eine Brücke. Das ist ein Stück Software, das zwei verschiedene Krypto-Netzwerke miteinander verbindet, damit man Werte von einem ins andere schicken kann. Und genau in diesem Verbindungscode steckte ein Fehler, den die Angreifer ausgenutzt haben. Nicht das Fundament war das Leck, sondern die Brücke, die man drübergebaut hat.
 
