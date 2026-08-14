@@ -6,6 +6,12 @@ category: entlarven
 order: 44
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
+quellen:
+  - text: "Bundesfinanzministerium, Pressemitteilung vom 16.07.2026: „Aktionsplan gegen Steuer- und Finanzkriminalität: Entdeckungsrisiko und Abschreckung spürbar erhöhen“"
+    url: "https://www.bundesfinanzministerium.de/Content/DE/Pressemitteilungen/Finanzpolitik/2026/07/2026-07-16-aktionsplan-gegen-steuerkriminalitaet.html"
+  - text: "Bundesministerium der Justiz und für Verbraucherschutz, gemeinsame Pressemitteilung vom 16.07.2026"
+    url: "https://www.bmjv.de/SharedDocs/Pressemitteilungen/DE/2026/0716_Aktionsplan_gegen_Steuer-_und_Finanzkriminalit%C3%A4t.html"
+  - text: "O-Ton Bundesfinanzminister Lars Klingbeil in derselben Pressemitteilung: „Die Ehrlichen dürfen nicht die Dummen sein. Deshalb erhöhen wir im Kampf gegen Steuerbetrug den Ermittlungsdruck und das Entdeckungsrisiko.“"
 image: "../../assets/mascots/haltet-den-dieb-finanzminister.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap zuckt ratlos die Schultern vor einer Betonwand, rechts hält ein Fuchs im Anzug am Rednerpult eine Ansprache vor einer Schar Hühner — Graffiti-Schriftzug „Haltet den Dieb!“'
 ---

@@ -134,6 +134,34 @@ const jsonLd = {
         <Content />
       </div>
 
+      {/* Quellen stehen zwischen Text und Weiterlesen-Panel: Wer den Beleg
+          sucht, findet ihn direkt am Textende — und nicht erst hinter dem
+          Verweis auf eine andere Seite. */}
+      {
+        post.data.quellen && post.data.quellen.length > 0 && (
+          <aside class="mt-12 border-t border-white/10 pt-6" data-pagefind-ignore>
+            <p class="display text-xs tracking-[0.3em] text-orange">// QUELLEN</p>
+            <ul class="mt-4 space-y-2.5 text-sm leading-relaxed text-paper/70">
+              {post.data.quellen.map((q) => (
+                <li>
+                  {q.url ? (
+                    <a
+                      href={q.url}
+                      rel="noopener"
+                      class="drip-underline text-paper/85 hover:text-orange"
+                    >
+                      {q.text}
+                    </a>
+                  ) : (
+                    q.text
+                  )}
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+
       {
         post.data.aeraLink && (
           <div class="mt-12 rounded-2xl border border-white/10 bg-white/[0.03] p-6" data-pagefind-ignore>

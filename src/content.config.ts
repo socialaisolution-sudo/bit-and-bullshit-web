@@ -16,6 +16,20 @@ const blog = defineCollection({
       featured: z.boolean().default(false),
       image: image().optional(),
       imageAlt: z.string().optional(),
+      /**
+       * Belege, wenn ein Snippet auf eine konkrete Meldung Bezug nimmt.
+       * Steht bewusst nicht im Fließtext: Die Erzählung soll ohne Fußnoten
+       * lesbar bleiben, der Nachweis aber nachprüfbar darunter stehen.
+       * `url` darf fehlen — ein O-Ton hat keine eigene Adresse.
+       */
+      quellen: z
+        .array(
+          z.object({
+            text: z.string(),
+            url: z.string().url().optional(),
+          }),
+        )
+        .optional(),
     }),
 });
 
