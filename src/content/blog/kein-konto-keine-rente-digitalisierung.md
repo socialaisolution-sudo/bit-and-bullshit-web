@@ -6,6 +6,8 @@ category: entlarven
 order: 46
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/cbdc/"
+image: "../../assets/mascots/kein-konto-keine-rente-digitalisierung.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen und entsetztem Blick vor einer Betonwand, dahinter ein alter Mann am Stock vor einer Bankfiliale mit heruntergelassenem Rolltor und Schild „Geschlossen“ — Graffiti-Schriftzug „Kein Konto? Keine Rente.“'
 quellen:
   - text: "Deutsche Rentenversicherung, Meldung vom 12.12.2025: „Barauszahlung entfällt: Rente trotzdem sicher“ — die Deutsche Bank bietet als Nachfolgerin der Postbank keine Zahlungsanweisungen zur Verrechnung mehr an"
     url: "https://www.deutsche-rentenversicherung.de/DRV/DE/Ueber-uns-und-Presse/Presse/Meldungen/2025/251212-barauszahlung-renten-entfaellt"
