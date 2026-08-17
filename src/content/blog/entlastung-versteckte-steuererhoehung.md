@@ -6,6 +6,8 @@ category: entlarven
 order: 47
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/inflation-kaufkraft/"
+image: "../../assets/mascots/entlastung-versteckte-steuererhoehung.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap reißt fassungslos die Arme hoch vor einer Betonwand, rechts zieht eine Hand mit der Aufschrift „Staat“ einem abgewandten Mann Geldscheine aus der Gesäßtasche — Graffiti-Schriftzug „Entlastung?!“'
 quellen:
   - text: "Bericht vom 12.08.2026 unter Berufung auf den Referentenentwurf und BILD: „Versteckte Steuererhöhung: Arbeitnehmern drohen 2027 Milliardenverluste“ — für 2027 rund 3 Milliarden Euro Entlastung geplant, vollständiger Ausgleich bräuchte bis zu 8,8 Milliarden"
     url: "https://www.wetterauer-zeitung.de/wirtschaft/versteckte-steuererhoehung-arbeitnehmern-drohen-2027-milliardenverluste-zr-94439713.html"
