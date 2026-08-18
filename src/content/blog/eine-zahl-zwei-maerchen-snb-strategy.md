@@ -17,7 +17,7 @@ image: "../../assets/mascots/eine-zahl-zwei-maerchen-snb-strategy.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht grinsend mit den Händen in den Hoodie-Taschen vor einer Betonwand, dahinter ein Bankgebäude mit Säulen und Schweizer Kreuz, eine Hand greift danach und ein oranger Kurspfeil zeigt nach oben — Graffiti-Schriftzug „Totgesagt lebt länger“'
 ---
 
-Ok, das ist ein Paradebeispiel dafür, wie dieselbe nackte Zahl von zwei Seiten gleichzeitig zu zwei völlig gegensätzlichen Geschichten verbogen wird, und wie beide danebenliegen. Es geht um den Aktienbestand, den die Schweizerische Nationalbank an Strategy hält, der früher als MicroStrategy bekannten und [größten Bitcoin-Halterin](/snippets/too-big-to-fail-bitcoin/) unter den börsennotierten Unternehmen. Und je nachdem, wer die Zahl gerade in die Hand nimmt, wird ein komplett anderes Märchen daraus.
+Zwei Lager, eine Zahl, zwei Geschichten. Und das Beste daran: Beide liegen daneben. Es geht um den Aktienbestand, den die Schweizerische Nationalbank an Strategy hält, der früher als MicroStrategy bekannten und [größten Bitcoin-Halterin](/snippets/too-big-to-fail-bitcoin/) unter den börsennotierten Unternehmen. Und je nachdem, wer die Zahl gerade in die Hand nimmt, wird ein komplett anderes Märchen daraus.
 
 Das eine Lager bastelt sich den Untergang: Schaut her, sogar Strategy wackelt, das ganze Bitcoin-Kartenhaus bricht bald zusammen. Das andere Lager dreht exakt dieselbe Zahl ins glatte Gegenteil: Wahnsinn, sogar eine echte Zentralbank wettet inzwischen auf Bitcoin, das ist der ultimative Ritterschlag. Zwei Geschichten, ein Datenpunkt, und beide werden mit voller Überzeugung erzählt. Schon das sollte stutzig machen, denn beide können nicht gleichzeitig wahr sein.
 

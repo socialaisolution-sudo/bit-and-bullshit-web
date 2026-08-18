@@ -17,7 +17,7 @@ quellen:
     url: "https://www.bundesfinanzministerium.de/Content/DE/FAQ/kalte-progression.html"
 ---
 
-Ok, das ist ein Musterbeispiel für die Kunst, dir etwas wegzunehmen und dich dabei glauben zu lassen, du hättest was geschenkt bekommen. Die Regierung feiert eine große Steuerreform, eine spürbare Entlastung für die Bürger. Rechnet man aber nach, dreht sich die Geschichte komplett um. Es ist keine Entlastung, es ist eine verdeckte Steuererhöhung. Und um das zu verstehen, musst du nur einen einzigen Fachbegriff kennen: die kalte Progression.
+Es gibt eine Kunst, dir etwas wegzunehmen und dich dabei glauben zu lassen, du hättest was geschenkt bekommen. Die Regierung feiert eine große Steuerreform, eine spürbare Entlastung für die Bürger. Rechnet man aber nach, dreht sich die Geschichte komplett um. Es ist keine Entlastung, es ist eine verdeckte Steuererhöhung. Und um das zu verstehen, musst du nur einen einzigen Fachbegriff kennen: die kalte Progression.
 
 Die funktioniert so. Angenommen, dein Lohn steigt, aber nur so weit, dass er [die Inflation](/snippets/zehn-euro-doener-inflation/) ausgleicht. Real kannst du dir also kein bisschen mehr leisten als vorher, gleiches Leben, gleicher Warenkorb. Trotzdem rutschst du durch die höhere Zahl auf dem Gehaltszettel in einen höheren Steuertarif und zahlst prozentual mehr Steuern. Das Ergebnis: Du hast auf dem Papier mehr, in der Tasche aber real weniger. Der Staat verdient an einer Gehaltserhöhung, die für dich in Wahrheit gar keine ist. Ein stiller, automatischer Griff ins Portemonnaie, Jahr für Jahr.
 
