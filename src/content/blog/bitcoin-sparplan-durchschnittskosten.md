@@ -1,6 +1,6 @@
 ---
 title: 'Bitcoin zu teuer? Warum der Sparplan die entspannteste Antwort ist'
-description: "Du musst keinen ganzen Bitcoin kaufen — und auch nicht den perfekten Moment treffen. Wie der Durchschnittskosten-Effekt den Druck aus dem Einstieg nimmt."
+description: "Bitcoin zu teuer zum Einsteigen? Du kaufst nie einen ganzen — und musst auch nicht den perfekten Moment treffen. Bruchteile und Sparplan erklärt."
 keyword: 'bitcoin zu teuer einsteigen'
 metaTitel: 'Bitcoin zu teuer zum Einsteigen? Warum das ein Denkfehler ist'
 metaBeschreibung: '„Ein ganzer Bitcoin ist unbezahlbar“ – der häufigste Irrtum. Wie Bruchteile und der Durchschnittskosten-Effekt das lösen.'

@@ -3,7 +3,7 @@ title: '„Zu spät“ gibt es nicht'
 untertitel: "Warum die Frage nach dem Einstiegszeitpunkt die falsche ist — und welche Frage du stattdessen stellen solltest."
 description: "„Ist es nicht längst zu spät?“ — die häufigste Frage zu Bitcoin ist nicht falsch beantwortet, sondern falsch gestellt. Warum ein Markt keinen letzten Waggon hat und welche vier Fragen wirklich zählen."
 keyword: 'ist es zu spät für bitcoin 2026'
-metaTitel: 'Ist es zu spät für Bitcoin? (2026) – Warum das die falsche Frage ist'
+metaTitel: 'Ist es zu spät für Bitcoin? (2026) – die falsche Frage'
 metaBeschreibung: '„Zu spät für Bitcoin?“ ist die häufigste Frage – und die falsche. Warum ein Markt keinen letzten Zug hat und welche Frage wirklich zählt.'
 teil: 1
 draft: false

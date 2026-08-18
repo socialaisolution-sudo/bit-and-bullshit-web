@@ -3,7 +3,7 @@ title: "Niemand verteilt Bitcoin"
 untertitel: 'Warum die Frage „hätte man es nicht gerecht an alle verteilen müssen?“ den größten Denkfehler von allen enthält.'
 description: '„Bitcoin hätte man gerecht an alle verteilen müssen“? Warum diese Frage den größten Denkfehler enthält — es gibt niemanden, der verteilt. Einfach erklärt.'
 keyword: 'bitcoin gerecht verteilt'
-metaTitel: 'Niemand verteilt Bitcoin – warum „gerecht verteilen“ ein Denkfehler ist'
+metaTitel: 'Bitcoin gerecht verteilt? Warum das ein Denkfehler ist'
 metaBeschreibung: 'Hätte man Bitcoin gerecht an alle verteilen müssen? Warum diese Frage einen Denkfehler enthält – es gibt niemanden, der verteilt.'
 teil: 2
 draft: false
