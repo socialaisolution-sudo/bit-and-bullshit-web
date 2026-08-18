@@ -4,6 +4,7 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
 import VerwandteArtikel from "../../components/VerwandteArtikel.astro";
+import Brotkrumen from "../../components/Brotkrumen.astro";
 import { getCollection, render } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import type { GetStaticPaths } from "astro";
@@ -91,9 +92,14 @@ const jsonLd = {
   <SiteHeader />
 
   <main class="mx-auto max-w-3xl px-5 py-16 md:py-24">
-    <a href="/snippets" class="text-xs uppercase tracking-widest text-paper/60 hover:text-orange">
-      &larr; Alle Snippets
-    </a>
+    <Brotkrumen
+      pfad={[
+        { label: "Start", href: "/" },
+        { label: "Snippets", href: "/snippets" },
+        { label: kat.titel, href: `/kategorie/${post.data.kategorie}/` },
+        { label: post.data.title },
+      ]}
+    />
 
     <article
       class="mt-8"

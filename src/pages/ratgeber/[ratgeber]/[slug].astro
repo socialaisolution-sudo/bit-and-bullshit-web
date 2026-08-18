@@ -7,6 +7,7 @@ import { ladeRatgeber } from "../../../lib/ratgeber";
 import { render } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import { COMICS } from "../../../data/comics";
+import Brotkrumen from "../../../components/Brotkrumen.astro";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -79,9 +80,14 @@ const jsonLd = {
   <SiteHeader />
 
   <main class="mx-auto max-w-3xl px-5 py-12 md:py-16">
-    <a href={`/ratgeber/${r.id}/`} class="text-xs uppercase tracking-widest text-paper/60 hover:text-orange">
-      &larr; {r.data.titel}
-    </a>
+    <Brotkrumen
+      pfad={[
+        { label: "Start", href: "/" },
+        { label: "Ratgeber", href: "/ratgeber" },
+        { label: r.data.kurztitel, href: `/ratgeber/${r.id}/` },
+        { label: `Teil ${cs.data.teil}` },
+      ]}
+    />
 
     <article class="mt-8" data-pagefind-body data-pagefind-meta={`category:${r.data.titel}`}>
       <p class="display text-xs tracking-[0.3em] text-orange" data-pagefind-ignore>

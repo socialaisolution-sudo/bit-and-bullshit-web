@@ -6,7 +6,7 @@ kategorie: staat-steuern
 order: 36
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
-image: "../../assets/mascots/krypto-boerse-geschlossen-kyc-kontrolle.png"
+image: "../../assets/mascots/krypto-boerse-geschlossen-kyc-kontrolle.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen vor einer nassen Betonwand, darüber eine Überwachungskamera und ein heruntergelassenes Rolltor — Graffiti-Schriftzug „Behörden machen Krypto-Börse dicht: Verbraucherschutz oder Kontrolle?"'
 ---
 

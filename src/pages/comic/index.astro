@@ -4,6 +4,7 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import { Image } from "astro:assets";
 import { COMICS, comicsNachSerie } from "../../data/comics";
+import Brotkrumen from "../../components/Brotkrumen.astro";
 
 /**
  * Galerie aller Comics.
@@ -45,6 +46,10 @@ const jsonLd = {
   <SiteHeader />
 
   <main class="comic-galerie">
+    <div class="galerie-krumen">
+      <Brotkrumen gedaempft pfad={[{ label: "Start", href: "/" }, { label: "Comic" }]} />
+    </div>
+
     <header class="galerie-kopf">
       <p class="display text-xs tracking-[0.3em] text-orange">// COMIC</p>
       <h1 class="display galerie-titel">Geld als Comic</h1>
@@ -112,14 +117,24 @@ const jsonLd = {
     padding-bottom: 5rem;
   }
 
+  .galerie-krumen {
+    max-width: 62rem;
+    margin-inline: auto;
+    padding: 2rem 1.25rem 0;
+  }
+  @media (min-width: 768px) {
+    .galerie-krumen {
+      padding: 2.5rem 1.5rem 0;
+    }
+  }
   .galerie-kopf {
     max-width: 62rem;
     margin-inline: auto;
-    padding: 3.5rem 1.25rem 0;
+    padding: 1.5rem 1.25rem 0;
   }
   @media (min-width: 768px) {
     .galerie-kopf {
-      padding: 5rem 1.5rem 0;
+      padding: 2rem 1.5rem 0;
     }
   }
   .galerie-titel {

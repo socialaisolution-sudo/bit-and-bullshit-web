@@ -7,7 +7,7 @@ metaTitel: 'Ist es zu spät für Bitcoin? (2026) – die falsche Frage'
 metaBeschreibung: '„Zu spät für Bitcoin?“ ist die häufigste Frage – und die falsche. Warum ein Markt keinen letzten Zug hat und welche Frage wirklich zählt.'
 teil: 1
 draft: false
-image: "../../../assets/cornerstones/bitcoin-denkfehler/zu-spaet-gibt-es-nicht.png"
+image: "../../../assets/cornerstones/bitcoin-denkfehler/zu-spaet-gibt-es-nicht.webp"
 imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich auf einem regennassen Bahnsteig, während im Hintergrund ein Zug auf einem Kreisgleis fährt statt abzufahren — Schriftzug „Zu spät gibt es nicht"'
 comic: "/comic/zu-spaet-gibt-es-nicht/"
 ausblick: 'Warum die Frage nach der „gerechten Verteilung“ eine Hand voraussetzt, die es bei Bitcoin gar nicht gibt — und warum sie deshalb ins Leere läuft.'

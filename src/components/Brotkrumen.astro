@@ -1,0 +1,95 @@
+---
+/**
+ * Breadcrumb-Pfad — sichtbar und als BreadcrumbList für Google.
+ *
+ * Beides aus einer Quelle: Wenn die Auszeichnung etwas anderes sagt als die
+ * sichtbare Leiste, ist sie schlimmer als keine. Der letzte Eintrag ist die
+ * aktuelle Seite und bleibt bewusst ohne Link.
+ */
+interface Krume {
+  label: string;
+  /** Fehlt beim letzten Eintrag — man verlinkt nicht auf sich selbst. */
+  href?: string;
+}
+interface Props {
+  pfad: Krume[];
+  /** Auf dunklen Sonderseiten (Comic) darf der Pfad leiser laufen. */
+  gedaempft?: boolean;
+}
+const { pfad, gedaempft = false } = Astro.props;
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: pfad.map((k, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: k.label,
+    ...(k.href ? { item: new URL(k.href, site).toString() } : {}),
+  })),
+};
+---
+
+<nav
+  aria-label="Brotkrumen"
+  class:list={["brotkrumen", gedaempft && "ist-gedaempft"]}
+  data-pagefind-ignore
+>
+  <ol>
+    {
+      pfad.map((k, i) => (
+        <li>
+          {k.href ? <a href={k.href}>{k.label}</a> : <span aria-current="page">{k.label}</span>}
+          {i < pfad.length - 1 && (
+            <span class="krume-trenner" aria-hidden="true">
+              /
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .brotkrumen {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .brotkrumen ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .brotkrumen li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .brotkrumen a {
+    color: rgb(from var(--color-paper) r g b / 0.6);
+    transition: color 150ms ease;
+  }
+  .brotkrumen a:hover {
+    color: var(--color-orange);
+  }
+  /* Die aktuelle Seite steht da, ist aber kein Ziel — deshalb blasser als
+     die Links darüber, nicht kräftiger. */
+  .brotkrumen [aria-current="page"] {
+    color: rgb(from var(--color-paper) r g b / 0.4);
+  }
+  .krume-trenner {
+    color: rgb(from var(--color-orange) r g b / 0.5);
+  }
+  .ist-gedaempft a {
+    color: rgb(from var(--color-paper) r g b / 0.5);
+  }
+</style>

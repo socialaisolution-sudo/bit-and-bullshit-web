@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { GetStaticPaths } from "astro";
 import { KATEGORIEN } from "../../data/kategorien";
+import Brotkrumen from "../../components/Brotkrumen.astro";
 
 /**
  * Übersicht je Themen-Cluster. Bewusst eine eigene Seite und kein Anker auf
@@ -60,7 +61,15 @@ const jsonLd = {
   <SiteHeader />
 
   <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
-    <header class="relative max-w-3xl">
+    <Brotkrumen
+      pfad={[
+        { label: "Start", href: "/" },
+        { label: "Snippets", href: "/snippets" },
+        { label: kat.titel },
+      ]}
+    />
+
+    <header class="relative mt-8 max-w-3xl">
       <span class="wall-ghost" aria-hidden="true">{kat.titel.split(" ")[0].toUpperCase()}</span>
       <p class="display hero-layer text-xs tracking-[0.3em] text-orange">{kat.kicker}</p>
       <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">{kat.h1}</h1>

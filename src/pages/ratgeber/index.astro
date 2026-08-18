@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Brotkrumen from "../../components/Brotkrumen.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import RatgeberKarten from "../../components/RatgeberKarten.astro";
@@ -15,6 +16,9 @@ const ratgeber = await ladeRatgeber();
   <SiteHeader />
 
   <main class="relative mx-auto max-w-5xl overflow-hidden px-5 py-16 md:py-24">
+
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "Ratgeber" }]} />
+
     <header class="relative max-w-3xl">
       <span class="wall-ghost" aria-hidden="true">RATGEBER</span>
       <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// RATGEBER</p>
