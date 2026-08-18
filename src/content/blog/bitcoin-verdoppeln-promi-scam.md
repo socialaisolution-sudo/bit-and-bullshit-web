@@ -2,7 +2,7 @@
 title: 'Promi verdoppelt dein Bitcoin? Warum das immer Betrug ist'
 description: "Betrüger nutzen Promi-Namen wie Elon Musk, um mit „Bitcoin verdoppeln“-Versprechen abzuzocken. Wie die Masche läuft und die eine Regel, die dich immer schützt."
 keyword: "Bitcoin verdoppeln Betrug Promi"
-category: entlarven
+kategorie: betrug-maschen
 order: 42
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/risiken/"

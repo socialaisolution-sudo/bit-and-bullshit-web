@@ -2,7 +2,7 @@
 title: "Kann das Finanzamt meine Bitcoin sehen? Warum Krypto nicht anonym ist"
 description: "Ist Bitcoin wirklich privat? Warum das Finanzamt jede Transaktion sehen kann und sich Daten direkt von den Börsen holt — ehrlich erklärt."
 keyword: "Finanzamt Bitcoin sehen"
-category: entlarven
+kategorie: staat-steuern
 order: 32
 aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false

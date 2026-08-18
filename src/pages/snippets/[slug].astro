@@ -6,6 +6,7 @@ import SocialLinks from "../../components/SocialLinks.astro";
 import { getCollection, render } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import type { GetStaticPaths } from "astro";
+import { KATEGORIE_MAP } from "../../data/kategorien";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("blog");
@@ -17,12 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-
-const categoryLabels: Record<string, string> = {
-  entlarven: "Entlarven & Mechanik",
-  learning: "Bitcoin verstehen",
-  denkfehler: "Der große Bitcoin-Denkfehler",
-};
+const kat = KATEGORIE_MAP[post.data.kategorie];
 
 // OG image: use post-specific image (optimized to landscape-ish for social cards) or fall back
 /**
@@ -55,7 +51,7 @@ const jsonLd = {
   inLanguage: "de-DE",
   url: new URL(`/snippets/${post.id}`, site).toString(),
   mainEntityOfPage: new URL(`/snippets/${post.id}`, site).toString(),
-  articleSection: categoryLabels[post.data.category],
+  articleSection: kat.titel,
   keywords: post.data.keyword,
   image: ogImagePath
     ? new URL(ogImagePath, site).toString()
@@ -94,10 +90,14 @@ const jsonLd = {
     <article
       class="mt-8"
       data-pagefind-body
-      data-pagefind-meta={`category:${categoryLabels[post.data.category]}`}
+      data-pagefind-meta={`category:${kat.titel}`}
     >
+      {/* Der Kicker ist zugleich der Weg in die Rubrik. Ein Leser, der hier
+          landet, soll die Nachbarartikel mit einem Klick erreichen. */}
       <p class="display text-xs tracking-[0.3em] text-orange" data-pagefind-ignore>
-        // {categoryLabels[post.data.category]}
+        <a href={`/kategorie/${post.data.kategorie}/`} class="transition hover:text-paper">
+          // {kat.titel}
+        </a>
       </p>
       <h1 class="post-h1 display mt-4 text-3xl md:text-5xl">
         {post.data.title}

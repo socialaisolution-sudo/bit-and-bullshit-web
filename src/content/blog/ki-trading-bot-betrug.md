@@ -2,7 +2,7 @@
 title: "KI-Trading-Bots: Warum „100 % Rendite“ fast immer ein Betrug ist"
 description: "„KI-Trading-Bot macht 100 % Rendite“ — warum solche Versprechen fast immer Betrug sind und wie du die Masche erkennst. Ehrlich erklärt."
 keyword: "KI Trading Bot Betrug"
-category: entlarven
+kategorie: betrug-maschen
 order: 16
 draft: false
 image: "../../assets/mascots/ki-trading-bot-betrug.webp"

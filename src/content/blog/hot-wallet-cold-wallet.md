@@ -2,7 +2,7 @@
 title: "Hot Wallet vs. Cold Wallet: Wo liegen deine Bitcoin sicher?"
 description: "Hot Wallet oder Cold Wallet? Einfach erklärt, wo deine Bitcoin wirklich sicher liegen und warum „auf der Börse“ die schlechteste Antwort ist."
 keyword: "Cold Wallet Hot Wallet Unterschied"
-category: learning
+kategorie: grundwissen
 order: 24
 aeraLink: "https://bitcoinaera.de/praxis/hardware-wallets/"
 draft: false

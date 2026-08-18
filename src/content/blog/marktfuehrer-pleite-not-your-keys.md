@@ -2,7 +2,7 @@
 title: 'Vom Marktführer zur Pleite: Warum „not your keys“ die wichtigste Regel ist'
 description: "Ein Mining-Riese mit einst 18 % der weltweiten Bitcoin-Rechenleistung ist insolvent, 12.000 Kunden kommen nicht an ihr Geld. Die Lektion über Selbstverwahrung."
 keyword: "Mining Pool insolvent not your keys"
-category: entlarven
+kategorie: grundwissen
 order: 39
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/self-custody/"

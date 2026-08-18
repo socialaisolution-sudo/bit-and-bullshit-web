@@ -2,7 +2,7 @@
 title: "Warum macht der Staat neue Schulden, nur um alte Zinsen zu zahlen?"
 description: "Der Staat nimmt neue Schulden auf, nur um die Zinsen alter Schulden zu zahlen. Was hinter der Schuldenspirale steckt — ehrlich und ohne Bullshit erklärt."
 keyword: "Schuldenspirale Staat"
-category: entlarven
+kategorie: geld-inflation
 order: 1
 aeraLink: "https://bitcoinaera.de/geldsystem/schulden-kreditzyklen/"
 draft: false

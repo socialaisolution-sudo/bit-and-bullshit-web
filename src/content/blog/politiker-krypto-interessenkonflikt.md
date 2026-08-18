@@ -2,7 +2,7 @@
 title: "Politiker und Krypto: Wenn die Regelmacher selbst mitverdienen"
 description: "Warum besitzen die Leute, die Krypto regulieren, oft selbst Krypto? Über Interessenkonflikte an der Spitze — ehrlich und überparteilich einsortiert."
 keyword: "Politiker Krypto Gewinne"
-category: entlarven
+kategorie: staat-steuern
 order: 19
 draft: false
 image: "../../assets/mascots/politiker-krypto-interessenkonflikt.webp"

@@ -2,7 +2,7 @@
 title: "Will Deutschland Bitcoin verbieten? Die Krypto-Pläne der Parteien"
 description: "Von Steuer-Hammer bis Total-Verbot — warum gleich mehrere Parteien an Bitcoin ranwollen und was wirklich dahintersteckt. Ehrlich einsortiert."
 keyword: "Bitcoin Verbot Deutschland"
-category: entlarven
+kategorie: staat-steuern
 order: 12
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false

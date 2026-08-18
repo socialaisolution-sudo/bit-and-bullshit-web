@@ -2,7 +2,7 @@
 title: "Chatkontrolle einfach erklärt: Was wirklich beschlossen wurde"
 description: "Chatkontrolle — liest bald jemand deine WhatsApp mit? Was wirklich beschlossen wurde und wo die echte Gefahr lauert. Ehrlich einsortiert."
 keyword: "Chatkontrolle Verschlüsselung"
-category: entlarven
+kategorie: staat-steuern
 order: 10
 aeraLink: "https://bitcoinaera.de/macht/kapitalverkehr/"
 draft: false

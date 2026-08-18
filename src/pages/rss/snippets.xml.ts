@@ -1,12 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { feed } from "../../lib/feed";
-
-const KATEGORIE: Record<string, string> = {
-  entlarven: "Entlarvt",
-  learning: "Erklärt",
-  denkfehler: "Denkfehler",
-};
+import { KATEGORIE_MAP } from "../../data/kategorien";
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getCollection("blog", ({ data }) => data.draft !== true);
@@ -23,7 +18,7 @@ export const GET: APIRoute = async ({ site }) => {
         titel: p.data.title,
         beschreibung: p.data.description,
         pfad: `/snippets/${p.id}/`,
-        kategorie: KATEGORIE[p.data.category],
+        kategorie: KATEGORIE_MAP[p.data.kategorie].titel,
       })),
   });
 };

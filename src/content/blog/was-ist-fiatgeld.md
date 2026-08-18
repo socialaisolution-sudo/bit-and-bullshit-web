@@ -2,7 +2,7 @@
 title: "Was ist Fiatgeld? Warum unser Geld nur bedrucktes Papier ist"
 description: "Was ist Fiatgeld eigentlich? Warum unser Geld nur bedrucktes Papier ist und seinen Wert allein aus Vertrauen zieht — ehrlich erklärt."
 keyword: "Fiatgeld erklärt"
-category: entlarven
+kategorie: geld-inflation
 order: 3
 aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false

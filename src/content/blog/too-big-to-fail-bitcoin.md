@@ -2,7 +2,7 @@
 title: "„Too big to fail“ bei Bitcoin? Was hinter der Strategy-Todesspirale steckt"
 description: "Kann ein einzelnes Unternehmen den ganzen Bitcoin-Markt gefährden? Was „too big to fail“ mit der Strategy-Todesspirale zu tun hat — ehrlich erklärt."
 keyword: "Strategy Todesspirale Saylor"
-category: entlarven
+kategorie: markt-mythen
 order: 8
 aeraLink: "https://bitcoinaera.de/glossar/allzeithoch-drawdown/"
 draft: false

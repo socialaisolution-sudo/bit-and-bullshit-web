@@ -2,7 +2,7 @@
 title: "Immobilien oder Bitcoin? Warum „Betongold“ nicht automatisch sicher ist"
 description: "Ist „Betongold“ wirklich die sicherste Geldanlage? Warum ein Haus laufend Geld frisst und wie du beide Seiten nüchtern siehst. Ehrlich erklärt."
 keyword: "Betongold vs Bitcoin"
-category: entlarven
+kategorie: markt-mythen
 order: 14
 aeraLink: "https://bitcoinaera.de/makro/positionierung/"
 draft: false

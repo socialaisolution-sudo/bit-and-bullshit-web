@@ -2,7 +2,7 @@
 title: "Was ist eine Seed-Phrase? Die 12 Wörter, die alles entscheiden"
 description: "Was ist eine Seed-Phrase und warum ist sie so wichtig? Einfach erklärt, wie die 12 Wörter dein ganzes Bitcoin-Vermögen schützen."
 keyword: "Seed Phrase erklärt"
-category: learning
+kategorie: grundwissen
 order: 26
 aeraLink: "https://bitcoinaera.de/glossar/seed-phrase/"
 draft: false

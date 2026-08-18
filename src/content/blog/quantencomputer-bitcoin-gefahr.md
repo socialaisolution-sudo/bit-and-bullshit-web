@@ -2,7 +2,7 @@
 title: "Quantencomputer und Bitcoin: Wie real ist die Gefahr wirklich?"
 description: "Machen Quantencomputer Bitcoin bald kaputt? Warum die Panik-Schlagzeile verschweigt, dass längst an der Lösung gearbeitet wird — der Faktencheck."
 keyword: "Quantencomputer Bitcoin"
-category: entlarven
+kategorie: markt-mythen
 order: 9
 aeraLink: "https://bitcoinaera.de/technologie/sicherheit/"
 draft: false

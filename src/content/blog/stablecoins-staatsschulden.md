@@ -2,7 +2,7 @@
 title: "Sind Stablecoins die neuen US-Staatsschulden? Wie das System funktioniert"
 description: "Warum hinter fast jedem großen Stablecoin US-Staatsschulden stecken und wie aus der Krypto-Rebellion ein Schulden-Verkäufer wurde. Ehrlich erklärt."
 keyword: "Stablecoin US-Staatsanleihen"
-category: entlarven
+kategorie: geld-inflation
 order: 18
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
 draft: false

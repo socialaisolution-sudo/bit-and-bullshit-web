@@ -2,7 +2,7 @@
 title: 'Eine Zahl, zwei Märchen: Was die Schweizer Nationalbank mit Bitcoin zu tun hat (nämlich nichts)'
 description: "Beide Lager missbrauchen denselben Aktienbestand der Schweizer Nationalbank — für den Untergang und für den Bitcoin-Hype. Was das öffentliche 13F wirklich zeigt."
 keyword: "Schweizer Nationalbank Strategy MSTR 13F"
-category: entlarven
+kategorie: markt-mythen
 order: 48
 draft: false
 aeraLink: "https://bitcoinaera.de/makro/adoption/"

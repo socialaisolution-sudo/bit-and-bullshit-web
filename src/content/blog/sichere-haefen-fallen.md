@@ -2,7 +2,7 @@
 title: "Warum fallen Gold, Silber und Bitcoin gleichzeitig? Die „sicheren Häfen“"
 description: "Gold, Silber und Bitcoin fallen zusammen, während Aktien steigen. Was hinter dem Rätsel der „sicheren Häfen“ steckt — ehrlich erklärt."
 keyword: "sichere Häfen fallen"
-category: entlarven
+kategorie: markt-mythen
 order: 5
 aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 draft: false

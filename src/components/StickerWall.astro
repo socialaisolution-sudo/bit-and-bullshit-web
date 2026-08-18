@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { KATEGORIE_MAP } from "../data/kategorien";
 
 interface Props {
   limit?: number;
@@ -13,24 +14,28 @@ const rest = all
   .sort((a, b) => a.data.order - b.data.order);
 const posts = [...featured, ...rest].slice(0, limit);
 
-const categoryMeta: Record<string, { label: string; toneClass: string }> = {
-  entlarven: { label: "Entlarven", toneClass: "sticker-tone-entlarven" },
-  learning: { label: "Learning", toneClass: "sticker-tone-learning" },
-  denkfehler: { label: "Denkfehler", toneClass: "sticker-tone-denkfehler" },
+/* Farbton je Cluster. Die Namen kommen aus der zentralen Kategorienliste,
+   nur die Sticker-Tönung ist hier lokal — sie gibt es nur an dieser Wand. */
+const stickerTon: Record<string, string> = {
+  grundwissen: "sticker-tone-learning",
+  "geld-inflation": "sticker-tone-entlarven",
+  "staat-steuern": "sticker-tone-entlarven",
+  "betrug-maschen": "sticker-tone-denkfehler",
+  "markt-mythen": "sticker-tone-denkfehler",
 };
 ---
 
 <div class="sticker-wall">
   {
     posts.map((post) => {
-      const meta = categoryMeta[post.data.category];
+      const kat = KATEGORIE_MAP[post.data.kategorie];
       return (
-        <a href={`/snippets/${post.id}`} class:list={["sticker", meta.toneClass]}>
+        <a href={`/snippets/${post.id}`} class:list={["sticker", stickerTon[post.data.kategorie]]}>
           <span class="sticker-kicker">
             <span class="sticker-num">
               #{String(post.data.order).padStart(2, "0")}
             </span>
-            <span class="sticker-cat">{meta.label}</span>
+            <span class="sticker-cat">{kat.titel}</span>
           </span>
           <span class="sticker-title">{post.data.title}</span>
         </a>

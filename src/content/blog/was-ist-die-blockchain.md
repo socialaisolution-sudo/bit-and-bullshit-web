@@ -2,7 +2,7 @@
 title: "Was ist die Blockchain? Einfach erklärt für Einsteiger"
 description: "Was ist die Blockchain eigentlich? Einfach erklärt, ohne Technik-Kauderwelsch — das offene Kassenbuch hinter Bitcoin."
 keyword: "Blockchain einfach erklärt"
-category: learning
+kategorie: grundwissen
 order: 23
 aeraLink: "https://bitcoinaera.de/bitcoin/was-ist-bitcoin/"
 draft: false

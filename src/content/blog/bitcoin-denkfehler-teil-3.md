@@ -2,7 +2,7 @@
 title: "Der große Bitcoin-Denkfehler (Teil 3): Warum haben dann manche mehr?"
 description: "Wenn niemand Bitcoin verteilt, warum besitzen manche mehr? Die unbequem einfache Antwort — und was sie von unserem alten Geldsystem unterscheidet."
 keyword: "Bitcoin warum manche mehr"
-category: denkfehler
+kategorie: markt-mythen
 order: 37
 aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 draft: false

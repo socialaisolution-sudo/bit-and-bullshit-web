@@ -9,7 +9,18 @@ const blog = defineCollection({
       title: z.string(),
       description: z.string(),
       keyword: z.string(),
-      category: z.enum(["entlarven", "learning", "denkfehler"]),
+      /**
+       * Genau eine Hauptkategorie je Artikel. Die Werte stehen in
+       * src/data/kategorien.ts; wer hier einen hinzufügt, muss ihn dort
+       * ebenfalls anlegen, sonst hat die Kategorie keine Seite.
+       */
+      kategorie: z.enum([
+        "grundwissen",
+        "geld-inflation",
+        "staat-steuern",
+        "betrug-maschen",
+        "markt-mythen",
+      ]),
       order: z.number(),
       aeraLink: z.string().url().optional(),
       draft: z.boolean().default(true),

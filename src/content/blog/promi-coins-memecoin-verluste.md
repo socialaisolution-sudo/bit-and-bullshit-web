@@ -2,7 +2,7 @@
 title: "Promi-Coins: Warum fast alle Anleger bei Memecoins verlieren"
 description: "Warum verlieren fast alle bei Promi- und Memecoins, während oben abkassiert wird? Die immer gleiche Masche einfach erklärt. Ehrlich und ohne Bullshit."
 keyword: "Memecoin Verlust Promi"
-category: entlarven
+kategorie: betrug-maschen
 order: 20
 draft: false
 image: "../../assets/mascots/promi-coins-memecoin-verluste.webp"

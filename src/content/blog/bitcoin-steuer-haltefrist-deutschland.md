@@ -2,7 +2,7 @@
 title: "Bitcoin-Steuer in Deutschland: Fällt die einjährige Haltefrist?"
 description: "Wird die einjährige Haltefrist für Bitcoin in Deutschland abgeschafft? Was hinter der Steuerdebatte steckt und wen sie trifft — ehrlich erklärt."
 keyword: "Bitcoin Steuer Haltefrist"
-category: entlarven
+kategorie: staat-steuern
 order: 11
 aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false

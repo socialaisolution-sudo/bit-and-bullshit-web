@@ -2,7 +2,7 @@
 title: "Was ist die Hashrate? Die „Muskelkraft“ des Bitcoin-Netzwerks"
 description: "Was ist die Hashrate bei Bitcoin? Einfach erklärt, warum sie die Sicherheit des Netzwerks zeigt und was sie über den Kurs verrät."
 keyword: "Hashrate erklärt"
-category: learning
+kategorie: grundwissen
 order: 29
 aeraLink: "https://bitcoinaera.de/glossar/hashrate/"
 draft: false

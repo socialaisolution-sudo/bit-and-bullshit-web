@@ -2,7 +2,7 @@
 title: 'Bitcoin vs. Gold: Warum Bitcoin „digitales Gold“ genannt wird'
 description: "Warum nennt man Bitcoin „digitales Gold“? Was Bitcoin und Gold gemeinsam haben, wo Bitcoin sogar überlegen ist und wo Gold punktet. Einfach erklärt."
 keyword: "Bitcoin vs Gold digitales Gold"
-category: learning
+kategorie: grundwissen
 order: 41
 draft: false
 aeraLink: "https://bitcoinaera.de/makro/systemalternativen/"

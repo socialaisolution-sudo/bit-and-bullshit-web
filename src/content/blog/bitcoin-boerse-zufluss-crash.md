@@ -2,7 +2,7 @@
 title: "1,5 Milliarden Bitcoin Richtung Börse: Kommt der nächste Crash?"
 description: "Das Bitcoin-Guthaben auf einer großen Börse stieg um 1,5 Mrd. Dollar — Zeichen für den nächsten Ausverkauf? Warum die Panik-Schlagzeile nur die halbe Wahrheit ist."
 keyword: "Bitcoin Börse Zufluss Ausverkauf"
-category: entlarven
+kategorie: markt-mythen
 order: 35
 aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 draft: false

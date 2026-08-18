@@ -2,7 +2,7 @@
 title: "Ist Bitcoin wirklich „Geld für Kriminelle“? Der Mythos im Faktencheck"
 description: "Ist Bitcoin das Zahlungsmittel für Kriminelle? Warum das Gegenteil stimmt und wer den Mythos am Leben hält — der ehrliche Faktencheck."
 keyword: "ist Bitcoin für Kriminelle"
-category: entlarven
+kategorie: markt-mythen
 order: 4
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false

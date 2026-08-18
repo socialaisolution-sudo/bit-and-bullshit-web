@@ -2,7 +2,7 @@
 title: "Warum gibt es nur 21 Millionen Bitcoin?"
 description: "Warum kann es nie mehr als 21 Millionen Bitcoin geben? Einfach erklärt, wie diese feste Grenze funktioniert und was sie bedeutet."
 keyword: "21 Millionen Bitcoin"
-category: learning
+kategorie: grundwissen
 order: 22
 aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"
 draft: false

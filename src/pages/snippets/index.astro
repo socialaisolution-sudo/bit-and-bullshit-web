@@ -3,33 +3,15 @@ import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import { getCollection } from "astro:content";
+import { KATEGORIEN } from "../../data/kategorien";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => a.data.order - b.data.order);
 
-const groups = [
-  {
-    key: "entlarven" as const,
-    kicker: "// ENTLARVEN",
-    title: "Entlarven & Mechanik",
-    lede: "Wie das Geldsystem, der Staat und die Krypto-Bühne wirklich funktionieren — und wo der Bullshit anfängt.",
-    toneClass: "cat-entlarven",
-  },
-  {
-    key: "learning" as const,
-    kicker: "// LEARNING",
-    title: "Bitcoin verstehen",
-    lede: "Die Grundlagen. Kurz erklärt. Tieferer Kaninchenbau auf bitcoinaera.de.",
-    toneClass: "cat-learning",
-  },
-  {
-    key: "denkfehler" as const,
-    kicker: "// SERIE",
-    title: "Der große Bitcoin-Denkfehler",
-    lede: "Die Serie über die Fragen, die fast alle Bitcoin-Kritiker stellen — und die Antworten, die selten kommen.",
-    toneClass: "cat-denkfehler",
-  },
-];
+/* Die Rubriken kommen aus src/data/kategorien.ts, damit Übersicht,
+   Kategorie-Seite und Artikel-Kicker nie auseinanderlaufen. */
+const groups = KATEGORIEN;
+
 ---
 
 <Layout
@@ -54,7 +36,7 @@ const groups = [
     <div class="mt-14 space-y-16">
       {
         groups.map((group, gi) => {
-          const items = posts.filter((p) => p.data.category === group.key);
+          const items = posts.filter((p) => p.data.kategorie === group.key);
           if (items.length === 0) return null;
           return (
             <section>
@@ -64,7 +46,7 @@ const groups = [
                   <span class="stencil-num wall-head-num" aria-hidden="true">
                     {String(gi + 1).padStart(2, "0")}
                   </span>
-                  <h2 class="display wall-h">{group.title}</h2>
+                  <h2 class="display wall-h">{group.titel}</h2>
                 </header>
                 <div class="spray-rule mt-4 max-w-[14rem]" />
                 <p class="mt-5 max-w-2xl text-sm text-paper/70">{group.lede}</p>

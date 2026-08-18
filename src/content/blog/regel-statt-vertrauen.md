@@ -2,7 +2,7 @@
 title: "Regel statt Vertrauen: Warum Bitcoin ohne Vertrauen funktioniert"
 description: "Warum unser Geld auf Vertrauen basiert und Bitcoin auf einer festen Regel. Der Unterschied, den kaum jemand erklärt — ehrlich und einfach."
 keyword: "Bitcoin Vertrauen Geldsystem"
-category: entlarven
+kategorie: geld-inflation
 order: 6
 aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 draft: false

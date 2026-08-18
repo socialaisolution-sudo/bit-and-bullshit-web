@@ -2,7 +2,7 @@
 title: "Cantillon-Effekt einfach erklärt: Warum du trotz Sparen ärmer wirst"
 description: "Der Cantillon-Effekt erklärt, warum die einen beim Gelddrucken reicher werden und du die Rechnung zahlst. Einfach und ohne Bullshit."
 keyword: "Cantillon-Effekt"
-category: entlarven
+kategorie: geld-inflation
 order: 2
 aeraLink: "https://bitcoinaera.de/geldsystem/cantillon-effekt/"
 draft: false

@@ -2,7 +2,7 @@
 title: "Behörden machen Krypto-Börse dicht: Verbraucherschutz oder Kontrolle?"
 description: "Eine der ältesten Krypto-Börsen muss schließen, weil Kunden-Identitäten nicht geprüft wurden. Geht es um Schutz — oder um lückenlose Kontrolle? Ehrlich eingeordnet."
 keyword: "Krypto Börse geschlossen KYC Kontrolle"
-category: entlarven
+kategorie: staat-steuern
 order: 36
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"

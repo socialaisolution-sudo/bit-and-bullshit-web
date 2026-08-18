@@ -2,7 +2,7 @@
 title: "Was ist ein Satoshi? Warum du nie einen ganzen Bitcoin brauchst"
 description: "Was ist ein Satoshi? Einfach erklärt, warum du nie einen ganzen Bitcoin kaufen musst und schon mit wenig Geld dabei bist."
 keyword: "Satoshi Einheit Bitcoin"
-category: learning
+kategorie: grundwissen
 order: 28
 aeraLink: "https://bitcoinaera.de/glossar/satoshi/"
 draft: false

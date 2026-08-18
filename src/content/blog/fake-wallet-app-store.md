@@ -2,7 +2,7 @@
 title: 'Fake-Wallet aus dem App Store: Warum „offiziell" nicht sicher heißt'
 description: 'Drei Nutzer verloren 1,8 Mio. Dollar über eine gefälschte Wallet-App aus dem offiziellen App Store. Warum „offiziell = sicher" ein gefährlicher Trugschluss ist.'
 keyword: "gefälschte Wallet App Store Bitcoin"
-category: entlarven
+kategorie: betrug-maschen
 order: 34
 aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 draft: false

@@ -2,7 +2,7 @@
 title: "875 Dollar zu 797.000: Glück oder Insiderwissen?"
 description: "Ein anonymer Trader machte aus 875 Dollar fast 797.000 mit einem einzigen Coin. Warum solche Trades keine Erfolgsstory sind, sondern eine Warnung."
 keyword: "Krypto Trader Insiderwissen Gewinn"
-category: entlarven
+kategorie: markt-mythen
 order: 38
 aeraLink: "https://bitcoinaera.de/glossar/volatilitaet/"
 draft: false

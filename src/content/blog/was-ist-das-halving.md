@@ -2,7 +2,7 @@
 title: "Was ist das Bitcoin-Halving? Einfach erklärt"
 description: "Was ist das Bitcoin-Halving und warum ist es so wichtig? Einfach erklärt, warum sich alle vier Jahre der Nachschub halbiert."
 keyword: "Bitcoin Halving erklärt"
-category: learning
+kategorie: grundwissen
 order: 21
 aeraLink: "https://bitcoinaera.de/bitcoin/halving/"
 draft: false

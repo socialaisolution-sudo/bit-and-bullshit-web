@@ -2,7 +2,7 @@
 title: "Wem nützt deine Panik? Wer im Crash kauft, wenn alle verkaufen"
 description: "Warum liest du bei jedem Crash „Panik“, aber nie, wer dir das Zeug abkauft? Wer im Ausverkauf einsammelt und wem deine Angst nützt. Ehrlich erklärt."
 keyword: "Crash verkaufen wer kauft"
-category: entlarven
+kategorie: markt-mythen
 order: 15
 aeraLink: "https://bitcoinaera.de/glossar/angebot-und-nachfrage/"
 draft: false

@@ -2,7 +2,7 @@
 title: "Kann man Bitcoin-Wale beobachten? Warum jede Bewegung öffentlich ist"
 description: "Bei Bitcoin ist jede Bewegung öffentlich sichtbar — sogar die der Millionäre. Warum das eine Superkraft ist und was Panik-Schlagzeilen verschweigen."
 keyword: "Bitcoin Wal Transaktion sichtbar"
-category: entlarven
+kategorie: markt-mythen
 order: 7
 aeraLink: "https://bitcoinaera.de/glossar/markt/"
 draft: false

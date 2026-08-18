@@ -2,7 +2,7 @@
 title: "Was bedeutet HODL? Herkunft und Bedeutung einfach erklärt"
 description: "Was heißt HODL und woher kommt der Begriff? Die lustige Herkunft und was das Prinzip fürs Bitcoin-Halten bedeutet — einfach erklärt."
 keyword: "HODL Bedeutung"
-category: learning
+kategorie: grundwissen
 order: 27
 aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 draft: false

@@ -2,7 +2,7 @@
 title: 'Die „Entlastung“, die keine ist: kalte Progression einfach gerechnet'
 description: "Die gefeierte Steuerentlastung ist rechnerisch eine verdeckte Steuererhöhung: Der Staat kassiert Milliarden zu viel und gibt nur einen Bruchteil zurück. Die Rechnung."
 keyword: "kalte Progression versteckte Steuererhöhung"
-category: entlarven
+kategorie: geld-inflation
 order: 47
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/inflation-kaufkraft/"

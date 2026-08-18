@@ -2,7 +2,7 @@
 title: '„Haltet den Dieb“: Wenn der Finanzminister Steuerbetrüger jagt'
 description: "Klingbeils Aktionsplan gegen Steuerkriminalität klingt gut — aber wer lenkt hier von wem ab? Ein nüchterner Blick auf Rhetorik und Realität der Finanzpolitik."
 keyword: "Klingbeil Steuer Aktionsplan Kritik"
-category: entlarven
+kategorie: staat-steuern
 order: 44
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"

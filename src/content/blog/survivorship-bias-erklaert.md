@@ -2,7 +2,7 @@
 title: "Survivorship Bias: Warum du nur von den Gewinnern hörst"
 description: "Warum du immer nur die eine Erfolgsstory hörst und nie die Millionen Verlierer dahinter. Der Survivorship Bias einfach erklärt."
 keyword: "Survivorship Bias einfach"
-category: entlarven
+kategorie: markt-mythen
 order: 17
 draft: false
 image: "../../assets/mascots/survivorship-bias-erklaert.webp"

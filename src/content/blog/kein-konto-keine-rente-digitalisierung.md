@@ -2,7 +2,7 @@
 title: 'Kein Konto, keine Rente: Wenn „Digitalisierung“ die Ältesten überrollt'
 description: "Die Deutsche Rentenversicherung schafft die Scheck-Auszahlung ab — Rentner ohne Bankkonto werden zur Digitalisierung gezwungen. Warum das ein Muster ist."
 keyword: "Rente ohne Bankkonto Scheck abgeschafft"
-category: entlarven
+kategorie: staat-steuern
 order: 46
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/cbdc/"

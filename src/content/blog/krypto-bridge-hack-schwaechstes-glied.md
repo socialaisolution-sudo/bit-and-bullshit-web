@@ -2,7 +2,7 @@
 title: 'Krypto-Bridge gehackt: Warum nie die Blockchain selbst das Problem ist'
 description: "Wieder ein Krypto-Hack, 200.000 Dollar weg — aber nicht die Blockchain wurde geknackt, sondern eine „Bridge“. Warum Angreifer immer das schwächste Glied treffen."
 keyword: "Krypto Bridge Hack Blockchain sicher"
-category: entlarven
+kategorie: betrug-maschen
 order: 43
 draft: false
 aeraLink: "https://bitcoinaera.de/technologie/sicherheit/"

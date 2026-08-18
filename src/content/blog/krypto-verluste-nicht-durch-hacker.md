@@ -2,7 +2,7 @@
 title: "Warum die meisten Krypto-Verluste nicht durch Hacker passieren"
 description: "Fast 764 Mio. Dollar in einem Quartal gestohlen — aber 88 % über gestohlene Schlüssel, nicht durch Hacker. Warum du selbst die größte Schwachstelle bist."
 keyword: "Krypto Verluste gestohlene Schlüssel"
-category: entlarven
+kategorie: betrug-maschen
 order: 33
 aeraLink: "https://bitcoinaera.de/praxis/self-custody/"
 draft: false

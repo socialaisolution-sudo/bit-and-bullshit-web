@@ -2,7 +2,7 @@
 title: "Was ist Bitcoin-Mining? So entstehen neue Bitcoin"
 description: "Was ist Bitcoin-Mining eigentlich? Einfach erklärt, wie neue Bitcoin entstehen und warum „schürfen“ nichts mit Graben zu tun hat."
 keyword: "Bitcoin Mining erklärt"
-category: learning
+kategorie: grundwissen
 order: 25
 aeraLink: "https://bitcoinaera.de/technologie/mining/"
 draft: false

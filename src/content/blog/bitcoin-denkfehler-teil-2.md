@@ -2,7 +2,7 @@
 title: "Der große Bitcoin-Denkfehler (Teil 2): Von oben oder von unten?"
 description: "Wie entsteht Geld eigentlich? Warum es „von oben“ zu dir tröpfelt und Bitcoin es umdreht. Teil 2 der Serie, einfach erklärt."
 keyword: "wie entsteht Geld"
-category: denkfehler
+kategorie: markt-mythen
 order: 31
 aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false

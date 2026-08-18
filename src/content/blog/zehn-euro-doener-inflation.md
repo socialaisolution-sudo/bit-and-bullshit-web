@@ -2,7 +2,7 @@
 title: '10 Euro für ’nen Döner? Warum nicht der Döner teurer wurde'
 description: "Der Döner kostet plötzlich zehn Euro — und fast alle ziehen daraus den falschen Schluss. Nicht die Ware ist gestiegen, dein Geld ist gefallen. Einfach erklärt."
 keyword: "Döner Preis Inflation Kaufkraft"
-category: entlarven
+kategorie: geld-inflation
 order: 45
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/inflation-kaufkraft/"

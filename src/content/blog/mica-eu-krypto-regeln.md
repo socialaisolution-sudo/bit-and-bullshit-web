@@ -2,7 +2,7 @@
 title: "MiCA einfach erklärt: Was die EU-Regeln für deine Krypto bedeuten"
 description: "MiCA, die neuen EU-Krypto-Regeln — echter Verbraucherschutz oder weniger Auswahl und mehr Kontrolle? Ehrlich und einfach erklärt."
 keyword: "MiCA Verordnung erklärt"
-category: entlarven
+kategorie: staat-steuern
 order: 13
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 draft: false

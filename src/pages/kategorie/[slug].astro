@@ -1,0 +1,114 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import type { GetStaticPaths } from "astro";
+import { KATEGORIEN } from "../../data/kategorien";
+
+/**
+ * Übersicht je Themen-Cluster. Bewusst eine eigene Seite und kein Anker auf
+ * /snippets: Google braucht eine Adresse je Oberthema, und der Leser einen
+ * Einstieg, der nicht die ganze Liste durchscrollt.
+ *
+ * Sortierung ist neueste zuerst — anders als auf /snippets, wo die
+ * Lesereihenfolge zählt.
+ */
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("blog");
+  return KATEGORIEN.map((kat) => ({
+    params: { slug: kat.key },
+    props: {
+      kat,
+      posts: posts
+        .filter((p) => p.data.kategorie === kat.key)
+        .sort((a, b) => b.data.order - a.data.order),
+    },
+  }));
+};
+
+const { kat, posts } = Astro.props;
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: kat.h1,
+  description: kat.description,
+  inLanguage: "de-DE",
+  url: new URL(`/kategorie/${kat.key}/`, site).toString(),
+  isPartOf: { "@type": "WebSite", name: "Bit & Bullshit", url: site.toString() },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: posts.length,
+    itemListElement: posts.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: new URL(`/snippets/${p.id}`, site).toString(),
+      name: p.data.title,
+    })),
+  },
+};
+---
+
+<Layout
+  title={`${kat.titel} — Bit & Bullshit`}
+  description={kat.description}
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
+    <header class="relative max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">{kat.titel.split(" ")[0].toUpperCase()}</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">{kat.kicker}</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">{kat.h1}</h1>
+      <p class="hero-layer mt-8 text-lg leading-relaxed text-paper/80">{kat.intro}</p>
+      <p class="hero-layer mt-5 text-sm text-paper/55">
+        {posts.length}
+        {posts.length === 1 ? " Artikel" : " Artikel"} in dieser Rubrik.
+        <a href="/snippets" class="ml-1 underline decoration-orange/60 underline-offset-2 hover:text-orange">
+          Alle Rubriken
+        </a>
+      </p>
+    </header>
+
+    <ul class="post-grid mt-14 grid gap-5 md:grid-cols-2 md:gap-6">
+      {
+        posts.map((post) => (
+          <li>
+            <a
+              href={`/snippets/${post.id}`}
+              class:list={[
+                "post-card group block h-full rounded-md border border-white/10 bg-ink/60 transition",
+                kat.toneClass,
+              ]}
+            >
+              {post.data.image && (
+                <Image
+                  src={post.data.image}
+                  alt=""
+                  widths={[320, 480, 720]}
+                  sizes="(min-width: 768px) 22rem, 92vw"
+                  class="block h-40 w-full rounded-t-md object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div class="p-6">
+                <h2 class="display text-lg leading-snug transition group-hover:text-orange">
+                  {post.data.title}
+                </h2>
+                <p class="mt-3 text-sm leading-relaxed text-paper/70">
+                  {post.data.description}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+
+  <SiteFooter />
+</Layout>

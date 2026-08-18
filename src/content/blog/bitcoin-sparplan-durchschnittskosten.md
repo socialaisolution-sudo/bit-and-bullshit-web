@@ -2,7 +2,7 @@
 title: 'Bitcoin zu teuer? Warum der Sparplan die entspannteste Antwort ist'
 description: "Du musst keinen ganzen Bitcoin kaufen — und auch nicht den perfekten Moment treffen. Wie der Durchschnittskosten-Effekt den Druck aus dem Einstieg nimmt."
 keyword: "Bitcoin Sparplan Durchschnittskosteneffekt"
-category: learning
+kategorie: grundwissen
 order: 40
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/bitcoin-kaufen/"
