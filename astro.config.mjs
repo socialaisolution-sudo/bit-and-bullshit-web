@@ -48,37 +48,83 @@ function legacyRedirects() {
 
 
 /**
- * Letztes Änderungsdatum je Datei aus der Git-Historie.
+ * Letztes Änderungsdatum je Datei — für `lastmod` in der Sitemap.
  *
- * Ohne das trägt jede Adresse in der Sitemap die Build-Zeit — und damit
- * behauptet jeder Deploy, alle 65 Seiten seien frisch. Google lernt daraus,
- * dass das Datum nichts wert ist, und ignoriert es. Ein Artikel, der seit
- * Juli unverändert ist, soll auch Juli melden.
+ * Ohne das trägt jede Adresse die Build-Zeit, und damit behauptet jeder
+ * Deploy, alle 66 Seiten seien frisch. Google lernt daraus, dass das Datum
+ * nichts wert ist, und ignoriert es.
  *
- * Ein einziger git-Aufruf statt einer Abfrage je Datei; das erste Vorkommen
- * eines Pfades ist automatisch der jüngste Commit.
+ * Der Haken: Cloudflare Pages klont flach (nur der letzte Commit). Dort
+ * kennt Git jede Datei nur aus diesem einen Commit und meldet für alles
+ * dasselbe Datum — also genau der Fehler, den wir vermeiden wollen.
+ *
+ * Deshalb zwei Wege: Läuft der Build auf einem vollständigen Klon (also
+ * lokal), wird der Stand aus der Historie gelesen UND in
+ * src/data/aenderungen.json geschrieben. Die Datei wandert mit ins Repo.
+ * Auf dem flachen Klon wird sie einfach gelesen. Damit stimmen die Daten
+ * in der Produktion, ohne dass jemand daran denken muss.
  */
-function letzteAenderungen() {
-  const stand = new Map();
+const STAND_DATEI = new URL("./src/data/aenderungen.json", import.meta.url);
+
+function ausGitHistorie() {
+  const flach =
+    execSync("git rev-parse --is-shallow-repository", { encoding: "utf-8" }).trim() ===
+    "true";
+  if (flach) return null;
+
+  const stand = {};
+  const roh = execSync("git log --name-only --date=iso-strict --format=%cI", {
+    encoding: "utf-8",
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  let datum = null;
+  for (const zeile of roh.split("\n")) {
+    const z = zeile.trim();
+    if (!z) continue;
+    if (/^\d{4}-\d{2}-\d{2}T/.test(z)) datum = z;
+    else if (datum && !(zeile in stand)) stand[zeile] = datum;
+  }
+  /* Noch nicht eingecheckte Änderungen zählen als "jetzt". Ohne das würde
+     eine gerade bearbeitete Datei ihr vorheriges Datum melden — der Build
+     läuft ja vor dem Commit, nicht danach. */
   try {
-    const roh = execSync("git log --name-only --date=iso-strict --format=%cI", {
-      encoding: "utf-8",
-      maxBuffer: 32 * 1024 * 1024,
-    });
-    let datum = null;
-    for (const zeile of roh.split("\n")) {
-      if (!zeile.trim()) continue;
-      if (/^\d{4}-\d{2}-\d{2}T/.test(zeile)) datum = zeile.trim();
-      else if (datum && !stand.has(zeile)) stand.set(zeile, datum);
+    const offen = execSync("git status --porcelain", { encoding: "utf-8" });
+    const jetzt = new Date().toISOString();
+    for (const zeile of offen.split("\n")) {
+      const datei = zeile.slice(3).trim().split(" -> ").pop();
+      if (datei && !zeile.startsWith("D ") && !zeile.startsWith(" D")) {
+        stand[datei] = jetzt;
+      }
     }
   } catch {
-    /* Kein Git-Repo (etwa im Cloudflare-Cache ohne Historie): dann bleibt
-       es beim Standardverhalten, das ist besser als ein Abbruch. */
+    /* ohne Statusabfrage bleibt es beim Historienstand */
   }
+
   return stand;
 }
 
-const GIT_STAND = letzteAenderungen();
+function ladeStand(logger) {
+  let ausGit = null;
+  try {
+    ausGit = ausGitHistorie();
+  } catch {
+    /* kein Git verfügbar — dann bleibt nur die mitgelieferte Datei */
+  }
+
+  if (ausGit && Object.keys(ausGit).length > 0) {
+    fs.writeFileSync(STAND_DATEI, JSON.stringify(ausGit, null, 0) + "\n");
+    return ausGit;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(STAND_DATEI, "utf-8"));
+  } catch {
+    logger?.warn?.("Kein Aenderungsstand verfuegbar — Sitemap ohne lastmod.");
+    return {};
+  }
+}
+
+const GIT_STAND = ladeStand();
 
 /** Ordnet einer fertigen Adresse die Quelldatei zu, aus der sie entsteht. */
 function quelleZuUrl(pfad) {
@@ -105,7 +151,7 @@ export default defineConfig({
       serialize(eintrag) {
         const pfad = new URL(eintrag.url).pathname;
         const quelle = quelleZuUrl(pfad);
-        const datum = quelle && GIT_STAND.get(quelle);
+        const datum = quelle && GIT_STAND[quelle];
         if (datum) eintrag.lastmod = datum;
         else delete eintrag.lastmod;
         return eintrag;
