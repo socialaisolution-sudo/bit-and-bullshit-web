@@ -1,0 +1,242 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { Image } from "astro:assets";
+import { COMICS, comicsNachSerie } from "../../data/comics";
+
+/**
+ * Galerie aller Comics.
+ *
+ * Die Seite läuft bewusst dunkler als der Rest — derselbe Grund wie bei den
+ * Comic-Seiten selbst: Die Panels sollen leuchten, nicht das Layout. Deshalb
+ * auch großformatige Cover statt Textkacheln.
+ */
+const serien = comicsNachSerie();
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Comics",
+  headline: "Geld als Comic",
+  description:
+    "Alle Web-Comics von Bit & Bullshit zum Durchscrollen — der große Bitcoin-Denkfehler in Bildern.",
+  inLanguage: "de-DE",
+  url: new URL("/comic/", site).toString(),
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: COMICS.length,
+    itemListElement: COMICS.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: new URL(`/comic/${c.slug}/`, site).toString(),
+      name: c.titel,
+    })),
+  },
+};
+---
+
+<Layout
+  title="Comics — Bit & Bullshit"
+  description="Geld als Comic: Der große Bitcoin-Denkfehler zum Durchscrollen. Panels statt Absätze, für alle, die lieber schauen als lesen."
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="comic-galerie">
+    <header class="galerie-kopf">
+      <p class="display text-xs tracking-[0.3em] text-orange">// COMIC</p>
+      <h1 class="display galerie-titel">Geld als Comic</h1>
+      <p class="galerie-lede">
+        Dieselben Gedanken wie in den Texten, nur in Bildern. Panels zum
+        Durchscrollen, ohne Vorwissen, ohne Fachchinesisch. Für alle, die
+        lieber schauen als lesen — und für die, die es danach trotzdem
+        nachlesen wollen.
+      </p>
+    </header>
+
+    {
+      serien.map((s) => (
+        <section class="galerie-serie">
+          <div class="galerie-serie-kopf">
+            <p class="display text-xs tracking-[0.3em] text-orange">// SERIE</p>
+            <h2 class="display galerie-serie-titel">{s.serie}</h2>
+            <p class="galerie-serie-zahl">
+              {s.kapitel.length} {s.kapitel.length === 1 ? "Kapitel" : "Kapitel"} bisher
+            </p>
+          </div>
+
+          <ul class="galerie-grid">
+            {s.kapitel.map((c) => (
+              <li>
+                <a href={`/comic/${c.slug}/`} class="galerie-kachel">
+                  <Image
+                    src={c.cover}
+                    alt={c.coverAlt}
+                    widths={[480, 720, 1024]}
+                    sizes="(min-width: 900px) 30rem, 92vw"
+                    class="galerie-cover"
+                    loading="lazy"
+                  />
+                  <div class="galerie-kachel-text">
+                    <span class="display galerie-teil">Teil {c.teil}</span>
+                    <span class="display galerie-kachel-titel">{c.titel}</span>
+                    <span class="galerie-anriss">{c.anriss}</span>
+                    <span class="display galerie-link">Comic ansehen &rarr;</span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+
+    <p class="galerie-fuss">
+      Weitere Kapitel sind in Arbeit. Wer nichts verpassen will:
+      <a href="https://www.tiktok.com/@bitandbullshit" rel="noopener">TikTok</a>
+      und
+      <a href="https://www.instagram.com/bitandbullshit" rel="noopener">Instagram</a>.
+    </p>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  /* Derselbe schwarze Grund wie in den Comics selbst — die Galerie ist der
+     Vorraum, nicht eine Seite in anderem Ton. */
+  .comic-galerie {
+    background: #111111;
+    padding-bottom: 5rem;
+  }
+
+  .galerie-kopf {
+    max-width: 62rem;
+    margin-inline: auto;
+    padding: 3.5rem 1.25rem 0;
+  }
+  @media (min-width: 768px) {
+    .galerie-kopf {
+      padding: 5rem 1.5rem 0;
+    }
+  }
+  .galerie-titel {
+    margin-top: 1.1rem;
+    font-size: clamp(2.6rem, 10vw, 5rem);
+    line-height: 0.94;
+    color: var(--color-paper);
+    text-shadow:
+      3px 4px 0 rgba(0, 0, 0, 0.9),
+      4px 5px 0 rgb(from var(--color-orange-deep) r g b / 0.45);
+  }
+  .galerie-lede {
+    margin-top: 1.75rem;
+    max-width: 40rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgb(from var(--color-paper) r g b / 0.75);
+  }
+
+  .galerie-serie {
+    max-width: 62rem;
+    margin-inline: auto;
+    padding: 3.5rem 1.25rem 0;
+  }
+  @media (min-width: 768px) {
+    .galerie-serie {
+      padding: 4.5rem 1.5rem 0;
+    }
+  }
+  .galerie-serie-titel {
+    margin-top: 0.75rem;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    color: var(--color-paper);
+  }
+  .galerie-serie-zahl {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: rgb(from var(--color-paper) r g b / 0.5);
+  }
+
+  .galerie-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.75rem;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 860px) {
+    .galerie-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .galerie-kachel {
+    display: block;
+    height: 100%;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.95);
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .galerie-kachel:hover {
+    transform: translateY(-3px);
+    border-color: rgb(from var(--color-orange) r g b / 0.5);
+  }
+  .galerie-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .galerie-kachel-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.4rem 1.5rem 1.6rem;
+  }
+  .galerie-teil {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-orange);
+  }
+  .galerie-kachel-titel {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: var(--color-paper);
+  }
+  .galerie-anriss {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgb(from var(--color-paper) r g b / 0.7);
+  }
+  .galerie-link {
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--color-orange);
+  }
+
+  .galerie-fuss {
+    max-width: 62rem;
+    margin: 3.5rem auto 0;
+    padding-inline: 1.25rem;
+    font-size: 0.9rem;
+    color: rgb(from var(--color-paper) r g b / 0.55);
+  }
+  .galerie-fuss a {
+    color: rgb(from var(--color-paper) r g b / 0.85);
+    text-decoration: underline;
+    text-decoration-color: rgb(from var(--color-orange) r g b / 0.6);
+    text-underline-offset: 0.15em;
+  }
+  .galerie-fuss a:hover {
+    color: var(--color-orange);
+  }
+</style>

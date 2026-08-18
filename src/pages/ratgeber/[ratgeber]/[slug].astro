@@ -6,6 +6,7 @@ import RatgeberFortschritt from "../../../components/RatgeberFortschritt.astro";
 import { ladeRatgeber } from "../../../lib/ratgeber";
 import { render } from "astro:content";
 import { Image, getImage } from "astro:assets";
+import { COMICS } from "../../../data/comics";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -23,6 +24,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { r, teil } = Astro.props;
 const cs = teil.cornerstone!;
 const { Content } = await render(cs);
+
+/* Gibt es zu diesem Text einen Comic, kommen Titel und Cover aus dem
+   Register — der Verweis soll nicht behaupten, es seien fünf Panels,
+   wenn das Kapitel vier hat. */
+const comic = COMICS.find((c) => `/comic/${c.slug}/` === cs.data.comic);
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
 const url = new URL(`/ratgeber/${r.id}/${teil.slug}/`, site).toString();
@@ -98,13 +104,24 @@ const jsonLd = {
       }
 
       {
-        cs.data.comic && (
-          <a href={cs.data.comic} class="cs-comic" data-pagefind-ignore>
-            <span class="display cs-comic-kicker">// Auch als Comic</span>
-            <span class="cs-comic-text">
-              Dieselbe Geschichte in fünf Panels zum Durchscrollen.
+        comic && (
+          <a href={`/comic/${comic.slug}/`} class="cs-comic" data-pagefind-ignore>
+            <Image
+              src={comic.cover}
+              alt=""
+              widths={[240, 360]}
+              sizes="7rem"
+              class="cs-comic-cover"
+              loading="lazy"
+            />
+            <span class="cs-comic-body">
+              <span class="display cs-comic-kicker">// Auch als Comic</span>
+              <span class="cs-comic-text">
+                Dieses Thema gibt&apos;s auch als Comic: „{comic.titel}“ — zum
+                Durchscrollen, ohne einen einzigen Absatz.
+              </span>
+              <span class="display cs-comic-link">Comic ansehen &rarr;</span>
             </span>
-            <span class="display cs-comic-link">Comic ansehen &rarr;</span>
           </a>
         )
       }
@@ -223,8 +240,8 @@ const jsonLd = {
 
   .cs-comic {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 1.1rem;
     margin-top: 2.25rem;
     padding: 1.25rem 1.35rem;
     border: 1px solid rgb(from var(--color-orange) r g b / 0.35);
@@ -235,6 +252,19 @@ const jsonLd = {
   }
   .cs-comic:hover {
     border-color: var(--color-orange);
+  }
+  .cs-comic-cover {
+    flex: none;
+    width: 7rem;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .cs-comic-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
   .cs-comic-kicker {
     font-size: 0.7rem;

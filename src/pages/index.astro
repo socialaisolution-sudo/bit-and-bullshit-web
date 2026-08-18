@@ -7,14 +7,18 @@ import StickerWall from "../components/StickerWall.astro";
 import RatgeberKarten from "../components/RatgeberKarten.astro";
 import RatgeberFortschritt from "../components/RatgeberFortschritt.astro";
 import { aktuellerCornerstone } from "../lib/ratgeber";
+import { COMICS, COMIC_NEUESTE } from "../data/comics";
 import mascot from "../assets/mascot-hero.png";
-import comicPanel from "../assets/comic/zu-spaet-gibt-es-nicht/03-kreiszug.webp";
 import { Image } from "astro:assets";
 
 /* Der zuletzt veröffentlichte Cornerstone ist der Aufmacher. Fehlt er
    (frische Installation, alles auf draft), entfällt der Abschnitt still —
    ein leerer Kasten mit „demnächst" ist schlechter als keiner. */
 const aufmacher = await aktuellerCornerstone();
+
+/* Aufmacher des Comic-Blocks ist immer das jüngste Kapitel. */
+const neuesterComic = COMIC_NEUESTE;
+const comicAnzahl = COMICS.length;
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
 const jsonLd = {
@@ -140,6 +144,40 @@ const jsonLd = {
       )
     }
 
+    {/* Der Comic steht direkt hinter dem Aufmacher. Er ist das stärkste
+        Bild der Seite und der beste Grund zu bleiben — und er sticht
+        absichtlich aus dem übrigen Layout heraus: schwarzer Grund, volle
+        Breite, kein Rahmen. Inhalt kommt aus src/data/comics.ts, damit ein
+        neues Kapitel hier nichts zu tun übrig lässt. */}
+    <section class="comic-buehne">
+      <div class="comic-buehne-inner">
+        <a href={`/comic/${neuesterComic.slug}/`} class="comic-buehne-bild">
+          <Image
+            src={neuesterComic.cover}
+            alt={neuesterComic.coverAlt}
+            widths={[480, 720, 1024, 1440]}
+            sizes="(min-width: 900px) 34rem, 92vw"
+            class="block h-auto w-full"
+            loading="lazy"
+          />
+        </a>
+        <div class="comic-buehne-text">
+          <p class="display text-xs tracking-[0.3em] text-orange">// COMIC</p>
+          <h2 class="display comic-buehne-h2">
+            Geld als <span class="text-orange">Comic</span>
+          </h2>
+          <p class="comic-buehne-serie">{neuesterComic.serie}</p>
+          <div class="spray-rule mt-5 max-w-[14rem]"></div>
+          <p class="comic-buehne-anriss">
+            {comicAnzahl}
+            {comicAnzahl === 1 ? " Kapitel" : " Kapitel"} zum Durchscrollen.
+            Zuletzt: „{neuesterComic.titel}" — {neuesterComic.anriss}
+          </p>
+          <a href="/comic" class="comic-buehne-cta display">Zur Comic-Serie &rarr;</a>
+        </div>
+      </div>
+    </section>
+
     <section class="relative border-t border-white/10">
       <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -197,41 +235,6 @@ const jsonLd = {
       </div>
     </section>
 
-    {/* Comic vor den Snippets. Es ist das stärkste Bild der Seite und der
-        beste Grund zu bleiben — es gehört nicht zwei Klicks tief unter einen
-        Ratgeber-Teil. Kein eigener Menüpunkt, solange es einen einzigen gibt:
-        Eine Leiste, die einen Bereich verspricht und auf eine Einzelseite
-        führt, wirkt unfertig. */}
-    <section class="relative border-t border-white/10">
-      <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
-        <div class="comic-teaser">
-          <a href="/comic/zu-spaet-gibt-es-nicht/" class="comic-teaser-bild">
-            <Image
-              src={comicPanel}
-              alt="Comic-Panel: Das Maskottchen sieht einem Zug zu, der auf einem Kreisgleis fährt statt abzufahren."
-              widths={[480, 720, 960]}
-              sizes="(min-width: 900px) 30rem, 92vw"
-              class="block h-auto w-full"
-              loading="lazy"
-            />
-          </a>
-          <div class="comic-teaser-text">
-            <p class="display text-xs tracking-[0.3em] text-orange">// COMIC</p>
-            <h2 class="display spray-head mt-4 text-3xl md:text-5xl">
-              Zu spät gibt es <span class="text-orange">nicht.</span>
-            </h2>
-            <div class="spray-rule mt-5 max-w-[14rem]"></div>
-            <p class="mt-5 text-base leading-relaxed text-paper/70">
-              Der große Bitcoin-Denkfehler, Teil 1 — als Comic zum
-              Durchscrollen. Fünf Panels, ein Zug, der im Kreis fährt.
-            </p>
-            <a href="/comic/zu-spaet-gibt-es-nicht/" class="comic-teaser-link">
-              Comic ansehen &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="relative border-t border-white/10">
       <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
@@ -316,47 +319,79 @@ const jsonLd = {
     text-decoration: underline;
   }
 
-  .comic-teaser {
+  /* --- Comic-Bühne ------------------------------------------------------
+     Der einzige Abschnitt der Startseite auf schwarzem Grund und über die
+     volle Breite. Das ist Absicht: Der Comic soll aus der Seite
+     herausfallen, nicht sich einfügen. */
+  .comic-buehne {
+    background: #111111;
+    border-block: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .comic-buehne-inner {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 3.5rem 1.25rem;
     display: grid;
-    gap: 2rem;
+    gap: 2.25rem;
     align-items: center;
   }
   @media (min-width: 900px) {
-    .comic-teaser {
-      grid-template-columns: 1.05fr 1fr;
+    .comic-buehne-inner {
+      grid-template-columns: 1.1fr 1fr;
       gap: 3.5rem;
+      padding: 5rem 1.5rem;
     }
   }
-  .comic-teaser-bild {
+  .comic-buehne-bild {
     display: block;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 60px -22px rgba(0, 0, 0, 0.95);
     transform: rotate(-1.2deg);
     transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
-  .comic-teaser-bild:hover,
-  .comic-teaser-bild:focus-visible {
+  .comic-buehne-bild:hover,
+  .comic-buehne-bild:focus-visible {
     transform: rotate(0deg);
     outline: none;
   }
-  .comic-teaser-link {
+  .comic-buehne-h2 {
+    margin-top: 1rem;
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
+    line-height: 0.98;
+    color: var(--color-paper);
+    text-shadow:
+      3px 4px 0 rgba(0, 0, 0, 0.9),
+      4px 5px 0 rgb(from var(--color-orange-deep) r g b / 0.45);
+  }
+  .comic-buehne-serie {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: rgb(from var(--color-paper) r g b / 0.6);
+  }
+  .comic-buehne-anriss {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgb(from var(--color-paper) r g b / 0.78);
+  }
+  .comic-buehne-cta {
     display: inline-block;
-    margin-top: 1.5rem;
-    font-family: var(--font-display);
-    font-weight: 900;
-    text-transform: uppercase;
+    margin-top: 1.75rem;
+    padding: 0.85rem 1.5rem;
     font-size: 0.75rem;
     letter-spacing: 0.14em;
-    color: var(--color-orange);
-    border-bottom: 2px solid rgb(from var(--color-orange) r g b / 0.5);
-    padding-bottom: 0.3rem;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    background: var(--color-orange);
+    transition: background 0.15s ease;
   }
-  .comic-teaser-link:hover {
-    border-bottom-color: var(--color-orange);
+  .comic-buehne-cta:hover {
+    background: var(--color-orange-deep);
   }
   @media (prefers-reduced-motion: reduce) {
-    .comic-teaser-bild,
-    .comic-teaser-bild:hover {
+    .comic-buehne-bild,
+    .comic-buehne-bild:hover {
       transform: none;
       transition: none;
     }
