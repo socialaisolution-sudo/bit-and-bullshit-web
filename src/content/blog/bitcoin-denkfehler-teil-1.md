@@ -2,6 +2,7 @@
 title: "Der große Bitcoin-Denkfehler (Teil 1): Warum wurde Bitcoin nicht an alle verteilt?"
 description: "„Bitcoin hätte man gerecht an alle verteilen müssen“ — warum genau das der große Denkfehler ist. Teil 1 der Serie, einfach erklärt."
 keyword: "Bitcoin gerecht verteilt"
+langfassung: "/ratgeber/bitcoin-denkfehler/niemand-verteilt-bitcoin/"
 kategorie: markt-mythen
 order: 30
 aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"

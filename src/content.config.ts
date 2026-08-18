@@ -28,6 +28,20 @@ const blog = defineCollection({
       image: image().optional(),
       imageAlt: z.string().optional(),
       /**
+       * Zeigt auf den Cornerstone, wenn dieses Snippet die Kurzfassung
+       * desselben Themas ist.
+       *
+       * Regel der Denkfehler-Serie: Behandeln Snippet und Cornerstone
+       * dieselbe Frage, rankt der Cornerstone. Das Snippet bekommt dann ein
+       * canonical dorthin, fliegt aus der Sitemap und verlinkt prominent
+       * auf die Langfassung — es bleibt lesbar und Teil der Serie, tritt
+       * aber in der Suche nicht mehr gegen den eigenen Cornerstone an.
+       *
+       * Der Verweis wird erst wirksam, wenn es den Cornerstone gibt. So
+       * kann er gesetzt werden, bevor der Langtext geschrieben ist.
+       */
+      langfassung: z.string().optional(),
+      /**
        * Nur für Google und den Browser-Tab. Bleibt leer, solange Überschrift
        * und Suchtreffer dasselbe sagen dürfen — gesetzt wird es dort, wo die
        * Suchanfrage anders klingt als die Schlagzeile. Die H1 bleibt in

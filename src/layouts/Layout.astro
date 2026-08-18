@@ -7,6 +7,8 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   jsonLd?: unknown;
+  /** Überschreibt die Selbstreferenz, wenn eine andere Seite maßgeblich ist. */
+  canonicalUrl?: string;
 }
 
 const {
@@ -15,10 +17,13 @@ const {
   ogImage = "/og-default.png",
   ogType = "website",
   jsonLd,
+  canonicalUrl,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
-const canonical = new URL(Astro.url.pathname, site).toString();
+const canonical = canonicalUrl
+  ? new URL(canonicalUrl, site).toString()
+  : new URL(Astro.url.pathname, site).toString();
 const ogImageUrl = new URL(ogImage, site).toString();
 ---
 

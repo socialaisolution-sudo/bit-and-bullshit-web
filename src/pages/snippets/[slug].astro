@@ -22,6 +22,21 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const kat = KATEGORIE_MAP[post.data.kategorie];
 
+/* Kurzfassungs-Regel: Zeigt das Snippet auf einen Cornerstone und gibt es
+   den auch schon, gilt der Cornerstone als maßgeblich. Das Snippet bleibt
+   lesbar, tritt in der Suche aber nicht mehr gegen ihn an.
+   Der Verweis kann gesetzt werden, bevor der Langtext existiert — bis
+   dahin passiert nichts. */
+const cornerstones = await getCollection("cornerstones", ({ data }) => data.draft !== true);
+const langfassung = post.data.langfassung;
+const langfassungDa = Boolean(
+  langfassung &&
+    cornerstones.some((c) => `/ratgeber/${c.id}/` === langfassung),
+);
+const langfassungTitel = langfassungDa
+  ? cornerstones.find((c) => `/ratgeber/${c.id}/` === langfassung)!.data.title
+  : undefined;
+
 /* Suchtreffer und Überschrift dürfen auseinanderlaufen: Die H1 bleibt die
    Schlagzeile, der Titel im Tab darf auf die Suchanfrage zielen. Steht ein
    eigener metaTitel, läuft er ohne Marken-Anhängsel — er ist schon auf
@@ -50,9 +65,11 @@ if (post.data.image) {
   ogImagePath = optimized.src;
 }
 
-// JSON-LD Article schema for Google
+/* Ist der Cornerstone maßgeblich, entfällt hier die Article-Auszeichnung.
+   Zwei Article-Blöcke zum selben Thema wären ein widersprüchliches Signal
+   neben dem canonical. */
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
-const jsonLd = {
+const jsonLd = langfassungDa ? undefined : {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: post.data.title,
@@ -83,6 +100,7 @@ const jsonLd = {
 ---
 
 <Layout
+  canonicalUrl={langfassungDa ? langfassung : undefined}
   title={seitenTitel}
   description={post.data.metaBeschreibung ?? post.data.description}
   ogImage={ogImagePath}
@@ -119,6 +137,19 @@ const jsonLd = {
       <p class="mt-5 text-lg leading-relaxed text-paper/80">
         {post.data.description}
       </p>
+
+      {
+        langfassungDa && (
+          <a href={langfassung} class="langfassung-hinweis" data-pagefind-ignore>
+            <span class="display langfassung-kicker">// Ausführliche Fassung</span>
+            <span class="langfassung-text">
+              Das hier ist die Kurzfassung. Den ganzen Gedanken mit Beispielen
+              gibt es als „{langfassungTitel}“ im Ratgeber.
+            </span>
+            <span class="display langfassung-link">Zum ausführlichen Text &rarr;</span>
+          </a>
+        )
+      }
 
       {
         post.data.draft && (
@@ -213,4 +244,36 @@ const jsonLd = {
 
   <SiteFooter />
 </Layout>
+
+<style>
+  .langfassung-hinweis {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 2rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid rgb(from var(--color-orange) r g b / 0.35);
+    border-radius: 0.4rem;
+    background: rgb(from var(--color-orange) r g b / 0.05);
+    transition: border-color 200ms ease;
+  }
+  .langfassung-hinweis:hover {
+    border-color: var(--color-orange);
+  }
+  .langfassung-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--color-orange);
+  }
+  .langfassung-text {
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.85);
+  }
+  .langfassung-link {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-orange);
+  }
+</style>
 

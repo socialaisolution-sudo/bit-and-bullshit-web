@@ -126,6 +126,25 @@ function ladeStand(logger) {
 
 const GIT_STAND = ladeStand();
 
+/**
+ * Snippets, die per `langfassung` auf einen Cornerstone zeigen.
+ *
+ * Sie tragen ein canonical dorthin und gehören deshalb nicht in die
+ * Sitemap: Eine Adresse dort anzumelden und gleichzeitig auf eine andere
+ * zu verweisen, sind zwei widersprüchliche Ansagen an dieselbe Maschine.
+ */
+function kanonisierteSnippets() {
+  const ordner = new URL("./src/content/blog/", import.meta.url);
+  const raus = new Set();
+  for (const datei of fs.readdirSync(ordner)) {
+    if (!datei.endsWith(".md")) continue;
+    const roh = fs.readFileSync(new URL(datei, ordner), "utf-8");
+    if (/^langfassung:\s*\S/m.test(roh)) raus.add(`/snippets/${datei.replace(/\.md$/, "")}/`);
+  }
+  return raus;
+}
+const OHNE_SITEMAP = kanonisierteSnippets();
+
 /** Ordnet einer fertigen Adresse die Quelldatei zu, aus der sie entsteht. */
 function quelleZuUrl(pfad) {
   const m = (re) => pfad.match(re);
@@ -144,10 +163,72 @@ function quelleZuUrl(pfad) {
   return seite ? `src/pages/${seite}.astro` : null;
 }
 
+
+/**
+ * Warnt, wenn ein Snippet und ein Cornerstone dasselbe Keyword bedienen,
+ * ohne dass die Kurzfassungs-Regel greift.
+ *
+ * Der Anlass: Snippet "Teil 1" und der Cornerstone "Niemand verteilt
+ * Bitcoin" zielten monatelang unbemerkt auf dieselbe Suchanfrage. Die
+ * nächste Kollision ist schon angelegt — Snippet "Teil 2" behandelt, wie
+ * Geld entsteht, und genau das wird Cornerstone 1.3. Statt sich das zu
+ * merken, sagt es der Build.
+ */
+function keywordWache() {
+  const lies = (ordner, tief) => {
+    const basis = new URL(ordner, import.meta.url);
+    const raus = [];
+    for (const eintrag of fs.readdirSync(basis, { withFileTypes: true })) {
+      if (eintrag.isDirectory() && tief) {
+        for (const datei of fs.readdirSync(new URL(eintrag.name + "/", basis))) {
+          if (!datei.endsWith(".md")) continue;
+          raus.push({
+            name: `${eintrag.name}/${datei.replace(/\.md$/, "")}`,
+            roh: fs.readFileSync(new URL(`${eintrag.name}/${datei}`, basis), "utf-8"),
+          });
+        }
+      } else if (eintrag.name.endsWith(".md")) {
+        raus.push({
+          name: eintrag.name.replace(/\.md$/, ""),
+          roh: fs.readFileSync(new URL(eintrag.name, basis), "utf-8"),
+        });
+      }
+    }
+    return raus;
+  };
+  const kw = (roh) =>
+    (roh.match(/^keyword:\s*["']?(.+?)["']?\s*$/m)?.[1] ?? "").toLowerCase().trim();
+
+  return {
+    name: "keyword-wache",
+    hooks: {
+      "astro:build:done": ({ logger }) => {
+        const snippets = lies("./src/content/blog/", false);
+        const steine = lies("./src/content/cornerstones/", true);
+        let treffer = 0;
+        for (const s of snippets) {
+          if (/^langfassung:\s*\S/m.test(s.roh)) continue;
+          for (const c of steine) {
+            if (kw(s.name && s.roh) && kw(s.roh) === kw(c.roh)) {
+              treffer++;
+              logger.warn(
+                `Gleiches Keyword "${kw(s.roh)}": Snippet ${s.name} und Cornerstone ${c.name}. ` +
+                  `Kurzfassungs-Regel anwenden — langfassung im Snippet setzen.`,
+              );
+            }
+          }
+        }
+        if (treffer === 0) logger.info("Keyword-Wache: keine Doppelbelegung.");
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: "https://bitandbullshit.com",
   integrations: [
     sitemap({
+      filter: (url) => !OHNE_SITEMAP.has(new URL(url).pathname),
       serialize(eintrag) {
         const pfad = new URL(eintrag.url).pathname;
         const quelle = quelleZuUrl(pfad);
@@ -158,6 +239,7 @@ export default defineConfig({
       },
     }),
     legacyRedirects(),
+    keywordWache(),
   ],
   markdown: {
     rehypePlugins: [rehypeBegriffe],

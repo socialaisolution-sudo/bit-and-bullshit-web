@@ -7,6 +7,7 @@ import { ladeRatgeber } from "../../../lib/ratgeber";
 import { render } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import { COMICS } from "../../../data/comics";
+import { getCollection } from "astro:content";
 import Brotkrumen from "../../../components/Brotkrumen.astro";
 import type { GetStaticPaths } from "astro";
 
@@ -30,6 +31,13 @@ const { Content } = await render(cs);
    Register — der Verweis soll nicht behaupten, es seien fünf Panels,
    wenn das Kapitel vier hat. */
 const comic = COMICS.find((c) => `/comic/${c.slug}/` === cs.data.comic);
+
+/* Gegenrichtung der Kurzfassungs-Regel: Wer hierher kommt, soll wissen,
+   dass es dieselbe Sache auch in zwei Minuten gibt. */
+const snippets = await getCollection("blog", ({ data }) => data.draft !== true);
+const kurzfassung = snippets.find(
+  (p) => p.data.langfassung === `/ratgeber/${r.id}/${teil.slug}/`,
+);
 
 /* Wie bei den Snippets: Die H1 bleibt die Schlagzeile, der Titel im Tab
    darf auf die Suchanfrage zielen. Ein eigener metaTitel läuft ohne
@@ -141,6 +149,19 @@ const jsonLd = {
       <div class="post-body mt-10">
         <Content />
       </div>
+
+      {
+        kurzfassung && (
+          <a href={`/snippets/${kurzfassung.id}`} class="cs-kurz" data-pagefind-ignore>
+            <span class="display cs-kurz-kicker">// In Kürze</span>
+            <span class="cs-kurz-text">
+              Keine Zeit? Dasselbe in zwei Minuten:
+              „{kurzfassung.data.title}“
+            </span>
+            <span class="display cs-kurz-link">Zur Kurzfassung &rarr;</span>
+          </a>
+        )
+      }
 
       {
         cs.data.ausblick && naechster && (
@@ -288,6 +309,36 @@ const jsonLd = {
     color: rgb(from var(--color-paper) r g b / 0.85);
   }
   .cs-comic-link {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-orange);
+  }
+
+  .cs-kurz {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 0.4rem;
+    text-decoration: none;
+    transition: border-color 200ms ease;
+  }
+  .cs-kurz:hover {
+    border-color: rgb(from var(--color-orange) r g b / 0.6);
+  }
+  .cs-kurz-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: rgb(from var(--color-paper) r g b / 0.5);
+  }
+  .cs-kurz-text {
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.8);
+  }
+  .cs-kurz-link {
     margin-top: 0.35rem;
     font-size: 0.75rem;
     letter-spacing: 0.12em;
