@@ -94,13 +94,17 @@ const jsonLd = {
                 kat.toneClass,
               ]}
             >
+              {/* Seitenverhaeltnis wie die Motive selbst (16:9), nicht eine
+                  feste Hoehe. Der Schriftzug ist in die Bilder hineingemalt —
+                  ein Balken aus der Mitte schneidet ihn ab. So ist bei 45 der
+                  47 Motive nichts beschnitten, sie fuellen die Kachel exakt. */}
               {post.data.image && (
                 <Image
                   src={post.data.image}
                   alt=""
-                  widths={[320, 480, 720]}
-                  sizes="(min-width: 768px) 22rem, 92vw"
-                  class="block h-40 w-full rounded-t-md object-cover"
+                  widths={[480, 720, 960]}
+                  sizes="(min-width: 768px) 34rem, 92vw"
+                  class="block aspect-[16/9] w-full rounded-t-md object-cover"
                   loading="lazy"
                 />
               )}
