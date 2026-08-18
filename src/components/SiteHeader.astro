@@ -1,5 +1,6 @@
 ---
 import Search from "./Search.astro";
+import { KATEGORIEN } from "../data/kategorien";
 
 const { pathname } = Astro.url;
 const isActive = (href: string) =>
@@ -25,19 +26,49 @@ const links = [
           nicht mehr nebeneinander und „Sticker" wurde abgeschnitten. */}
       <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[560px]:flex sm:gap-6">
         {
-          links.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class:list={[
-                  "transition hover:text-orange",
-                  isActive(link.href) ? "text-orange" : "text-paper/70",
-                ]}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))
+          links.map((link) =>
+            link.href === "/snippets" ? (
+              /* Die Rubriken hängen unter „Snippets“ statt als eigener
+                 Menüpunkt daneben: /snippets ist ihre Elternseite, und eine
+                 siebte Leiste passt auf keinem Laptop mehr nebeneinander.
+                 <details> statt eigenem Skript — klappt ohne JavaScript auf
+                 und ist mit der Tastatur bedienbar. */
+              <li class="rubrik-menue">
+                <details>
+                  <summary
+                    class:list={[
+                      "transition hover:text-orange",
+                      isActive(link.href) ? "text-orange" : "text-paper/70",
+                    ]}
+                  >
+                    {link.label}
+                  </summary>
+                  <ul class="rubrik-liste">
+                    <li>
+                      <a href="/snippets">Alle Snippets</a>
+                    </li>
+                    {KATEGORIEN.map((k) => (
+                      <li>
+                        <a href={`/kategorie/${k.key}/`}>{k.titel}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={link.href}
+                  class:list={[
+                    "transition hover:text-orange",
+                    isActive(link.href) ? "text-orange" : "text-paper/70",
+                  ]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ),
+          )
         }
       </ul>
       <Search />
@@ -69,6 +100,23 @@ const links = [
             >
               {link.label}
             </a>
+            {link.href === "/snippets" && (
+              <ul class="mobile-rubriken">
+                {KATEGORIEN.map((k) => (
+                  <li>
+                    <a
+                      href={`/kategorie/${k.key}/`}
+                      class:list={[
+                        "mobile-rubrik-link",
+                        pathname.startsWith(`/kategorie/${k.key}`) && "is-active",
+                      ]}
+                    >
+                      {k.titel}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))
       }
@@ -106,9 +154,105 @@ const links = [
       if (e.matches) setOpen(false);
     });
   }
+
+  // Ein offener Rubriken-Aufklapper schließt, sobald daneben geklickt wird
+  // oder Esc kommt — sonst bleibt er beim Weiterscrollen stehen.
+  const rubriken = document.querySelector<HTMLDetailsElement>(".rubrik-menue details");
+  if (rubriken) {
+    document.addEventListener("click", (e) => {
+      if (rubriken.open && !rubriken.contains(e.target as Node)) rubriken.open = false;
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && rubriken.open) {
+        rubriken.open = false;
+        rubriken.querySelector("summary")?.focus();
+      }
+    });
+  }
 </script>
 
 <style>
+  /* --- Rubriken-Aufklapper in der breiten Leiste ------------------------ */
+  .rubrik-menue {
+    position: relative;
+  }
+  .rubrik-menue summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .rubrik-menue summary::-webkit-details-marker {
+    display: none;
+  }
+  /* Der Pfeil sitzt als Pseudoelement, damit im Markup nur das Wort steht. */
+  .rubrik-menue summary::after {
+    content: "";
+    width: 0.32rem;
+    height: 0.32rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-1px) rotate(45deg);
+    transition: transform 150ms ease;
+  }
+  .rubrik-menue details[open] summary::after {
+    transform: translateY(1px) rotate(-135deg);
+  }
+  .rubrik-liste {
+    position: absolute;
+    z-index: 40;
+    top: calc(100% + 0.85rem);
+    left: 50%;
+    translate: -50% 0;
+    min-width: 14rem;
+    padding: 0.4rem 0;
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #14110f;
+    box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.9);
+  }
+  .rubrik-liste a {
+    display: block;
+    padding: 0.55rem 1rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+    color: rgb(from var(--color-paper) r g b / 0.78);
+    transition: color 150ms ease, background 150ms ease;
+  }
+  .rubrik-liste a:hover,
+  .rubrik-liste a:focus-visible {
+    color: var(--color-orange);
+    background: rgba(255, 255, 255, 0.04);
+    outline: none;
+  }
+  .rubrik-liste li:first-child a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.7rem;
+  }
+
+  /* --- Rubriken im Mobilmenü ------------------------------------------- */
+  .mobile-rubriken {
+    padding: 0 0 0.35rem !important;
+  }
+  .mobile-rubrik-link {
+    display: block;
+    padding: 0.45rem 1.25rem 0.45rem 2.6rem;
+    border-left: 3px solid transparent;
+    font-size: 0.85rem;
+    color: rgb(from var(--color-paper) r g b / 0.55);
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+  .mobile-rubrik-link:hover,
+  .mobile-rubrik-link:focus-visible,
+  .mobile-rubrik-link.is-active {
+    color: var(--color-orange);
+    border-left-color: rgb(from var(--color-orange) r g b / 0.6);
+    outline: none;
+  }
+
   .burger {
     display: inline-flex;
     align-items: center;

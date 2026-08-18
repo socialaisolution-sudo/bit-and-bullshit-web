@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
+import VerwandteArtikel from "../../components/VerwandteArtikel.astro";
 import { getCollection, render } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import type { GetStaticPaths } from "astro";
@@ -183,6 +184,8 @@ const jsonLd = {
           </div>
         )
       }
+
+      <VerwandteArtikel aktuell={post.id} />
 
       <div class="mt-16 border-t border-white/10 pt-10" data-pagefind-ignore>
         <p class="display text-2xl md:text-3xl">
