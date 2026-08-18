@@ -28,6 +28,15 @@ const blog = defineCollection({
       image: image().optional(),
       imageAlt: z.string().optional(),
       /**
+       * Nur für Google und den Browser-Tab. Bleibt leer, solange Überschrift
+       * und Suchtreffer dasselbe sagen dürfen — gesetzt wird es dort, wo die
+       * Suchanfrage anders klingt als die Schlagzeile. Die H1 bleibt in
+       * jedem Fall `title`, damit die Seite nicht nach Keyword klingt.
+       */
+      metaTitel: z.string().optional(),
+      /** Meta-Description, falls sie vom sichtbaren Anriss abweichen soll. */
+      metaBeschreibung: z.string().optional(),
+      /**
        * Belege, wenn ein Snippet auf eine konkrete Meldung Bezug nimmt.
        * Steht bewusst nicht im Fließtext: Die Erzählung soll ohne Fußnoten
        * lesbar bleiben, der Nachweis aber nachprüfbar darunter stehen.
@@ -87,6 +96,15 @@ const cornerstones = defineCollection({
       untertitel: z.string().optional(),
       description: z.string(),
       keyword: z.string(),
+      /**
+       * Nur für Google und den Browser-Tab. Bleibt leer, solange Überschrift
+       * und Suchtreffer dasselbe sagen dürfen — gesetzt wird es dort, wo die
+       * Suchanfrage anders klingt als die Schlagzeile. Die H1 bleibt in
+       * jedem Fall `title`, damit die Seite nicht nach Keyword klingt.
+       */
+      metaTitel: z.string().optional(),
+      /** Meta-Description, falls sie vom sichtbaren Anriss abweichen soll. */
+      metaBeschreibung: z.string().optional(),
       teil: z.number(),
       draft: z.boolean().default(true),
       /** 16:9 — die Homepage zeigt den aktuellen Cornerstone im Querformat. */

@@ -30,6 +30,12 @@ const { Content } = await render(cs);
    wenn das Kapitel vier hat. */
 const comic = COMICS.find((c) => `/comic/${c.slug}/` === cs.data.comic);
 
+/* Wie bei den Snippets: Die H1 bleibt die Schlagzeile, der Titel im Tab
+   darf auf die Suchanfrage zielen. Ein eigener metaTitel läuft ohne
+   Marken-Anhängsel, sonst schneidet Google ihn ab. */
+const seitenTitel =
+  cs.data.metaTitel ?? `${cs.data.title} — ${r.data.kurztitel} · Bit & Bullshit`;
+
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
 const url = new URL(`/ratgeber/${r.id}/${teil.slug}/`, site).toString();
 const hubUrl = new URL(`/ratgeber/${r.id}/`, site).toString();
@@ -64,8 +70,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title={`${cs.data.title} — ${r.data.kurztitel} · Bit & Bullshit`}
-  description={cs.data.description}
+  title={seitenTitel}
+  description={cs.data.metaBeschreibung ?? cs.data.description}
   ogImage={ogImagePath}
   ogType="article"
   jsonLd={jsonLd}

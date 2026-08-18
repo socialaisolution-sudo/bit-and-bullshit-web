@@ -1,7 +1,9 @@
 ---
 title: 'Krypto-Bridge gehackt: Warum nie die Blockchain selbst das Problem ist'
 description: "Wieder ein Krypto-Hack, 200.000 Dollar weg — aber nicht die Blockchain wurde geknackt, sondern eine „Bridge“. Warum Angreifer immer das schwächste Glied treffen."
-keyword: "Krypto Bridge Hack Blockchain sicher"
+keyword: 'krypto hack blockchain unsicher'
+metaTitel: 'Krypto gehackt – ist die Blockchain unsicher? Was wirklich passiert'
+metaBeschreibung: '„Schon wieder Krypto gehackt“ heißt fast nie, dass die Blockchain unsicher ist. Warum Angreifer immer das schwächste Glied treffen.'
 kategorie: betrug-maschen
 order: 43
 draft: false

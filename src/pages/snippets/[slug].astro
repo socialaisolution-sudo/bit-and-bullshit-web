@@ -20,6 +20,13 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const kat = KATEGORIE_MAP[post.data.kategorie];
 
+/* Suchtreffer und Überschrift dürfen auseinanderlaufen: Die H1 bleibt die
+   Schlagzeile, der Titel im Tab darf auf die Suchanfrage zielen. Steht ein
+   eigener metaTitel, läuft er ohne Marken-Anhängsel — er ist schon auf
+   Länge getrimmt, und „ — Bit & Bullshit" würde ihn bei Google abschneiden. */
+const seitenTitel =
+  post.data.metaTitel ?? `${post.data.title} — Bit & Bullshit`;
+
 // OG image: use post-specific image (optimized to landscape-ish for social cards) or fall back
 /**
  * Seitenverhältnis des Maskottchens. Die Reihe lief bis Juli 2026 hochkant,
@@ -74,8 +81,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title={`${post.data.title} — Bit & Bullshit`}
-  description={post.data.description}
+  title={seitenTitel}
+  description={post.data.metaBeschreibung ?? post.data.description}
   ogImage={ogImagePath}
   ogType="article"
   jsonLd={jsonLd}

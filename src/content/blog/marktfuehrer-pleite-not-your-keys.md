@@ -1,7 +1,9 @@
 ---
 title: 'Vom Marktführer zur Pleite: Warum „not your keys“ die wichtigste Regel ist'
 description: "Ein Mining-Riese mit einst 18 % der weltweiten Bitcoin-Rechenleistung ist insolvent, 12.000 Kunden kommen nicht an ihr Geld. Die Lektion über Selbstverwahrung."
-keyword: "Mining Pool insolvent not your keys"
+keyword: 'not your keys not your coins bedeutung'
+metaTitel: 'Not your keys, not your coins – was der Satz wirklich bedeutet'
+metaBeschreibung: 'Warum dir deine Coins nicht wirklich gehören, wenn ein anderer die Schlüssel hält – erklärt an einem realen Pleitefall.'
 kategorie: grundwissen
 order: 39
 draft: false
