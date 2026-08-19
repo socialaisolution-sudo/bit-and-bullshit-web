@@ -1,6 +1,6 @@
 ---
 title: 'Aktivrente 2026: Steuerfrei dazuverdienen — oder Beweis, dass die Rente nicht reicht?'
-description: "Ab 2026 dürfen Rentner bis zu 2.000 Euro steuerfrei dazuverdienen. Was nach Geschenk klingt — und welche unbequeme Frage dahintersteckt. Ehrlich eingeordnet."
+description: "Seit 2026 dürfen Rentner bis zu 2.000 Euro steuerfrei dazuverdienen. Was nach Geschenk klingt — und welche unbequeme Frage dahintersteckt. Ehrlich eingeordnet."
 keyword: "Aktivrente 2026 steuerfrei dazuverdienen"
 kategorie: staat-steuern
 order: 49
@@ -17,7 +17,7 @@ quellen:
     url: "https://www.bundesregierung.de/breg-de/aktuelles/aktivrente-2389334"
 ---
 
-Reden wir über ein Angebot, das auf den ersten Blick nach einer guten Nachricht klingt, und beim zweiten eine unbequeme Frage aufwirft. Ab 2026 kommt die sogenannte Aktivrente. Wer bereits im Ruhestand ist und weiterarbeitet, darf künftig bis zu 2.000 Euro im Monat steuerfrei dazuverdienen. Bisher lag dieser Freibetrag bei gut 1.000 Euro. Zusätzlich soll das sogenannte Vorbeschäftigungsverbot fallen, sodass man leichter bei seinem alten Arbeitgeber weitermachen kann. Klingt nach mehr Freiheit, und für manche ist es das auch.
+Reden wir über ein Angebot, das auf den ersten Blick nach einer guten Nachricht klingt, und beim zweiten eine unbequeme Frage aufwirft. Seit Anfang 2026 gibt es die sogenannte Aktivrente. Wer bereits im Ruhestand ist und weiterarbeitet, darf bis zu 2.000 Euro im Monat steuerfrei dazuverdienen — allerdings nur in einem sozialversicherungspflichtigen Job, nicht als Selbstständiger, Beamter oder Minijobber. Bisher lag der steuerfreie Betrag bei gut 1.000 Euro. Klingt nach mehr Freiheit, und für manche ist es das auch.
 
 Denn fair ist: Für einen Teil der Menschen ist das wirklich ein gutes Angebot. Wer mit 67 noch fit ist, Freude an der Arbeit hat und sein Wissen weitergeben möchte, wurde bisher steuerlich schnell ausgebremst. Diese Menschen können sich jetzt tatsächlich freuen, sie behalten von ihrem Zuverdienst mehr übrig. Gegen die Möglichkeit, freiwillig und mit weniger Abzügen weiterzuarbeiten, ist überhaupt nichts einzuwenden. So weit die schöne Seite der Medaille.
 
