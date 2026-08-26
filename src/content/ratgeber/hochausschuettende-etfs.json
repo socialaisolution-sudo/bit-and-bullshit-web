@@ -1,0 +1,21 @@
+{
+  "nummer": 2,
+  "titel": "Die Wahrheit über hochausschüttende ETFs",
+  "kurztitel": "Hochausschüttende ETFs",
+  "einleitung": "Zwölf Prozent Ausschüttung im Jahr, monatlich aufs Konto — Werbung verspricht es, Empörungs-Videos nennen es Abzocke. Beides ist zu einfach. Diese Serie erklärt die Mechanik dahinter: was du bekommst, was du dafür hergibst und wann sich dieser Tausch für wen lohnt. Ohne Empfehlung, ohne Werbe-Blabla.",
+  "teile": [
+    {
+      "nr": 1,
+      "titel": "Was hochausschüttende ETFs wirklich sind",
+      "slug": "covered-call-erklaert"
+    },
+    {
+      "nr": 2,
+      "titel": "Die Wheel-Strategie auf Assets, die du ohnehin willst"
+    },
+    {
+      "nr": 3,
+      "titel": "Cashflow statt Kurswette — die Portfolio-Philosophie"
+    }
+  ]
+}
