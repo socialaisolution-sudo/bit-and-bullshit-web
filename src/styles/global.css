@@ -503,12 +503,19 @@ body::after {
 }
 
 .post-body {
-  /* ~68 Zeichen je Zeile. Der Container ist breiter — Bilder und
+  /* Rund 74 Zeichen je Zeile — die Obergrenze dessen, was das Auge ohne
+     Anstrengung zurückfindet. Spalte und Schriftgröße wurden 08/2026
+     gemeinsam angehoben (40rem/17px auf 44rem/19px): Der Lesestreifen
+     wirkte auf großen Monitoren verloren, die Zeilenlänge bleibt dabei
+     praktisch gleich. Wer nur die Spalte verbreitert, macht die Zeilen
+     länger und das Lesen schlechter.
+
+     Der Container ist weiterhin breiter als dieser Wert — Bilder und
      Überschriften dürfen ausbrechen, der Lesetext nicht. */
-  max-width: 40rem;
+  max-width: 44rem;
   color: rgb(from var(--color-paper) r g b / 0.85);
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: 1.1875rem;
+  line-height: 1.7;
   counter-reset: absatz;
 }
 .post-body > * + * {
@@ -517,7 +524,7 @@ body::after {
 
 /* Anreißer: der erste Absatz trägt den Einstieg, also darf er lauter sein. */
 .post-body > p:first-child {
-  font-size: 1.22rem;
+  font-size: 1.36rem;
   line-height: 1.6;
   color: rgb(from var(--color-paper) r g b / 0.95);
 }
