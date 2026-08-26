@@ -5,7 +5,6 @@ keyword: "KI Stimme Betrug Enkeltrick Codewort"
 kategorie: betrug-maschen
 order: 54
 draft: false
-aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 image: "../../assets/mascots/enkeltrick-ki-stimme-codewort.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, rechts hält eine ältere Frau erschrocken ein Telefon ans Ohr, auf dem Bildschirm ein glitchendes Gesicht mit Tonwelle — Graffiti-Schriftzug „Dein Enkel ruft an — oder?“'
 quellen:
