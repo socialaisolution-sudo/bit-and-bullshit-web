@@ -9,6 +9,7 @@ import { Image, getImage } from "astro:assets";
 import { COMICS } from "../../../data/comics";
 import { getCollection } from "astro:content";
 import Brotkrumen from "../../../components/Brotkrumen.astro";
+import Inhaltsverzeichnis from "../../../components/Inhaltsverzeichnis.astro";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -25,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { r, teil } = Astro.props;
 const cs = teil.cornerstone!;
-const { Content } = await render(cs);
+const { Content, headings } = await render(cs);
 
 /* Gibt es zu diesem Text einen Comic, kommen Titel und Cover aus dem
    Register — der Verweis soll nicht behaupten, es seien fünf Panels,
@@ -87,7 +88,13 @@ const jsonLd = {
 >
   <SiteHeader />
 
-  <main class="mx-auto max-w-3xl px-5 py-12 md:py-16">
+  {/* Ab 1280px laeuft links das Inhaltsverzeichnis mit. Die Lesespalte
+      behaelt exakt ihre Breite — das Raster fuegt nur aussen an, es
+      quetscht den Text nicht. */}
+  <div class="cs-raster px-5 py-12 md:py-16">
+    <Inhaltsverzeichnis headings={headings} />
+
+    <main class="cs-spalte">
     <Brotkrumen
       pfad={[
         { label: "Start", href: "/" },
@@ -218,12 +225,32 @@ const jsonLd = {
         Nur Meinung &amp; Unterhaltung. Keine Finanz-, Steuer- oder Rechtsberatung.
       </p>
     </article>
-  </main>
+    </main>
+  </div>
 
   <SiteFooter />
 </Layout>
 
 <style>
+  /* Einspaltig wie bisher. Erst wenn wirklich Platz da ist, kommt links
+     die Spalte fuer das Inhaltsverzeichnis dazu; die dritte Spalte haelt
+     den Lesetext optisch mittig. */
+  .cs-raster {
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+  .cs-spalte {
+    max-width: 48rem;
+  }
+  @media (min-width: 1280px) {
+    .cs-raster {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 48rem) 1fr;
+      gap: 3rem;
+      max-width: 78rem;
+    }
+  }
+
   .cs-untertitel {
     font-size: 1.15rem;
     line-height: 1.6;

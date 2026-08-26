@@ -1,0 +1,158 @@
+---
+import type { MarkdownHeading } from "astro";
+
+/**
+ * Mitlaufendes Inhaltsverzeichnis für lange Texte.
+ *
+ * Es steht links neben der Lesespalte und bleibt beim Scrollen stehen. Die
+ * Überschriften kommen aus `render()`, nicht aus einer gepflegten Liste —
+ * ein Verzeichnis, das man von Hand nachtragen muss, ist nach dem zweiten
+ * Artikel falsch.
+ *
+ * Nur Ebene zwei. Tiefer verschachtelt wird es zur zweiten Navigation, und
+ * die Cornerstones sind dafür nicht gebaut.
+ *
+ * Ab drei Abschnitten sinnvoll — bei zweien ist es Dekoration. Unterhalb
+ * von 1280px entfällt es ganz: Dort ist links kein Platz, und eine
+ * aufklappbare Variante über dem Text schiebt nur den Anfang nach unten.
+ */
+interface Props {
+  headings: MarkdownHeading[];
+  minimum?: number;
+}
+const { headings, minimum = 3 } = Astro.props;
+const punkte = headings.filter((h) => h.depth === 2);
+const zeigen = punkte.length >= minimum;
+---
+
+{
+  zeigen && (
+    <nav class="inhalt" aria-label="Inhalt dieses Artikels" data-pagefind-ignore>
+      <p class="display inhalt-kicker">// Inhalt</p>
+      <ol>
+        {punkte.map((h) => (
+          <li>
+            <a href={`#${h.slug}`} data-ziel={h.slug}>
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<script>
+  /* Hebt den Abschnitt hervor, in dem man gerade liest. Beobachtet wird ein
+     schmaler Streifen im oberen Drittel — sonst springt die Markierung bei
+     langen Abschnitten hin und her. */
+  const nav = document.querySelector(".inhalt");
+  if (nav) {
+    const links = new Map<string, HTMLAnchorElement>();
+    nav.querySelectorAll<HTMLAnchorElement>("a[data-ziel]").forEach((a) =>
+      links.set(a.dataset.ziel!, a),
+    );
+
+    const ueberschriften = [...links.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    let aktiv: string | null = null;
+    const setzen = (id: string | null) => {
+      if (id === aktiv) return;
+      if (aktiv) links.get(aktiv)?.classList.remove("ist-aktiv");
+      if (id) links.get(id)?.classList.add("ist-aktiv");
+      aktiv = id;
+    };
+
+    const beobachter = new IntersectionObserver(
+      (eintraege) => {
+        const sichtbar = eintraege
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (sichtbar.length) {
+          setzen(sichtbar[0].target.id);
+          return;
+        }
+        /* Nichts im Streifen: den letzten Abschnitt oberhalb markieren,
+           damit die Markierung zwischen zwei Überschriften nicht verschwindet. */
+        const darueber = ueberschriften.filter(
+          (h) => h.getBoundingClientRect().top < 120,
+        );
+        setzen(darueber.length ? darueber[darueber.length - 1].id : null);
+      },
+      { rootMargin: "-100px 0px -70% 0px" },
+    );
+    ueberschriften.forEach((h) => beobachter.observe(h));
+  }
+</script>
+
+<style>
+  .inhalt {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .inhalt {
+      display: block;
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+      max-height: calc(100vh - 9rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+  }
+
+  .inhalt-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--color-orange);
+  }
+
+  .inhalt ol {
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+    counter-reset: punkt;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .inhalt li {
+    counter-increment: punkt;
+  }
+  .inhalt a {
+    display: block;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: rgb(from var(--color-paper) r g b / 0.55);
+    transition:
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+  .inhalt a::before {
+    content: counter(punkt, decimal-leading-zero) " ";
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    color: rgb(from var(--color-orange) r g b / 0.55);
+  }
+  .inhalt a:hover {
+    color: var(--color-paper);
+  }
+  /* Der Abschnitt, in dem gerade gelesen wird. */
+  .inhalt a.ist-aktiv {
+    color: var(--color-paper);
+    border-left-color: var(--color-orange);
+  }
+  .inhalt a.ist-aktiv::before {
+    color: var(--color-orange);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .inhalt a {
+      transition: none;
+    }
+  }
+</style>
