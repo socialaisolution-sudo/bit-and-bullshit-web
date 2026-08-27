@@ -155,6 +155,8 @@ function quelleZuUrl(pfad) {
   if ((t = m(/^\/ratgeber\/([^/]+)\/?$/))) return `src/content/ratgeber/${t[1]}.json`;
   if ((t = m(/^\/comic\/([^/]+)\/?$/))) return `src/pages/comic/${t[1]}.astro`;
   if (m(/^\/comic\/?$/)) return "src/pages/comic/index.astro";
+  if ((t = m(/^\/metaphern\/([^/]+)\/?$/))) return `src/content/metaphern/${t[1]}.md`;
+  if (m(/^\/metaphern\/?$/)) return "src/pages/metaphern/index.astro";
   if (m(/^\/kategorie\//)) return "src/data/kategorien.ts";
   if (m(/^\/snippets\/?$/)) return "src/pages/snippets/index.astro";
   if (m(/^\/ratgeber\/?$/)) return "src/pages/ratgeber/index.astro";
@@ -205,16 +207,38 @@ function keywordWache() {
       "astro:build:done": ({ logger }) => {
         const snippets = lies("./src/content/blog/", false);
         const steine = lies("./src/content/cornerstones/", true);
+        const bilder = lies("./src/content/metaphern/", false);
         let treffer = 0;
         for (const s of snippets) {
           if (/^langfassung:\s*\S/m.test(s.roh)) continue;
           for (const c of steine) {
-            if (kw(s.name && s.roh) && kw(s.roh) === kw(c.roh)) {
+            if (kw(s.roh) && kw(s.roh) === kw(c.roh)) {
               treffer++;
               logger.warn(
                 `Gleiches Keyword "${kw(s.roh)}": Snippet ${s.name} und Cornerstone ${c.name}. ` +
                   `Kurzfassungs-Regel anwenden — langfassung im Snippet setzen.`,
               );
+            }
+          }
+        }
+
+        /* Die Metapher-Eintraege zielen auf eigene Suchbegriffe. Kollidiert
+           einer davon mit einem Artikel, wird gemeldet statt aufgeloest —
+           welcher von beiden ranken soll, ist eine redaktionelle Frage. */
+        for (const b of bilder) {
+          if (/^draft:\s*true/m.test(b.roh) || !kw(b.roh)) continue;
+          for (const [andere, art] of [
+            [snippets, "Snippet"],
+            [steine, "Cornerstone"],
+          ]) {
+            for (const a of andere) {
+              if (kw(a.roh) === kw(b.roh)) {
+                treffer++;
+                logger.warn(
+                  `Gleiches Keyword "${kw(b.roh)}": Metapher ${b.name} und ${art} ${a.name}. ` +
+                    `Bitte melden, nicht eigenmaechtig aufloesen.`,
+                );
+              }
             }
           }
         }

@@ -1,0 +1,184 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import Brotkrumen from "../../components/Brotkrumen.astro";
+import { getCollection } from "astro:content";
+
+/**
+ * Register der Marktmetaphern.
+ *
+ * Alphabetisch, nicht chronologisch — es ist ein Nachschlagewerk, kein
+ * Stream. Geplante Einträge stehen ausgegraut mit dabei, genau wie bei den
+ * Ratgeber-Teilen: Sie zeigen, wohin die Sammlung wächst.
+ *
+ * Sortiert wird ohne den führenden Artikel. „Das Kartenhaus" gehört unter
+ * K, sonst stünde die halbe Liste unter D.
+ */
+const alle = await getCollection("metaphern");
+const ohneArtikel = (s: string) => s.replace(/^(Der|Die|Das)\s+/i, "");
+const sortiert = alle.sort((a, b) =>
+  ohneArtikel(a.data.title).localeCompare(ohneArtikel(b.data.title), "de"),
+);
+const fertig = sortiert.filter((m) => !m.data.draft);
+const geplant = sortiert.filter((m) => m.data.draft);
+
+const site = Astro.site ?? new URL("https://bitandbullshit.com");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Marktmetaphern",
+  headline: "Das Register der Denkbilder",
+  description:
+    "Bilder, mit denen sich Marktmechanismen erklären lassen — jedes einzeln aufgeschlüsselt: was es zeigt, was dahintersteckt und woran man es erkennt.",
+  inLanguage: "de-DE",
+  url: new URL("/metaphern/", site).toString(),
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: fertig.length,
+    itemListElement: fertig.map((m, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: new URL(`/metaphern/${m.id}/`, site).toString(),
+      name: m.data.title,
+    })),
+  },
+};
+---
+
+<Layout
+  title="Marktmetaphern — das Register der Denkbilder | Bit & Bullshit"
+  description="Bilder, mit denen sich Marktmechanismen erklären lassen — jedes einzeln aufgeschlüsselt: was es zeigt, was wirklich dahintersteckt und woran du es erkennst."
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "Metaphern" }]} />
+
+    <header class="relative mt-8 max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">BILDER</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// METAPHERN</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Das Register der <span class="marker">Denkbilder.</span>
+      </h1>
+      <p class="hero-layer mt-8 text-lg leading-relaxed text-paper/80">
+        Manche Dinge am Markt lassen sich mit Zahlen kaum erklären, mit einem
+        Bild aber sofort. Diese Bilder sammeln wir hier — jedes einzeln
+        aufgeschlüsselt: was es zeigt, was wirklich dahintersteckt und woran du
+        es im Alltag erkennst.
+      </p>
+      <p class="hero-layer mt-4 text-sm text-paper/55">
+        Fachbegriffe stehen bewusst nicht hier. Wer Halving, Hashrate oder
+        Cantillon-Effekt nachschlagen will, findet sie im Nachschlagewerk auf
+        <a
+          href="https://bitcoinaera.de/glossar/"
+          rel="noopener"
+          class="underline decoration-orange/60 underline-offset-2 hover:text-orange"
+          >bitcoinaera.de</a
+        >.
+      </p>
+    </header>
+
+    {
+      fertig.length > 0 && (
+        <ul class="register mt-14">
+          {fertig.map((m) => (
+            <li>
+              <a href={`/metaphern/${m.id}/`} class="register-eintrag">
+                <span class="display register-titel">{m.data.title}</span>
+                <span class="register-kurz">{m.data.kurz}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      geplant.length > 0 && (
+        <section class="mt-14">
+          <p class="display text-xs tracking-[0.3em] text-orange">// IN ARBEIT</p>
+          <p class="mt-3 max-w-2xl text-sm text-paper/60">
+            Diese Bilder kommen aus Texten, die es schon gibt. Der Eintrag dazu
+            wird gerade geschrieben.
+          </p>
+          <ul class="register register-geplant mt-6">
+            {geplant.map((m) => (
+              <li>
+                <span class="register-eintrag">
+                  <span class="display register-titel">{m.data.title}</span>
+                  <span class="register-kurz">{m.data.kurz}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .register {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .register {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  .register-eintrag {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    height: 100%;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.375rem;
+    background: rgb(from var(--color-ink) r g b / 0.6);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+  a.register-eintrag:hover {
+    border-color: rgb(from var(--color-orange) r g b / 0.5);
+    transform: translateY(-2px);
+  }
+  .register-titel {
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: var(--color-paper);
+  }
+  a.register-eintrag:hover .register-titel {
+    color: var(--color-orange);
+  }
+  .register-kurz {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.7);
+  }
+
+  /* Geplante Einträge: sichtbar, aber erkennbar noch nicht begehbar. */
+  .register-geplant .register-eintrag {
+    border-style: dashed;
+    background: transparent;
+  }
+  .register-geplant .register-titel,
+  .register-geplant .register-kurz {
+    color: rgb(from var(--color-paper) r g b / 0.42);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.register-eintrag:hover {
+      transform: none;
+    }
+  }
+</style>

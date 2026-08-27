@@ -135,4 +135,43 @@ const cornerstones = defineCollection({
     }),
 });
 
-export const collections = { blog, ratgeber, cornerstones };
+/**
+ * Metaphern — das Register der Denkbilder.
+ *
+ * Bewusst KEIN Begriffsglossar. Fachbegriffe mit eigenem Namen (Halving,
+ * Cantillon-Effekt, Survivorship Bias) liegen auf bitcoinaera.de und werden
+ * dorthin verlinkt. Hier stehen nur Bilder und Mechanismen, für die es
+ * keinen Fachbegriff gibt — sonst entsteht Doppelung über Domaingrenzen
+ * hinweg.
+ *
+ * Ein neuer Eintrag ist eine neue Datei. Register, Navigation und
+ * Querverweise ziehen von allein nach.
+ */
+const metaphern = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/metaphern" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      /** Ein Satz fürs Register. Nicht die Meta-Description. */
+      kurz: z.string(),
+      description: z.string(),
+      keyword: z.string(),
+      metaTitel: z.string().optional(),
+      metaBeschreibung: z.string().optional(),
+      draft: z.boolean().default(true),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+      /** Pfad zur Comic-Fassung, falls es eine gibt. */
+      comic: z.string().optional(),
+      /**
+       * Artikel, in denen das Bild angewendet wird — der Rückweg aus dem
+       * Register in die Texte. Bewusst von Hand gepflegt: Automatisch
+       * gefundene Treffer wären oft nur beiläufige Erwähnungen.
+       */
+      angewendet: z
+        .array(z.object({ titel: z.string(), pfad: z.string() }))
+        .optional(),
+    }),
+});
+
+export const collections = { blog, ratgeber, cornerstones, metaphern };
