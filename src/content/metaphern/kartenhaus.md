@@ -4,7 +4,9 @@ kurz: "Das beliebteste Untergangsbild der Finanzwelt — und warum es fast immer
 description: "„Das ganze Kartenhaus bricht zusammen“ — warum dieses Bild so überzeugend klingt, so selten passt und mit welchen drei Fragen du es in Sekunden prüfst."
 keyword: "Kartenhaus Finanzmarkt Denkbild"
 metaTitel: 'Das Kartenhaus — das Untergangsbild im Faktencheck'
-draft: true
+draft: false
+image: "../../assets/metaphern/kartenhaus.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hält eine gerade gezogene Pik-Ass-Karte in der Hand, daneben steht ein Kartenhaus unbeirrt weiter — an der Stelle der fehlenden Karte kommt ein orange leuchtender Stahlträger zum Vorschein'
 ausloeser:
   - "Kartenhaus"
   - "das Kartenhaus wackelt"
