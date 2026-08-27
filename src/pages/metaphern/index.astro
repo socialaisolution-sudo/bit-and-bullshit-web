@@ -21,7 +21,10 @@ const sortiert = alle.sort((a, b) =>
   ohneArtikel(a.data.title).localeCompare(ohneArtikel(b.data.title), "de"),
 );
 const fertig = sortiert.filter((m) => !m.data.draft);
-const geplant = sortiert.filter((m) => m.data.draft);
+/* Die geplanten Eintraege erscheinen erst, wenn mindestens zwei fertig
+   sind. Ein Register, in dem fast alles grau ist, wirkt leer statt
+   wachsend — die Vorschau lohnt sich erst, wenn es etwas zu lesen gibt. */
+const geplant = fertig.length >= 2 ? sortiert.filter((m) => m.data.draft) : [];
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
 const jsonLd = {

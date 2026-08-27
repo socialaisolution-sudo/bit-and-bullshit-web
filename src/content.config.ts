@@ -164,6 +164,16 @@ const metaphern = defineCollection({
       /** Pfad zur Comic-Fassung, falls es eine gibt. */
       comic: z.string().optional(),
       /**
+       * Formulierungen, bei denen in einem Artikel auf diesen Eintrag
+       * verlinkt werden soll — inklusive Beugungen und Kurzformen.
+       *
+       * Bewusst eine gepflegte Liste statt Texterkennung: Eine Metapher
+       * erkennt man am Sinn, nicht an Buchstaben. „Zug" allein trifft die
+       * Bahnstrecke, „im Kreis" trifft das Karussell. Wer die Phrasen
+       * schreibt, entscheidet, was gemeint war.
+       */
+      ausloeser: z.array(z.string()).optional(),
+      /**
        * Artikel, in denen das Bild angewendet wird — der Rückweg aus dem
        * Register in die Texte. Bewusst von Hand gepflegt: Automatisch
        * gefundene Treffer wären oft nur beiläufige Erwähnungen.
