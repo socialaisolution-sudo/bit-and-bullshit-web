@@ -248,6 +248,72 @@ function keywordWache() {
   };
 }
 
+
+/**
+ * Meldet falsche Schlusszeichen im Fließtext.
+ *
+ * Deutsch heißt „so“ — unten geöffnet, oben geschlossen. Gerade (") und
+ * englische (”) Schlusszeichen sind falsch. Die Seite hatte davon 206
+ * Stück in 47 Dateien, bevor es jemandem auffiel.
+ *
+ * Geprüft wird nur ein Zeichen, das direkt ein „ schließt. Gerade
+ * Anführungszeichen an anderer Stelle sind legitim: YAML-Werte,
+ * HTML-Attribute, Zollangaben.
+ *
+ * Wird nur gemeldet, nicht ersetzt. Eine automatische Reparatur hat schon
+ * einmal ein YAML-Escape zerlegt.
+ */
+function typografieWache() {
+  const sammle = (ordner, tief) => {
+    const basis = new URL(ordner, import.meta.url);
+    const raus = [];
+    let eintraege;
+    try {
+      eintraege = fs.readdirSync(basis, { withFileTypes: true });
+    } catch {
+      return raus;
+    }
+    for (const e of eintraege) {
+      if (e.isDirectory() && tief) {
+        for (const datei of fs.readdirSync(new URL(e.name + "/", basis))) {
+          if (datei.endsWith(".md"))
+            raus.push([`${e.name}/${datei}`, new URL(`${e.name}/${datei}`, basis)]);
+        }
+      } else if (e.name.endsWith(".md")) {
+        raus.push([e.name, new URL(e.name, basis)]);
+      }
+    }
+    return raus;
+  };
+
+  return {
+    name: "typografie-wache",
+    hooks: {
+      "astro:build:done": ({ logger }) => {
+        const quellen = [
+          ...sammle("./src/content/blog/", false),
+          ...sammle("./src/content/cornerstones/", true),
+          ...sammle("./src/content/metaphern/", false),
+        ];
+        let treffer = 0;
+        for (const [name, url] of quellen) {
+          const roh = fs.readFileSync(url, "utf-8");
+          const teile = roh.split("---");
+          const text = teile.length > 2 ? teile.slice(2).join("---") : roh;
+          for (const m of text.matchAll(/„([^„“”"]{1,120})([”"])/g)) {
+            treffer++;
+            const art = m[2] === '"' ? "gerades" : "englisches";
+            logger.warn(
+              `${name}: ${art} Schlusszeichen bei „${m[1].slice(0, 40)}${m[2]} — deutsch waere „…“.`,
+            );
+          }
+        }
+        if (treffer === 0) logger.info("Typografie-Wache: Anfuehrungszeichen sauber.");
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: "https://bitandbullshit.com",
   integrations: [
@@ -264,6 +330,7 @@ export default defineConfig({
     }),
     legacyRedirects(),
     keywordWache(),
+    typografieWache(),
   ],
   markdown: {
     rehypePlugins: [rehypeBegriffe],
