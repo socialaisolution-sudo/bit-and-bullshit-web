@@ -13,7 +13,7 @@ import { Image } from "astro:assets";
 
 /* Der zuletzt veröffentlichte Cornerstone ist der Aufmacher. Fehlt er
    (frische Installation, alles auf draft), entfällt der Abschnitt still —
-   ein leerer Kasten mit „demnächst" ist schlechter als keiner. */
+   ein leerer Kasten mit „demnächst“ ist schlechter als keiner. */
 const aufmacher = await aktuellerCornerstone();
 
 /* Aufmacher des Comic-Blocks ist immer das jüngste Kapitel. */
@@ -57,7 +57,7 @@ const jsonLd = {
           Wir entlarven den <span class="text-orange">Bullshit.</span>
         </h1>
         <p class="hero-layer mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
-          Frech, kurz, ehrlich. Kein Signaldienst, keine „100 % Rendite"-Märchen,
+          Frech, kurz, ehrlich. Kein Signaldienst, keine „100 % Rendite“-Märchen,
           keine Monatsabos. Nur die unbequemen Fragen zu Geldsystem, Staat und
           Krypto — verständlich aufbereitet.
         </p>
@@ -171,7 +171,7 @@ const jsonLd = {
           <p class="comic-buehne-anriss">
             {comicAnzahl}
             {comicAnzahl === 1 ? " Kapitel" : " Kapitel"} zum Durchscrollen.
-            Zuletzt: „{neuesterComic.titel}" — {neuesterComic.anriss}
+            Zuletzt: „{neuesterComic.titel}“ — {neuesterComic.anriss}
           </p>
           <a href="/comic" class="comic-buehne-cta display">Zur Comic-Serie &rarr;</a>
         </div>
@@ -216,7 +216,7 @@ const jsonLd = {
 
         <p class="mt-8 max-w-2xl text-lg leading-relaxed text-paper/80">
           Ein Kanal für Leute, die keine Lust mehr auf Rendite-Gurus,
-          Signal-Verkäufer und „Number-go-up"-Predigten haben.
+          Signal-Verkäufer und „Number-go-up“-Predigten haben.
           Wir nehmen ein Thema — Fiatgeld, Staatsschulden, Halving,
           Chatkontrolle, Memecoins — und erklären in 60 Sekunden, was
           wirklich dahinter steckt.
@@ -224,7 +224,7 @@ const jsonLd = {
 
         <blockquote class="wall-tag mt-10">
           <span>Kein Signaldienst. Kein Bot-Verkauf.</span>
-          <span class="wall-tag-hit">Kein „Kauf jetzt sofort".</span>
+          <span class="wall-tag-hit">Kein „Kauf jetzt sofort“.</span>
         </blockquote>
 
         <p class="mt-9 max-w-2xl text-lg leading-relaxed text-paper/80">

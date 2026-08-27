@@ -8,20 +8,20 @@ metaBeschreibung: '„Zu spät für Bitcoin?“ ist die häufigste Frage – und
 teil: 1
 draft: false
 image: "../../../assets/cornerstones/bitcoin-denkfehler/zu-spaet-gibt-es-nicht.webp"
-imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich auf einem regennassen Bahnsteig, während im Hintergrund ein Zug auf einem Kreisgleis fährt statt abzufahren — Schriftzug „Zu spät gibt es nicht"'
+imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich auf einem regennassen Bahnsteig, während im Hintergrund ein Zug auf einem Kreisgleis fährt statt abzufahren — Schriftzug „Zu spät gibt es nicht“'
 comic: "/comic/zu-spaet-gibt-es-nicht/"
 ausblick: 'Warum die Frage nach der „gerechten Verteilung“ eine Hand voraussetzt, die es bei Bitcoin gar nicht gibt — und warum sie deshalb ins Leere läuft.'
 ---
 
 Es gibt einen Kommentar, der unter fast jedem Video auftaucht, das ich mache. Er kommt in Varianten, aber der Kern ist immer derselbe:
 
-*„Ist es nicht längst zu spät?"*
+*„Ist es nicht längst zu spät?“*
 
-Ich verstehe die Frage. Sie fühlt sich vernünftig an. Sie klingt nach Zurückhaltung, nach gesundem Menschenverstand, nach jemandem, der sich nicht überrumpeln lässt. Und trotzdem ist sie kaputt — nicht weil die Antwort „nein" wäre, sondern weil die Frage selbst nicht funktioniert.
+Ich verstehe die Frage. Sie fühlt sich vernünftig an. Sie klingt nach Zurückhaltung, nach gesundem Menschenverstand, nach jemandem, der sich nicht überrumpeln lässt. Und trotzdem ist sie kaputt — nicht weil die Antwort „nein“ wäre, sondern weil die Frage selbst nicht funktioniert.
 
 ## Der Zug, der im Kreis fährt
 
-Das Bild, das in deinem Kopf steckt, wenn du „zu spät" denkst, ist ein Bahnhof. Ein Zug fährt ab. Wer drin sitzt, kommt an. Wer am Bahnsteig steht, hat verloren. Einmalig, endgültig, vorbei.
+Das Bild, das in deinem Kopf steckt, wenn du „zu spät“ denkst, ist ein Bahnhof. Ein Zug fährt ab. Wer drin sitzt, kommt an. Wer am Bahnsteig steht, hat verloren. Einmalig, endgültig, vorbei.
 
 Dieses Bild passt auf viele Dinge im Leben. Auf ein Bewerbungsgespräch. Auf eine Beziehung. Auf die Anmeldefrist für eine Prüfung.
 
@@ -37,7 +37,7 @@ Und darauf hat niemand eine Antwort. Nicht ich, nicht der Typ mit dem Lambo im T
 
 Weil sie dich vor einer unangenehmeren schützt.
 
-„Zu spät" ist eine Frage über die Welt. Die Antwort liegt draußen, bei anderen, in Kursverläufen und Nachrichten. Solange du sie stellst, musst du nichts über dich selbst herausfinden.
+„Zu spät“ ist eine Frage über die Welt. Die Antwort liegt draußen, bei anderen, in Kursverläufen und Nachrichten. Solange du sie stellst, musst du nichts über dich selbst herausfinden.
 
 Die Fragen, die tatsächlich zählen, sind alle nach innen gerichtet — und deshalb unbequemer:
 
@@ -50,11 +50,11 @@ Keine dieser Fragen hat mit dem heutigen Kurs zu tun. Alle vier musst du beantwo
 
 ## Der Trick mit den Rückspiegeln
 
-Es gibt einen zweiten Grund, warum sich „zu spät" so plausibel anfühlt: Du siehst die Vergangenheit in voller Auflösung und die Zukunft gar nicht.
+Es gibt einen zweiten Grund, warum sich „zu spät“ so plausibel anfühlt: Du siehst die Vergangenheit in voller Auflösung und die Zukunft gar nicht.
 
 Jeder Chart zeigt dir mit gnadenloser Klarheit, wo du hättest kaufen sollen. Diese Klarheit gab es zu dem Zeitpunkt nicht. Wer 2015 gekauft hat, hat nicht die Kurve gesehen, die du heute siehst — der hat auf einen Bildschirm geschaut, auf dem nichts stand außer Unsicherheit, und wurde von seinem Umfeld für verrückt erklärt.
 
-Der Rückspiegel macht jede vergangene Entscheidung offensichtlich und jede zukünftige unmöglich. Wenn du dich also dabei erwischst, wie du dir vorwirfst, „damals" nicht gehandelt zu haben: Du wirfst dir vor, keine Information gehabt zu haben, die es nicht gab.
+Der Rückspiegel macht jede vergangene Entscheidung offensichtlich und jede zukünftige unmöglich. Wenn du dich also dabei erwischst, wie du dir vorwirfst, „damals“ nicht gehandelt zu haben: Du wirfst dir vor, keine Information gehabt zu haben, die es nicht gab.
 
 Und in fünf Jahren wird jemand genau dasselbe über heute denken.
 
@@ -72,7 +72,7 @@ Genau diese Angst ist übrigens das meistverkaufte Produkt der Branche. Nicht Bi
 
 ## Was du mitnimmst
 
-„Zu spät" setzt einen Endpunkt voraus, den es nicht gibt. Die Frage lässt sich nicht beantworten, weil sie falsch gebaut ist — und solange du sie stellst, kommst du an die Fragen nicht heran, die du wirklich beantworten musst.
+„Zu spät“ setzt einen Endpunkt voraus, den es nicht gibt. Die Frage lässt sich nicht beantworten, weil sie falsch gebaut ist — und solange du sie stellst, kommst du an die Fragen nicht heran, die du wirklich beantworten musst.
 
 Ersetz sie durch eine einzige:
 

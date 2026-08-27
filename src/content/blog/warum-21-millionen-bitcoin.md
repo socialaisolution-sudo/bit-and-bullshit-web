@@ -7,7 +7,7 @@ order: 22
 aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"
 draft: false
 image: "../../assets/mascots/warum-21-millionen-bitcoin.webp"
-imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich neben einer angeschlagenen Münze auf einem Sockel mit der Aufschrift „Max. Supply 21.000.000" und „Limitiert."; links läuft ein Fließband aus einer Maschine namens Bitcoin-Protokoll, das durchnummerierte Blöcke bis zum letzten mit der Nummer 21.000.000 ausgibt — darüber der Schriftzug „Warum gibt es nur 21 Millionen Bitcoin?"'
+imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich neben einer angeschlagenen Münze auf einem Sockel mit der Aufschrift „Max. Supply 21.000.000“ und „Limitiert.“; links läuft ein Fließband aus einer Maschine namens Bitcoin-Protokoll, das durchnummerierte Blöcke bis zum letzten mit der Nummer 21.000.000 ausgibt — darüber der Schriftzug „Warum gibt es nur 21 Millionen Bitcoin?“'
 ---
 
 Ok, eine der ersten Fragen, die fast jeder stellt: Warum ausgerechnet 21 Millionen? Klingt wie eine willkürliche Zahl, die sich jemand ausgedacht hat. Ist es aber nicht — dahinter steckt der vielleicht wichtigste Gedanke von ganz Bitcoin. Also schauen wir uns das kurz an.
@@ -16,4 +16,4 @@ Der entscheidende Punkt: Es wird niemals mehr als 21 Millionen Bitcoin geben. Di
 
 Und das Spannende: Über 19 Millionen davon sind schon im Umlauf. Der ganze Rest kommt nur noch extrem langsam dazu, gestreckt über Jahrzehnte, bis ungefähr zum Jahr 2140. Es wird also nicht plötzlich mehr, im Gegenteil — der Nachschub versiegt Stück für Stück. Diese absolute, nachprüfbare Knappheit ist etwas, das es bei staatlichem Geld schlicht nicht gibt.
 
-Deshalb reden viele bei Bitcoin von „digitalem Gold" — nur dass die Menge bei Bitcoin sogar noch klarer festgeschrieben ist als bei echtem Gold. Warum genau 21 Millionen, wie die langsame Ausgabe technisch funktioniert und was passiert, wenn der letzte Bitcoin geschürft ist, findest du ausführlich in unserer Bitcoin-Enzyklopädie.
+Deshalb reden viele bei Bitcoin von „digitalem Gold“ — nur dass die Menge bei Bitcoin sogar noch klarer festgeschrieben ist als bei echtem Gold. Warum genau 21 Millionen, wie die langsame Ausgabe technisch funktioniert und was passiert, wenn der letzte Bitcoin geschürft ist, findest du ausführlich in unserer Bitcoin-Enzyklopädie.

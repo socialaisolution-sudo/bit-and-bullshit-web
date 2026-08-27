@@ -7,12 +7,12 @@ order: 3
 aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false
 image: "../../assets/mascots/was-ist-fiatgeld.webp"
-imageAlt: 'Infografik: Fiatgeld ist Geld ohne inneren Wert, nicht durch Gold oder Silber gedeckt, sein Wert entsteht allein aus Vertrauen und Akzeptanz. Eine Kette in fünf Schritten zeigt, wie es entsteht — der Staat braucht Geld, die Zentralbank schafft es aus dem Nichts, der Staat gibt es aus, wir nutzen es, dadurch hat es Wert. Als Problem genannt: Zentralbanken können unbegrenzt drucken, mehr Geld bedeutet weniger Kaufkraft, Inflation zehrt Erspartes auf; daneben ein 100-Euro-Schein heute und zerfallend in zehn Jahren. Rechts das Bit-&-Bullshit-Maskottchen mit brennendem Geldschein über einer Tonne mit der Aufschrift „Fiat System"'
+imageAlt: 'Infografik: Fiatgeld ist Geld ohne inneren Wert, nicht durch Gold oder Silber gedeckt, sein Wert entsteht allein aus Vertrauen und Akzeptanz. Eine Kette in fünf Schritten zeigt, wie es entsteht — der Staat braucht Geld, die Zentralbank schafft es aus dem Nichts, der Staat gibt es aus, wir nutzen es, dadurch hat es Wert. Als Problem genannt: Zentralbanken können unbegrenzt drucken, mehr Geld bedeutet weniger Kaufkraft, Inflation zehrt Erspartes auf; daneben ein 100-Euro-Schein heute und zerfallend in zehn Jahren. Rechts das Bit-&-Bullshit-Maskottchen mit brennendem Geldschein über einer Tonne mit der Aufschrift „Fiat System“'
 ---
 
 Ok, mal ganz ehrlich hingeschaut: Der 50-Euro-Schein in deiner Tasche ist… bedrucktes Baumwollpapier. Das war's. Der reine Materialwert liegt bei ein paar Cent. Den ganzen Rest, die vollen 50 Euro, gibt ihm nur eine einzige Sache: dein Vertrauen, dass der Schein auch morgen noch was wert ist.
 
-Es gibt sogar ein Wort dafür: Fiatgeld. Kommt aus dem Lateinischen, „fiat" heißt „es werde". Also Geld, das per Ansage aus dem Nichts entsteht. Kein Gold dahinter, keine Deckung, nichts Physisches. Nur die Ansage „ab jetzt ist das Geld" — und alle machen mit.
+Es gibt sogar ein Wort dafür: Fiatgeld. Kommt aus dem Lateinischen, „fiat“ heißt „es werde“. Also Geld, das per Ansage aus dem Nichts entsteht. Kein Gold dahinter, keine Deckung, nichts Physisches. Nur die Ansage „ab jetzt ist das Geld“ — und alle machen mit.
 
 Wie das konkret abläuft, ist erstaunlich unspektakulär. Der Staat braucht Geld, für Ausgaben, Projekte, Sozialsysteme. Die Zentralbank schafft es — als Buchung, teils als Druck. Der Staat gibt es aus, für Gehälter, Lieferanten, Leistungen. Wir nehmen es an, weil alle anderen es auch annehmen. Und genau dadurch hat es Wert. Fünf Schritte, kein einziger davon braucht Gold. Wer wissen will, wie Zentralbanken das im Detail machen und welche Regeln dabei gelten, findet die nüchterne Fassung [auf bitcoinaera.de](https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/) — hier geht es darum, was es für dich bedeutet.
 

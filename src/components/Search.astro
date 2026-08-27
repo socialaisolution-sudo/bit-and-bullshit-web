@@ -28,7 +28,7 @@
       <input
         id="search-input"
         type="search"
-        placeholder="Snippet suchen — z. B. „Fiatgeld", „Cantillon", „Wallet""
+        placeholder="Snippet suchen — z. B. „Fiatgeld“, „Cantillon“, „Wallet“"
         autocomplete="off"
         spellcheck="false"
       />
@@ -118,7 +118,7 @@
       if (!pf) return;
       const search = await pf.search(q);
       if (!search || search.results.length === 0) {
-        results.innerHTML = `<p class="search-empty">Kein Treffer für „${escapeHtml(q)}".</p>`;
+        results.innerHTML = `<p class="search-empty">Kein Treffer für „${escapeHtml(q)}“.</p>`;
         return;
       }
       const top = await Promise.all(search.results.slice(0, 8).map((r: any) => r.data()));

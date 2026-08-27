@@ -181,7 +181,29 @@ const metaphern = defineCollection({
       angewendet: z
         .array(z.object({ titel: z.string(), pfad: z.string() }))
         .optional(),
-    }),
+    })
+      /**
+       * Ein veröffentlichter Eintrag braucht sein eigenes Bild — sonst
+       * fällt er beim Teilen auf das Standardmotiv zurück und sieht aus
+       * wie jede andere Seite. Entwürfe dürfen noch ohne, sonst könnte man
+       * einen Eintrag nicht anlegen, bevor das Motiv existiert.
+       */
+      .superRefine((d, ctx) => {
+        if (d.draft) return;
+        if (!d.image)
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["image"],
+            message:
+              "Veröffentlichter Metapher-Eintrag ohne Bild. Motiv in 1200x630 anlegen oder draft: true setzen.",
+          });
+        if (!d.imageAlt)
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["imageAlt"],
+            message: "Bild ohne Alt-Text.",
+          });
+      }),
 });
 
 export const collections = { blog, ratgeber, cornerstones, metaphern };
