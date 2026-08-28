@@ -4,7 +4,9 @@ kurz: "Angreifer suchen nicht, wo es am wichtigsten ist, sondern wo es am leicht
 description: "Warum Sicherheit sich nie am Durchschnitt bemisst, sondern am schwächsten erreichbaren Punkt — und warum fast jede Hack-Schlagzeile den Falschen meint."
 keyword: "schwächstes Glied Angriff Denkbild Fenster"
 metaTitel: 'Das offene Fenster — warum nie das Fundament bricht'
-draft: true
+draft: false
+image: "../../assets/metaphern/offenes-fenster.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap leuchtet mit einer Taschenlampe auf ein gekipptes Fenster mit orange leuchtendem Licht und angelehnter Leiter, rechts daneben eine schwer verriegelte Panzertuer mit Ueberwachungskamera — eine gestrichelte Linie fuehrt an der Tuer vorbei zum Fenster'
 ausloeser:
   - "offene Fenster"
   - "nicht die dickste Wand"

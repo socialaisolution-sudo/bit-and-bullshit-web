@@ -4,7 +4,9 @@ kurz: "Ein Preis misst etwas — er verursacht es nicht. Wer das verwechselt, ku
 description: "Warum steigende Preise fast immer als Ursache behandelt werden, obwohl sie eine Anzeige sind — und was das für Preisbremsen, Deckel und Rabatte bedeutet."
 keyword: "Preis als Symptom Denkbild Thermometer"
 metaTitel: 'Das Fieberthermometer — wenn der Preis nur die Anzeige ist'
-draft: true
+draft: false
+image: "../../assets/metaphern/fieberthermometer.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht auf einer Leiter und giesst Wasser aus einem Eimer ueber die Spitze eines riesigen Fieberthermometers mit orange gefuellter Saeule, im Hintergrund als blasse Kreidezeichnung ein schwitzender Kranker im Bett'
 ausloeser:
   - "Fieberthermometer"
   - "nur das Thermometer"

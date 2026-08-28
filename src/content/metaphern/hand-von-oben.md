@@ -4,7 +4,9 @@ kurz: "Bevor du fragst, ob etwas gerecht verteilt wurde, lohnt die Vorfrage: Gab
 description: "Fast jede Gerechtigkeitsfrage setzt still voraus, dass jemand zuteilt. Wann diese Annahme stimmt, wann sie in die Irre führt und wie du beides unterscheidest."
 keyword: "wer verteilt Geld Denkbild Hand"
 metaTitel: 'Die Hand, die von oben verteilt — Zuteilung oder Zugang?'
-draft: true
+draft: false
+image: "../../assets/metaphern/hand-von-oben.webp"
+imageAlt: 'Durchgestrichene Kreidezeichnung einer aus Wolken kommenden Hand, daneben ein Loch in der Betonwand, davor das Bit & Bullshit Maskottchen mit Bitcoin-Cap, das nach oben ins Leere zeigt, waehrend orange leuchtende Bitcoin-Muenzen und Barren frei auf dem Boden verteilt liegen'
 comic: "/comic/niemand-verteilt-bitcoin/"
 ausloeser:
   - "Hand, die von oben verteilt"

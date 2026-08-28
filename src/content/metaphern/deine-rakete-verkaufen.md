@@ -4,7 +4,9 @@ kurz: "Wer regelmäßige Einnahmen kauft, bezahlt fast immer mit dem seltenen gr
 description: "Planbar jetzt gegen selten und groß später: Warum dieser Tausch überall auftaucht, warum er sich so gut anfühlt und woran du erkennst, dass du ihn eingegangen bist."
 keyword: "Cashflow gegen Aufwärtspotenzial Denkbild"
 metaTitel: 'Du verkaufst deine Rakete — planbar gegen selten und groß'
-draft: true
+draft: false
+image: "../../assets/metaphern/deine-rakete-verkaufen.webp"
+imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap haelt zufrieden ein Buendel Geldscheine und ein Haekchen-Schild, rechts hinter einer gestrichelten Trennlinie wird eine nur weiss umrissene Figur von einer startenden Bitcoin-Rakete nach oben gezogen'
 ausloeser:
   - "verkaufst deine Rakete"
   - "die Rakete wird dir weggenommen"
