@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { artikelDaten } from "../../lib/stand";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
@@ -79,6 +80,7 @@ const jsonLd = langfassungDa ? undefined : {
   mainEntityOfPage: new URL(`/snippets/${post.id}`, site).toString(),
   articleSection: kat.titel,
   keywords: post.data.keyword,
+  ...artikelDaten(`src/content/blog/${post.id}.md`),
   image: ogImagePath
     ? new URL(ogImagePath, site).toString()
     : new URL("/og-default.png", site).toString(),
@@ -113,7 +115,7 @@ const jsonLd = langfassungDa ? undefined : {
     <Brotkrumen
       pfad={[
         { label: "Start", href: "/" },
-        { label: "Snippets", href: "/snippets" },
+        { label: "Snippets", href: "/snippets/" },
         { label: kat.titel, href: `/kategorie/${post.data.kategorie}/` },
         { label: post.data.title },
       ]}

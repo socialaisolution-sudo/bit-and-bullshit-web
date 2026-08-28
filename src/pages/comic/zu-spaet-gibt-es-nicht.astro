@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { erstDatum } from "../../lib/stand";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
@@ -33,6 +34,7 @@ const jsonLd = {
   name: "Zu spät gibt es nicht",
   headline: "Zu spät gibt es nicht — der Comic",
   inLanguage: "de-DE",
+  ...erstDatum("src/pages/comic/zu-spaet-gibt-es-nicht.astro"),
   url: new URL("/comic/zu-spaet-gibt-es-nicht/", site).toString(),
   about:
     "Warum die Frage nach dem richtigen Einstiegszeitpunkt bei Bitcoin falsch gestellt ist.",
@@ -58,7 +60,7 @@ const jsonLd = {
         gedaempft
         pfad={[
           { label: "Start", href: "/" },
-          { label: "Comic", href: "/comic" },
+          { label: "Comic", href: "/comic/" },
           { label: "Zu spät gibt es nicht" },
         ]}
       />

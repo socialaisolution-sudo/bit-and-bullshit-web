@@ -8,12 +8,12 @@ const isActive = (href: string) =>
 
 const links = [
   { href: "/", label: "Start" },
-  { href: "/ratgeber", label: "Ratgeber" },
-  { href: "/snippets", label: "Snippets" },
-  { href: "/comic", label: "Comic" },
-  { href: "/metaphern", label: "Metaphern" },
-  { href: "/ueber-uns", label: "Über" },
-  { href: "/sticker", label: "Sticker" },
+  { href: "/ratgeber/", label: "Ratgeber" },
+  { href: "/snippets/", label: "Snippets" },
+  { href: "/comic/", label: "Comic" },
+  { href: "/metaphern/", label: "Metaphern" },
+  { href: "/ueber-uns/", label: "Über" },
+  { href: "/sticker/", label: "Sticker" },
 ];
 ---
 
@@ -47,7 +47,7 @@ const links = [
                   </summary>
                   <ul class="rubrik-liste">
                     <li>
-                      <a href="/snippets">Alle Snippets</a>
+                      <a href="/snippets/">Alle Snippets</a>
                     </li>
                     {KATEGORIEN.map((k) => (
                       <li>

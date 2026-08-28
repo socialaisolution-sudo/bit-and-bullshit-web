@@ -11,6 +11,7 @@ import { getCollection } from "astro:content";
 import Brotkrumen from "../../../components/Brotkrumen.astro";
 import Inhaltsverzeichnis from "../../../components/Inhaltsverzeichnis.astro";
 import type { GetStaticPaths } from "astro";
+import { artikelDaten } from "../../../lib/stand";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const alle = await ladeRatgeber();
@@ -70,6 +71,7 @@ const jsonLd = {
   mainEntityOfPage: url,
   articleSection: r.data.titel,
   keywords: cs.data.keyword,
+  ...artikelDaten(`src/content/cornerstones/${r.id}/${teil.slug}.md`),
   image: ogImagePath,
   isPartOf: {
     "@type": "CollectionPage",
@@ -98,7 +100,7 @@ const jsonLd = {
     <Brotkrumen
       pfad={[
         { label: "Start", href: "/" },
-        { label: "Ratgeber", href: "/ratgeber" },
+        { label: "Ratgeber", href: "/ratgeber/" },
         { label: r.data.kurztitel, href: `/ratgeber/${r.id}/` },
         { label: `Teil ${cs.data.teil}` },
       ]}

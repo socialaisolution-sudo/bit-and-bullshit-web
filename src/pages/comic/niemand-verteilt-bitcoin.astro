@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { erstDatum } from "../../lib/stand";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
@@ -32,6 +33,7 @@ const jsonLd = {
   name: "Niemand verteilt Bitcoin",
   headline: "Niemand verteilt Bitcoin — der Comic",
   inLanguage: "de-DE",
+  ...erstDatum("src/pages/comic/niemand-verteilt-bitcoin.astro"),
   url: new URL("/comic/niemand-verteilt-bitcoin/", site).toString(),
   about:
     "Warum die Frage nach der gerechten Verteilung von Bitcoin eine Hand voraussetzt, die es gar nicht gibt.",
@@ -57,7 +59,7 @@ const jsonLd = {
         gedaempft
         pfad={[
           { label: "Start", href: "/" },
-          { label: "Comic", href: "/comic" },
+          { label: "Comic", href: "/comic/" },
           { label: "Niemand verteilt Bitcoin" },
         ]}
       />

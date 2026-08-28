@@ -5,6 +5,7 @@ import fs from "node:fs";
 import { execSync } from "node:child_process";
 import rehypeBegriffe from "./plugins/rehype-begriffe.mjs";
 import rehypeMetaphern from "./plugins/rehype-metaphern.mjs";
+import { standAusGit } from "./plugins/stand-aus-git.mjs";
 
 /**
  * Schreibt `dist/_redirects` für Cloudflare Pages.
@@ -49,11 +50,15 @@ function legacyRedirects() {
 
 
 /**
- * Letztes Änderungsdatum je Datei — für `lastmod` in der Sitemap.
+ * Erst- und Änderungsdatum je Datei — für `lastmod` in der Sitemap und für
+ * `datePublished` / `dateModified` in der Artikel-Auszeichnung.
  *
  * Ohne das trägt jede Adresse die Build-Zeit, und damit behauptet jeder
- * Deploy, alle 66 Seiten seien frisch. Google lernt daraus, dass das Datum
+ * Deploy, alle Seiten seien frisch. Google lernt daraus, dass das Datum
  * nichts wert ist, und ignoriert es.
+ *
+ * Gemessen wird am sichtbaren Text, nicht an der Datei — die Begründung
+ * steht in plugins/stand-aus-git.mjs.
  *
  * Der Haken: Cloudflare Pages klont flach (nur der letzte Commit). Dort
  * kennt Git jede Datei nur aus diesem einen Commit und meldet für alles
@@ -67,58 +72,25 @@ function legacyRedirects() {
  */
 const STAND_DATEI = new URL("./src/data/aenderungen.json", import.meta.url);
 
-function ausGitHistorie() {
-  const flach =
-    execSync("git rev-parse --is-shallow-repository", { encoding: "utf-8" }).trim() ===
-    "true";
-  if (flach) return null;
-
-  const stand = {};
-  const roh = execSync("git log --name-only --date=iso-strict --format=%cI", {
-    encoding: "utf-8",
-    maxBuffer: 32 * 1024 * 1024,
-  });
-  let datum = null;
-  for (const zeile of roh.split("\n")) {
-    const z = zeile.trim();
-    if (!z) continue;
-    if (/^\d{4}-\d{2}-\d{2}T/.test(z)) datum = z;
-    else if (datum && !(zeile in stand)) stand[zeile] = datum;
-  }
-  /* Noch nicht eingecheckte Änderungen zählen als "jetzt". Ohne das würde
-     eine gerade bearbeitete Datei ihr vorheriges Datum melden — der Build
-     läuft ja vor dem Commit, nicht danach. */
-  try {
-    const offen = execSync("git status --porcelain", { encoding: "utf-8" });
-    const jetzt = new Date().toISOString();
-    for (const zeile of offen.split("\n")) {
-      const datei = zeile.slice(3).trim().split(" -> ").pop();
-      if (datei && !zeile.startsWith("D ") && !zeile.startsWith(" D")) {
-        stand[datei] = jetzt;
-      }
-    }
-  } catch {
-    /* ohne Statusabfrage bleibt es beim Historienstand */
-  }
-
-  return stand;
-}
-
 function ladeStand(logger) {
   let ausGit = null;
   try {
-    ausGit = ausGitHistorie();
+    ausGit = standAusGit();
   } catch {
     /* kein Git verfügbar — dann bleibt nur die mitgelieferte Datei */
   }
 
   if (ausGit && Object.keys(ausGit).length > 0) {
-    fs.writeFileSync(STAND_DATEI, JSON.stringify(ausGit, null, 0) + "\n");
+    fs.writeFileSync(
+      STAND_DATEI,
+      JSON.stringify({ fassung: 2, dateien: ausGit }, null, 0) + "\n",
+    );
     return ausGit;
   }
 
   try {
-    return JSON.parse(fs.readFileSync(STAND_DATEI, "utf-8"));
+    const gelesen = JSON.parse(fs.readFileSync(STAND_DATEI, "utf-8"));
+    return gelesen.fassung === 2 ? gelesen.dateien : {};
   } catch {
     logger?.warn?.("Kein Aenderungsstand verfuegbar — Sitemap ohne lastmod.");
     return {};
@@ -454,7 +426,7 @@ export default defineConfig({
       serialize(eintrag) {
         const pfad = new URL(eintrag.url).pathname;
         const quelle = quelleZuUrl(pfad);
-        const datum = quelle && GIT_STAND[quelle];
+        const datum = quelle && GIT_STAND[quelle]?.geaendert;
         if (datum) eintrag.lastmod = datum;
         else delete eintrag.lastmod;
         return eintrag;
