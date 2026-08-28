@@ -12,6 +12,9 @@ ausloeser:
   - "die Rakete wird dir weggenommen"
   - "Rakete verkauft"
   - "Upside verkauft"
+  - "Aufwärtspotenzial verkauft"
+  - "Upside abgegeben"
+  - "deine Rakete"
 angewendet:
   - titel: "12 % Ausschüttung im Jahr — Abzocke oder genialer Deal?"
     pfad: "/ratgeber/hochausschuettende-etfs/covered-call-erklaert/"

@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 import rehypeBegriffe from "./plugins/rehype-begriffe.mjs";
+import rehypeMetaphern from "./plugins/rehype-metaphern.mjs";
 
 /**
  * Schreibt `dist/_redirects` für Cloudflare Pages.
@@ -250,6 +251,100 @@ function keywordWache() {
 
 
 /**
+ * Prueft die Ausloese-Phrasen des Metaphern-Registers.
+ *
+ * Der Automatismus in plugins/rehype-metaphern.mjs verlinkt stur nach
+ * diesen Listen. Drei Dinge koennen dabei schiefgehen, und alle drei
+ * werden nur gemeldet — welche Metapher eine Phrase bekommt, ist eine
+ * redaktionelle Entscheidung, keine technische:
+ *
+ *   1. dieselbe Phrase steht bei zwei Eintraegen
+ *   2. eine Phrase ist gleichzeitig ein Fachbegriff aus begriffe.json
+ *      (dann streiten zwei Automatismen um dasselbe Wort)
+ *   3. eine Phrase kommt im ganzen Bestand kein einziges Mal vor
+ */
+function metaphernWache() {
+  return {
+    name: "metaphern-wache",
+    hooks: {
+      "astro:build:done": async ({ logger }) => {
+        const { metapherPhrasen } = await import(
+          "./plugins/rehype-metaphern.mjs"
+        );
+        const begriffe = JSON.parse(
+          fs.readFileSync(new URL("./src/data/begriffe.json", import.meta.url), "utf-8"),
+        );
+        const fachwoerter = new Set(
+          begriffe.begriffe
+            .flatMap((b) => [b.begriff, ...(b.aliase ?? [])])
+            .map((w) => w.toLowerCase()),
+        );
+
+        /* Fließtext aller Artikel einsammeln, ohne Frontmatter. */
+        const texte = [];
+        const sammle = (ordner, tief) => {
+          const basis = new URL(ordner, import.meta.url);
+          for (const e of fs.readdirSync(basis, { withFileTypes: true })) {
+            if (e.isDirectory() && tief) sammle(`${ordner}${e.name}/`, tief);
+            else if (e.name.endsWith(".md"))
+              texte.push(
+                fs
+                  .readFileSync(new URL(e.name, basis), "utf-8")
+                  .split(/^---$/m)
+                  .slice(2)
+                  .join("---"),
+              );
+          }
+        };
+        sammle("./src/content/blog/", false);
+        sammle("./src/content/ratgeber/", true);
+        sammle("./src/content/cornerstones/", true);
+
+        const WORT = "A-Za-zÄÖÜäöüß0-9";
+        const gesehen = new Map();
+        let treffer = 0;
+        let tot = 0;
+
+        for (const p of metapherPhrasen) {
+          const schluessel = p.form.toLowerCase();
+
+          const schon = gesehen.get(schluessel);
+          if (schon && schon !== p.slug) {
+            treffer++;
+            logger.warn(
+              `Ausloeser "${p.form}" steht bei zwei Eintraegen: ${schon} und ${p.slug}. ` +
+                `Der laengere Eintrag gewinnt zufaellig — bitte einem zuordnen.`,
+            );
+          }
+          gesehen.set(schluessel, p.slug);
+
+          if (fachwoerter.has(schluessel)) {
+            treffer++;
+            logger.warn(
+              `Ausloeser "${p.form}" ist auch ein Fachbegriff im Nachschlagewerk. ` +
+                `Metapher-Link und Begriffs-Link streiten um dasselbe Wort.`,
+            );
+          }
+
+          const muster = new RegExp(
+            `(?<![${WORT}\\-])${p.form.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![${WORT}\\-])`,
+            "i",
+          );
+          if (!texte.some((t) => muster.test(t))) tot++;
+        }
+
+        if (tot > 0)
+          logger.info(
+            `Metaphern-Wache: ${tot} von ${metapherPhrasen.length} Ausloesern kommen im Bestand (noch) nicht vor.`,
+          );
+        if (treffer === 0) logger.info("Metaphern-Wache: keine Doppelbelegung.");
+      },
+    },
+  };
+}
+
+
+/**
  * Meldet falsche Schlusszeichen im Fließtext.
  *
  * Deutsch heißt „so“ — unten geöffnet, oben geschlossen. Gerade (") und
@@ -330,10 +425,11 @@ export default defineConfig({
     }),
     legacyRedirects(),
     keywordWache(),
+    metaphernWache(),
     typografieWache(),
   ],
   markdown: {
-    rehypePlugins: [rehypeBegriffe],
+    rehypePlugins: [rehypeMetaphern, rehypeBegriffe],
   },
   vite: {
     plugins: [tailwindcss()],

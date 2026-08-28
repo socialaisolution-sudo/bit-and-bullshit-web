@@ -12,6 +12,8 @@ ausloeser:
   - "nur das Thermometer"
   - "Preis ist das Thermometer"
   - "das Thermometer behandeln"
+  - "am Thermometer drehen"
+  - "Thermometer"
 angewendet:
   - titel: "10 Euro für ’nen Döner? Warum nicht der Döner teurer wurde"
     pfad: "/snippets/zehn-euro-doener-inflation/"

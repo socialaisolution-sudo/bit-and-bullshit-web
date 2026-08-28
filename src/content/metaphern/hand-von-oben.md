@@ -14,6 +14,10 @@ ausloeser:
   - "Hand, die verteilt"
   - "von oben nach unten verteilt"
   - "jemand, der zuteilt"
+  - "niemand verteilt"
+  - "keiner verteilt"
+  - "verteilt Bitcoin"
+  - "niemand verteilt Bitcoin"
 angewendet:
   - titel: "Niemand verteilt Bitcoin — der große Bitcoin-Denkfehler, Teil 2"
     pfad: "/ratgeber/bitcoin-denkfehler/niemand-verteilt-bitcoin/"

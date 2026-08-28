@@ -13,6 +13,8 @@ ausloeser:
   - "Bitcoin-Kartenhaus"
   - "bricht zusammen wie ein Kartenhaus"
   - "fällt in sich zusammen wie ein Kartenhaus"
+  - "wie ein Kartenhaus"
+  - "Kartenhäuser"
 angewendet:
   - titel: "„Too big to fail“ bei Bitcoin? Was hinter der Strategy-Todesspirale steckt"
     pfad: "/snippets/too-big-to-fail-bitcoin/"

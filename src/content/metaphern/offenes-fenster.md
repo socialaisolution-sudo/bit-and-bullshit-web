@@ -9,10 +9,15 @@ image: "../../assets/metaphern/offenes-fenster.webp"
 imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap leuchtet mit einer Taschenlampe auf ein gekipptes Fenster mit orange leuchtendem Licht und angelehnter Leiter, rechts daneben eine schwer verriegelte Panzertuer mit Ueberwachungskamera — eine gestrichelte Linie fuehrt an der Tuer vorbei zum Fenster'
 ausloeser:
   - "offene Fenster"
-  - "nicht die dickste Wand"
   - "Leck im Anbau"
   - "Riss im Fundament"
   - "schwächstes Glied"
+  - "offenes Fenster"
+  - "offenen Fenster"
+  - "schwächste Glied"
+  - "schwächsten Glied"
+  - "dicksten Wand"
+  - "dickste Wand"
 angewendet:
   - titel: "Krypto-Bridge gehackt: Warum nie die Blockchain selbst das Problem ist"
     pfad: "/snippets/krypto-bridge-hack-schwaechstes-glied/"
