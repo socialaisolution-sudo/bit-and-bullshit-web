@@ -271,6 +271,43 @@ function metaphernWache() {
         const { metapherPhrasen } = await import(
           "./plugins/rehype-metaphern.mjs"
         );
+
+        /* Jeder veroeffentlichte Eintrag braucht ein EIGENES Motiv. Das
+           Schema erzwingt nur, dass ueberhaupt eins dasteht — zwei
+           Eintraege koennten sich dieselbe Datei teilen, und in der
+           Uebersicht saehe das aus wie ein Fehler. */
+        const bilderOrdner = new URL("./src/content/metaphern/", import.meta.url);
+        const motive = new Map();
+        let ohneBild = 0;
+        for (const datei of fs.readdirSync(bilderOrdner)) {
+          if (!datei.endsWith(".md")) continue;
+          const roh = fs.readFileSync(new URL(datei, bilderOrdner), "utf-8");
+          const name = datei.replace(/\.md$/, "");
+          if (/^draft:\s*true/m.test(roh)) continue;
+          const bild = roh.match(/^image:\s*["'](.+)["']\s*$/m)?.[1];
+          if (!bild) {
+            ohneBild++;
+            logger.warn(`Metapher ${name}: veroeffentlicht, aber ohne Motiv.`);
+            continue;
+          }
+          if (!fs.existsSync(new URL(bild, bilderOrdner))) {
+            ohneBild++;
+            logger.warn(`Metapher ${name}: Motiv ${bild} liegt nicht dort.`);
+            continue;
+          }
+          const schon = motive.get(bild);
+          if (schon) {
+            ohneBild++;
+            logger.warn(
+              `Metapher ${name} nutzt dasselbe Motiv wie ${schon}: ${bild}.`,
+            );
+          }
+          motive.set(bild, name);
+        }
+        if (ohneBild === 0)
+          logger.info(
+            `Metaphern-Wache: ${motive.size} von ${motive.size} Eintraegen mit eigenem Motiv.`,
+          );
         const begriffe = JSON.parse(
           fs.readFileSync(new URL("./src/data/begriffe.json", import.meta.url), "utf-8"),
         );

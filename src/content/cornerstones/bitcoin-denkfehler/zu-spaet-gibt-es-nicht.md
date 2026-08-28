@@ -27,7 +27,7 @@ Dieses Bild passt auf viele Dinge im Leben. Auf ein Bewerbungsgespräch. Auf ein
 
 Auf einen Markt passt es nicht.
 
-Ein Markt hat keine Abfahrtszeit. Er hat keinen letzten Waggon. Er hat zu jedem Zeitpunkt einen Preis, und dieser Preis ist nichts weiter als der Punkt, an dem sich gerade genug Käufer und Verkäufer einig geworden sind. Morgen ist er höher oder tiefer. Übermorgen wieder anders. Der Zug fährt nicht ab — er fährt im Kreis, und du kannst an jeder Station ein- und aussteigen, so oft du willst.
+Ein Markt hat keine Abfahrtszeit. Er hat keinen letzten Waggon. Er hat zu jedem Zeitpunkt einen Preis, und dieser Preis ist nichts weiter als der Punkt, an dem sich gerade genug Käufer und Verkäufer einig geworden sind. Morgen ist er höher oder tiefer. Übermorgen wieder anders. Der Zug fährt nicht ab — [er fährt im Kreis](/metaphern/zug-im-kreis/), und du kannst an jeder Station ein- und aussteigen, so oft du willst.
 
 Was du bei dieser Frage eigentlich fragst, ist also nicht: *bin ich zu spät?* Sondern: *wird der Preis von hier aus noch steigen?*
 

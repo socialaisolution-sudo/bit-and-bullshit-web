@@ -18,7 +18,6 @@ ausloeser:
   - "Zug ist abgefahren"
   - "letzten Zug verpasst"
   - "Ringstrecke"
-  - "zu spät"
 angewendet:
   - titel: "„Zu spät“ gibt es nicht — der große Bitcoin-Denkfehler, Teil 1"
     pfad: "/ratgeber/bitcoin-denkfehler/zu-spaet-gibt-es-nicht/"
