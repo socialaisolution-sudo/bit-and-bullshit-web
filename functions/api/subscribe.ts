@@ -85,6 +85,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     !env.BREVO_VORLAGE && "BREVO_VORLAGE",
   ].filter(Boolean);
 
+  /* Ab hier steht fest, dass beide Werte da sind. TypeScript weiss das
+     nur, wenn man es ihm sagt. */
   if (fehlend.length) {
     console.error(
       `Anmeldung nicht möglich — nicht gesetzt: ${fehlend.join(", ")}. ` +
@@ -110,7 +112,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const res = await fetch("https://api.brevo.com/v3/contacts/doubleOptinConfirmation", {
       method: "POST",
       headers: {
-        "api-key": env.BREVO_API_KEY,
+        "api-key": env.BREVO_API_KEY as string,
         "content-type": "application/json",
         accept: "application/json",
       },
