@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+/** Ziel des Bestätigungslinks aus der Mail. */
+---
+<Layout
+  title="Du bist dabei — Bitcoin & Bullshit"
+  description="Anmeldung bestätigt. Das Briefing kommt Freitagmorgen."
+  noindex
+>
+  <SiteHeader />
+  <main class="mx-auto max-w-2xl px-5 py-24">
+    <p class="display text-xs tracking-[0.3em] text-orange">// Bestätigt</p>
+    <h1 class="display mt-4 text-3xl md:text-4xl">Du bist dabei</h1>
+    <div class="post-body mt-6">
+      <p>
+        Die erste Ausgabe kommt am nächsten Freitagmorgen. Darin steht, wie der
+        Markt gerade steht und was davon Bedeutung hat — keine Kursziele, keine
+        Empfehlungen.
+      </p>
+      <p>
+        Abmelden kannst du dich in jeder Ausgabe mit einem Klick. Kein Formular,
+        keine Rückfrage.
+      </p>
+      <p><a href="/newsletter/">Was im Briefing steht</a></p>
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>

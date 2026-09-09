@@ -1,5 +1,6 @@
 ---
 import SocialLinks from "./SocialLinks.astro";
+import NewsletterForm from "./NewsletterForm.astro";
 ---
 
 <footer class="border-t border-white/10 bg-black">
@@ -16,6 +17,10 @@ import SocialLinks from "./SocialLinks.astro";
     </div>
 
     <div class="flex flex-col gap-4 md:items-end">
+      <div class="fuss-newsletter">
+        <NewsletterForm variante="fusszeile" quelle="fusszeile" />
+      </div>
+
       <SocialLinks size="sm" />
       <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-paper/60">
         <a href="/ratgeber/" class="hover:text-orange">Ratgeber</a>

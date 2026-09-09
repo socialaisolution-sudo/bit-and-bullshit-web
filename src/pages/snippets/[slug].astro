@@ -5,6 +5,7 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SocialLinks from "../../components/SocialLinks.astro";
 import VerwandteArtikel from "../../components/VerwandteArtikel.astro";
+import NewsletterForm from "../../components/NewsletterForm.astro";
 import Brotkrumen from "../../components/Brotkrumen.astro";
 import { getCollection, render } from "astro:content";
 import { Image, getImage } from "astro:assets";
@@ -223,6 +224,18 @@ const jsonLd = langfassungDa ? undefined : {
           </div>
         )
       }
+
+      {/* Der Inline-Block. Er steht hier im Markup und wird per
+          Skript an die Marke verschoben, die rehype-anmeldeplatz nach
+          rund 40 % des Textes gesetzt hat. Ohne JavaScript bleibt er
+          an dieser Stelle stehen — sichtbar, nur weiter unten. Das
+          ist die richtige Verschlechterung: lieber am falschen Platz
+          als gar nicht da. */}
+      <div data-anmeldeblock hidden>
+        <NewsletterForm variante="inline" quelle="snippet-inline" />
+      </div>
+
+      <NewsletterForm variante="artikel-ende" quelle="snippet" />
 
       <VerwandteArtikel aktuell={post.id} />
 

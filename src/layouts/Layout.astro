@@ -9,6 +9,12 @@ interface Props {
   jsonLd?: unknown;
   /** Überschreibt die Selbstreferenz, wenn eine andere Seite maßgeblich ist. */
   canonicalUrl?: string;
+  /**
+   * Aus dem Index halten. Für Seiten, die nur nach einer Handlung
+   * erreicht werden — Danke- und Fehlerseiten haben in der Suche
+   * nichts verloren.
+   */
+  noindex?: boolean;
 }
 
 const {
@@ -18,6 +24,7 @@ const {
   ogType = "website",
   jsonLd,
   canonicalUrl,
+  noindex = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://bitandbullshit.com");
@@ -39,6 +46,7 @@ const ogImageUrl = new URL(ogImage, site).toString();
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       rel="alternate"

@@ -6,6 +6,7 @@ import { execSync } from "node:child_process";
 import rehypeBegriffe from "./plugins/rehype-begriffe.mjs";
 import rehypeMetaphern from "./plugins/rehype-metaphern.mjs";
 import { standAusGit } from "./plugins/stand-aus-git.mjs";
+import rehypeAnmeldeplatz from "./plugins/rehype-anmeldeplatz.mjs";
 
 /**
  * Schreibt `dist/_redirects` für Cloudflare Pages.
@@ -438,7 +439,7 @@ export default defineConfig({
     typografieWache(),
   ],
   markdown: {
-    rehypePlugins: [rehypeMetaphern, rehypeBegriffe],
+    rehypePlugins: [rehypeMetaphern, rehypeBegriffe, rehypeAnmeldeplatz],
   },
   vite: {
     plugins: [tailwindcss()],

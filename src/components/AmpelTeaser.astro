@@ -1,0 +1,93 @@
+---
+/**
+ * Der Live-Wert im Anmeldeblock.
+ *
+ * Zwei Dinge, und in dieser Reihenfolge: der Funding-Zähler und die
+ * Ampelfarbe. Die Zahl macht neugierig — eine dreistellige Zahl, die
+ * jeden Tag wächst und dem widerspricht, was man anderswo über
+ * Funding liest. Die Farbe zeigt, dass da ein laufendes System steht
+ * und kein Screenshot.
+ *
+ * Wir halten keine Information zurück, die woanders steht. Wir halten
+ * die Arbeit zurück: Der Wert ist sichtbar, die Deutung kommt
+ * Freitagmorgen.
+ *
+ * Ohne JavaScript steht hier nichts Erfundenes, sondern gar nichts —
+ * der Anmeldeblock funktioniert auch ohne. Ein Stand älter als eine
+ * Stunde wird nicht gezeigt.
+ */
+const QUELLE = "https://bitcoin-ampel.social-ai-solution.workers.dev/ampel";
+---
+
+<div class="teaser" data-quelle={QUELLE} hidden data-teaser aria-live="polite">
+  <p class="teaser-zahl"><span data-tage></span> <span class="teaser-einheit">Tage</span></p>
+  <p class="teaser-text" data-text></p>
+  <p class="teaser-ampel">
+    Bitcoin-Ampel: <strong data-farbe></strong>
+    <a href="https://bitcoinaera.de/ampel/" rel="noopener">wie gerechnet wird</a>
+  </p>
+</div>
+
+<script>
+  const FARBE: Record<string, string> = { gruen: "Grün", gelb: "Gelb", rot: "Rot" };
+
+  for (const kasten of document.querySelectorAll<HTMLElement>("[data-teaser]")) {
+    try {
+      const res = await fetch(kasten.dataset.quelle!, { headers: { accept: "application/json" } });
+      if (!res.ok) throw new Error(String(res.status));
+      const d = await res.json();
+      const fr = d.funding_regime;
+
+      /* Nur zeigen, wenn beides frisch und plausibel ist. Ein halb
+         gefüllter Kasten ist schlechter als keiner. */
+      if (d.veraltet || !d.ampel || fr?.tage_seither == null) continue;
+
+      const tage = kasten.querySelector<HTMLElement>("[data-tage]");
+      const text = kasten.querySelector<HTMLElement>("[data-text]");
+      const farbe = kasten.querySelector<HTMLElement>("[data-farbe]");
+
+      if (tage) tage.textContent = String(fr.tage_seither);
+      if (text) {
+        text.textContent =
+          fr.zustand === "am Anker"
+            ? "ohne Überhitzung am Terminmarkt. Die Kennzahl, die alle zitieren, zeigt seit über einem Jahr nichts an."
+            : "seit dem letzten Überschuss am Terminmarkt.";
+      }
+      if (farbe) {
+        farbe.textContent = FARBE[d.ampel] ?? d.ampel;
+        farbe.dataset.wert = d.ampel;
+      }
+      kasten.hidden = false;
+    } catch {
+      /* Stillschweigend aus. Der Anmeldeblock steht auch ohne. */
+    }
+  }
+</script>
+
+<style>
+  .teaser {
+    border-left: 3px solid var(--color-orange, #f7931a);
+    padding: 0.75rem 0 0.75rem 1rem;
+    margin: 1.1rem 0 0;
+  }
+  .teaser-zahl {
+    margin: 0;
+    font-size: 2.1rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .teaser-einheit { font-size: 1rem; font-weight: 400; opacity: 0.7; }
+  .teaser-text {
+    margin: 0.3rem 0 0;
+    font-size: 0.92rem;
+    opacity: 0.85;
+  }
+  .teaser-ampel {
+    margin: 0.6rem 0 0;
+    font-size: 0.82rem;
+    opacity: 0.7;
+  }
+  .teaser-ampel [data-wert="gelb"] { color: #e0b13c; }
+  .teaser-ampel [data-wert="rot"] { color: #e2705f; }
+</style>

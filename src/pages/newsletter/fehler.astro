@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+/**
+ * Ging schief. Der Grund steht in der Adresse, damit die Seite ohne
+ * JavaScript sagen kann, was los war — statt einer Allzweckfloskel.
+ */
+const grund = Astro.url.searchParams.get("grund");
+const TEXTE: Record<string, string> = {
+  adresse:
+    "Die Adresse sah nicht wie eine E-Mail-Adresse aus. Häufigster Fall: ein Tippfehler hinter dem Punkt.",
+  dienst:
+    "Der Versanddienst hat nicht geantwortet. Das liegt an uns, nicht an dir — probier es in ein paar Minuten noch einmal.",
+  technik:
+    "Bei uns fehlt gerade eine Einstellung. Wir wissen davon; versuch es später noch einmal.",
+  form: "Das Formular kam unvollständig an.",
+};
+const text = TEXTE[grund ?? ""] ?? "Etwas ist schiefgegangen, und wir wissen nicht genau was.";
+---
+<Layout
+  title="Das hat nicht geklappt — Bitcoin & Bullshit"
+  description="Die Anmeldung ist fehlgeschlagen."
+  noindex
+>
+  <SiteHeader />
+  <main class="mx-auto max-w-2xl px-5 py-24">
+    <p class="display text-xs tracking-[0.3em] text-orange">// Schiefgegangen</p>
+    <h1 class="display mt-4 text-3xl md:text-4xl">Das hat nicht geklappt</h1>
+    <div class="post-body mt-6">
+      <p>{text}</p>
+      <p>
+        Zweiter Weg, wenn es weiter hakt: eine Mail an
+        <a href="mailto:hello@bitandbullshit.com">hello@bitandbullshit.com</a>,
+        wir tragen dich dann von Hand ein.
+      </p>
+      <p><a href="/newsletter/">Zurück zur Anmeldung</a></p>
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>

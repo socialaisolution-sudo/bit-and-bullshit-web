@@ -79,6 +79,7 @@ const jsonLd = {
     url: hubUrl,
   },
 };
+import NewsletterForm from "../../../components/NewsletterForm.astro";
 ---
 
 <Layout
@@ -188,6 +189,18 @@ const jsonLd = {
           </div>
         )
       }
+
+      {/* Der Inline-Block. Er steht hier im Markup und wird per
+          Skript an die Marke verschoben, die rehype-anmeldeplatz nach
+          rund 40 % des Textes gesetzt hat. Ohne JavaScript bleibt er
+          an dieser Stelle stehen — sichtbar, nur weiter unten. Das
+          ist die richtige Verschlechterung: lieber am falschen Platz
+          als gar nicht da. */}
+      <div data-anmeldeblock hidden>
+        <NewsletterForm variante="inline" quelle="cornerstone-inline" />
+      </div>
+
+      <NewsletterForm variante="artikel-ende" quelle="cornerstone" />
 
       <nav class="cs-nav" data-pagefind-ignore aria-label="Weitere Teile">
         {
