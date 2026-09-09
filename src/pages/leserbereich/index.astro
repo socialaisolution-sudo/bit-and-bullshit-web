@@ -1,0 +1,186 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+/**
+ * Der Leserbereich.
+ *
+ * Diese Seite wird nur ausgeliefert, wenn die Zwischenschicht in
+ * functions/leserbereich/_middleware.ts das Cookie durchgelassen hat.
+ * Ohne gültiges Cookie sieht niemand dieses Markup — die Anmeldeseite
+ * kommt aus der Zwischenschicht selbst, mit HTTP 401.
+ *
+ * Was hier liegt und was nicht, folgt einer Linie: „Wie funktioniert
+ * das" bleibt öffentlich, weil es dauerhaft nachschlagbar ist und
+ * ranken soll. „Wie steht es gerade und was heißt das" liegt hier.
+ * Gesperrtes rankt nicht — deshalb darf nichts Evergreenes hier
+ * hinein.
+ */
+---
+
+<Layout
+  title="Leserbereich — Bit & Bullshit"
+  description="Die ausführliche Auswertung zur Bitcoin-Ampel."
+  noindex
+>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-4xl px-5 py-14 md:py-20">
+    <p class="display text-xs tracking-[0.3em] text-orange">// Leserbereich</p>
+    <h1 class="display mt-4 text-3xl md:text-4xl">Die ausführliche Auswertung</h1>
+    <p class="mt-4 max-w-2xl opacity-80">
+      Alles, was in der Freitagsausgabe nur als Satz steht: die vier Kennzahlen
+      mit ihren Werten, die Einordnung über drei Zeiträume und die
+      Trefferbilanz der Ampel.
+    </p>
+
+    <section class="lb-block" data-tiefe>
+      <p class="display lb-kicker">// Stand jetzt</p>
+      <p class="lb-laden" data-laden>Wird geladen …</p>
+      <div class="lb-inhalt" data-inhalt hidden></div>
+    </section>
+
+    <section class="lb-block">
+      <p class="display lb-kicker">// Trefferbilanz</p>
+      <p class="lb-hinweis">
+        Wie oft die Ampel welche Farbe gezeigt hat, gegen das, was die
+        Kalibrierung erwarten ließ. Diese Zahlen stehen auch
+        <a href="https://bitcoinaera.de/ampel/regeln/" rel="noopener">öffentlich</a> —
+        wer ein Ampelsystem betreibt und seine Trefferquote versteckt, ist Teil
+        des Problems.
+      </p>
+      <div class="lb-inhalt" data-bilanz hidden></div>
+    </section>
+
+    <section class="lb-block">
+      <p class="display lb-kicker">// Was hier nicht liegt</p>
+      <p class="lb-hinweis">
+        Das Regelwerk, die Erklärungen zu jeder Kennzahl und die aktuelle
+        Ampelfarbe sind öffentlich und bleiben es. Hinter dem Passwort liegt
+        nur, was tagesaktuell ist — Nachschlagbares gehört dorthin, wo man es
+        findet.
+      </p>
+      <ul class="lb-links">
+        <li><a href="https://bitcoinaera.de/ampel/" rel="noopener">Die Ampel</a></li>
+        <li><a href="https://bitcoinaera.de/ampel/regeln/" rel="noopener">Das vollständige Regelwerk</a></li>
+        <li><a href="https://bitcoinaera.de/glossar/funding-rate/" rel="noopener">Funding Rate</a></li>
+        <li><a href="https://bitcoinaera.de/glossar/open-interest/" rel="noopener">Open Interest</a></li>
+        <li><a href="https://bitcoinaera.de/glossar/coinbase-premium/" rel="noopener">Coinbase-Premium</a></li>
+        <li><a href="https://bitcoinaera.de/glossar/etf-nettofluesse/" rel="noopener">ETF-Nettoflüsse</a></li>
+        <li><a href="https://bitcoinaera.de/glossar/stablecoin-versorgung/" rel="noopener">Stablecoin-Versorgung</a></li>
+      </ul>
+    </section>
+
+    <p class="lb-fuss">
+      Kein Konto, keine gespeicherten Daten. <a href="/api/leserbereich?abmelden=1">Abmelden</a>
+      · Neues Passwort jeden Freitag im <a href="/newsletter/">Briefing</a>
+    </p>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<script>
+  const QUELLE = "https://bitcoin-ampel.social-ai-solution.workers.dev";
+  const FARBE: Record<string, string> = { gruen: "Grün", gelb: "Gelb", rot: "Rot" };
+  const STUFE: Record<string, string> = {
+    ruhig: "ruhig",
+    erhoeht: "erhöht",
+    extrem: "im Extrem",
+  };
+  const NAME: Record<string, string> = {
+    etf: "ETF-Nettoflüsse",
+    premium: "Coinbase-Premium",
+    stablecoins: "Stablecoin-Versorgung",
+    open_interest: "Open Interest",
+  };
+
+  const laden = document.querySelector<HTMLElement>("[data-laden]");
+  const inhalt = document.querySelector<HTMLElement>("[data-inhalt]");
+  const bilanz = document.querySelector<HTMLElement>("[data-bilanz]");
+
+  try {
+    const [a, b] = await Promise.all([
+      fetch(`${QUELLE}/ampel`).then((r) => r.json()),
+      fetch(`${QUELLE}/bilanz`).then((r) => r.json()),
+    ]);
+
+    if (inhalt && a?.ampel) {
+      const zeilen = Object.entries(a.eingaenge ?? {})
+        .map(([k, e]: [string, any]) => {
+          const stufe = e.verfuegbar ? (STUFE[e.stufe] ?? e.stufe) : `— ${e.grund ?? "kein Wert"}`;
+          return `<tr><td>${NAME[k] ?? k}</td><td class="lb-stufe" data-wert="${e.verfuegbar ? e.stufe : "fehlt"}">${stufe}</td></tr>`;
+        })
+        .join("");
+      const fr = a.funding_regime;
+      inhalt.innerHTML =
+        `<p class="lb-farbe" data-wert="${a.ampel}">${FARBE[a.ampel] ?? a.ampel}` +
+        `<span class="lb-grund">${a.ampel_grund ?? ""}</span></p>` +
+        `<table class="lb-tabelle"><tbody>${zeilen}</tbody></table>` +
+        (fr?.tage_seither != null
+          ? `<p class="lb-funding"><strong>${fr.tage_seither} Tage</strong> ohne positiven Funding-Überschuss ` +
+            `(zuletzt ${fr.letzter_ueberschuss}). Die Kennzahl zählt derzeit nicht in die Farbe hinein.</p>`
+          : "") +
+        `<p class="lb-klein">Regelversion ${a.regelversion ?? "—"} · vor ${Math.round((a.alter_sekunden ?? 0) / 60)} Minuten gemessen` +
+        (a.quellenangabe?.etf ? ` · ETF-Daten: ${a.quellenangabe.etf}` : "") +
+        `</p>`;
+      inhalt.hidden = false;
+      if (laden) laden.hidden = true;
+    } else if (laden) {
+      laden.textContent = "Zurzeit liegt keine belastbare Messung vor.";
+    }
+
+    if (bilanz && b) {
+      const anteil = b.anteil_prozent ?? {};
+      const reihen = ["gruen", "gelb", "rot"]
+        .map(
+          (f) =>
+            `<tr><td>${FARBE[f]}</td><td>${(anteil[f] ?? 0).toFixed(1)} %</td><td class="lb-soll">${
+              f === "gelb" ? b.erwartet?.gelb_prozent : f === "rot" ? b.erwartet?.rot_prozent : "—"
+            }${f === "gruen" ? "" : " %"}</td></tr>`,
+        )
+        .join("");
+      bilanz.innerHTML =
+        `<table class="lb-tabelle"><thead><tr><th>Farbe</th><th>gemessen</th><th>erwartet</th></tr></thead>` +
+        `<tbody>${reihen}</tbody></table>` +
+        `<p class="lb-klein">${b.vollstaendige_laeufe ?? 0} Läufe mit allen vier Eingängen. ` +
+        `Neu gerechnet wird spätestens am ${b.neu_rechnen_ab ?? "—"}. ${b.hinweis ?? ""}</p>`;
+      bilanz.hidden = false;
+    }
+  } catch {
+    if (laden) laden.textContent = "Die Auswertung ist gerade nicht erreichbar.";
+  }
+</script>
+
+<style>
+  .lb-block {
+    margin: 3rem 0 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .lb-kicker { font-size: 0.7rem; letter-spacing: 0.28em; color: var(--color-orange, #f7931a); margin: 0 0 0.9rem; }
+  .lb-hinweis { max-width: 42rem; opacity: 0.8; font-size: 0.95rem; }
+  .lb-laden { opacity: 0.6; }
+
+  .lb-farbe { font-size: 2rem; font-weight: 700; margin: 0 0 1rem; line-height: 1.1; }
+  .lb-farbe[data-wert="gruen"] { color: #6fbf8e; }
+  .lb-farbe[data-wert="gelb"] { color: #e0b13c; }
+  .lb-farbe[data-wert="rot"] { color: #e2705f; }
+  .lb-grund { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.2rem; }
+
+  .lb-tabelle { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.5rem 0 0; }
+  .lb-tabelle th { text-align: left; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.5; padding-bottom: 0.4rem; }
+  .lb-tabelle td { padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .lb-tabelle td + td { text-align: right; }
+  .lb-stufe[data-wert="erhoeht"] { color: #e0b13c; }
+  .lb-stufe[data-wert="extrem"] { color: #e2705f; }
+  .lb-stufe[data-wert="fehlt"] { opacity: 0.5; font-style: italic; }
+  .lb-soll { opacity: 0.5; }
+
+  .lb-funding { margin: 1.2rem 0 0; font-size: 0.98rem; }
+  .lb-klein { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
+  .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
+  .lb-links li { margin: 0.3rem 0; }
+  .lb-fuss { margin: 3rem 0 0; font-size: 0.8rem; opacity: 0.55; }
+</style>
