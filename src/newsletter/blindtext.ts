@@ -21,7 +21,7 @@ import type { Ausgabe } from "./typen";
 export const BLINDAUSGABE: Ausgabe = {
   nummer: 1,
   datum: "2026-09-11",
-  titel: "Die Kennzahl, die alle zitieren, ist seit 415 Tagen tot",
+  titel: "Die Kennzahl, die alle zitieren, ist seit 415 Tagen verstummt",
   anriss:
     "Funding Rates gelten als Überhitzungsanzeiger. Nur zeigen sie seit über " +
     "einem Jahr gar nichts mehr an — und das hat einen Grund, über den kaum " +
@@ -49,8 +49,8 @@ export const BLINDAUSGABE: Ausgabe = {
         "Wenn irgendwo steht, der Markt sei überhitzt, folgt fast immer ein " +
         "Verweis auf die Funding Rate. Sie misst, welche Seite am Terminmarkt " +
         "überfüllt ist, und galt jahrelang als der eine Wert, den man kennen " +
-        "muss. Das Problem: Bei der Herleitung unseres Ampelsystems ist etwas " +
-        "aufgefallen, das niemand erwähnt.",
+        "muss. Das Problem: Beim Nachrechnen ist uns etwas aufgefallen, das " +
+        "niemand erwähnt.",
     },
     {
       art: "hervorhebung",
@@ -61,10 +61,9 @@ export const BLINDAUSGABE: Ausgabe = {
     {
       art: "absatz",
       text:
-        "Nicht selten. Nicht schwach. Kein einziges Mal. Im Jahr 2024 lag die " +
-        "Funding Rate an 27,5 Prozent aller Tage über ihrem Ankerwert, 2025 an " +
-        "1,6 Prozent, 2026 an keinem. Wer heute liest, die Funding Rate zeige " +
-        "Überhitzung, sollte nachfragen, gegen welchen Nullpunkt gemessen wurde.",
+        "Nicht selten. Nicht schwach. Kein einziges Mal. Wer heute liest, die " +
+        "Funding Rate zeige Überhitzung, sollte nachfragen, gegen welchen " +
+        "Nullpunkt gemessen wurde.",
     },
     { art: "zwischentitel", text: "Warum sie verstummt ist" },
     {
@@ -79,8 +78,8 @@ export const BLINDAUSGABE: Ausgabe = {
     {
       art: "liste",
       punkte: [
-        "2024: an 27,5 % der Tage ein positiver Überschuss",
-        "2025: an 1,6 %",
+        "2024: an 77 von 366 Tagen ein positiver Überschuss",
+        "2025: an zweien — dem 22. Februar und dem 23. Juli",
         "2026: an keinem einzigen Tag",
       ],
     },
