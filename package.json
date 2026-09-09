@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "mail": "tsx skripte/mail-rendern.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260908.1",
-    "pagefind": "^1.5.2"
+    "pagefind": "^1.5.2",
+    "tsx": "^4.23.13"
   }
 }

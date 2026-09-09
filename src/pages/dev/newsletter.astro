@@ -1,0 +1,68 @@
+---
+/**
+ * Vorschau des Mail-Templates, nur lokal.
+ *
+ * Im Produktionsbuild gibt es diese Route nicht — `getStaticPaths`
+ * liefert dann kein Ziel, und Astro erzeugt die Seite gar nicht
+ * erst. So kann sie nicht versehentlich ausgeliefert werden, und es
+ * braucht keine Sperre, die jemand vergessen könnte.
+ *
+ * Aufrufen mit `npm run dev`, dann /dev/newsletter/.
+ */
+import { BLINDAUSGABE } from "../../newsletter/blindtext";
+import { mailHtml, mailText, mailBetreff } from "../../newsletter/mail";
+
+export const prerender = true;
+
+const html = mailHtml(BLINDAUSGABE);
+const text = mailText(BLINDAUSGABE);
+const betreff = mailBetreff(BLINDAUSGABE);
+
+/* Im Produktionsbuild nichts ausliefern. */
+if (import.meta.env.PROD) {
+  return new Response(null, { status: 404 });
+}
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Vorschau: Bullshitmelder</title>
+    <style>
+      body { margin: 0; background: #e8e8e6; font: 14px/1.5 system-ui, sans-serif; color: #222; }
+      .kopf { padding: 14px 20px; background: #fff; border-bottom: 1px solid #ccc; }
+      .kopf strong { font-size: 15px; }
+      .kopf span { color: #666; }
+      .spalten { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; align-items: flex-start; }
+      .kasten { background: #fff; border: 1px solid #ccc; }
+      .kasten h2 { margin: 0; padding: 8px 12px; font-size: 11px; letter-spacing: .1em;
+        text-transform: uppercase; background: #f3f3f1; border-bottom: 1px solid #ddd; color: #555; }
+      iframe { display: block; border: 0; width: 620px; height: 1400px; background: #0F1115; }
+      .schmal iframe { width: 380px; }
+      pre { margin: 0; padding: 14px; width: 560px; max-height: 1400px; overflow: auto;
+        white-space: pre-wrap; font: 12px/1.55 ui-monospace, Menlo, monospace; }
+    </style>
+  </head>
+  <body>
+    <div class="kopf">
+      <strong>Betreff:</strong> {betreff}<br />
+      <span>Vorschautext: {BLINDAUSGABE.anriss}</span>
+    </div>
+    <div class="spalten">
+      <div class="kasten">
+        <h2>HTML — 600 px</h2>
+        <iframe title="Mail-Vorschau breit" srcdoc={html}></iframe>
+      </div>
+      <div class="kasten schmal">
+        <h2>HTML — mobil</h2>
+        <iframe title="Mail-Vorschau schmal" srcdoc={html}></iframe>
+      </div>
+      <div class="kasten">
+        <h2>Plaintext</h2>
+        <pre>{text}</pre>
+      </div>
+    </div>
+  </body>
+</html>
