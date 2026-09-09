@@ -71,10 +71,25 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return weiter(url, "/newsletter/fehler/", "adresse");
   }
 
-  if (!env.BREVO_API_KEY) {
-    /* Kein Schlüssel gesetzt: Das ist ein Betriebsfehler, kein
-       Nutzerfehler. Nicht so tun, als hätte es geklappt. */
-    console.error("BREVO_API_KEY fehlt — Anmeldung nicht möglich.");
+  /* Fehlende Einstellungen sind Betriebsfehler, keine Nutzerfehler —
+     und sie werden hier abgefangen, nicht bei Brevo. Sonst meldet die
+     Seite eine „Störung beim Dienst", obwohl der Dienst völlig in
+     Ordnung ist und uns nur eine Angabe fehlt.
+
+     `templateId` ist bei doubleOptinConfirmation Pflicht. Ohne
+     Vorlage gäbe es keine Bestätigungsmail, und ohne Bestätigung
+     dürfen wir niemanden eintragen. Also lieber gar nicht erst
+     losschicken. */
+  const fehlend = [
+    !env.BREVO_API_KEY && "BREVO_API_KEY",
+    !env.BREVO_VORLAGE && "BREVO_VORLAGE",
+  ].filter(Boolean);
+
+  if (fehlend.length) {
+    console.error(
+      `Anmeldung nicht möglich — nicht gesetzt: ${fehlend.join(", ")}. ` +
+        `Im Cloudflare-Dashboard unter Pages → Settings → Environment variables.`,
+    );
     return weiter(url, "/newsletter/fehler/", "technik");
   }
 
@@ -85,7 +100,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     /* Brevo verschickt die Bestätigungsmail und trägt erst nach dem
        Klick ein. Wir bekommen die Adresse also nie in eine Liste,
        ohne dass jemand zugestimmt hat. */
-    templateId: env.BREVO_VORLAGE ? Number(env.BREVO_VORLAGE) : undefined,
+    templateId: Number(env.BREVO_VORLAGE),
     redirectionUrl: env.BREVO_WEITER ?? new URL("/newsletter/bestaetigt/", url.origin).toString(),
     attributes: { QUELLE: quelle },
   };

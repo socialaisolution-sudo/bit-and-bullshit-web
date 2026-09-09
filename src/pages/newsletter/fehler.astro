@@ -14,7 +14,7 @@ const TEXTE: Record<string, string> = {
   dienst:
     "Der Versanddienst hat nicht geantwortet. Das liegt an uns, nicht an dir — probier es in ein paar Minuten noch einmal.",
   technik:
-    "Bei uns fehlt gerade eine Einstellung. Wir wissen davon; versuch es später noch einmal.",
+    "Bei uns fehlt gerade eine Einstellung, ohne die wir keine Bestätigungsmail verschicken können. Das ist unser Fehler, nicht deiner — schreib uns kurz, dann tragen wir dich von Hand ein.",
   form: "Das Formular kam unvollständig an.",
 };
 const text = TEXTE[grund ?? ""] ?? "Etwas ist schiefgegangen, und wir wissen nicht genau was.";
