@@ -29,7 +29,7 @@ export const BLINDAUSGABE: Ausgabe = {
 
   ampel: {
     farbe: "gelb",
-    begruendung: "Coinbase-Premium im Extrem, Stablecoin-Versorgung erhöht.",
+    begruendung: "Coinbase-Premium im Extrem, Stablecoin-Versorgung schrumpft.",
     eingaenge: [
       { name: "ETF-Nettoflüsse", stufe: "ruhig", zusatz: "+987 Mio. $ / 5 Tage" },
       { name: "Coinbase-Premium", stufe: "extrem", zusatz: "−17,4 bp" },
@@ -90,7 +90,9 @@ export const BLINDAUSGABE: Ausgabe = {
         "Sie zählt nicht mehr in die Ampelfarbe hinein, wird aber weiter " +
         "angezeigt — als Zähler, wie viele Tage seit dem letzten Überschuss " +
         "vergangen sind. Kommt der Wert zurück, wird sie wieder eine reguläre " +
-        "Eingangsgröße.",
+        "Eingangsgröße — und das ist dann ausdrücklich Regelversion 2. Jede " +
+        "Messung trägt ihre Regelversion mit, das lässt sich also nachschlagen " +
+        "statt glauben.",
     },
     { art: "zwischentitel", text: "Was das für die Ampel heißt" },
     {
