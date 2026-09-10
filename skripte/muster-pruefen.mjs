@@ -178,6 +178,26 @@ function pruefe(text, koerper) {
      nicht ihr Mittel: „nicht schlechter als das Schlechteste, was
      abgenommen wurde."
      
+     ACHTUNG, WICHTIGE EINSCHRAENKUNG (10.09.2026): Die Dichte haengt
+     stark an der TEXTLAENGE, und beide Referenz-Artikel sind
+     Langform. Nach Laengenklasse gemessen:
+     
+       150-260 Woerter (Snippet)   Median 14,4 je 1000
+       260-400 Woerter             Median  0,0
+       400-700 Woerter             Median  2,3
+       ueber 700 Woerter           Median  2,0
+     
+     Von den sieben Langform-Texten liegt KEINER ueber der Decke. Die
+     Decke passt also nur auf Langform. Auf Snippets angewendet
+     vergleicht sie zwei Register: Dort arbeiten die Einschuebe als
+     gesprochene Einwuerfe („Ok, mal ehrlich — das Zeug soll seinen
+     Wert halten"), und das ist Absicht.
+     
+     Was bleibt: Dennys eigene beiden Rubriken sind Snippet-Laenge
+     (199 und 128 Woerter) und haben null Einschuebe. Bei 14,4 waeren
+     auf 327 Woertern rund fuenf zu erwarten. Eine duenne, aber
+     vorhandene Referenz — nicht entschieden, liegt bei ihm.
+     
        Ausgabe 1, beide Rubriken (Denny selbst)   0,0 je 1000
        Cypherpunks-Artikel („so lassen")          1,0
        Wale-Artikel („so lassen")                 4,2  ← Decke
