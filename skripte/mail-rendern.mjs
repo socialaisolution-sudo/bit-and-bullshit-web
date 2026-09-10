@@ -20,7 +20,47 @@ const { zuBloecken } = await import("../src/newsletter/markdown.ts");
 
 /* Frontmatter von Hand lesen — ein YAML-Parser für dieses eine
    Skript wäre eine Abhängigkeit für nichts. Astro liest dieselben
-   Dateien mit Schema, dort wird geprüft. */
+   Dateien mit Schema, dort wird geprüft.
+   
+   Bei den mehrzeiligen Rubriken ist das riskanter als bei einem
+   einzeiligen Feld: Ein Ausdruck, der nicht greift, liefert nicht
+   einen Fehler, sondern eine fehlende Rubrik. Die Mail wäre dann
+   still um einen Block kürzer. Deshalb steht unten eine Sicherung,
+   die abbricht, wenn ein Schlüssel im Kopf steht, aber kein Text
+   dabei herauskommt. */
+
+/**
+ * Liest einen mehrzeiligen YAML-Block (`name: |`).
+ *
+ * `einzug` ist die Einrückung des Schlüssels selbst — bei `meinung:`
+ * null, bei `  text:` unter `burner:` zwei.
+ */
+function blockText(kopf, name, einzug = 0) {
+  const zeilen = kopf.split("\n");
+  const marke = new RegExp(`^ {${einzug}}${name}:\\s*\\|`);
+  const start = zeilen.findIndex((z) => marke.test(z));
+  if (start < 0) return null;
+
+  const raus = [];
+  for (const z of zeilen.slice(start + 1)) {
+    /* Leerzeilen gehören dazu — sie trennen die Absätze, und genau
+       daran erkennt zuBloecken() sie. */
+    if (!z.trim()) {
+      raus.push("");
+      continue;
+    }
+    const tiefe = z.length - z.trimStart().length;
+    if (tiefe <= einzug) break;
+    raus.push(z);
+  }
+  while (raus.length && !raus.at(-1).trim()) raus.pop();
+  if (!raus.length) return null;
+
+  /* Um die kleinste vorkommende Einrückung zurückschieben. */
+  const tiefen = raus.filter((z) => z.trim()).map((z) => z.length - z.trimStart().length);
+  const weg = Math.min(...tiefen);
+  return raus.map((z) => z.slice(weg)).join("\n");
+}
 function lies(datei) {
   const roh = readFileSync(`${ORDNER}/${datei}`, "utf-8");
   const teile = roh.split(/^---\s*$/m);
@@ -49,6 +89,19 @@ function lies(datei) {
       regelversion: Number(kopf.match(/^\s+regelversion:\s*(\d+)/m)?.[1] ?? NaN) || null,
     },
     text: zuBloecken(koerper),
+    meinung: (() => {
+      const roh = blockText(kopf, "meinung");
+      return roh ? { text: zuBloecken(roh) } : undefined;
+    })(),
+    burner: (() => {
+      const roh = blockText(kopf, "text", 2);
+      if (!roh) return undefined;
+      const urteil = kopf.match(/^ {2}urteil:\s*"(.+?)"/m)?.[1] ?? "Verbrannt.";
+      return { text: zuBloecken(roh), urteil };
+    })(),
+    /* Fuer die Sicherung: steht der Schluessel ueberhaupt im Kopf? */
+    _hatMeinung: /^meinung:/m.test(kopf),
+    _hatBurner: /^burner:/m.test(kopf),
   };
 }
 
@@ -66,6 +119,23 @@ if (!gewaehlt) {
   process.exit(1);
 }
 
+/* Sicherung gegen stilles Verschlucken. Ein Ausdruck, der nicht
+   greift, wuerde die Rubrik einfach weglassen — und eine Mail, in der
+   der Burner fehlt, faellt beim Ueberfliegen nicht auf. */
+for (const [schluessel, rubrik, name] of [
+  ["_hatMeinung", "meinung", "meinung"],
+  ["_hatBurner", "burner", "burner"],
+]) {
+  if (gewaehlt[schluessel] && !gewaehlt[rubrik]?.text?.length) {
+    console.error(
+      `\nAbbruch: \`${name}:\` steht im Frontmatter, aber es kommt kein Text dabei heraus.\n` +
+        `Wahrscheinlich stimmt die Einrueckung nicht oder es fehlt das \`|\`.\n` +
+        `Ohne diesen Abbruch waere die Mail still um eine Rubrik kuerzer.`,
+    );
+    process.exit(1);
+  }
+}
+
 /* Ohne Passwort wird ein sichtbarer Platzhalter gesetzt, kein
    erfundenes. Wer die Datei versehentlich verschickt, merkt es. */
 const ausgabe = {
@@ -81,7 +151,13 @@ writeFileSync(`${basis}.txt`, mailText(ausgabe));
 
 console.log(`Ausgabe ${ausgabe.nummer}: ${ausgabe.titel}`);
 console.log(`Betreff: ${mailBetreff(ausgabe)}`);
-console.log(`Bloecke: ${ausgabe.text.length}`);
+console.log(
+  `Bloecke: ${ausgabe.text.length} Fliesstext` +
+    (ausgabe.meinung ? `, ${ausgabe.meinung.text.length} Meinung` : ", keine Meinung") +
+    (ausgabe.burner
+      ? `, ${ausgabe.burner.text.length} Burner (Urteil: ${ausgabe.burner.urteil})`
+      : ", kein Burner"),
+);
 if (!passwortArg) console.log("⚠ Kein Passwort uebergeben — im HTML steht PASSWORT-FEHLT.");
 console.log(`→ ${basis}.html`);
 console.log(`→ ${basis}.txt`);

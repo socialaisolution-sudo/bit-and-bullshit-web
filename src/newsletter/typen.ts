@@ -50,6 +50,45 @@ export type Textblock =
   | { art: "hervorhebung"; text: string }
   | { art: "liste"; punkte: string[] };
 
+/**
+ * Die Namen der beiden Meinungsrubriken.
+ *
+ * Konstanten, keine Frontmatter-Felder. Eine Rubrik, deren Name je
+ * Ausgabe wechselt, ist keine Rubrik — der Leser soll sie
+ * wiedererkennen, ohne sie zu lesen. Sie stehen hier und nicht im
+ * Mail-Template, weil die Archivseite dieselben Namen braucht.
+ */
+export const RUBRIK = {
+  meinung: "Wie ich das sehe",
+  burner: "Bullshit Burner",
+} as const;
+
+/**
+ * „Wie ich das sehe" — Haltung, erste Person.
+ *
+ * Getrennt vom Fließtext, weil Messung und Meinung nicht verschwimmen
+ * dürfen. Verschwimmen sie, beschädigt die Meinung die
+ * Glaubwürdigkeit der Messung — und die Messung ist das Kapital.
+ */
+export interface Meinung {
+  text: Textblock[];
+}
+
+/**
+ * „Bullshit Burner" — eine Behauptung, an den Zahlen geprüft.
+ *
+ * `urteil` ist ein eigenes Feld und kein Teil des Textes. Grund: Der
+ * Markdown-Parser ebnet Fettschrift zu reinem Text ein, ein
+ * `**Verbrannt.**` am Ende käme also unauffällig als Absatz heraus.
+ * Und es ist ohnehin ein wiederkehrendes Bauteil der Rubrik, kein
+ * Prosatext — es gehört gesetzt, nicht geschrieben.
+ */
+export interface Burner {
+  text: Textblock[];
+  /** Der Stempel am Ende. In der Regel „Verbrannt." */
+  urteil: string;
+}
+
 export interface Ausgabe {
   nummer: number;
   /** ISO-Datum des Versands. */
@@ -59,7 +98,12 @@ export interface Ausgabe {
   /** Steht im Betreff und als Vorschautext. */
   anriss: string;
   ampel: Ampelstand;
+  /** Rubrik 2, „Die Auswertung". Der Fließtext aus dem Markdown-Körper. */
   text: Textblock[];
+  /** Rubrik 3. Fehlt sie, entfällt der Block ganz. */
+  meinung?: Meinung;
+  /** Rubrik 4. Fehlt sie, entfällt der Block ganz. */
+  burner?: Burner;
   /** Passwort der Woche für den Leserbereich. */
   passwort: string;
   /** Für welche Kalenderwoche es gilt, ausgeschrieben. */

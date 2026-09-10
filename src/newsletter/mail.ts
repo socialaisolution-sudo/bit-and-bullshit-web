@@ -25,7 +25,7 @@
  */
 
 import type { Ausgabe, Eingang, Textblock } from "./typen";
-import { FARBTEXT, STUFENTEXT } from "./typen";
+import { FARBTEXT, RUBRIK, STUFENTEXT } from "./typen";
 
 /* ── Farben ───────────────────────────────────────────────────── */
 
@@ -40,7 +40,13 @@ const F = {
   orange: "#FF7A1A",
   gruen: "#3E9E6B",
   gelb: "#C9922B",
-  rot: "#C4462F",
+  /* Aufgehellt von #C4462F am 10.09.2026. Der alte Ton lag auf der
+     Flaeche bei 3,54:1 und damit unter der Schwelle 4,5:1 — und das
+     ausgerechnet bei dem Wort, das diese Mail im Ernstfall sagen
+     muss. Der neue liegt bei 4,92:1, im selben Farbton (9 Grad, das
+     Orange liegt bei 25) und ist damit weiter unverwechselbar rot.
+     Gerechnet in skripte/kontrast-pruefen.mjs. */
+  rot: "#E85940",
 } as const;
 
 const AMPELFARBE: Record<string, string> = {
@@ -135,6 +141,87 @@ const textblock = (b: Textblock): string => {
   }
 };
 
+/**
+ * Rubrik 3, „Wie ich das sehe".
+ *
+ * Muss sich vom Fließtext darüber lösen, ohne wie ein weiterer
+ * Zwischentitel auszusehen. Drei Mittel gleichzeitig, weil ein
+ * einzelnes in irgendeinem Client verlorengeht:
+ *
+ *   eine eigene Fläche, als bgcolor-Attribut und nicht nur als CSS —
+ *   Outlook ignoriert background-color am td schon mal,
+ *   eine durchgehende Linie oben,
+ *   eine Überschrift, die anders gebaut ist als die im Fließtext:
+ *   gemischte Schreibweise, groß, in Textfarbe. Die Zwischentitel im
+ *   Fließtext sind orange, in Versalien und gesperrt — verwechseln
+ *   kann man das nicht.
+ *
+ * Darüber ein leiser Hinweis „Meinung". Er steht da, damit niemand
+ * die Haltung für die Messung nimmt.
+ */
+const meinungBlock = (a: Ausgabe): string => {
+  if (!a.meinung?.text?.length) return "";
+  return `
+        <tr>
+          <td class="luft" style="padding:38px 40px 0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="${F.flaeche}" style="background-color:${F.flaeche};border-top:1px solid ${F.linie};">
+              <tr>
+                <td style="padding:26px 24px 8px;">
+                  <p class="leise" style="margin:0 0 6px;font-family:${SCHRIFT};font-size:11px;line-height:16px;letter-spacing:1.8px;text-transform:uppercase;color:${F.leise};">
+                    Meinung
+                  </p>
+                  <p class="txt" style="margin:0 0 16px;font-family:${SCHRIFT};font-size:21px;line-height:28px;font-weight:bold;color:${F.text};">
+                    ${esc(RUBRIK.meinung)}
+                  </p>
+${a.meinung.text.map(textblock).join("\n")}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>`;
+};
+
+/**
+ * Rubrik 4, „Bullshit Burner".
+ *
+ * Der Markenblock. Er darf aus der Reihe fallen, und er soll es:
+ * dicke orange Kante oben, die Rubrikmarke in Versalien und Orange,
+ * am Ende das Urteil als Stempel in einem orangen Rahmen.
+ *
+ * Der Tonbruch zur Rubrik davor ist beabsichtigt und wird hier auch
+ * optisch nicht abgemildert.
+ *
+ * Zur Lesbarkeit: Orange #FF7A1A auf der Fläche #171A20 liegt bei
+ * 6,7:1 Kontrast — über der Schwelle 4,5:1 selbst für normalen Text,
+ * und die Marke ist groß und fett. Nachgerechnet in
+ * skripte/kontrast-pruefen.mjs, damit die Zahl nicht behauptet ist.
+ */
+const burnerBlock = (a: Ausgabe): string => {
+  if (!a.burner?.text?.length) return "";
+  return `
+        <tr>
+          <td class="luft" style="padding:30px 40px 0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="${F.flaeche}" style="background-color:${F.flaeche};border-top:3px solid ${F.orange};">
+              <tr>
+                <td style="padding:24px 24px 10px;">
+                  <p class="marke" style="margin:0 0 18px;font-family:${SCHRIFT};font-size:15px;line-height:20px;letter-spacing:2.4px;text-transform:uppercase;font-weight:bold;color:${F.orange};">
+                    ${esc(RUBRIK.burner.toUpperCase())}
+                  </p>
+${a.burner.text.map(textblock).join("\n")}
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 8px;">
+                    <tr>
+                      <td class="marke" style="padding:9px 18px;border:2px solid ${F.orange};font-family:${SCHRIFT};font-size:15px;line-height:20px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;color:${F.orange};">
+                        ${esc(a.burner.urteil)}
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>`;
+};
+
 /* ── Das Ganze ────────────────────────────────────────────────── */
 
 export function mailHtml(a: Ausgabe): string {
@@ -171,6 +258,10 @@ export function mailHtml(a: Ausgabe): string {
      aufhellt. */
   [data-ogsc] .txt { color: ${F.text} !important; }
   [data-ogsc] .leise { color: ${F.leise} !important; }
+  /* Rubrikmarke und Urteilsstempel des Burners. Outlook.com faerbt im
+     Dunkelmodus eigenmaechtig um, und ausgerechnet dieser Block lebt
+     von der Farbe. */
+  [data-ogsc] .marke { color: ${F.orange} !important; }
 </style>
 </head>
 <body style="margin:0;padding:0;background-color:${F.grund};" bgcolor="${F.grund}">
@@ -271,6 +362,7 @@ ${a.ampel.eingaenge.map(eingangZeile).join("\n")}
 ${a.text.map(textblock).join("\n")}
           </td>
         </tr>
+${meinungBlock(a)}${burnerBlock(a)}
 
         <!-- 4 · Passwort. Deutlich abgesetzt, damit es beim
              Ueberfliegen gefunden wird — das ist der eine Grund,
@@ -386,21 +478,48 @@ export function mailText(a: Ausgabe): string {
   zeilen.push(duenn);
   zeilen.push("");
 
-  for (const b of a.text) {
-    if (b.art === "zwischentitel") {
-      zeilen.push("", b.text.toUpperCase(), "");
-    } else if (b.art === "hervorhebung") {
-      /* Auch die Hervorhebung umbrechen. Eine Zeile mit 101 Zeichen
-         wird in schmalen Textansichten hart abgeschnitten — und
-         ausgerechnet die Hervorhebung ist der Satz, der ankommen
-         soll. */
-      zeilen.push("", umbrechen(b.text, 69).split("\n").map((z, i) => (i ? `   ${z}` : `>> ${z}`)).join("\n"), "");
-    } else if (b.art === "liste") {
-      for (const p of b.punkte) zeilen.push(`  - ${p}`);
-      zeilen.push("");
-    } else {
-      zeilen.push(umbrechen(b.text, 72), "");
+  /* Der Fliesstext und die beiden Meinungsrubriken laufen durch
+     dieselbe Schleife — sonst driften vier fast gleiche Kopien
+     auseinander, sobald jemand eine Blockart aendert. */
+  const bloeckeSchreiben = (bloecke: Textblock[]) => {
+    for (const b of bloecke) {
+      if (b.art === "zwischentitel") {
+        zeilen.push("", b.text.toUpperCase(), "");
+      } else if (b.art === "hervorhebung") {
+        /* Auch die Hervorhebung umbrechen. Eine Zeile mit 101 Zeichen
+           wird in schmalen Textansichten hart abgeschnitten — und
+           ausgerechnet die Hervorhebung ist der Satz, der ankommen
+           soll. */
+        zeilen.push("", umbrechen(b.text, 69).split("\n").map((z, i) => (i ? `   ${z}` : `>> ${z}`)).join("\n"), "");
+      } else if (b.art === "liste") {
+        for (const p of b.punkte) zeilen.push(`  - ${p}`);
+        zeilen.push("");
+      } else {
+        zeilen.push(umbrechen(b.text, 72), "");
+      }
     }
+  };
+
+  bloeckeSchreiben(a.text);
+
+  /* Rubrik 3. In der Textfassung gibt es keine Flaeche und keine
+     Farbe, also muss der Trenner die Arbeit machen: eine
+     durchgehende Linie und der Hinweis „MEINUNG" darueber. Ohne das
+     laese sich die Haltung nicht von der Messung unterscheiden, und
+     das ist der ganze Zweck der Trennung. */
+  if (a.meinung?.text?.length) {
+    zeilen.push(duenn, "MEINUNG", RUBRIK.meinung.toUpperCase(), duenn, "");
+    bloeckeSchreiben(a.meinung.text);
+  }
+
+  /* Rubrik 4. Doppelte Linie statt einfacher — der Block soll auch
+     hier aus der Reihe fallen. Das Urteil steht als eigene Zeile in
+     Versalien, weil die Fettschrift der HTML-Fassung in einer
+     Textansicht nichts hinterlaesst. */
+  if (a.burner?.text?.length) {
+    zeilen.push(linie, RUBRIK.burner.toUpperCase(), linie, "");
+    bloeckeSchreiben(a.burner.text);
+    zeilen.push(`>>> ${a.burner.urteil.toUpperCase()} <<<`, "");
   }
 
   zeilen.push(

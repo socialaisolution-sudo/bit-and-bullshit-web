@@ -32,12 +32,52 @@ ampel:
   fundingSeit: "2025-07-23"
   gemessen: 2026-09-10
   regelversion: 6
+
+# Rubrik 3 von 4. Haltung, erste Person — bewusst getrennt vom
+# Fliesstext darueber, damit Meinung und Messung nicht verschwimmen.
+# Der Text ist redaktionell abgenommen; nicht glaetten.
+meinung: |
+  Mich stört an dieser Sache weniger, dass eine Kennzahl ausfällt. Das passiert. Mich stört, wie lange es niemandem aufgefallen ist.
+
+  Über ein Jahr lang wird eine Zahl zitiert, die nichts mehr misst – und zwar von Leuten, die sich als Marktbeobachter ausgeben. Das ist der eigentliche Befund. Nicht der Basis-Handel, nicht die ETFs. Sondern dass eine Kennzahl weitergereicht wird, weil sie schon immer weitergereicht wurde.
+
+  Ich glaube nicht, dass das Absicht ist. Es ist bequemer. Wer jede Woche etwas sagen muss, greift nach dem, was letzte Woche funktioniert hat. Nachrechnen kostet Zeit und liefert im besten Fall ein Achselzucken.
+
+  Für mich heißt das: Jede Kennzahl braucht ein Verfallsdatum. Nicht in dem Sinn, dass man sie wegwirft, sondern dass man sie regelmäßig gegen die Frage prüft, ob sie noch dasselbe misst wie bei ihrer Einführung. Beim Funding war der Bruch der Januar 2024. Was die anderen vier betrifft, weiß ich es noch nicht – und genau deshalb steht in unserem Protokoll ein Datum, an dem alles neu gerechnet wird.
+
+  Und was die Ampel gerade anzeigt, ist kein Freibrief. Grün heißt hier: An dem, was wir messen konnten, war nichts auffällig. Es war diese Woche nur weniger, als mir lieb ist.
+
+# Rubrik 4 von 4. Der Markenblock. Der Tonbruch zur Rubrik davor ist
+# beabsichtigt und wird auch optisch nicht abgemildert.
+#
+# `urteil` steht getrennt, weil der Parser Fettschrift einebnet — ein
+# `**Verbrannt.**` am Textende kaeme als unauffaelliger Absatz heraus.
+burner:
+  text: |
+    Behauptung dieser Woche, sinngemäß so oder ähnlich in jedem zweiten Marktkommentar:
+
+    > „Die Funding Rates zeigen deutliche Überhitzung."
+
+    Nein. Zeigen sie nicht. Zeigen sie seit 415 Tagen nicht.
+
+    Die Zahl liegt seit dem 23. Juli 2025 auf dem Basiszins fest und rührt sich nicht. Wer da Überhitzung sieht, hat entweder nicht hingeschaut oder weiß nicht, was er anschaut.
+
+    Und es wird nicht mal geraten. Raten wäre ehrlich. Es wird abgeschrieben – von letzter Woche, von 2024, vom Typen mit den 40.000 Followern, der es auch nur abgeschrieben hat. Dazu ein roter Chart, ein Wert mit vier Nachkommastellen und der Tonfall von jemandem, der gerade aus dem Maschinenraum kommt.
+
+    Vier Nachkommastellen an einer Zahl, die sich seit über einem Jahr nicht bewegt hat. Da ist die Präzision das Kostüm.
+  urteil: "Verbrannt."
 kennzahlen:
   - funding-rate
   - coinbase-premium
   - stablecoin-versorgung
   - open-interest
-draft: false
+# Bleibt auf true, wie beauftragt. Zum Stand siehe die Meldung an
+# Denny vom 10.09.2026: Die drei genannten Gruende dafuer sind
+# inzwischen erledigt (Mindestbedingung = Regelversion 2, OKX
+# durchgerechnet, drittes Bein durch den Referenzkorb ersetzt), und
+# die Ampel laeuft auf vier von vier Eingaengen. Umstellen ist seine
+# Entscheidung, nicht meine.
+draft: true
 ---
 
 Erste Ausgabe. Der Plan ist einfach: Einmal die Woche steht hier, wie der

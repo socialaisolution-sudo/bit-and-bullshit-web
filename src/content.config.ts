@@ -270,6 +270,41 @@ const newsletter = defineCollection({
       regelversion: z.number().int().nullable(),
     }),
 
+    /**
+     * Rubrik 3, „Wie ich das sehe" — Haltung in erster Person.
+     *
+     * Als Markdown-Zeichenkette im Frontmatter, nicht als eigene
+     * Markdown-Auszeichnung im Körper. Der Grund: Die Rubrik ist ein
+     * ABSCHNITT, kein Block — sie enthält selbst Absätze, Zitate und
+     * Listen. Eine neue Auszeichnung bräuchte also eine
+     * Container-Syntax, und genau die hat der Parser bewusst nicht
+     * (siehe src/newsletter/markdown.ts: „genau vier Blockarten").
+     *
+     * Im Frontmatter validiert es hier, beim Bauen. Ein vertippter
+     * Zaun im Körper würde dagegen erst beim Testversand auffallen —
+     * oder gar nicht, weil der Abschnitt dann still als Fließtext
+     * durchläuft.
+     *
+     * Der Inhalt wird mit demselben `zuBloecken()` gelesen wie der
+     * Körper. Innen gelten also die vier bekannten Blockarten.
+     */
+    meinung: z.string().min(40).optional(),
+
+    /**
+     * Rubrik 4, „Bullshit Burner".
+     *
+     * `urteil` steht getrennt vom Text, weil der Parser Fettschrift
+     * einebnet — ein `**Verbrannt.**` am Textende käme als
+     * unauffälliger Absatz heraus. Es ist außerdem ein
+     * wiederkehrendes Bauteil und kein Prosatext.
+     */
+    burner: z
+      .object({
+        text: z.string().min(40),
+        urteil: z.string().min(2).default("Verbrannt."),
+      })
+      .optional(),
+
     /** Glossarbegriffe, die in dieser Ausgabe vorkommen. Fürs Archiv. */
     kennzahlen: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
