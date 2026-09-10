@@ -103,7 +103,7 @@ const anmeldeSeite = (meldung: string | null) => `<!doctype html>
 
   <p class="klein">
     Kein Konto, keine Anmeldung, keine gespeicherten Daten — nur dieses eine
-    Passwort. <a href="/newsletter/">Bullshitmelder abonnieren</a> ·
+    Passwort. <a href="/bullshitmelder/">Bullshitmelder abonnieren</a> ·
     <a href="https://bitcoinaera.de/ampel/">die Ampel ist öffentlich</a>
   </p>
 </main>

@@ -2,11 +2,11 @@
 import SocialLinks from "./SocialLinks.astro";
 import NewsletterForm from "./NewsletterForm.astro";
 
-/* Auf der Newsletter-Seite steht direkt darüber schon ein
+/* Auf der Bullshitmelder-Seite steht direkt darüber schon ein
    Anmeldeblock. Ein zweiter, drei Zentimeter tiefer, mit demselben
    Einwilligungstext, wirkt wie ein Fehler — und der Verweis „Was
    drinsteht" wäre dort ein Selbstlink. */
-const aufNewsletterseite = Astro.url.pathname.startsWith("/newsletter");
+const aufBullshitmelderSeite = Astro.url.pathname.startsWith("/bullshitmelder");
 
 ---
 
@@ -24,7 +24,7 @@ const aufNewsletterseite = Astro.url.pathname.startsWith("/newsletter");
     </div>
 
     <div class="flex flex-col gap-4 md:items-end">
-      {!aufNewsletterseite && (
+      {!aufBullshitmelderSeite && (
         <div class="fuss-newsletter">
           <NewsletterForm variante="fusszeile" quelle="fusszeile" />
         </div>

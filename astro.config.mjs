@@ -40,6 +40,13 @@ function legacyRedirects() {
           `# Einzelne Snippets (${slugs.length})`,
           ...slugs.map((s) => `/${s} /snippets/${s}/ 301`),
           "",
+          "# Der Newsletter hiess bis 10.09.2026 nur \"newsletter\".",
+          "# Die Weiterleitung bleibt: In Brevo kann ein Bestaetigungsziel",
+          "# auf der alten Adresse hinterlegt sein, und Mails lassen sich",
+          "# nicht zurueckrufen.",
+          "/newsletter /bullshitmelder/ 301",
+          "/newsletter/* /bullshitmelder/:splat 301",
+          "",
         ];
 
         fs.writeFileSync(new URL("./_redirects", dir), lines.join("\n"));

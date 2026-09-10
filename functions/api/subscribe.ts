@@ -47,7 +47,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   try {
     daten = await request.formData();
   } catch {
-    return weiter(url, "/newsletter/fehler/", "form");
+    return weiter(url, "/bullshitmelder/fehler/", "form");
   }
 
   const mail = String(daten.get("mail") ?? "").trim().toLowerCase();
@@ -58,17 +58,17 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   /* Ein Feld, das kein Mensch sieht. Wer es ausfüllt, ist keiner.
      Wir antworten trotzdem mit der Dankeseite — ein Bot, der eine
      Fehlermeldung bekommt, probiert es anders herum noch einmal. */
-  if (honigtopf) return weiter(url, "/newsletter/danke/");
+  if (honigtopf) return weiter(url, "/bullshitmelder/danke/");
 
   if (!gestartet || Date.now() - gestartet < MINDESTZEIT_MS) {
-    return weiter(url, "/newsletter/danke/");
+    return weiter(url, "/bullshitmelder/danke/");
   }
 
   /* Absichtlich grob. Wer eine Adresse mit ungewöhnlichem Aufbau hat,
      soll sich anmelden können; ob sie existiert, klärt ohnehin erst
      die Bestätigungsmail. */
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail) || mail.length > 254) {
-    return weiter(url, "/newsletter/fehler/", "adresse");
+    return weiter(url, "/bullshitmelder/fehler/", "adresse");
   }
 
   /* Fehlende Einstellungen sind Betriebsfehler, keine Nutzerfehler —
@@ -92,7 +92,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       `Anmeldung nicht möglich — nicht gesetzt: ${fehlend.join(", ")}. ` +
         `Im Cloudflare-Dashboard unter Pages → Settings → Environment variables.`,
     );
-    return weiter(url, "/newsletter/fehler/", "technik");
+    return weiter(url, "/bullshitmelder/fehler/", "technik");
   }
 
   const liste = Number(env.BREVO_LISTE ?? "1");
@@ -103,7 +103,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
        Klick ein. Wir bekommen die Adresse also nie in eine Liste,
        ohne dass jemand zugestimmt hat. */
     templateId: Number(env.BREVO_VORLAGE),
-    redirectionUrl: env.BREVO_WEITER ?? new URL("/newsletter/bestaetigt/", url.origin).toString(),
+    redirectionUrl: env.BREVO_WEITER ?? new URL("/bullshitmelder/bestaetigt/", url.origin).toString(),
     attributes: { QUELLE: quelle },
   };
   for (const k of Object.keys(koerper)) if (koerper[k] === undefined) delete koerper[k];
@@ -122,17 +122,17 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     /* 201 = Bestätigungsmail unterwegs. 204 = Adresse ist schon
        eingetragen; für den Absender ist das kein Fehler, und wir
        verraten ihm auch nicht, wer sonst noch angemeldet ist. */
-    if (res.status === 201 || res.status === 204) return weiter(url, "/newsletter/danke/");
+    if (res.status === 201 || res.status === 204) return weiter(url, "/bullshitmelder/danke/");
 
     const text = await res.text();
     console.error(`Brevo antwortete ${res.status}: ${text.slice(0, 300)}`);
-    return weiter(url, "/newsletter/fehler/", "dienst");
+    return weiter(url, "/bullshitmelder/fehler/", "dienst");
   } catch (e) {
     console.error(`Brevo nicht erreichbar: ${String((e as Error).message ?? e)}`);
-    return weiter(url, "/newsletter/fehler/", "dienst");
+    return weiter(url, "/bullshitmelder/fehler/", "dienst");
   }
 };
 
 /** GET auf diesen Pfad ist ein Versehen, kein Angriff. */
 export const onRequestGet: PagesFunction = ({ request }) =>
-  Response.redirect(new URL("/newsletter/", new URL(request.url).origin).toString(), 303);
+  Response.redirect(new URL("/bullshitmelder/", new URL(request.url).origin).toString(), 303);
