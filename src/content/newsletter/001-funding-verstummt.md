@@ -1,14 +1,17 @@
 ---
-# Noch nicht verschickt. Beim Versand umzustellen:
-#   draft        → false
-#   datum        → der tatsaechliche Freitag
-#   oeffentlichAb → datum plus acht bis zwoelf Wochen
-#   ampel        → der ECHTE Stand vom Versandtag, abgelesen unter
-#                  bitcoin-ampel.social-ai-solution.workers.dev/ampel
+# Verschickt wird von Hand ueber Brevo — im Repo gibt es keinen
+# Versandweg. `draft: false` stellt die Ausgabe nur in den
+# passwortgeschuetzten Leserbereich; oeffentlich wird sie am
+# `oeffentlichAb`-Datum, ohne dass jemand einen Schalter umlegt.
 #
-# Die Werte unten sind der Stand vom 10.09.2026, 09:30 MESZ. Sie sind
-# echt, aber nicht der Versandstand — und eine Ausgabe, die eine alte
-# Ampel zeigt, widerspricht ihrem eigenen Text.
+# Der Ampelstand unten ist echt und eingefroren, abgelesen am
+# 10.09.2026 um 16:55 UTC unter
+# bitcoin-ampel.social-ai-solution.workers.dev/ampel.
+#
+# Verschiebt sich der Versand um mehr als einen Tag:
+#   node skripte/ampel-in-ausgabe.mjs 001-funding-verstummt.md
+# Das holt den Stand neu und rechnet den Funding-Zaehler nach. Von
+# Hand nachtippen bitte nicht — der Zaehler steht auch im Titel.
 nummer: 1
 datum: 2026-09-11
 titel: "Die Kennzahl, die alle zitieren, ist seit 415 Tagen verstummt"
@@ -19,22 +22,22 @@ anriss: >-
 oeffentlichAb: 2026-11-13
 ampel:
   farbe: gruen
-  begruendung: "Keine Auffälligkeit bei den beiden Kennzahlen, die vorliegen."
+  begruendung: "Eine von vier Kennzahlen erhöht. Für Gelb müssen es zwei sein."
   eingaenge:
     - { name: "ETF-Nettoflüsse", stufe: ruhig }
     - { name: "Stablecoin-Versorgung", stufe: ruhig }
-    - { name: "Coinbase-Premium", stufe: fehlt, zusatz: "zu wenige Messungen" }
-    - { name: "Open Interest", stufe: fehlt, zusatz: "Quelle nicht erreichbar" }
+    - { name: "Coinbase-Premium", stufe: ruhig }
+    - { name: "Open Interest", stufe: erhoeht }
   fundingTage: 415
   fundingSeit: "2025-07-23"
-  gemessen: 2026-09-11
-  regelversion: 1
+  gemessen: 2026-09-10
+  regelversion: 6
 kennzahlen:
   - funding-rate
   - coinbase-premium
   - stablecoin-versorgung
   - open-interest
-draft: true
+draft: false
 ---
 
 Erste Ausgabe. Der Plan ist einfach: Einmal die Woche steht hier, wie der
@@ -78,8 +81,12 @@ darüber, ob die Zahl etwas bedeutet oder nichts.
 Gestrichen haben wir die Kennzahl nicht. Sie zählt nur nicht mehr in die
 Ampelfarbe hinein, sondern läuft als Zähler mit: wie viele Tage seit dem
 letzten Aufschlag vergangen sind. Kommt der Wert zurück, wird sie wieder eine
-reguläre Eingangsgröße — das wäre dann Regelversion 2, und es steht mit Datum
+reguläre Eingangsgröße — das wäre dann Regelversion 7, und es steht mit Datum
 im Protokoll.
+
+Dass wir schon bei sechs sind, liegt übrigens nicht an der Funding Rate. Zwei
+Börsen haben uns die Datenabfrage gesperrt und eine dritte hat geändert, was
+ihre Datumsangaben bedeuten. Davon ein andermal.
 
 Der Unterschied ist wichtig: Eine Kennzahl wegzulassen, weil sie gerade nichts
 anzeigt, wäre der Fehler, den wir sonst bei anderen anprangern. Dass sie
@@ -87,13 +94,24 @@ schweigt, ist selbst eine Information über den Marktzustand.
 
 ## Was das für die Ampel heißt
 
-Und jetzt die unangenehme Folge. Weil die Funding Rate ausfällt, hat die
-höchste Warnstufe unseres eigenen Systems noch nie ausgelöst. Nicht in diesem
-Jahr, sondern in keinem Zeitraum, für den alle Kennzahlen zusammen vorliegen.
+Und jetzt die unangenehme Folge. Unsere höchste Warnstufe hing an genau dieser
+Kennzahl: Rot sollte auslösen, wenn die Funding Rate ihren Extremwert
+überschreitet und gleichzeitig immer mehr Geld am Terminmarkt liegt. Solange
+die Funding Rate am Basiszins klebt, ist die erste Hälfte dieser Bedingung
+unerfüllbar.
 
-> Sie ist hergeleitet, aber nicht erprobt. Was sie im Ernstfall anzeigt, weiß
-> niemand.
+> Die Regel konnte nicht auslösen. Nicht selten, nicht schwer — überhaupt
+> nicht, unter keinen Umständen.
 
-Das steht seit dem ersten Tag offen auf der Regelseite, und es bleibt dort
-stehen, bis sie das erste Mal ausgelöst hat. Wer ein Warnsystem betreibt und
-dessen Schwachstelle für sich behält, hat schon verloren.
+Aufgefallen ist uns das beim Nachrechnen, nicht im Ernstfall. Seit dem
+8. September gilt eine neue Rot-Regel, die ohne die Funding Rate auskommt.
+
+Nur steht die auf dünnem Boden. Alle vier Kennzahlen liegen zusammen für 113
+Tage vor, und darin steckt eine besonders unruhige Phase im Mai und Juni. In
+diesem Fenster hätte die neue Regel an knapp drei Prozent der Tage ausgelöst —
+tatsächlich ausgelöst hat sie seither nicht.
+
+Was sie im Ernstfall anzeigt, weiß deshalb niemand. Das steht offen auf der
+Regelseite und bleibt dort stehen, bis sie das erste Mal ausgelöst hat. Wer ein
+Warnsystem betreibt und dessen Schwachstelle für sich behält, hat schon
+verloren.
