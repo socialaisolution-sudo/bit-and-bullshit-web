@@ -113,6 +113,21 @@ export const BLINDAUSGABE: Ausgabe = {
     },
   ],
 
-  passwort: "tiefe-pfeiler-11",
-  passwortWoche: "KW 37",
+  /* Muss ein Passwort sein, das der Generator NIE erzeugen kann.
+     Er baut `wort-wort-zahl` mit einer Zahl von 10 bis 99 aus einer
+     festen Wortliste — `00` liegt ausserhalb, und `beispiel` steht
+     nicht in der Liste. Zwei Sperren, jede allein genuegt.
+     
+     Der Grund steht hier, weil es schon passiert ist: Am 09.09.2026
+     stand an dieser Stelle ein ECHTES Wochenpasswort, weil es beim
+     Bauen des Mockups als "Beispiel" uebernommen wurde. Das
+     Mail-Mockup wird auf der Anmeldeseite gerendert — damit lag das
+     Passwort des Leserbereichs oeffentlich im Netz und im Git.
+     Gemerkt beim Nachsehen, wo das Passwort ueberall herumliegt.
+     
+     Wer hier etwas aendert: Ein Beispiel, das ein echtes Passwort
+     sein KOENNTE, ist ein echtes Passwort. Die Blindtext-Wache im
+     Build prueft das. */
+  passwort: "beispiel-beispiel-00",
+  passwortWoche: "Beispielwoche",
 };

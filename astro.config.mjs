@@ -435,9 +435,57 @@ function typografieWache() {
   };
 }
 
+
+/**
+ * Blindtext-Wache.
+ *
+ * Prueft, dass das Beispielpasswort im Mail-Blindtext keines sein
+ * kann, das der Generator ausgibt. Der baut `wort-wort-zahl` mit
+ * einer Zahl von 10 bis 99; alles ausserhalb dieses Bereichs ist
+ * strukturell unerreichbar.
+ *
+ * Anlass: Am 09.09.2026 stand dort ein echtes Wochenpasswort. Das
+ * Mail-Mockup wird auf der Anmeldeseite gerendert, also lag der
+ * Zugang zum Leserbereich oeffentlich im Netz — vier Tage lang, bis
+ * es beim Nachsehen auffiel.
+ *
+ * Diese Wache bricht den Build ab. Sie warnt nicht: Eine Warnung
+ * neben zwanzig Zeilen Build-Ausgabe ist genau der Grund, warum es
+ * beim ersten Mal durchgegangen waere.
+ */
+function blindtextWache() {
+  return {
+    name: "blindtext-wache",
+    hooks: {
+      "astro:build:done": ({ logger }) => {
+        const pfad = "./src/newsletter/blindtext.ts";
+        if (!fs.existsSync(pfad)) return;
+        const roh = fs.readFileSync(pfad, "utf-8");
+        const m = roh.match(/^\s*passwort:\s*"([^"]+)"/m);
+        if (!m) {
+          throw new Error("Blindtext-Wache: kein `passwort:` in blindtext.ts gefunden.");
+        }
+        const wert = m[1];
+        const zahl = wert.match(/-(\d+)$/)?.[1];
+        /* Erreichbar ist genau zweistellig, 10 bis 99. */
+        const erreichbar = zahl != null && zahl.length === 2 && Number(zahl) >= 10;
+        if (erreichbar) {
+          throw new Error(
+            `Blindtext-Wache: "${wert}" koennte ein echtes Wochenpasswort sein. ` +
+              `Das Mail-Mockup steht oeffentlich auf der Anmeldeseite. ` +
+              `Bitte eine Zahl ausserhalb 10-99 verwenden, etwa "beispiel-beispiel-00".`,
+          );
+        }
+        logger.info(`Blindtext-Wache: Beispielpasswort "${wert}" ist unerreichbar.`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: "https://bitandbullshit.com",
   integrations: [
+    blindtextWache(),
     sitemap({
       filter: (url) => !OHNE_SITEMAP.has(new URL(url).pathname),
       serialize(eintrag) {
