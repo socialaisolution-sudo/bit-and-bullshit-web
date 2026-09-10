@@ -1,8 +1,14 @@
 ---
-# Noch nicht verschickt. Beim Versand: draft auf false, datum auf den
-# tatsaechlichen Freitag, oeffentlichAb auf datum plus acht bis zwoelf
-# Wochen. Erst dann taucht die Ausgabe im Archiv auf — die Sperrfrist
-# haengt am Datum, nicht an einem Handgriff, den jemand vergisst.
+# Noch nicht verschickt. Beim Versand umzustellen:
+#   draft        → false
+#   datum        → der tatsaechliche Freitag
+#   oeffentlichAb → datum plus acht bis zwoelf Wochen
+#   ampel        → der ECHTE Stand vom Versandtag, abgelesen unter
+#                  bitcoin-ampel.social-ai-solution.workers.dev/ampel
+#
+# Die Werte unten sind der Stand vom 10.09.2026, 09:30 MESZ. Sie sind
+# echt, aber nicht der Versandstand — und eine Ausgabe, die eine alte
+# Ampel zeigt, widerspricht ihrem eigenen Text.
 nummer: 1
 datum: 2026-09-11
 titel: "Die Kennzahl, die alle zitieren, ist seit 415 Tagen verstummt"
@@ -12,12 +18,12 @@ anriss: >-
   spricht.
 oeffentlichAb: 2026-11-13
 ampel:
-  farbe: gelb
-  begruendung: "Coinbase-Premium im Extrem, Stablecoin-Versorgung schrumpft."
+  farbe: gruen
+  begruendung: "Keine Auffälligkeit bei den beiden Kennzahlen, die vorliegen."
   eingaenge:
-    - { name: "ETF-Nettoflüsse", stufe: ruhig, zusatz: "+987 Mio. $ / 5 Tage" }
-    - { name: "Coinbase-Premium", stufe: extrem, zusatz: "−17,4 bp" }
-    - { name: "Stablecoin-Versorgung", stufe: erhoeht, zusatz: "−0,54 % / 7 Tage" }
+    - { name: "ETF-Nettoflüsse", stufe: ruhig }
+    - { name: "Stablecoin-Versorgung", stufe: ruhig }
+    - { name: "Coinbase-Premium", stufe: fehlt, zusatz: "zu wenige Messungen" }
     - { name: "Open Interest", stufe: fehlt, zusatz: "Quelle nicht erreichbar" }
   fundingTage: 415
   fundingSeit: "2025-07-23"
@@ -31,17 +37,22 @@ kennzahlen:
 draft: true
 ---
 
+Erste Ausgabe. Der Plan ist einfach: Einmal die Woche steht hier, wie der
+Bitcoin-Markt nach festen Regeln gemessen wird und was davon Bedeutung hat.
+Fangen wir mit einer Kennzahl an, die fast jeder zitiert.
+
 Wenn irgendwo steht, der Markt sei überhitzt, folgt fast immer ein Verweis auf
 die Funding Rate. Sie misst, welche Seite am Terminmarkt überfüllt ist, und
-galt jahrelang als der eine Wert, den man kennen muss. Das Problem: Beim
-Nachrechnen ist uns etwas aufgefallen, das niemand erwähnt.
+galt jahrelang als der eine Wert, den man kennen muss. Beim Nachrechnen für
+unser Ampelsystem ist uns dabei etwas aufgefallen, das sonst niemand erwähnt.
 
-> Der Wert, auf den es dabei ankommt, ist seit dem 23. Juli 2025 nicht ein
-> einziges Mal aufgetreten.
+> Der Wert, auf den es ankommt, ist seit dem 23. Juli 2025 nicht ein einziges
+> Mal aufgetreten. Nicht selten. Nicht schwach. Kein einziges Mal.
 
-Nicht selten. Nicht schwach. Kein einziges Mal. Wer heute liest, die Funding
-Rate zeige Überhitzung, sollte nachfragen, gegen welchen Nullpunkt gemessen
-wurde.
+Kurz zur Mechanik: Die Funding Rate besteht aus zwei Teilen. Einem Basiszins,
+der auch dann anfällt, wenn gar nichts los ist, und einem Aufschlag, der die
+tatsächliche Schieflage misst. Nur der Aufschlag sagt etwas über Überhitzung
+aus. Und genau der ist verschwunden.
 
 ## Warum sie verstummt ist
 
@@ -51,25 +62,38 @@ der Differenz, die die Funding Rate misst — und drückt sie damit weg. Was
 früher ein Stimmungsmesser war, misst heute vor allem, wie gut dieser Handel
 funktioniert.
 
-- 2024: an 77 von 366 Tagen ein positiver Überschuss
+Die Zahlen dazu, gerechnet auf Tagessummen:
+
+- 2024: an 77 von 366 Tagen ein positiver Aufschlag
 - 2025: an zweien — dem 22. Februar und dem 23. Juli
 - 2026: an keinem einzigen Tag
 
-Wir haben die Kennzahl deshalb nicht gestrichen, sondern umgewidmet. Sie zählt
-nicht mehr in die Ampelfarbe hinein, wird aber weiter angezeigt — als Zähler,
-wie viele Tage seit dem letzten Überschuss vergangen sind. Kommt der Wert
-zurück, wird sie wieder eine reguläre Eingangsgröße — und das ist dann
-ausdrücklich Regelversion 2. Jede Messung trägt ihre Regelversion mit, das
-lässt sich also nachschlagen statt glauben.
+Wer heute liest, die Funding Rate zeige Überhitzung, sollte also nachfragen,
+gegen welchen Nullpunkt gemessen wurde. Ein Wert leicht über null ist nicht
+dasselbe wie ein Wert über dem Basiszins — und der Unterschied entscheidet
+darüber, ob die Zahl etwas bedeutet oder nichts.
+
+## Was wir damit gemacht haben
+
+Gestrichen haben wir die Kennzahl nicht. Sie zählt nur nicht mehr in die
+Ampelfarbe hinein, sondern läuft als Zähler mit: wie viele Tage seit dem
+letzten Aufschlag vergangen sind. Kommt der Wert zurück, wird sie wieder eine
+reguläre Eingangsgröße — das wäre dann Regelversion 2, und es steht mit Datum
+im Protokoll.
+
+Der Unterschied ist wichtig: Eine Kennzahl wegzulassen, weil sie gerade nichts
+anzeigt, wäre der Fehler, den wir sonst bei anderen anprangern. Dass sie
+schweigt, ist selbst eine Information über den Marktzustand.
 
 ## Was das für die Ampel heißt
 
-Unangenehme Folge: Die höchste Warnstufe unseres eigenen Systems hat damit noch
-nie ausgelöst. Nicht in diesem Jahr, sondern in keinem Zeitraum, für den alle
-Kennzahlen zusammen vorliegen. Sie ist hergeleitet, aber nicht erprobt. Was sie
-im Ernstfall anzeigt, weiß niemand — und das steht seit dem ersten Tag offen
-auf der Regelseite.
+Und jetzt die unangenehme Folge. Weil die Funding Rate ausfällt, hat die
+höchste Warnstufe unseres eigenen Systems noch nie ausgelöst. Nicht in diesem
+Jahr, sondern in keinem Zeitraum, für den alle Kennzahlen zusammen vorliegen.
 
-Diese Woche ist der Open Interest ausgefallen, die Quelle war nicht erreichbar.
-Er zählt deshalb nicht als ruhig, sondern gar nicht. Ein fehlender Wert ist
-keine Entwarnung.
+> Sie ist hergeleitet, aber nicht erprobt. Was sie im Ernstfall anzeigt, weiß
+> niemand.
+
+Das steht seit dem ersten Tag offen auf der Regelseite, und es bleibt dort
+stehen, bis sie das erste Mal ausgelöst hat. Wer ein Warnsystem betreibt und
+dessen Schwachstelle für sich behält, hat schon verloren.
