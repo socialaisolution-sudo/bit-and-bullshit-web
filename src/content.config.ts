@@ -206,4 +206,74 @@ const metaphern = defineCollection({
       }),
 });
 
-export const collections = { blog, ratgeber, cornerstones, metaphern };
+/**
+ * Die Newsletter-Ausgaben.
+ *
+ * Der Bullshitmelder wohnt hier, nicht bei Brevo — Brevo ist nur der
+ * Transportweg. Aus derselben Datei entsteht beides: die Mail (über
+ * src/newsletter/mail.ts) und die Archivseite. Zwei Quellen für
+ * denselben Text wären zwei Fassungen, die auseinanderlaufen.
+ *
+ * Der Fließtext steht als Markdown im Körper, nicht als Struktur im
+ * Frontmatter. Wer eine Ausgabe schreibt, soll schreiben und nicht
+ * YAML tippen.
+ *
+ * **Kein Passwortfeld.** Das Wochenpasswort gehört in die Mail und
+ * nirgendwo sonst. Stünde es hier, läge es im Git und ginge später
+ * mit der Archivseite online.
+ */
+const newsletter = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/newsletter" }),
+  schema: z.object({
+    /** Fortlaufend. Trägt die Betreffzeile und das Archiv. */
+    nummer: z.number().int().positive(),
+    /** Versanddatum. */
+    datum: z.coerce.date(),
+    titel: z.string(),
+    /** Ein bis zwei Sätze. Steht im Vorschautext der Mail und im Archiv. */
+    anriss: z.string().min(40),
+
+    /**
+     * Ab wann die Ausgabe öffentlich lesbar ist.
+     *
+     * Auf der Anmeldeseite steht: „Die Inhalte erscheinen 8 bis 12
+     * Wochen später auch öffentlich." Das ist ein Versprechen, und
+     * ein Versprechen, das von einem vergessenen Handgriff abhängt,
+     * wird gebrochen. Deshalb steht das Datum in der Ausgabe, und die
+     * Archivseite entscheidet daran — nicht ein Schalter, den jemand
+     * umlegen muss.
+     */
+    oeffentlichAb: z.coerce.date(),
+
+    /**
+     * Die Ampelstellung zum Versandzeitpunkt, EINGEFROREN.
+     *
+     * Nicht live geholt: Eine Ausgabe, die drei Monate später gelesen
+     * wird, soll den Stand zeigen, über den ihr Text spricht.
+     */
+    ampel: z.object({
+      farbe: z.enum(["gruen", "gelb", "rot"]).nullable(),
+      begruendung: z.string(),
+      eingaenge: z
+        .array(
+          z.object({
+            name: z.string(),
+            stufe: z.enum(["ruhig", "erhoeht", "extrem", "fehlt"]),
+            /** Bei `fehlt` der Grund, sonst der Wert. */
+            zusatz: z.string().optional(),
+          }),
+        )
+        .min(1),
+      fundingTage: z.number().int().nullable(),
+      fundingSeit: z.string().nullable(),
+      gemessen: z.coerce.date(),
+      regelversion: z.number().int().nullable(),
+    }),
+
+    /** Glossarbegriffe, die in dieser Ausgabe vorkommen. Fürs Archiv. */
+    kennzahlen: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, ratgeber, cornerstones, metaphern, newsletter };

@@ -9,14 +9,35 @@
  *
  * Aufrufen mit `npm run dev`, dann /dev/newsletter/.
  */
-import { BLINDAUSGABE } from "../../newsletter/blindtext";
+import { getCollection } from "astro:content";
 import { mailHtml, mailText, mailBetreff } from "../../newsletter/mail";
+import { zuBloecken } from "../../newsletter/markdown";
+import { BLINDAUSGABE } from "../../newsletter/blindtext";
 
 export const prerender = true;
 
-const html = mailHtml(BLINDAUSGABE);
-const text = mailText(BLINDAUSGABE);
-const betreff = mailBetreff(BLINDAUSGABE);
+/* Die neueste Ausgabe aus der Collection, auch eine gesperrte — beim
+   Schreiben ist sie ja noch nicht öffentlich. Gibt es noch gar keine,
+   greift der Blindtext. */
+const alle = (await getCollection("newsletter")).sort((a, b) => b.data.nummer - a.data.nummer);
+const e = alle[0];
+
+const ausgabe = e
+  ? {
+      nummer: e.data.nummer,
+      datum: e.data.datum.toISOString().slice(0, 10),
+      titel: e.data.titel,
+      anriss: e.data.anriss,
+      ampel: { ...e.data.ampel, gemessen: e.data.ampel.gemessen.toISOString().slice(0, 10) },
+      text: zuBloecken(e.body ?? ""),
+      passwort: "PASSWORT-FEHLT",
+      passwortWoche: "Platzhalter",
+    }
+  : BLINDAUSGABE;
+
+const html = mailHtml(ausgabe as any);
+const text = mailText(ausgabe as any);
+const betreff = mailBetreff(ausgabe as any);
 
 /* Im Produktionsbuild nichts ausliefern. */
 if (import.meta.env.PROD) {
@@ -48,7 +69,7 @@ if (import.meta.env.PROD) {
   <body>
     <div class="kopf">
       <strong>Betreff:</strong> {betreff}<br />
-      <span>Vorschautext: {BLINDAUSGABE.anriss}</span>
+      <span>Vorschautext: {ausgabe.anriss}</span>
     </div>
     <div class="spalten">
       <div class="kasten">

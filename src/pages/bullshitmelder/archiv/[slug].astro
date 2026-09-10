@@ -1,0 +1,210 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import SiteFooter from "../../../components/SiteFooter.astro";
+import Brotkrumen from "../../../components/Brotkrumen.astro";
+import NewsletterForm from "../../../components/NewsletterForm.astro";
+import { render } from "astro:content";
+import {
+  oeffentlicheAusgaben,
+  datumLang,
+  slugVon,
+  type Ausgabeneintrag,
+} from "../../../lib/ausgaben";
+import type { GetStaticPaths } from "astro";
+
+/**
+ * Eine Ausgabe im Archiv.
+ *
+ * Nur öffentliche Ausgaben bekommen überhaupt eine Adresse — was
+ * gesperrt ist, existiert im Produktionsbuild nicht und kann deshalb
+ * auch nicht versehentlich erreichbar sein. Das ist verlässlicher als
+ * eine Prüfung im Seitenkopf, die jemand später wegoptimiert.
+ *
+ * Die Ampelstellung ist die eingefrorene aus dem Frontmatter, nicht
+ * die aktuelle. Eine Ausgabe von vor drei Monaten soll den Stand
+ * zeigen, über den ihr Text spricht — sonst widerspricht die Kachel
+ * dem Absatz darunter.
+ */
+export const getStaticPaths: GetStaticPaths = async () => {
+  const ausgaben = await oeffentlicheAusgaben();
+  return ausgaben.map((e, i) => ({
+    params: { slug: slugVon(e) },
+    props: {
+      eintrag: e,
+      neuer: ausgaben[i - 1] ?? null,
+      aelter: ausgaben[i + 1] ?? null,
+    },
+  }));
+};
+
+interface Props {
+  eintrag: Ausgabeneintrag;
+  neuer: Ausgabeneintrag | null;
+  aelter: Ausgabeneintrag | null;
+}
+
+const { eintrag, neuer, aelter } = Astro.props;
+const { Content } = await render(eintrag);
+const a = eintrag.data;
+
+const FARBE: Record<string, string> = { gruen: "Grün", gelb: "Gelb", rot: "Rot" };
+const STUFE: Record<string, string> = {
+  ruhig: "ruhig",
+  erhoeht: "erhöht",
+  extrem: "im Extrem",
+  fehlt: "kein Wert",
+};
+const GLOSSAR: Record<string, string> = {
+  "funding-rate": "Funding Rate",
+  "open-interest": "Open Interest",
+  "coinbase-premium": "Coinbase-Premium",
+  "etf-nettofluesse": "ETF-Nettoflüsse",
+  "stablecoin-versorgung": "Stablecoin-Versorgung",
+};
+---
+
+<Layout
+  title={`${a.titel} — Bullshitmelder #${a.nummer} | Bit & Bullshit`}
+  description={a.anriss}
+  ogType="article"
+>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-3xl px-5 py-12 md:py-16">
+    <Brotkrumen
+      pfad={[
+        { label: "Start", href: "/" },
+        { label: "Bullshitmelder", href: "/bullshitmelder/" },
+        { label: "Archiv", href: "/bullshitmelder/archiv/" },
+        { label: `#${a.nummer}` },
+      ]}
+    />
+
+    <p class="display mt-8 text-xs tracking-[0.3em] text-orange">
+      // Ausgabe {a.nummer} · {datumLang(a.datum)}
+    </p>
+    <h1 class="display mt-4 text-3xl md:text-5xl">{a.titel}</h1>
+    <p class="mt-5 max-w-2xl text-lg opacity-85">{a.anriss}</p>
+
+    {/* Die Ampel, wie sie damals stand. */}
+    <section class="stand">
+      <p class="display stand-kicker">// Stand am {datumLang(a.gemessen ?? a.ampel.gemessen)}</p>
+      <p class="stand-farbe display" data-wert={a.ampel.farbe}>
+        {a.ampel.farbe ? (FARBE[a.ampel.farbe] ?? a.ampel.farbe) : "keine Anzeige"}
+      </p>
+      <p class="stand-grund">{a.ampel.begruendung}</p>
+      <ul class="stand-liste">
+        {a.ampel.eingaenge.map((e) => (
+          <li>
+            <span>{e.name}</span>
+            <span data-stufe={e.stufe}>
+              {STUFE[e.stufe] ?? e.stufe}
+              {e.zusatz && <span class="zusatz"> · {e.zusatz}</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+      {a.ampel.fundingTage != null && (
+        <p class="stand-funding">
+          <strong>{a.ampel.fundingTage} Tage</strong> ohne positiven
+          Funding-Überschuss{a.ampel.fundingSeit && <> (zuletzt {a.ampel.fundingSeit})</>}.
+        </p>
+      )}
+      <p class="stand-fuss">
+        Eingefrorener Stand dieser Ausgabe, nicht der aktuelle.
+        {a.ampel.regelversion && <> Regelversion {a.ampel.regelversion}.</>}
+        <a href="https://bitcoinaera.de/ampel/" rel="noopener">Wie es jetzt aussieht</a>
+      </p>
+    </section>
+
+    <div class="post-body mt-12">
+      <Content />
+    </div>
+
+    {
+      a.kennzahlen.length > 0 && (
+        <section class="begriffe">
+          <p class="display begriffe-kicker">// Nachschlagen</p>
+          <ul>
+            {a.kennzahlen.map((k) => (
+              <li>
+                <a href={`https://bitcoinaera.de/glossar/${k}/`} rel="noopener">
+                  {GLOSSAR[k] ?? k}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      (neuer || aelter) && (
+        <nav class="blaettern" aria-label="Weitere Ausgaben">
+          {aelter && (
+            <a href={`/bullshitmelder/archiv/${slugVon(aelter)}/`}>
+              <span class="display blaettern-label">&larr; Ausgabe {aelter.data.nummer}</span>
+              <span class="blaettern-titel">{aelter.data.titel}</span>
+            </a>
+          )}
+          {neuer && (
+            <a href={`/bullshitmelder/archiv/${slugVon(neuer)}/`} class="rechts">
+              <span class="display blaettern-label">Ausgabe {neuer.data.nummer} &rarr;</span>
+              <span class="blaettern-titel">{neuer.data.titel}</span>
+            </a>
+          )}
+        </nav>
+      )
+    }
+
+    <div class="mt-14">
+      <NewsletterForm variante="artikel-ende" quelle="archiv-ausgabe" />
+    </div>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .stand {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 1.4rem;
+    margin: 2.5rem 0 0;
+  }
+  .stand-kicker { margin: 0; font-size: 0.68rem; letter-spacing: 0.24em; color: var(--color-orange, #f7931a); }
+  .stand-farbe { margin: 0.5rem 0 0; font-size: 1.9rem; line-height: 1; }
+  .stand-farbe[data-wert="gruen"] { color: #6fbf8e; }
+  .stand-farbe[data-wert="gelb"] { color: #e0b13c; }
+  .stand-farbe[data-wert="rot"] { color: #e2705f; }
+  .stand-grund { margin: 0.45rem 0 0; font-size: 0.93rem; opacity: 0.75; }
+  .stand-liste { list-style: none; margin: 1.1rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.12); }
+  .stand-liste li {
+    display: flex; justify-content: space-between; gap: 0.8rem;
+    padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 0.9rem;
+  }
+  .stand-liste [data-stufe="erhoeht"] { color: #e0b13c; font-weight: 600; }
+  .stand-liste [data-stufe="extrem"] { color: #e2705f; font-weight: 600; }
+  .stand-liste [data-stufe="fehlt"] { font-style: italic; opacity: 0.55; }
+  .zusatz { opacity: 0.5; font-weight: 400; font-style: normal; }
+  .stand-funding { margin: 1rem 0 0; font-size: 0.93rem; }
+  .stand-fuss { margin: 0.9rem 0 0; font-size: 0.76rem; opacity: 0.5; }
+  .stand-fuss a { margin-left: 0.4rem; }
+
+  .begriffe { margin: 3rem 0 0; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.14); }
+  .begriffe-kicker { margin: 0 0 0.7rem; font-size: 0.68rem; letter-spacing: 0.24em; color: var(--color-orange, #f7931a); }
+  .begriffe ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.92rem; }
+
+  .blaettern {
+    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
+    margin: 3rem 0 0; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.14);
+  }
+  .blaettern a { display: flex; flex-direction: column; gap: 0.2rem; text-decoration: none; color: inherit; max-width: 48%; }
+  .blaettern a.rechts { text-align: right; margin-left: auto; }
+  .blaettern-label { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--color-orange, #f7931a); }
+  .blaettern-titel { font-size: 0.92rem; opacity: 0.8; }
+  @media (max-width: 34rem) {
+    .blaettern a { max-width: 100%; }
+    .blaettern a.rechts { text-align: left; margin-left: 0; }
+  }
+</style>

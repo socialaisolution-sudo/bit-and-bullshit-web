@@ -125,6 +125,15 @@ function kanonisierteSnippets() {
   return raus;
 }
 const OHNE_SITEMAP = kanonisierteSnippets();
+/* Seiten, die nur nach einer Handlung erreicht werden. Sie tragen
+   noindex; eine Adresse anzumelden und gleichzeitig aus dem Index zu
+   halten, sind zwei widersprüchliche Ansagen an dieselbe Maschine. */
+for (const p of [
+  "/bullshitmelder/danke/",
+  "/bullshitmelder/bestaetigt/",
+  "/bullshitmelder/fehler/",
+  "/leserbereich/",
+]) OHNE_SITEMAP.add(p);
 
 /** Ordnet einer fertigen Adresse die Quelldatei zu, aus der sie entsteht. */
 function quelleZuUrl(pfad) {

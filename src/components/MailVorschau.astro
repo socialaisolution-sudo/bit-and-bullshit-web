@@ -15,10 +15,35 @@
  */
 import { BLINDAUSGABE } from "../newsletter/blindtext";
 import { mailHtml } from "../newsletter/mail";
+import { zuBloecken } from "../newsletter/markdown";
+import { oeffentlicheAusgaben } from "../lib/ausgaben";
 
-/* Ohne Nummer und Datum, damit nichts Erfundenes dasteht. */
-const html = mailHtml({ ...BLINDAUSGABE, nummer: 0, datum: BLINDAUSGABE.datum })
-  .replace(/Nr\.&nbsp;0 &middot; [^<]+/, "Beispiel");
+/* Sobald eine Ausgabe öffentlich ist, zeigt die Vorschau die echte —
+   dann ist es kein Platzhalter mehr, sondern ein Beleg. Bis dahin
+   der Blindtext, aber ohne Nummer und Datum: „Beispielausgabe" wäre
+   eine Behauptung über etwas, das es noch nicht gibt. */
+const echte = (await oeffentlicheAusgaben())[0];
+
+const ausgabe = echte
+  ? {
+      nummer: echte.data.nummer,
+      datum: echte.data.datum.toISOString().slice(0, 10),
+      titel: echte.data.titel,
+      anriss: echte.data.anriss,
+      ampel: {
+        ...echte.data.ampel,
+        gemessen: echte.data.ampel.gemessen.toISOString().slice(0, 10),
+      },
+      text: zuBloecken(echte.body ?? ""),
+      /* Kein echtes Passwort in einer öffentlichen Vorschau. */
+      passwort: "wort-wort-00",
+      passwortWoche: "Passwort der Woche",
+    }
+  : { ...BLINDAUSGABE, nummer: 0 };
+
+const html = echte
+  ? mailHtml(ausgabe as any)
+  : mailHtml(ausgabe as any).replace(/Nr\.&nbsp;0 &middot; [^<]+/, "Beispiel");
 ---
 
 <figure class="mv">
@@ -34,8 +59,12 @@ const html = mailHtml({ ...BLINDAUSGABE, nummer: 0, datum: BLINDAUSGABE.datum })
   <p class="mv-kante"><span>hier geht es weiter</span></p>
   <figcaption>
     So sieht eine Ausgabe aus: oben die Ampel mit ihren vier Kennzahlen, dann
-    der Text, unten das Passwort für den Leserbereich. Der Inhalt hier ist
-    Platzhalter — verschickt wurde noch keine Ausgabe.
+    der Text, unten das Passwort für den Leserbereich.
+    {echte ? (
+      <> Der Text stammt aus <a href={`/bullshitmelder/archiv/`}>Ausgabe {echte.data.nummer}</a>, das Passwort ist hier unkenntlich gemacht.</>
+    ) : (
+      <> Der Inhalt hier ist Platzhalter — verschickt wurde noch keine Ausgabe.</>
+    )}
   </figcaption>
 </figure>
 
