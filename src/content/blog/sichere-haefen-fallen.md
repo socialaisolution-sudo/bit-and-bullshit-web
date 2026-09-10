@@ -16,4 +16,4 @@ Mal ehrlich: Sichere Häfen sind eigentlich das, wohin die Leute flüchten, wenn
 
 Denn wenn alle „sicheren“ Anlagen gleichzeitig bluten, steckt da selten Zufall dahinter. Oft heißt das: Irgendwo wird Geld rausgezogen, um Löcher zu stopfen. Große Player müssen liquide sein, verkaufen genau das, was sich gerade noch gut verkaufen lässt — und das sind eben Gold, Silber und Bitcoin. Nicht weil sie schlecht sind, sondern weil sie liquide sind.
 
-Und jetzt kommt der Punkt: Wenn du in so einer Phase in Panik dein „Sicheres“ verramschst, machst du genau das, was das System von dir will. Die Frage ist also nicht „ist alles kaputt?“ — sondern „wer sammelt gerade billig ein, während alle anderen die Nerven verlieren?“ Kleiner Tipp: nicht der, der die Panik-Schlagzeile geschrieben hat.
+Wenn du in so einer Phase in Panik dein „Sicheres“ verramschst, machst du genau das, was das System von dir will. Die Frage ist also nicht „ist alles kaputt?“ — sondern „wer sammelt gerade billig ein, während alle anderen die Nerven verlieren?“ Kleiner Tipp: nicht der, der die Panik-Schlagzeile geschrieben hat.
