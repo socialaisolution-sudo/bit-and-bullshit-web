@@ -4,49 +4,87 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import NewsletterForm from "../../components/NewsletterForm.astro";
 import Brotkrumen from "../../components/Brotkrumen.astro";
+import AmpelHero from "../../components/AmpelHero.astro";
+import FundingZaehler from "../../components/FundingZaehler.astro";
+import JahresBalken from "../../components/JahresBalken.astro";
+import MailVorschau from "../../components/MailVorschau.astro";
+import { Image } from "astro:assets";
+import maskottchen from "../../assets/mascot-hero.webp";
 
 /**
- * Die Landingpage.
+ * Die Landingpage. Ziel jeder Anmeldung, deshalb muss sie tragen.
+ *
+ * Leitlinie fürs Visuelle: keine Krypto-Bildsprache. Keine glänzenden
+ * Münzen, keine Kerzencharts als Deko, keine Stockfotos. Das ist die
+ * Bildsprache genau der Leute, gegen die wir anschreiben — ein
+ * einziges davon macht die Seite unglaubwürdig.
+ *
+ * Stattdessen belegt hier alles Visuelle etwas: die Ampel ist live,
+ * der Zähler ist live, das Balkendiagramm zeigt den Kernbefund, die
+ * Vorschau ist das echte Template. Dekoration gibt es an genau einer
+ * Stelle, und das ist das Maskottchen.
  *
  * Zwei Rubriken, nicht drei. Drei Rubriken sind drei Versprechen, die
- * 52-mal gehalten werden müssen — die dritte kommt erst, wenn die
- * ersten beiden zehn Wochen stabil laufen.
+ * 52-mal gehalten werden müssen.
  *
- * Der Name „Das Briefing" ist am 09.09.2026 festgelegt worden. Er
- * steht als Konstante hier und in NewsletterForm.astro, nicht
- * ausgeschrieben im Markup.
- *
- * „Eine komplette echte Ausgabe verlinkt" fehlt noch, weil es noch
- * keine gibt. Der Block steht bereit und ist auskommentiert; sobald
- * Ausgabe eins draußen ist, wird er sichtbar. Ein Link auf eine
- * Beispielausgabe, die es nicht gibt, wäre schlimmer als keiner.
+ * Zwei Formulare, nicht drei: oben und unten. Ein drittes in der
+ * Mitte zeigte denselben Block mit demselben Einwilligungstext ein
+ * drittes Mal.
  */
-const NAME = "Das Briefing";
-const titel = `${NAME} — jeden Freitagmorgen | Bit & Bullshit`;
+const NAME = "Bullshitmelder";
+const titel = `${NAME} — der Newsletter | Bit & Bullshit`;
 const beschreibung =
-  "Einmal die Woche, Freitagmorgen: wie der Bitcoin-Markt gerade steht, nach festen Regeln gemessen — und was davon Bedeutung hat. Keine Kursziele, keine Empfehlungen.";
+  "Jeden Freitagmorgen: wie der Bitcoin-Markt gerade steht, nach festen Regeln gemessen — und was davon Bedeutung hat. Keine Kursziele, keine Empfehlungen.";
 ---
 
 <Layout title={titel} description={beschreibung}>
   <SiteHeader />
 
-  <main class="mx-auto max-w-3xl px-5 py-14 md:py-20">
-    <Brotkrumen
-      pfad={[{ label: "Start", href: "/" }, { label: "Briefing" }]}
-    />
+  <main class="mx-auto max-w-3xl px-5 py-12 md:py-16">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: NAME }]} />
 
     <p class="display mt-8 text-xs tracking-[0.3em] text-orange">// Freitagmorgen</p>
-    <h1 class="display mt-4 text-4xl md:text-5xl">{NAME}</h1>
+    <h1 class="display mt-4 text-4xl md:text-6xl">{NAME}</h1>
     <p class="mt-5 max-w-2xl text-lg opacity-85">
-      Einmal die Woche eine Mail: wie der Markt gerade steht, nach festen
-      Regeln gemessen, und was davon Bedeutung hat.
+      Einmal die Woche eine Mail: wie der Markt gerade steht, nach festen Regeln
+      gemessen, und was davon Bedeutung hat.
     </p>
 
-    <div class="mt-10">
-      <NewsletterForm variante="inline" quelle="landingpage" />
+    {/* Die Ampel als Erstes — wer hier landet, soll in der ersten
+        Sekunde sehen, dass ein laufendes System dahintersteht und
+        nicht bloss ein Versprechen. */}
+    <div class="mt-9">
+      <AmpelHero />
+    </div>
+
+    <div class="mt-9">
+      <NewsletterForm variante="inline" quelle="landingpage" aufLandingpage />
+    </div>
+
+    {/* Der Zähler. Der stärkste Teaser, den wir haben — eine Zahl,
+        die jeden Tag wächst und dem widerspricht, was anderswo über
+        Funding steht. */}
+    <div class="mt-14">
+      <FundingZaehler />
     </div>
 
     <div class="post-body mt-14">
+      <h2>Woher diese Zahl kommt</h2>
+      <p>
+        Die Funding Rate gilt als der Überhitzungsanzeiger schlechthin. Beim
+        Nachrechnen für unser Ampelsystem kam heraus: Der Wert, auf den es dabei
+        ankommt, ist seit dem 23.&nbsp;Juli 2025 nicht ein einziges Mal
+        aufgetreten.
+      </p>
+
+      <JahresBalken />
+
+      <p>
+        Genau diese Art Befund steht im {NAME}. Nicht die Zahl selbst — die ist
+        <a href="https://bitcoinaera.de/ampel/" rel="noopener">öffentlich</a>
+        und bleibt es. Sondern was sie bedeutet und was nicht.
+      </p>
+
       <h2>Was drinsteht</h2>
       <p>
         Zwei Rubriken. Nicht mehr — drei Rubriken sind drei Versprechen, die
@@ -62,29 +100,48 @@ const beschreibung =
         da, dass nichts passiert ist — das ist auch eine Information.
       </p>
 
-      <h3>2. Der Zugang zum Leserbereich</h3>
+      <h3>2. Die ausführliche Auswertung</h3>
       <p>
-        Das Passwort der Woche. Dahinter liegen die ausführliche Auswertung und
-        die <a href="/leserbereich/">Trefferbilanz der Ampel</a> — jede Woche
-        ein neues Passwort, kein Konto, keine Registrierung. Was dauerhaft
-        nachschlagbar ist, bleibt öffentlich; hinter dem Passwort liegt nur,
-        was tagesaktuell ist.
+        Die vier Kennzahlen mit ihren Werten, die Einordnung über mehrere
+        Zeiträume und die Trefferbilanz der Ampel — also auch die Fälle, in
+        denen sie danebenlag. Das liegt im
+        <a href="/leserbereich/">Leserbereich</a>, und das Passwort dafür steht
+        in jeder Ausgabe. Kein Konto, keine Registrierung, jede Woche ein neues.
       </p>
 
       <h2>Was nicht drinsteht</h2>
       <p>
         Keine Kursziele. Keine Kauf- oder Verkaufsempfehlungen. Keine Signale,
-        keine Trades, keine „letzte Chance". Das Briefing beschreibt einen
-        Zustand und erklärt Mechanik — was jemand daraus macht, ist seine
-        Sache und bleibt es.
+        keine Trades, keine „letzte Chance". Der {NAME} beschreibt einen Zustand
+        und erklärt Mechanik — was jemand daraus macht, ist seine Sache und
+        bleibt es.
       </p>
+
+      <h2>So sieht es aus</h2>
+      <MailVorschau />
+
+      <div class="maskottchen-block">
+        <Image
+          src={maskottchen}
+          alt="Bit & Bullshit Maskottchen mit Bitcoin-Cap, verschränkte Arme, skeptischer Blick"
+          width={190}
+          height={269}
+          densities={[1, 2]}
+          loading="lazy"
+        />
+        <div>
+          <p class="display maskottchen-spruch">Einmal die Woche. Sonst Ruhe.</p>
+          <p class="maskottchen-text">
+            Keine Bestellbestätigungen, keine „nur noch heute", keine dritte Mail
+            in derselben Woche. Freitagmorgen, und das war es.
+          </p>
+        </div>
+      </div>
 
       <h2>Frequenz und Kleingedrucktes</h2>
       <ul>
         <li><strong>Freitagmorgen</strong>, einmal die Woche.</li>
-        <li>
-          Bestätigung per Mail. Ohne den Klick darin tragen wir dich nicht ein.
-        </li>
+        <li>Bestätigung per Mail. Ohne den Klick darin tragen wir dich nicht ein.</li>
         <li>Abmeldung mit einem Klick in jeder Ausgabe. Keine Rückfrage.</li>
         <li>
           Versand über Brevo, Server in der EU. Was gespeichert wird, steht im
@@ -96,31 +153,56 @@ const beschreibung =
         </li>
       </ul>
 
-      {/* Sobald Ausgabe eins draußen ist:
-          <h2>So sieht es aus</h2>
-          <p><a href="/newsletter/…/">Die komplette erste Ausgabe lesen</a></p>
-          „So sieht es aus" schlägt jede Beschreibung — aber erst, wenn
-          es die Ausgabe wirklich gibt. */}
-
       <h2>Warum überhaupt</h2>
       <p>
         Funding Rates, ETF-Flüsse und Stablecoin-Zahlen sind frei verfügbar.
         Jeder kann sie nachschlagen. Was fehlt, ist die Einordnung: Ist dieser
-        Wert hoch? Verglichen womit? Und was heißt das für jemanden, der
-        einfach nur wissen will, wie die Lage ist?
+        Wert hoch? Verglichen womit? Und was heißt das für jemanden, der einfach
+        nur wissen will, wie die Lage ist?
       </p>
       <p>
-        Das Briefing macht diese Arbeit einmal die Woche. Die Zahlen sind
-        <a href="https://bitcoinaera.de/ampel/" rel="noopener">öffentlich</a>,
-        das Regelwerk auch. Zurückgehalten wird keine Information — nur die
-        Arbeit, sie zu sortieren.
+        Der {NAME} macht diese Arbeit einmal die Woche. Die Zahlen sind
+        öffentlich, das
+        <a href="https://bitcoinaera.de/ampel/regeln/" rel="noopener">Regelwerk</a>
+        auch — samt der Stellen, an denen es noch nichts beweisen kann.
+        Zurückgehalten wird keine Information, nur die Arbeit, sie zu sortieren.
       </p>
     </div>
 
     <div class="mt-14">
-      <NewsletterForm variante="artikel-ende" quelle="landingpage-fuss" />
+      <NewsletterForm variante="artikel-ende" quelle="landingpage-fuss" aufLandingpage />
     </div>
   </main>
 
   <SiteFooter />
 </Layout>
+
+<style>
+  .maskottchen-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.4rem;
+    margin: 3rem 0;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .maskottchen-block img {
+    flex: none;
+    width: 130px;
+    height: auto;
+  }
+  .maskottchen-spruch {
+    margin: 0;
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    line-height: 1.1;
+  }
+  .maskottchen-text {
+    margin: 0.6rem 0 0;
+    font-size: 0.95rem;
+    opacity: 0.75;
+  }
+  @media (max-width: 34rem) {
+    .maskottchen-block { gap: 1rem; }
+    .maskottchen-block img { width: 92px; }
+  }
+</style>

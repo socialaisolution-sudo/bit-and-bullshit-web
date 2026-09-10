@@ -1,0 +1,111 @@
+---
+/**
+ * Drei Balken, mehr nicht.
+ *
+ * Als SVG von Hand, keine Chart-Bibliothek — es sind drei Werte, und
+ * eine Bibliothek dafür wäre ein Drittanbieter-Skript für nichts.
+ *
+ * Die Zahlen stehen direkt an den Balken, damit die Grafik ohne
+ * Legende lesbar ist. Und weil sie im Text darunter noch einmal
+ * stehen, bleibt die Aussage vollständig, auch wenn das SVG nicht
+ * dargestellt wird.
+ *
+ * Quelle: KALIBRIERUNG.md im Repo bitcoin-ampel, Tagessummen-Basis —
+ * dieselbe, auf der auch der öffentliche Zähler rechnet. Auf
+ * 3-Tage-Mittel-Basis kämen andere Werte heraus (100 / 6 / 0); wer
+ * die Zahlen anfasst, muss wissen, welche Reihe gemeint ist.
+ */
+const JAHRE = [
+  { jahr: "2024", tage: 77, von: 366 },
+  { jahr: "2025", tage: 2, von: 365 },
+  { jahr: "2026", tage: 0, von: 251, offen: true },
+];
+const MAX = 77;
+
+/* Feste Masse gegen Layoutsprünge. */
+const B = 560;
+const H = 220;
+const LINKS = 52;
+const BODEN = H - 34;
+const BREITE = 108;
+const LUECKE = 56;
+---
+
+<figure class="jb">
+  <svg
+    viewBox={`0 0 ${B} ${H}`}
+    width="100%"
+    role="img"
+    aria-labelledby="jb-titel jb-text"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <title id="jb-titel">Tage mit positivem Funding-Überschuss je Jahr</title>
+    <desc id="jb-text">
+      2024: 77 von 366 Tagen. 2025: 2 von 365 Tagen. 2026: 0 von bisher 251 Tagen.
+    </desc>
+
+    <line x1={LINKS - 14} y1={BODEN} x2={B - 10} y2={BODEN} stroke="rgba(255,255,255,.25)" stroke-width="1" />
+
+    {
+      JAHRE.map((j, i) => {
+        const x = LINKS + i * (BREITE + LUECKE);
+        const h = j.tage === 0 ? 0 : Math.max(3, (j.tage / MAX) * (BODEN - 44));
+        const y = BODEN - h;
+        return (
+          <>
+            {j.tage > 0 && <rect x={x} y={y} width={BREITE} height={h} fill="#f7931a" />}
+            {j.tage === 0 && (
+              /* Null bekommt keinen Balken, sondern eine gestrichelte
+                 Linie auf dem Boden. Ein 1px-Strich sähe aus wie ein
+                 kleiner Wert. */
+              <line
+                x1={x}
+                y1={BODEN}
+                x2={x + BREITE}
+                y2={BODEN}
+                stroke="#f7931a"
+                stroke-width="3"
+                stroke-dasharray="6 5"
+              />
+            )}
+            <text
+              x={x + BREITE / 2}
+              y={j.tage > 0 ? y - 10 : BODEN - 14}
+              text-anchor="middle"
+              fill="#f5f4ef"
+              font-size="21"
+              font-weight="700"
+            >
+              {j.tage}
+            </text>
+            <text
+              x={x + BREITE / 2}
+              y={BODEN + 22}
+              text-anchor="middle"
+              fill="rgba(245,244,239,.65)"
+              font-size="15"
+            >
+              {j.jahr}
+            </text>
+          </>
+        );
+      })
+    }
+  </svg>
+
+  <figcaption>
+    Tage mit positivem Funding-Überschuss. 2024: 77 von 366. 2025: zwei — der
+    22.&nbsp;Februar und der 23.&nbsp;Juli. 2026: bisher keiner.
+  </figcaption>
+</figure>
+
+<style>
+  .jb { margin: 2.5rem 0; }
+  .jb svg { display: block; max-width: 100%; height: auto; }
+  .jb figcaption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    max-width: 34rem;
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+/**
+ * Der Funding-Zähler als typografisches Bild.
+ *
+ * Eine dreistellige Zahl, die jeden Tag wächst und dem widerspricht,
+ * was man anderswo über Funding liest — das ist der stärkste Teaser,
+ * den die Marke hat. Er besteht aus Schrift, funktioniert aber als
+ * Bild und damit auch als Screenshot.
+ *
+ * Fällt der Wert aus oder ist er zu alt, verschwindet der Block. Eine
+ * erfundene oder eingefrorene Zahl wäre hier besonders schlimm: Die
+ * ganze Aussage hängt daran, dass sie stimmt.
+ */
+const QUELLE = "https://bitcoin-ampel.social-ai-solution.workers.dev/ampel";
+---
+
+<section class="fz" data-quelle={QUELLE} data-fz hidden aria-live="polite">
+  <p class="display fz-zahl"><span data-tage></span></p>
+  <p class="fz-unter">Tage ohne Überhitzung am Terminmarkt</p>
+  <p class="fz-dazu">
+    Die Kennzahl, die alle zitieren, zeigt seit <span data-seit></span> nichts mehr an.
+    <a href="https://bitcoinaera.de/glossar/funding-rate/" rel="noopener">Warum das so ist</a>
+  </p>
+</section>
+
+<script>
+  for (const w of document.querySelectorAll<HTMLElement>("[data-fz]")) {
+    try {
+      const res = await fetch(w.dataset.quelle!, { headers: { accept: "application/json" } });
+      if (!res.ok) throw new Error(String(res.status));
+      const d = await res.json();
+      const fr = d.funding_regime;
+      if (d.veraltet || fr?.tage_seither == null || fr.zustand !== "am Anker") continue;
+
+      const tage = w.querySelector<HTMLElement>("[data-tage]");
+      const seit = w.querySelector<HTMLElement>("[data-seit]");
+      if (tage) tage.textContent = String(fr.tage_seither);
+      if (seit && fr.letzter_ueberschuss) {
+        seit.textContent = new Intl.DateTimeFormat("de-DE", {
+          month: "long",
+          year: "numeric",
+          timeZone: "UTC",
+        }).format(new Date(fr.letzter_ueberschuss + "T00:00:00Z"));
+      }
+      w.hidden = false;
+    } catch {
+      /* still */
+    }
+  }
+</script>
+
+<style>
+  .fz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+  }
+  .fz-zahl {
+    margin: 0;
+    /* Faellt auf schmalen Displays nicht aus dem Rahmen und wird auf
+       breiten nicht albern gross. */
+    font-size: clamp(5rem, 34vw, 13rem);
+    line-height: 0.82;
+    color: var(--color-orange, #f7931a);
+    letter-spacing: -0.03em;
+  }
+  .fz-unter {
+    margin: 1.1rem 0 0;
+    font-size: clamp(1rem, 4.5vw, 1.35rem);
+    opacity: 0.9;
+  }
+  .fz-dazu {
+    margin: 1.4rem auto 0;
+    max-width: 32rem;
+    font-size: 0.92rem;
+    opacity: 0.6;
+  }
+</style>

@@ -1,6 +1,13 @@
 ---
 import SocialLinks from "./SocialLinks.astro";
 import NewsletterForm from "./NewsletterForm.astro";
+
+/* Auf der Newsletter-Seite steht direkt darüber schon ein
+   Anmeldeblock. Ein zweiter, drei Zentimeter tiefer, mit demselben
+   Einwilligungstext, wirkt wie ein Fehler — und der Verweis „Was
+   drinsteht" wäre dort ein Selbstlink. */
+const aufNewsletterseite = Astro.url.pathname.startsWith("/newsletter");
+
 ---
 
 <footer class="border-t border-white/10 bg-black">
@@ -17,9 +24,11 @@ import NewsletterForm from "./NewsletterForm.astro";
     </div>
 
     <div class="flex flex-col gap-4 md:items-end">
-      <div class="fuss-newsletter">
-        <NewsletterForm variante="fusszeile" quelle="fusszeile" />
-      </div>
+      {!aufNewsletterseite && (
+        <div class="fuss-newsletter">
+          <NewsletterForm variante="fusszeile" quelle="fusszeile" />
+        </div>
+      )}
 
       <SocialLinks size="sm" />
       <nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-paper/60">

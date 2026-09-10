@@ -1,0 +1,162 @@
+---
+/**
+ * Die Bitcoin-Ampel, gross, als Kopf der Newsletter-Seite.
+ *
+ * Dieselbe Quelle wie auf bitcoinaera.de/ampel/ — der Worker liest
+ * ausschliesslich aus KV, kein Besucher loest einen Abruf bei einer
+ * Boerse aus.
+ *
+ * Die bekannten Regeln gelten:
+ *   Ohne JavaScript keine erfundene Farbe, sondern gar nichts.
+ *   Aelter als eine Stunde wird ausgewiesen, nicht als aktuell verkauft.
+ *   Faellt der Wert aus, verschwindet der Block still und die Seite
+ *   bleibt vollstaendig — er ist Beleg, nicht Fundament.
+ */
+const QUELLE = "https://bitcoin-ampel.social-ai-solution.workers.dev/ampel";
+
+const KENNZAHLEN = [
+  { k: "etf", name: "ETF-Nettoflüsse" },
+  { k: "premium", name: "Coinbase-Premium" },
+  { k: "stablecoins", name: "Stablecoin-Versorgung" },
+  { k: "open_interest", name: "Open Interest" },
+];
+---
+
+<section class="ah" data-quelle={QUELLE} data-ah hidden aria-live="polite">
+  <p class="display ah-kicker">// Live · Bitcoin-Ampel</p>
+
+  <div class="ah-kopf">
+    <span class="ah-punkt" data-punkt aria-hidden="true"></span>
+    <p class="display ah-farbe" data-farbe></p>
+  </div>
+  <p class="ah-grund" data-grund></p>
+
+  <ul class="ah-liste">
+    {KENNZAHLEN.map((z) => (
+      <li data-zeile={z.k}>
+        <span class="ah-name">{z.name}</span>
+        <span class="ah-stufe" data-stufe>—</span>
+      </li>
+    ))}
+  </ul>
+
+  <p class="ah-fuss">
+    <span data-stand></span>
+    <a href="https://bitcoinaera.de/ampel/regeln/" rel="noopener">Wie gerechnet wird</a>
+  </p>
+</section>
+
+<script>
+  const FARBE: Record<string, string> = { gruen: "Grün", gelb: "Gelb", rot: "Rot" };
+  const STUFE: Record<string, string> = {
+    ruhig: "ruhig",
+    erhoeht: "erhöht",
+    extrem: "im Extrem",
+  };
+
+  for (const w of document.querySelectorAll<HTMLElement>("[data-ah]")) {
+    try {
+      const res = await fetch(w.dataset.quelle!, { headers: { accept: "application/json" } });
+      if (!res.ok) throw new Error(String(res.status));
+      const d = await res.json();
+      /* Kein Wert oder zu alt: Block bleibt weg. Ein Beleg, der nichts
+         belegt, ist schlechter als keiner. */
+      if (!d.ampel || d.veraltet) continue;
+
+      const farbe = w.querySelector<HTMLElement>("[data-farbe]");
+      const grund = w.querySelector<HTMLElement>("[data-grund]");
+      const punkt = w.querySelector<HTMLElement>("[data-punkt]");
+      const stand = w.querySelector<HTMLElement>("[data-stand]");
+
+      if (farbe) farbe.textContent = FARBE[d.ampel] ?? d.ampel;
+      if (grund) grund.textContent = d.ampel_grund ?? "";
+      if (punkt) punkt.dataset.wert = d.ampel;
+      w.dataset.wert = d.ampel;
+
+      for (const li of w.querySelectorAll<HTMLElement>("[data-zeile]")) {
+        const e = d.eingaenge?.[li.dataset.zeile!];
+        const feld = li.querySelector<HTMLElement>("[data-stufe]");
+        if (!feld) continue;
+        /* Was fehlt, zaehlt nicht als Entwarnung — es steht als
+           fehlend da, nicht als ruhig. */
+        feld.textContent = e?.verfuegbar
+          ? (STUFE[e.stufe] ?? e.stufe)
+          : `kein Wert · ${e?.grund ?? "unbekannt"}`;
+        feld.dataset.wert = e?.verfuegbar ? e.stufe : "fehlt";
+      }
+
+      if (stand) {
+        const min = Math.round((d.alter_sekunden ?? 0) / 60);
+        stand.textContent = min < 1 ? "gerade eben gemessen" : `vor ${min} Min. gemessen`;
+      }
+      w.hidden = false;
+    } catch {
+      /* still. Die Seite steht auch ohne. */
+    }
+  }
+</script>
+
+<style>
+  .ah {
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    padding: 1.6rem 1.5rem 1.3rem;
+  }
+  .ah-kicker {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--color-orange, #f7931a);
+  }
+  .ah-kopf { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.7rem; }
+  .ah-punkt {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .ah-punkt[data-wert="gruen"] { background: #3e9e6b; }
+  .ah-punkt[data-wert="gelb"] { background: #c9922b; }
+  .ah-punkt[data-wert="rot"] { background: #c4462f; }
+  .ah-farbe { margin: 0; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1; }
+  .ah[data-wert="gruen"] .ah-farbe { color: #6fbf8e; }
+  .ah[data-wert="gelb"] .ah-farbe { color: #e0b13c; }
+  .ah[data-wert="rot"] .ah-farbe { color: #e2705f; }
+
+  .ah-grund { margin: 0.55rem 0 0; font-size: 0.95rem; opacity: 0.75; }
+
+  .ah-liste {
+    list-style: none;
+    margin: 1.3rem 0 0;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .ah-liste li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.92rem;
+  }
+  .ah-name { opacity: 0.85; }
+  .ah-stufe { opacity: 0.6; text-align: right; }
+  .ah-stufe[data-wert="erhoeht"] { color: #e0b13c; opacity: 1; font-weight: 600; }
+  .ah-stufe[data-wert="extrem"] { color: #e2705f; opacity: 1; font-weight: 600; }
+  .ah-stufe[data-wert="fehlt"] { font-style: italic; }
+
+  .ah-fuss {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin: 1rem 0 0;
+    font-size: 0.75rem;
+    opacity: 0.55;
+  }
+
+  @media (max-width: 30rem) {
+    .ah { padding: 1.2rem 1.1rem 1rem; }
+    .ah-liste li { flex-direction: column; gap: 0.1rem; }
+    .ah-stufe { text-align: left; }
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 /**
- * Anmeldeblock für das Briefing.
+ * Anmeldeblock für den Bullshitmelder.
  *
  * Eigenes Formular, kein Provider-Embed — auf der Seite wird kein
  * fremdes Skript geladen. Abgeschickt wird an eine Pages Function,
@@ -19,20 +19,30 @@ import AmpelTeaser from "./AmpelTeaser.astro";
 interface Props {
   variante?: "inline" | "artikel-ende" | "fusszeile";
   quelle: string;
+  /**
+   * Auf der Landingpage selbst: kein Verweis auf „Was drinsteht" (das
+   * wäre ein Selbstlink) und kein Live-Teaser (die Ampel steht dort
+   * ohnehin gross darüber, ein zweites Mal wäre Wiederholung).
+   */
+  aufLandingpage?: boolean;
 }
 
-const { variante = "artikel-ende", quelle } = Astro.props;
+const { variante = "artikel-ende", quelle, aufLandingpage = false } = Astro.props;
 
 /* Der Name, festgelegt am 09.09.2026. Steht bewusst als Konstante
    und nicht ausgeschrieben im Markup — falls er je wechselt, ist es
    eine Zeile und keine Suche über alle Vorkommen. */
-const NAME = "Das Briefing";
+const NAME = "Bullshitmelder";
 
 const TEXT = {
   inline: {
     kicker: "// Freitagmorgen",
     titel: `${NAME}`,
-    zeile: "Was die Zahlen oben bedeuten, steht Freitagmorgen im Briefing.",
+    /* Auf der Landingpage stehen darüber die eigenen Zahlen, im
+       Artikel nicht. Derselbe Satz passt nicht auf beides. */
+    zeile: aufLandingpage
+      ? "Freitagmorgen im Postfach. Einmal die Woche, sonst Ruhe."
+      : "Was die Zahlen oben bedeuten, steht Freitagmorgen im Bullshitmelder.",
   },
   "artikel-ende": {
     kicker: "// Freitagmorgen",
@@ -42,7 +52,7 @@ const TEXT = {
       "Keine Kursziele, keine Empfehlungen.",
   },
   fusszeile: {
-    kicker: "// Briefing",
+    kicker: "// Bullshitmelder",
     titel: `${NAME}`,
     zeile: "Freitagmorgen, einmal die Woche.",
   },
@@ -55,7 +65,7 @@ const TEXT = {
 
   {/* Der Live-Wert ist der Teaser. Wir halten keine Information
       zurück, die woanders steht — wir halten die Arbeit zurück. */}
-  {variante === "inline" && <AmpelTeaser />}
+  {variante === "inline" && !aufLandingpage && <AmpelTeaser />}
 
   <p class="nl-zeile">{TEXT.zeile}</p>
 
@@ -94,12 +104,13 @@ const TEXT = {
       eine Hürde ohne Gewinn. Was zählt, ist dass hier steht, worin
       eingewilligt wird, bevor jemand klickt. */}
   <p class="nl-klein">
-    Mit dem Absenden willigst du ein, dass wir dir das Briefing per E-Mail
+    Mit dem Absenden willigst du ein, dass wir dir den Bullshitmelder per E-Mail
     schicken. Wir bestätigen die Anmeldung vorher per Mail; ohne deinen Klick
     darin tragen wir dich nicht ein. Versand über Brevo, Server in der EU.
     Widerruf jederzeit über den Link in jeder Ausgabe.
-    <a href="/datenschutz/">Datenschutz</a> ·
-    <a href="/newsletter/">Was drinsteht</a>
+    <a href="/datenschutz/">Datenschutz</a>{!aufLandingpage && (
+      <Fragment> · <a href="/newsletter/">Was drinsteht</a></Fragment>
+    )}
   </p>
 </section>
 

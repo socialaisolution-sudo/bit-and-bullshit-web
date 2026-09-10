@@ -1,0 +1,84 @@
+---
+/**
+ * „So sieht es aus" — das echte Mail-Template, angeschnitten.
+ *
+ * Kein Screenshot, sondern das Template selbst: Es wird beim Bauen
+ * gerendert und in einen iframe gelegt. Ein Bild würde beim ersten
+ * Umbau des Templates falsch werden, ohne dass es jemand merkt.
+ *
+ * Bewusst KEINE Ausgabennummer und KEIN Datum in der Beschriftung:
+ * Es ist noch keine Ausgabe verschickt. „Beispielausgabe" wäre eine
+ * Behauptung, „So sieht es aus" ist eine Aussage über das Layout.
+ *
+ * Der Anschnitt ist eine harte Kante, kein weicher Verlauf — passt
+ * zum Rest und braucht keine Farbverläufe.
+ */
+import { BLINDAUSGABE } from "../newsletter/blindtext";
+import { mailHtml } from "../newsletter/mail";
+
+/* Ohne Nummer und Datum, damit nichts Erfundenes dasteht. */
+const html = mailHtml({ ...BLINDAUSGABE, nummer: 0, datum: BLINDAUSGABE.datum })
+  .replace(/Nr\.&nbsp;0 &middot; [^<]+/, "Beispiel");
+---
+
+<figure class="mv">
+  <div class="mv-rahmen">
+    <iframe
+      title="Vorschau des Newsletter-Layouts mit Blindtext"
+      srcdoc={html}
+      loading="lazy"
+      scrolling="no"
+      tabindex="-1"
+      aria-hidden="true"></iframe>
+  </div>
+  <p class="mv-kante"><span>hier geht es weiter</span></p>
+  <figcaption>
+    So sieht eine Ausgabe aus: oben die Ampel mit ihren vier Kennzahlen, dann
+    der Text, unten das Passwort für den Leserbereich. Der Inhalt hier ist
+    Platzhalter — verschickt wurde noch keine Ausgabe.
+  </figcaption>
+</figure>
+
+<style>
+  .mv { margin: 2.5rem 0 0; }
+  .mv-rahmen {
+    /* Feste Höhe gegen Layoutsprünge, Anschnitt durch Überlauf. */
+    height: 420px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 0;
+  }
+  .mv-rahmen iframe {
+    display: block;
+    width: 600px;
+    height: 1600px;
+    border: 0;
+    /* Auf schmalen Displays herunterskalieren statt abschneiden —
+       der Traffic kommt ueberwiegend mobil. */
+    transform-origin: top left;
+  }
+  .mv-kante {
+    margin: 0;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-top: 2px solid var(--color-orange, #f7931a);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .mv figcaption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 660px) {
+    .mv-rahmen { height: 340px; }
+    .mv-rahmen iframe { transform: scale(0.62); width: 968px; }
+  }
+  @media (max-width: 420px) {
+    .mv-rahmen { height: 300px; }
+    .mv-rahmen iframe { transform: scale(0.5); width: 1200px; }
+  }
+</style>

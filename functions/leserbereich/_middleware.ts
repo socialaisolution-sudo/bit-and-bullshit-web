@@ -20,7 +20,7 @@ interface Env {
 }
 
 const GRUENDE: Record<string, string> = {
-  passwort: "Das Passwort stimmt nicht. Es steht in der aktuellen Ausgabe des Briefings.",
+  passwort: "Das Passwort stimmt nicht. Es steht in der aktuellen Ausgabe des Bullshitmelders.",
   leer: "Da war kein Passwort drin.",
   dienst: "Die Prüfung ist gerade nicht erreichbar. Probier es in ein paar Minuten noch einmal.",
   technik: "Bei uns fehlt eine Einstellung. Wir wissen davon.",
@@ -90,7 +90,7 @@ const anmeldeSeite = (meldung: string | null) => `<!doctype html>
   <h1>Passwort der Woche</h1>
   ${meldung ? `<p class="fehler">${meldung}</p>` : ""}
   <p>
-    Es steht in der aktuellen Ausgabe des Briefings, ganz unten. Jede Woche ein
+    Es steht in der aktuellen Ausgabe des Bullshitmelders, ganz unten. Jede Woche ein
     neues — das der Vorwoche gilt noch ein paar Tage weiter.
   </p>
 
@@ -103,7 +103,7 @@ const anmeldeSeite = (meldung: string | null) => `<!doctype html>
 
   <p class="klein">
     Kein Konto, keine Anmeldung, keine gespeicherten Daten — nur dieses eine
-    Passwort. <a href="/newsletter/">Briefing abonnieren</a> ·
+    Passwort. <a href="/newsletter/">Bullshitmelder abonnieren</a> ·
     <a href="https://bitcoinaera.de/ampel/">die Ampel ist öffentlich</a>
   </p>
 </main>
