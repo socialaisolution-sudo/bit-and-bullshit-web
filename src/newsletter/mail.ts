@@ -65,6 +65,23 @@ const STUFENFARBE: Record<string, string> = {
 const SCHRIFT =
   "'Helvetica Neue', Helvetica, Arial, 'Liberation Sans', sans-serif";
 
+/**
+ * Petes Kopf im Briefkopf. Absolute Adresse, weil eine Mail keine
+ * relativen Pfade kennt — das Bild liegt unter public/ und wird mit
+ * der Seite ausgeliefert.
+ *
+ * PNG, nicht WebP: Outlook fuer Windows zeigt WebP nicht an. Und mit
+ * dem Mail-Grund hinterlegt statt transparent, weil manche Clients
+ * Transparenz auf Weiss rendern — Pete saesse dann in einem weissen
+ * Kasten.
+ *
+ * Doppelte Aufloesung (240 px fuer 120 px Anzeige), sonst ist er auf
+ * Telefonen unscharf. Breite und Hoehe stehen als Attribute dran,
+ * damit der Platz auch dann stimmt, wenn der Client Bilder blockt —
+ * und der Alt-Text traegt die Aussage allein.
+ */
+const PETE_BILD = "https://bitandbullshit.com/pete-mail.png";
+
 /* ── Werkzeug ─────────────────────────────────────────────────── */
 
 const esc = (s: string) =>
@@ -204,8 +221,11 @@ const burnerBlock = (a: Ausgabe): string => {
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="${F.flaeche}" style="background-color:${F.flaeche};border-top:3px solid ${F.orange};">
               <tr>
                 <td style="padding:24px 24px 10px;">
-                  <p class="marke" style="margin:0 0 18px;font-family:${SCHRIFT};font-size:15px;line-height:20px;letter-spacing:2.4px;text-transform:uppercase;font-weight:bold;color:${F.orange};">
+                  <p class="marke" style="margin:0 0 4px;font-family:${SCHRIFT};font-size:15px;line-height:20px;letter-spacing:2.4px;text-transform:uppercase;font-weight:bold;color:${F.orange};">
                     ${esc(RUBRIK.burner.toUpperCase())}
+                  </p>
+                  <p class="leise" style="margin:0 0 18px;font-family:${SCHRIFT};font-size:12px;line-height:18px;color:${F.leise};">
+                    Pete nimmt sich eine Behauptung vor
                   </p>
 ${a.burner.text.map(textblock).join("\n")}
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:6px 0 8px;">
@@ -283,10 +303,14 @@ export function mailHtml(a: Ausgabe): string {
           <td class="luft" style="padding:36px 40px 22px;">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-                <td style="font-family:${SCHRIFT};font-size:19px;line-height:24px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:${F.text};" class="txt">
+                <td width="56" valign="middle" style="width:56px;padding-right:14px;">
+                  <img src="${PETE_BILD}" width="56" height="56" alt="Pete, das Maskottchen von Bit &amp; Bullshit"
+                       style="display:block;width:56px;height:56px;border:0;outline:none;text-decoration:none;">
+                </td>
+                <td valign="middle" style="font-family:${SCHRIFT};font-size:19px;line-height:24px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:${F.text};" class="txt">
                   BULLSHIT<span style="color:${F.orange};">MELDER</span>
                 </td>
-                <td align="right" style="font-family:${SCHRIFT};font-size:12px;line-height:24px;color:${F.leise};" class="leise">
+                <td align="right" valign="middle" style="font-family:${SCHRIFT};font-size:12px;line-height:24px;color:${F.leise};" class="leise">
                   Nr.&nbsp;${a.nummer} &middot; ${esc(datumLang(a.datum))}
                 </td>
               </tr>
@@ -517,7 +541,7 @@ export function mailText(a: Ausgabe): string {
      Versalien, weil die Fettschrift der HTML-Fassung in einer
      Textansicht nichts hinterlaesst. */
   if (a.burner?.text?.length) {
-    zeilen.push(linie, RUBRIK.burner.toUpperCase(), linie, "");
+    zeilen.push(linie, RUBRIK.burner.toUpperCase(), "Pete nimmt sich eine Behauptung vor", linie, "");
     bloeckeSchreiben(a.burner.text);
     zeilen.push(`>>> ${a.burner.urteil.toUpperCase()} <<<`, "");
   }
