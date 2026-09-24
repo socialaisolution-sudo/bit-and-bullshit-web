@@ -7,7 +7,7 @@ import Brotkrumen from "../../components/Brotkrumen.astro";
 import AmpelHero from "../../components/AmpelHero.astro";
 import FundingZaehler from "../../components/FundingZaehler.astro";
 import JahresBalken from "../../components/JahresBalken.astro";
-import MailVorschau from "../../components/MailVorschau.astro";
+import AusgabeStapel from "../../components/AusgabeStapel.astro";
 import { Image } from "astro:assets";
 import maskottchen from "../../assets/mascot-hero.webp";
 
@@ -26,6 +26,11 @@ import maskottchen from "../../assets/mascot-hero.webp";
  *
  * Zwei Rubriken, nicht drei. Drei Rubriken sind drei Versprechen, die
  * 52-mal gehalten werden müssen.
+ *
+ * „Wie ich das sehe" und der Bullshit Burner stehen trotzdem auf der
+ * Seite — aber ausdrücklich als das, was sie sind: optional, im Schema
+ * auch. Ein genanntes Extra ist kein Versprechen, solange danebensteht,
+ * dass es nicht jede Woche kommt.
  *
  * Zwei Formulare, nicht drei: oben und unten. Ein drittes in der
  * Mitte zeigte denselben Block mit demselben Einwilligungstext ein
@@ -99,14 +104,54 @@ const beschreibung =
         historisch bedeutet hat und was nicht. Wenn nichts passiert ist, steht
         da, dass nichts passiert ist — das ist auch eine Information.
       </p>
-
-      <h3>2. Die ausführliche Auswertung</h3>
       <p>
-        Die vier Kennzahlen mit ihren Werten, die Einordnung über mehrere
-        Zeiträume und die Trefferbilanz der Ampel — also auch die Fälle, in
-        denen sie danebenlag. Das liegt im
-        <a href="/leserbereich/">Leserbereich</a>, und das Passwort dafür steht
-        in jeder Ausgabe. Kein Konto, keine Registrierung, jede Woche ein neues.
+        Wenn es etwas zu sagen gibt, kommen zwei Rubriken dazu, die keine
+        wöchentliche Pflicht sind: <strong>Wie ich das sehe</strong> — meine
+        Meinung, als solche gekennzeichnet und vom Rest getrennt. Und der
+        <strong>Bullshit Burner</strong>, in dem sich Pete eine Behauptung
+        vornimmt, die gerade die Runde macht, und nachrechnet, was von ihr
+        übrig bleibt.
+      </p>
+
+      <h3>2. Der Leserbereich</h3>
+      <p>
+        Die ausführliche Fassung, im <a href="/leserbereich/">Leserbereich</a>.
+        Das Passwort dafür steht in jeder Ausgabe —
+        kein Konto, keine Registrierung, jede Woche ein neues. Was dort liegt,
+        ist in fünf Blöcke sortiert:
+      </p>
+      <ol class="bausteine">
+        <li>
+          <strong>Stand jetzt.</strong> Die Ampel und ihre vier Kennzahlen, live
+          beim Öffnen — nicht der Stand vom Freitag. Daneben, was sich seit dem
+          Versand bewegt hat.
+        </li>
+        <li>
+          <strong>Was bedeutet das.</strong> Zu jeder Kennzahl ein Absatz: was
+          dieser Stand für die Positionierung heißt.
+        </li>
+        <li>
+          <strong>Gesamtkontext.</strong> Die vier Befunde zu einer Lage
+          verdichtet, in ein paar Sätzen.
+        </li>
+        <li>
+          <strong>Deep Dive.</strong> Ein Thema ausführlich — der Teil, der auch
+          in drei Wochen noch stimmt.
+        </li>
+        <li>
+          <strong>Was die Zahlen messen.</strong> Die vier Definitionen, fest
+          unter jeder Ausgabe. Zum Nachschlagen, ohne die Seite zu verlassen.
+        </li>
+      </ol>
+      <p>
+        Dazu die <strong>Trefferbilanz</strong>: wie oft die Ampel Grün, Gelb
+        und Rot gezeigt hat, gegen das, was das Regelwerk erwarten lässt. Also
+        auch die Wochen, in denen sie danebenlag.
+      </p>
+      <p>
+        Jeder Report wird <strong>drei Wochen später öffentlich</strong> und
+        landet im <a href="/leserreports/">Archiv</a>. Die jüngsten zwei bleiben
+        immer hinter dem Passwort — sonst hätte ein Abonnement keinen Vorsprung.
       </p>
 
       <h2>Was nicht drinsteht</h2>
@@ -118,11 +163,35 @@ const beschreibung =
       </p>
 
       <h2>So sieht es aus</h2>
-      <MailVorschau />
       <p>
-        Ältere Ausgaben stehen im <a href="/bullshitmelder/archiv/">Archiv</a> —
-        acht bis zwölf Wochen nach dem Versand.
+        Vier Blätter zum Durchklicken: die Mail, wie sie freitags ankommt, und
+        drei Seiten aus dem Leserbereich dahinter.
       </p>
+      <AusgabeStapel />
+      <p>
+        Ältere Ausgaben stehen im
+        <a href="/bullshitmelder/archiv/">Ausgaben-Archiv</a>, die Reports aus
+        dem Leserbereich unter <a href="/leserreports/">Leserreports</a>.
+      </p>
+
+      {/* Der Weg hinein. Stand vorher nur als Wort mitten im Fliesstext —
+          wer die Seite ueberfliegt, fand ihn nicht. Bewusst OHNE
+          Anmeldeformular: Das steht direkt darunter schon, und ein
+          drittes waere dasselbe Feld zum dritten Mal. */}
+      <aside class="lb-tuer">
+        <p class="lb-tuer-k">// Schon Abonnent?</p>
+        <p class="display lb-tuer-h">Hier geht es zum Leserbereich</p>
+        <p class="lb-tuer-t">
+          Das Passwort der Woche steht in der Mail von Freitag, ganz unten. Ein
+          Feld, kein Konto.
+        </p>
+        <p class="lb-tuer-aktion">
+          <a class="lb-tuer-knopf" href="/leserbereich/">Leserbereich öffnen</a>
+          <a class="lb-tuer-neben" href="/leserreports/"
+            >oder ältere Reports lesen</a
+          >
+        </p>
+      </aside>
 
       <div class="maskottchen-block">
         <Image
@@ -152,8 +221,10 @@ const beschreibung =
           <a href="/datenschutz/">Datenschutz</a>.
         </li>
         <li>
-          Die Inhalte erscheinen <strong>8 bis 12 Wochen später</strong> auch
-          öffentlich. Wer wartet, verpasst nichts — er erfährt es später.
+          Die Reports aus dem Leserbereich werden nach
+          <strong>drei Wochen</strong> öffentlich, die Ausgaben selbst nach
+          <strong>8 bis 12 Wochen</strong>. Wer wartet, verpasst nichts — er
+          erfährt es später.
         </li>
       </ul>
 
@@ -182,6 +253,55 @@ const beschreibung =
 </Layout>
 
 <style>
+  /* Die Tuer zum Leserbereich. Orange Kante links wie die
+     Meinungsrubrik — ein Kasten, der etwas anbietet, kein Hinweis. */
+  .lb-tuer {
+    margin: 2.75rem 0 0;
+    padding: 1.6rem 1.5rem 1.5rem;
+    background: rgb(from var(--color-paper) r g b / 0.05);
+    border-left: 3px solid var(--color-orange, #f7931a);
+  }
+  .lb-tuer-k {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-orange, #f7931a);
+  }
+  .lb-tuer-h {
+    margin: 0.55rem 0 0;
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    line-height: 1.15;
+  }
+  .lb-tuer-t {
+    margin: 0.65rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    opacity: 0.75;
+    max-width: 34rem;
+  }
+  .lb-tuer-aktion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.1rem;
+    margin: 1.2rem 0 0;
+  }
+  .lb-tuer-knopf {
+    display: inline-block;
+    padding: 0.7rem 1.3rem;
+    background: var(--color-orange, #f7931a);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 0;
+  }
+  .lb-tuer-knopf:hover { background: #ffa63a; }
+  .lb-tuer-neben { font-size: 0.85rem; opacity: 0.7; }
+
   .maskottchen-block {
     display: flex;
     align-items: flex-end;

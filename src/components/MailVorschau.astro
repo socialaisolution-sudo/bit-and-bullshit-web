@@ -18,6 +18,14 @@ import { mailHtml } from "../newsletter/mail";
 import { zuBloecken } from "../newsletter/markdown";
 import { oeffentlicheAusgaben } from "../lib/ausgaben";
 
+interface Props {
+  /* Im Blätterstapel liefert der Stapel Rahmen, Kante und Bildunterschrift.
+     Hier bleibt dann nur das Blatt selbst — sonst stünde die Erklärung
+     zweimal untereinander. */
+  imStapel?: boolean;
+}
+const { imStapel = false } = Astro.props;
+
 /* Sobald eine Ausgabe öffentlich ist, zeigt die Vorschau die echte —
    dann ist es kein Platzhalter mehr, sondern ein Beleg. Bis dahin
    der Blindtext, aber ohne Nummer und Datum: „Beispielausgabe" wäre
@@ -46,6 +54,19 @@ const html = echte
   : mailHtml(ausgabe as any).replace(/Nr\.&nbsp;0 &middot; [^<]+/, "Beispiel");
 ---
 
+{
+  imStapel ? (
+    <div class="mv-rahmen mv-rahmen-stapel">
+      <iframe
+        title="Vorschau des Newsletter-Layouts"
+        srcdoc={html}
+        loading="lazy"
+        scrolling="no"
+        tabindex="-1"
+        aria-hidden="true"
+      />
+    </div>
+  ) : (
 <figure class="mv">
   <div class="mv-rahmen">
     <iframe
@@ -67,6 +88,8 @@ const html = echte
     )}
   </figcaption>
 </figure>
+  )
+}
 
 <style>
   .mv { margin: 2.5rem 0 0; }
@@ -76,6 +99,15 @@ const html = echte
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-bottom: 0;
+  }
+  /* Im Stapel gibt das Blatt die Hoehe vor, nicht der Rahmen — und den
+     Rand zeichnet das Blatt. */
+  /* Zwei Klassen, damit die Hoehe auch die Medienabfragen weiter unten
+     ueberschreibt — die kommen spaeter in der Datei und haetten sonst
+     das letzte Wort. */
+  .mv-rahmen.mv-rahmen-stapel {
+    height: 100%;
+    border: 0;
   }
   .mv-rahmen iframe {
     display: block;

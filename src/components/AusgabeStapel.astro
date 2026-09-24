@@ -1,0 +1,436 @@
+---
+/**
+ * „So sieht es aus" — vier Blätter übereinander zum Durchblättern.
+ *
+ * Vorher lag hier ein einzelnes Blatt: die Mail. Das war der Anfang und
+ * ist inzwischen der kleinere Teil — hinter dem Passwort liegen fünf
+ * Blöcke, die auf der Landingpage nirgends zu sehen waren.
+ *
+ * Wichtig, und der Grund für den ganzen Zuschnitt:
+ *
+ *   Blatt 1 ist echt. Es rendert dasselbe Template, das verschickt
+ *   wird. Ändert sich das Template, ändert sich die Vorschau mit.
+ *
+ *   Blatt 2 bis 4 zeigen den AUFBAU des Leserbereichs, nicht seinen
+ *   Inhalt. Überschriften, Nummerierung und Anordnung sind die echten,
+ *   die Textzeilen sind als Balken angedeutet. Das ist Absicht: Der
+ *   Inhalt liegt hinter einem Passwort, und eine Landingpage, die ihn
+ *   im Klartext vorzeigt, macht das Passwort zur Attrappe.
+ *
+ * Deshalb stehen hier auch keine Zahlen. Die Trefferbilanz erscheint
+ * als leere Bahnen — eine Balkenbreite ist ein Wert, und ein Wert in
+ * einer Attrappe läuft dem echten irgendwann davon, ohne dass es
+ * jemand merkt. Genau diese Art Drift hat uns hier schon zweimal
+ * erwischt.
+ *
+ * Umschalten läuft über Radio-Knöpfe und :has(), ohne eine Zeile
+ * JavaScript. Ohne JS bleibt es bedienbar, mit Tastatur auch.
+ */
+import MailVorschau from "./MailVorschau.astro";
+import { KENNZAHLEN, REIHENFOLGE } from "../lib/kennzahlen";
+import { oeffentlicheReports } from "../lib/leserbereich";
+
+/* Sobald der erste Report die Drei-Wochen-Frist hinter sich hat, zeigt
+   die Bildunterschrift dorthin. Bis dahin entfällt der Satz — ein Link
+   auf ein leeres Archiv ist schlechter als keiner. */
+const oeffentlich = (await oeffentlicheReports())[0] ?? null;
+
+const BLAETTER = [
+  { id: "mail", reiter: "Die Mail", kurz: "Freitagmorgen" },
+  { id: "stand", reiter: "Der Stand", kurz: "Block 01" },
+  { id: "einordnung", reiter: "Die Einordnung", kurz: "Block 02" },
+  { id: "deep", reiter: "Der Deep Dive", kurz: "Block 04" },
+];
+---
+
+<figure class="st">
+  <div class="st-reiter" aria-label="Blatt wählen">
+    {
+      BLAETTER.map((b, i) => (
+        <label class={`st-lasche st-lasche-${i + 1}`}>
+          <input
+            class={`st-radio st-radio-${i + 1}`}
+            type="radio"
+            name="ausgabe-stapel"
+            value={b.id}
+            checked={i === 0}
+          />
+          <span class="st-lasche-text">
+            <span class="display st-lasche-h">{b.reiter}</span>
+            <span class="st-lasche-k">{b.kurz}</span>
+          </span>
+        </label>
+      ))
+    }
+  </div>
+
+  <div class="st-stapel">
+    {/* ---- Blatt 1: die echte Mail ---- */}
+    <div class="st-blatt st-blatt-1 st-hell">
+      <MailVorschau imStapel />
+    </div>
+
+    {/* ---- Blatt 2: Stand jetzt ---- */}
+    <div class="st-blatt st-blatt-2">
+      <div class="st-innen">
+        <header class="wall-head">
+          <span class="stencil-num wall-head-num" aria-hidden="true">01</span>
+          <h3 class="display st-h">Stand jetzt</h3>
+        </header>
+        <div class="spray-rule mt-4 max-w-[9rem]"></div>
+        <p class="st-lead">
+          Die Ampel steht so, wie sie steht, wenn du die Seite öffnest — nicht
+          so, wie sie am Freitag stand. Daneben, was sich seit dem Versand
+          bewegt hat.
+        </p>
+        <ul class="st-lampen">
+          {
+            REIHENFOLGE.map((k) => (
+              <li>
+                <span class="st-lampe" aria-hidden="true" />
+                <span class="st-lampen-name">{KENNZAHLEN[k].name}</span>
+                <span class="st-zeile st-zeile-kurz" aria-hidden="true" />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    {/* ---- Blatt 3: Was bedeutet das ---- */}
+    <div class="st-blatt st-blatt-3">
+      <div class="st-innen">
+        <header class="wall-head">
+          <span class="stencil-num wall-head-num" aria-hidden="true">02</span>
+          <h3 class="display st-h">Was bedeutet das</h3>
+        </header>
+        <div class="spray-rule mt-4 max-w-[9rem]"></div>
+        <p class="st-lead">
+          Zu jeder der vier Kennzahlen ein Absatz: was dieser Stand für die
+          Positionierung heißt. Darunter die Verdichtung zu einer Lage.
+        </p>
+        <div class="st-karten">
+          {
+            REIHENFOLGE.map((k, i) => (
+              <article class={`st-karte paper tape ${i % 2 ? "tape-right" : "tape-left"}`}>
+                <p class="stamp st-karte-name">{KENNZAHLEN[k].name}</p>
+                <span class="st-zeile st-dunkel" aria-hidden="true" />
+                <span class="st-zeile st-dunkel" aria-hidden="true" />
+                <span class="st-zeile st-dunkel st-zeile-kurz" aria-hidden="true" />
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    {/* ---- Blatt 4: Deep Dive ---- */}
+    <div class="st-blatt st-blatt-4">
+      <div class="st-innen">
+        <header class="wall-head">
+          <span class="stencil-num wall-head-num" aria-hidden="true">04</span>
+          <h3 class="display st-h">Deep Dive</h3>
+        </header>
+        <div class="spray-rule mt-4 max-w-[9rem]"></div>
+        <p class="st-lead">
+          Ein Thema ausführlich — der Teil, der auch in drei Wochen noch
+          stimmt.
+        </p>
+        <div class="st-absaetze" aria-hidden="true">
+          {
+            [0, 1, 2].map((n) => (
+              <div class="st-absatz">
+                <span class="st-ziffer">{String(n + 1).padStart(2, "0")}</span>
+                <span class="st-zeilen">
+                  <span class="st-zeile" />
+                  <span class="st-zeile" />
+                  <span class="st-zeile st-zeile-kurz" />
+                </span>
+              </div>
+            ))
+          }
+        </div>
+        <p class="st-bilanz-h">// Trefferbilanz</p>
+        <ul class="st-bilanz" aria-hidden="true">
+          {
+            ["Grün", "Gelb", "Rot"].map((f) => (
+              <li>
+                <span class="st-bilanz-name">{f}</span>
+                <span class="st-bahn" />
+              </li>
+            ))
+          }
+        </ul>
+        <p class="st-bilanz-satz">
+          Auch die Wochen, in denen die Ampel danebenlag.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p class="st-kante"><span>hier geht es weiter</span></p>
+
+  <figcaption>
+    <strong>Blatt 1 ist das echte Template</strong> — dieselbe Datei, die
+    freitags verschickt wird, hier nur angeschnitten. Blatt 2 bis 4 zeigen den
+    Aufbau des Leserbereichs: Überschriften und Anordnung stimmen, die
+    Textzeilen sind angedeutet. Was dort tatsächlich steht, gehört den
+    Abonnenten{
+      oeffentlich && (
+        <>
+          {" "}— bis es drei Wochen später{" "}
+          <a href="/leserreports/">öffentlich wird</a>
+        </>
+      )
+    }.
+  </figcaption>
+</figure>
+
+<style>
+  .st { margin: 2.5rem 0 0; }
+
+  /* ---------- Laschen ---------- */
+  .st-reiter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .st-lasche { cursor: pointer; }
+  /* Nicht display:none — sonst ist der Knopf nicht mehr fokussierbar
+     und der Stapel mit Tastatur tot. */
+  .st-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .st-lasche-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.45rem 0.8rem 0.5rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.14);
+    border-bottom-width: 2px;
+    border-bottom-color: transparent;
+    transition: border-color 160ms, background 160ms;
+  }
+  .st-lasche-h { font-size: 0.86rem; line-height: 1.1; }
+  .st-lasche-k {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.45;
+  }
+  .st-lasche:hover .st-lasche-text {
+    background: rgb(from var(--color-paper) r g b / 0.05);
+  }
+  .st-radio:checked + .st-lasche-text {
+    border-bottom-color: var(--color-orange, #f7931a);
+    background: rgb(from var(--color-paper) r g b / 0.07);
+  }
+  .st-radio:focus-visible + .st-lasche-text {
+    outline: 2px solid var(--color-orange, #f7931a);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Der Stapel ---------- */
+  /* Feste Hoehe: Die Blaetter liegen absolut uebereinander, und ein
+     Stapel, der beim Umschalten die Hoehe wechselt, schiebt die halbe
+     Seite hin und her. */
+  .st-stapel {
+    position: relative;
+    height: 420px;
+    padding-top: 24px;
+  }
+  .st-blatt {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 420px;
+    overflow: hidden;
+    /* Etwas heller als die Wand (--color-ink), damit ein Blatt als Blatt
+       lesbar bleibt und nicht mit dem Hintergrund verschmilzt. */
+    background: #0f0f0f;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.14);
+    transition:
+      transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 200ms;
+    pointer-events: none;
+  }
+  .st-hell { background: #ffffff; }
+
+  /* Ruhelage: die vier liegen gestaffelt uebereinander, das oberste
+     Blatt sitzt unten und verdeckt die anderen bis auf ihre Kanten. */
+  .st-blatt-1 { top: 24px; transform: rotate(0deg); z-index: 4; }
+  .st-blatt-2 { top: 16px; transform: rotate(-0.45deg); z-index: 3; }
+  .st-blatt-3 { top: 8px; transform: rotate(0.35deg); z-index: 2; }
+  .st-blatt-4 { top: 0; transform: rotate(-0.25deg); z-index: 1; }
+  .st-blatt-2,
+  .st-blatt-3,
+  .st-blatt-4 { opacity: 0.4; }
+
+  /* Das gewaehlte Blatt kommt nach vorn, gerade und voll sichtbar. */
+  .st:has(.st-radio-1:checked) .st-blatt-1,
+  .st:has(.st-radio-2:checked) .st-blatt-2,
+  .st:has(.st-radio-3:checked) .st-blatt-3,
+  .st:has(.st-radio-4:checked) .st-blatt-4 {
+    top: 24px;
+    transform: rotate(0deg);
+    opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  /* Ohne :has() bleibt Blatt 1 vorn und lesbar — der Rest liegt
+     dahinter wie eine Papierkante. Kein Totalausfall. */
+
+  .st-innen { padding: 1.5rem 1.4rem; }
+  .st-h { font-size: 1.35rem; line-height: 1.15; margin: 0; }
+  .st-lead {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 32rem;
+    opacity: 0.7;
+  }
+
+  /* ---------- Angedeutete Textzeilen ---------- */
+  .st-zeile {
+    display: block;
+    height: 0.5rem;
+    border-radius: 2px;
+    background: rgb(from var(--color-paper) r g b / 0.12);
+  }
+  .st-zeile + .st-zeile { margin-top: 0.4rem; }
+  .st-zeile-kurz { width: 62%; }
+  .st-dunkel { background: rgb(from var(--color-ink) r g b / 0.16); }
+
+  /* ---------- Blatt 2 ---------- */
+  .st-lampen { list-style: none; margin: 1.3rem 0 0; padding: 0; }
+  .st-lampen li {
+    display: grid;
+    grid-template-columns: 0.7rem 10.5rem 1fr;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.62rem 0;
+    border-top: 1px solid rgb(from var(--color-paper) r g b / 0.09);
+  }
+  .st-lampe {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.3);
+  }
+  .st-lampen-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
+  }
+  .st-lampen .st-zeile-kurz { width: 100%; }
+
+  /* ---------- Blatt 3 ---------- */
+  .st-karten {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 1rem;
+    margin-top: 1.4rem;
+  }
+  .st-karte { padding: 0.85rem 0.8rem 0.9rem; }
+  .st-karten > .st-karte:nth-child(1) { transform: rotate(-1.2deg); }
+  .st-karten > .st-karte:nth-child(2) { transform: rotate(0.9deg); }
+  .st-karten > .st-karte:nth-child(3) { transform: rotate(0.7deg); }
+  .st-karten > .st-karte:nth-child(4) { transform: rotate(-0.8deg); }
+  .st-karte-name { margin: 0 0 0.6rem; font-size: 0.6rem; }
+
+  /* ---------- Blatt 4 ---------- */
+  /* Dieselben Umriss-Ziffern wie im echten Deep Dive. */
+  .st-absaetze { margin-top: 1.2rem; }
+  .st-absatz {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+  .st-ziffer {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 1.2px rgb(from var(--color-orange) r g b / 0.5);
+    user-select: none;
+  }
+  .st-bilanz-h {
+    margin: 1.2rem 0 0.6rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-orange, #f7931a);
+    opacity: 0.8;
+  }
+  .st-bilanz { list-style: none; margin: 0; padding: 0; }
+  .st-bilanz li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+  .st-bilanz-name { font-size: 0.72rem; opacity: 0.6; }
+  /* Leere Bahnen ohne Fuellung: Eine Balkenbreite waere ein Wert, und
+     ein Wert in einer Attrappe laeuft dem echten davon. */
+  .st-bahn {
+    height: 0.5rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.16);
+    border-radius: 2px;
+  }
+  .st-bilanz-satz {
+    margin: 0.7rem 0 0;
+    font-size: 0.75rem;
+    opacity: 0.55;
+  }
+
+  /* ---------- Abschluss ---------- */
+  .st-kante {
+    margin: 0;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.14);
+    border-top: 2px solid var(--color-orange, #f7931a);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .st figcaption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+  /* Die Hoehen folgen denen der Mail-Vorschau, sonst klafft unter dem
+     angeschnittenen Blatt eine Luecke. */
+  @media (max-width: 660px) {
+    .st-stapel { height: 340px; }
+    .st-blatt { height: 340px; }
+    .st-innen { padding: 1.2rem 1.1rem; }
+    .st-h { font-size: 1.15rem; }
+    .st-lampen li { grid-template-columns: 0.7rem 1fr; }
+    .st-lampen .st-zeile { display: none; }
+  }
+  @media (max-width: 480px) {
+    .st-karten { grid-template-columns: minmax(0, 1fr); }
+    .st-karten > .st-karte:nth-child(n + 3) { display: none; }
+  }
+  @media (max-width: 420px) {
+    .st-stapel { height: 300px; }
+    .st-blatt { height: 300px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .st-blatt { transition: none; }
+    .st-karte { transform: none !important; }
+  }
+</style>
