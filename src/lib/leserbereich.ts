@@ -57,16 +57,20 @@ export async function alleReports(): Promise<Report[]> {
 }
 
 /**
- * Der Report, den der Leserbereich gerade zeigt — der jüngste, dessen
- * Woche schon begonnen hat.
+ * Der Report, den der Leserbereich gerade zeigt: schlicht der
+ * jüngste.
  *
- * Eine Datei fuer eine kuenftige Woche liegt damit schon im Repo,
- * ohne vorzeitig zu erscheinen. Das ist Absicht: vorbereiten koennen,
- * ohne zu veroeffentlichen.
+ * Erst hing das an „Woche hat begonnen". Das war gut gemeint —
+ * vorbereiten, ohne zu veroeffentlichen — und in der Praxis im Weg:
+ * Wer am Donnerstag den Report fuer die kommende Woche ablegt, sieht
+ * ihn dann bis Montag nicht. Vorbereiten geht auch, indem man die
+ * Datei noch nicht pusht.
+ *
+ * Die Kalenderwoche bleibt Kennung und Grundlage der Frist, sie
+ * steuert aber nicht mehr die Sichtbarkeit.
  */
-export async function aktuellerReport(jetzt = new Date()): Promise<Report | null> {
-  const alle = await alleReports();
-  return alle.find((r) => wochenbeginn(r.data.kw) <= jetzt) ?? null;
+export async function aktuellerReport(): Promise<Report | null> {
+  return (await alleReports())[0] ?? null;
 }
 
 /**

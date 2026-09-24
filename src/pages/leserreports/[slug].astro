@@ -1,0 +1,129 @@
+---
+/**
+ * Ein Leserreport, nach Ablauf der Frist öffentlich.
+ *
+ * Nur freigegebene Reports bekommen überhaupt eine Adresse — was
+ * gesperrt ist, existiert im Produktionsbuild nicht und kann deshalb
+ * auch nicht versehentlich verlinkt oder indexiert werden.
+ *
+ * Die Adresse trägt den Deep-Dive-Titel, nicht die Wochennummer. Der
+ * Titel ist das, wonach jemand sucht; „2026-40" ist es nicht.
+ *
+ * Und sie liegt unter /leserreports/, NICHT unter /leserbereich/:
+ * Die Zwischenschicht in functions/leserbereich/_middleware.ts sperrt
+ * alles unter diesem Pfad ohne Ausnahme, und die gesperrte Seite
+ * traegt noindex. Ein oeffentliches Archiv dort unterzubringen waere
+ * gleich doppelt falsch gewesen.
+ */
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import ReportBloecke from "../../components/ReportBloecke.astro";
+import KennzahlDefinitionen from "../../components/KennzahlDefinitionen.astro";
+import {
+  oeffentlicheReports,
+  wochenbeginn,
+  wochenLabel,
+  slugVon,
+  type Report,
+} from "../../lib/leserbereich";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const reports = await oeffentlicheReports();
+
+  /* Zwei Wochen mit demselben Deep-Dive-Titel wuerden auf dieselbe
+     Adresse fallen — dann verschwaende eine der beiden stillschweigend.
+     Bei einer Wiederholung haengt die Kalenderwoche hinten dran. Die
+     erste behaelt die saubere Adresse, damit ein bereits verlinkter
+     Report nicht umzieht. */
+  const vergeben = new Set<string>();
+  return reports
+    .slice()
+    .reverse()
+    .map((r) => {
+      const basis = slugVon(r.data.deepdive_titel ?? `report-${r.data.kw}`);
+      const slug = vergeben.has(basis) ? `${basis}-${r.data.kw}` : basis;
+      vergeben.add(slug);
+      return { params: { slug }, props: { report: r } };
+    });
+};
+
+interface Props {
+  report: Report;
+}
+const { report } = Astro.props;
+const d = report.data;
+const montag = wochenbeginn(d.kw);
+const datumLang = new Intl.DateTimeFormat("de-DE", {
+  day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+}).format(montag);
+
+const titel = d.deepdive_titel ?? `Leserreport ${wochenLabel(d.kw)}`;
+const beschreibung =
+  d.gesamtkontext?.slice(0, 155) ??
+  `Der Leserreport zur Bitcoin-Ampel aus ${wochenLabel(d.kw)}.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: titel,
+  datePublished: montag.toISOString().slice(0, 10),
+  author: { "@type": "Person", name: "Denny Guhlmann" },
+  publisher: { "@type": "Organization", name: "Bit & Bullshit" },
+};
+---
+
+<Layout title={`${titel} — Bit & Bullshit`} description={beschreibung} jsonLd={jsonLd}>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-4xl px-5 py-14 md:py-20">
+    <nav class="ar-krumen">
+      <a href="/leserreports/">Leserreports</a> &rsaquo; {wochenLabel(d.kw)}
+    </nav>
+
+    <p class="display text-xs tracking-[0.3em] text-orange">// Leserreport</p>
+    <h1 class="display mt-4 text-3xl md:text-4xl">{titel}</h1>
+
+    {/* Der Warnhinweis steht VOR den Bausteinen, nicht darunter.
+        Die vier Einordnungen und der Gesamtkontext beschreiben einen
+        Stand, keinen Sachverhalt — drei Wochen spaeter gelesen, waere
+        "die Grossanleger warten ab" sonst eine Aussage ueber heute.
+        Wer die Seite ueber Google findet, muss das im ersten Blick
+        sehen. */}
+    <p class="ar-stand">
+      <strong>Momentaufnahme vom {datumLang}.</strong> Die Einordnung der vier
+      Kennzahlen und der Gesamtkontext beschreiben die Lage <em>dieser</em>
+      Woche und nicht die von heute. Wie es jetzt aussieht, steht auf der
+      <a href="https://bitcoinaera.de/ampel/" rel="noopener">Ampelseite</a>.
+    </p>
+
+    <ReportBloecke report={report} />
+
+    <section class="lb-block">
+      <p class="display lb-kicker">// Wie du das früher liest</p>
+      <p class="lb-hinweis">
+        Reports werden drei Wochen nach ihrer Woche öffentlich. Vorher stehen
+        sie im Leserbereich — das Passwort dafür steht in jeder Ausgabe des
+        <a href="/bullshitmelder/">Bullshitmelders</a>.
+      </p>
+    </section>
+
+    <KennzahlDefinitionen />
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .ar-krumen { font-size: 0.8rem; opacity: 0.55; margin-bottom: 1.5rem; }
+  .ar-stand {
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--color-orange, #f7931a);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 44rem;
+  }
+</style>

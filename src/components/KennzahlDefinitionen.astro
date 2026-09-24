@@ -1,0 +1,41 @@
+---
+/**
+ * Baustein 5: Was die Zahlen messen.
+ *
+ * Feste Fußzeile unter jedem Report, gesperrt wie öffentlich. Steht
+ * bewusst ganz unten und bewusst in einer eigenen Datei: Der Inhalt
+ * haengt an keinem Report, er aendert sich nicht, und er soll auch
+ * dann noch stimmen, wenn der Report drei Wochen alt und oeffentlich
+ * ist.
+ */
+import { KENNZAHLEN, REIHENFOLGE } from "../lib/kennzahlen";
+---
+
+<section class="lb-block">
+  <p class="display lb-kicker">// Was die Zahlen messen</p>
+  <p class="lb-hinweis">
+    Diese vier Definitionen ändern sich nicht. Sie stehen unter jedem Report,
+    damit niemand nachschlagen muss, um ihn zu lesen.
+  </p>
+  <dl class="kd-defs">
+    {
+      REIHENFOLGE.map((k) => (
+        <div class="kd-def">
+          <dt class="display">
+            <a href={`https://bitcoinaera.de/glossar/${KENNZAHLEN[k].glossar}/`} rel="noopener">
+              {KENNZAHLEN[k].name}
+            </a>
+          </dt>
+          <dd>{KENNZAHLEN[k].misst} {KENNZAHLEN[k].warum}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<style>
+  .kd-defs { margin: 1.25rem 0 0; }
+  .kd-def { padding: 0.9rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .kd-def dt { font-size: 0.9rem; color: var(--color-orange, #f7931a); }
+  .kd-def dd { margin: 0.35rem 0 0; font-size: 0.9rem; line-height: 1.6; opacity: 0.75; }
+</style>

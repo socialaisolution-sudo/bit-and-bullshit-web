@@ -2,6 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
+import ReportBloecke from "../../components/ReportBloecke.astro";
+import KennzahlDefinitionen from "../../components/KennzahlDefinitionen.astro";
+import { aktuellerReport, wochenLabel, oeffentlichAb } from "../../lib/leserbereich";
+
+const report = await aktuellerReport();
+const datumLang = (d: Date) =>
+  new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(d);
 
 /**
  * Der Leserbereich.
@@ -30,16 +37,36 @@ import SiteFooter from "../../components/SiteFooter.astro";
     <p class="display text-xs tracking-[0.3em] text-orange">// Leserbereich</p>
     <h1 class="display mt-4 text-3xl md:text-4xl">Die ausführliche Auswertung</h1>
     <p class="mt-4 max-w-2xl opacity-80">
-      Alles, was in der Freitagsausgabe nur als Satz steht: die vier Kennzahlen
-      mit ihren Werten, die Einordnung über drei Zeiträume und die
-      Trefferbilanz der Ampel.
+      Der Stand jetzt, was er für die Positionierung heißt, und einmal in der
+      Woche ein Blick auf das größere Bild. Die Freitagsausgabe ist
+      eingefroren — hier läuft es weiter.
     </p>
+    {
+      report && (
+        <p class="lb-woche">
+          Report {wochenLabel(report.data.kw)} &middot; wird am{" "}
+          {datumLang(oeffentlichAb(report.data.kw))} öffentlich
+        </p>
+      )
+    }
 
     <section class="lb-block" data-tiefe>
       <p class="display lb-kicker">// Stand jetzt</p>
       <p class="lb-laden" data-laden>Wird geladen …</p>
       <div class="lb-inhalt" data-inhalt hidden></div>
     </section>
+
+    {report && <ReportBloecke report={report} />}
+    {
+      !report && (
+        <section class="lb-block">
+          <p class="lb-hinweis">
+            Für diese Woche liegt noch kein Report vor. Der Stand oben ist
+            trotzdem aktuell.
+          </p>
+        </section>
+      )
+    }
 
     <section class="lb-block">
       <p class="display lb-kicker">// Trefferbilanz</p>
@@ -72,10 +99,13 @@ import SiteFooter from "../../components/SiteFooter.astro";
       </ul>
     </section>
 
+    <KennzahlDefinitionen />
+
     <p class="lb-fuss">
       Kein Konto, keine gespeicherten Daten — nur ein Cookie mit der laufenden
       Kalenderwoche. <a href="/api/leserbereich?abmelden=1">Abmelden</a> ·
-      <a href="/datenschutz/">Datenschutz</a> · Neues Passwort jeden Freitag im
+      <a href="/datenschutz/">Datenschutz</a> · <a href="/leserreports/">Ältere Reports</a> ·
+      Neues Passwort jeden Freitag im
       <a href="/bullshitmelder/">Bullshitmelder</a>
     </p>
   </main>
@@ -190,5 +220,11 @@ import SiteFooter from "../../components/SiteFooter.astro";
   :global(.lb-klein) { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
   .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
   .lb-links li { margin: 0.3rem 0; }
+  .lb-woche {
+    margin: 1.25rem 0 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    opacity: 0.55;
+  }
   .lb-fuss { margin: 3rem 0 0; font-size: 0.8rem; opacity: 0.55; }
 </style>

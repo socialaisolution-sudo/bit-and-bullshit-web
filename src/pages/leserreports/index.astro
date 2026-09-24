@@ -1,0 +1,116 @@
+---
+/**
+ * Die Übersicht der freigegebenen Leserreports.
+ *
+ * Liegt unter /leserreports/ und ist öffentlich — anders als
+ * /leserbereich/ selbst, das die Zwischenschicht sperrt. Die
+ * Zwischenschicht greift nur auf der Seite selbst, nicht auf
+ * Unterpfaden; geprüft, bevor das hier gebaut wurde.
+ */
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import {
+  oeffentlicheReports,
+  gesperrteReports,
+  wochenLabel,
+  slugVon,
+  FRIST_TAGE,
+} from "../../lib/leserbereich";
+
+const offen = await oeffentlicheReports();
+const gesperrt = await gesperrteReports();
+
+/* Dieselbe Kollisionsregel wie in [slug].astro — sonst zeigt die
+   Uebersicht auf eine Adresse, die es nicht gibt. Aeltester zuerst,
+   damit die Vergabe identisch laeuft. */
+const vergeben = new Set<string>();
+const adressen = new Map<string, string>();
+for (const r of [...offen].reverse()) {
+  const basis = slugVon(r.data.deepdive_titel ?? `report-${r.data.kw}`);
+  const slug = vergeben.has(basis) ? `${basis}-${r.data.kw}` : basis;
+  vergeben.add(slug);
+  adressen.set(r.id, slug);
+}
+---
+
+<Layout
+  title="Leserreports — Bit & Bullshit"
+  description="Die wöchentlichen Auswertungen zur Bitcoin-Ampel, drei Wochen nach Erscheinen frei lesbar."
+>
+  <SiteHeader />
+
+  <main class="mx-auto max-w-4xl px-5 py-14 md:py-20">
+    <p class="display text-xs tracking-[0.3em] text-orange">// Leserreports</p>
+    <h1 class="display mt-4 text-3xl md:text-4xl">Das Archiv</h1>
+    <p class="mt-4 max-w-2xl opacity-80">
+      Jede Woche eine Auswertung: was die vier Kennzahlen gerade sagen, was das
+      für die Positionierung heißt, und ein Blick auf das größere Bild.
+      {FRIST_TAGE} Tage nach ihrer Woche werden sie hier frei lesbar.
+    </p>
+
+    {
+      gesperrt.length > 0 && (
+        <p class="ar-hinweis">
+          {gesperrt.length === 1
+            ? "Ein Report liegt gerade noch im Leserbereich."
+            : `${gesperrt.length} Reports liegen gerade noch im Leserbereich.`}{" "}
+          Das Passwort steht in jeder Ausgabe des{" "}
+          <a href="/bullshitmelder/">Bullshitmelders</a>.
+        </p>
+      )
+    }
+
+    {
+      offen.length === 0 ? (
+        <p class="ar-leer">
+          Hier steht noch nichts. Der erste Report wird frei lesbar, sobald
+          seine Frist um ist.
+        </p>
+      ) : (
+        <ul class="ar-liste">
+          {offen.map((r) => (
+            <li class="ar-eintrag">
+              <a href={`/leserreports/${adressen.get(r.id)}/`}>
+                <p class="ar-woche">{wochenLabel(r.data.kw)}</p>
+                <h2 class="display ar-titel">
+                  {r.data.deepdive_titel ?? `Leserreport ${r.data.kw}`}
+                </h2>
+                {r.data.gesamtkontext && (
+                  <p class="ar-anriss">{r.data.gesamtkontext.slice(0, 180)}…</p>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .ar-hinweis {
+    margin: 1.75rem 0 0;
+    padding: 0.85rem 1.1rem;
+    border-left: 3px solid var(--color-orange, #f7931a);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.9rem;
+    max-width: 42rem;
+  }
+  .ar-leer { margin: 2.5rem 0 0; opacity: 0.6; }
+  .ar-liste { list-style: none; padding: 0; margin: 2.5rem 0 0; }
+  .ar-eintrag { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  .ar-eintrag a {
+    display: block;
+    padding: 1.6rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 180ms ease;
+  }
+  .ar-eintrag a:hover { opacity: 0.75; }
+  .ar-woche { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-orange, #f7931a); margin: 0; }
+  .ar-titel { font-size: clamp(1.2rem, 3.5vw, 1.7rem); line-height: 1.25; margin: 0.5rem 0 0; }
+  .ar-anriss { margin: 0.6rem 0 0; font-size: 0.95rem; line-height: 1.6; opacity: 0.7; max-width: 44rem; }
+</style>

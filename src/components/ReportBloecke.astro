@@ -1,0 +1,146 @@
+---
+/**
+ * Die Bausteine 2 bis 5 eines Leserreports.
+ *
+ * Geteilt zwischen dem gesperrten Leserbereich und dem öffentlichen
+ * Archiv — sonst laufen zwei Fassungen desselben Reports
+ * auseinander, und das ist in diesem Projekt schon passiert.
+ *
+ * Baustein 1 (der Live-Stand) steckt NICHT hier: Im Leserbereich ist
+ * er tagesaktuell und wird per fetch geholt, im Archiv ist er ein
+ * eingefrorener Rückblick. Zwei verschiedene Dinge, zwei Stellen.
+ */
+import { render } from "astro:content";
+import { KENNZAHLEN, REIHENFOLGE } from "../lib/kennzahlen";
+import type { Report } from "../lib/leserbereich";
+
+interface Props {
+  report: Report;
+}
+const { report } = Astro.props;
+const d = report.data;
+const { Content } = await render(report);
+
+/* Fehlt das Feld, treten die festen Definitionen an seine Stelle —
+   dann steht dort nie eine Lücke, nur etwas Allgemeineres. */
+const hatBausteine = !!d.bausteine;
+const notiz = d.notiz?.trim();
+const deepDive = !!d.deepdive_titel?.trim();
+---
+
+{/* ===== 2 · Was bedeutet das konkret ===== */}
+<section class="lb-block">
+  <p class="display lb-kicker">// Was bedeutet das konkret</p>
+  {
+    !hatBausteine && (
+      <p class="lb-hinweis">
+        Für diese Woche liegt keine Einordnung vor. Was die vier Kennzahlen
+        messen, steht unverändert unten.
+      </p>
+    )
+  }
+  <div class="rb-karten">
+    {
+      REIHENFOLGE.map((k) => (
+        <article class="rb-karte">
+          <h3 class="display rb-name">{KENNZAHLEN[k].name}</h3>
+          <p class="rb-text">
+            {hatBausteine ? d.bausteine![k] : KENNZAHLEN[k].misst}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+{/* ===== 3 · Gesamtkontext ===== */}
+{
+  d.gesamtkontext?.trim() && (
+    <section class="lb-block">
+      <p class="display lb-kicker">// Gesamtkontext</p>
+      <p class="rb-gesamt">{d.gesamtkontext}</p>
+    </section>
+  )
+}
+
+{/* ===== Optional · Wie ich das sehe =====
+     Zwischen 3 und 4, wie im Newsletter. Fehlt das Feld oder ist es
+     leer, entfällt der Block ganz — kein leerer Kasten. */}
+{
+  notiz && (
+    <section class="lb-block rb-notiz">
+      <p class="display lb-kicker">// Meinung</p>
+      <h2 class="display rb-notiz-h">Wie ich das sehe</h2>
+      <p class="rb-text">{notiz}</p>
+    </section>
+  )
+}
+
+{/* ===== 4 · Deep Dive =====
+     Titel fehlt heisst: kein Deep Dive. Lieber gar kein Block als
+     eine Ueberschrift ohne Inhalt. */}
+{
+  deepDive && (
+    <section class="lb-block rb-deep">
+      <p class="display lb-kicker">// Deep Dive</p>
+      <h2 class="display rb-deep-h">{d.deepdive_titel}</h2>
+      <div class="rb-deep-text">
+        <Content />
+      </div>
+      {d.deepdive_quellen?.trim() && (
+        <p class="rb-quellen">
+          <strong>Quellen:</strong> {d.deepdive_quellen}
+        </p>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .rb-karten {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-top: 1.25rem;
+  }
+  @media (min-width: 720px) {
+    .rb-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+  }
+  .rb-karte {
+    padding: 1.25rem 1.15rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.4rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .rb-name {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--color-orange, #f7931a);
+    margin: 0;
+  }
+  .rb-text { margin: 0.6rem 0 0; font-size: 0.95rem; line-height: 1.65; opacity: 0.85; }
+
+  .rb-gesamt {
+    margin: 1rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 44rem;
+  }
+
+  /* Die Meinung setzt sich ab wie im Newsletter: eigene Flaeche,
+     Ueberschrift in Textfarbe statt in Orange — sie ist kein
+     Zwischentitel, sondern ein anderer Sprecher. */
+  .rb-notiz {
+    background: rgba(255, 255, 255, 0.04);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 1.75rem 1.25rem 1.5rem;
+    border-radius: 0 0 0.4rem 0.4rem;
+  }
+  .rb-notiz-h { font-size: 1.3rem; margin: 0 0 0.75rem; }
+
+  .rb-deep { border-top-width: 3px; border-top-color: var(--color-orange, #f7931a); }
+  .rb-deep-h { font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.2; margin: 0.25rem 0 1rem; }
+  .rb-deep-text { max-width: 44rem; line-height: 1.75; }
+  .rb-deep-text :global(p) { margin: 0 0 1.1em; }
+  .rb-quellen { margin: 1.5rem 0 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.55; max-width: 44rem; }
+</style>
