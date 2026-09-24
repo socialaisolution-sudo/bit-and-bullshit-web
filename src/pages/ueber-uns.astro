@@ -184,11 +184,56 @@ const nichtIst = [
       </div>
     </section>
 
-    {/* ===== 03 Wie wir arbeiten — Schablonen-Kacheln ===== */}
+    {/* ===== 03 Wer spricht — Pete =====
+         Steht bewusst direkt hinter dem Steckbrief: erst die Person, die
+         haftet, dann die Figur, die redet. In dieser Reihenfolge, damit
+         die Zeichnung die Verantwortung nicht verdeckt. */}
     <section class="wall-sec">
       <div class="mx-auto max-w-5xl px-5">
         <header class="wall-head">
           <span class="stencil-num wall-head-num" aria-hidden="true">03</span>
+          <h2 class="display wall-h">Wer spricht</h2>
+        </header>
+        <div class="spray-rule mt-4 max-w-[14rem]"></div>
+
+        <div class="pete paper tape tape-right mt-10">
+          <p class="steckbrief-kicker">Die Figur</p>
+          <p class="steckbrief-name display">Pete</p>
+
+          <div class="steckbrief-body">
+            <p>
+              Pete ist die Figur, die hier spricht. Schwarze Kappe,
+              Bitcoin-Logo drauf, ein X über dem linken Auge. Der Blick von
+              jemandem, der schon ein paar Versprechen gehört hat.
+            </p>
+            <p>
+              Er ist kein Experte, kein Analyst und keine Person. Er ist ein
+              Stilmittel: jemand, der die Frage stellt, die man sich selbst
+              nicht traut, und der Bullshit beim Namen nennt, ohne sich dabei
+              wichtig zu machen. Die redaktionelle Verantwortung für das, was
+              er sagt, liegt bei Denny. Eine Zeichnung kann nicht haften.
+            </p>
+            <p>
+              Seit September 2026 hat Pete eine eigene Rubrik:
+              <strong>Frag Pete</strong>. Ihr schickt die Fragen, er nimmt sie
+              auseinander — eine nach der anderen, ohne Werbe-Bullshit.
+              <a href="/snippets/wo-kauft-man-sicher-bitcoin/" class="paper-link">
+                Teil 1 steht schon
+              </a>, und Nachschub kommt an
+              <a href="mailto:hello@bitandbullshit.com" class="paper-link">
+                hello@bitandbullshit.com
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== 04 Wie wir arbeiten — Schablonen-Kacheln ===== */}
+    <section class="wall-sec">
+      <div class="mx-auto max-w-5xl px-5">
+        <header class="wall-head">
+          <span class="stencil-num wall-head-num" aria-hidden="true">04</span>
           <h2 class="display wall-h">Wie wir arbeiten</h2>
         </header>
         <div class="spray-rule mt-4 max-w-[14rem]"></div>
@@ -226,11 +271,11 @@ const nichtIst = [
       </div>
     </section>
 
-    {/* ===== 04 Werkzeuge — Sprühbalken links ===== */}
+    {/* ===== 05 Werkzeuge — Sprühbalken links ===== */}
     <section class="wall-sec">
       <div class="mx-auto max-w-5xl px-5">
         <header class="wall-head">
-          <span class="stencil-num wall-head-num" aria-hidden="true">04</span>
+          <span class="stencil-num wall-head-num" aria-hidden="true">05</span>
           <h2 class="display wall-h">Zu unseren Werkzeugen</h2>
         </header>
         <div class="spray-rule mt-4 max-w-[14rem]"></div>
@@ -261,11 +306,11 @@ const nichtIst = [
       </div>
     </section>
 
-    {/* ===== 05 Was es NICHT ist — Verbots-Stempel ===== */}
+    {/* ===== 06 Was es NICHT ist — Verbots-Stempel ===== */}
     <section class="wall-sec">
       <div class="mx-auto max-w-5xl px-5">
         <header class="wall-head">
-          <span class="stencil-num wall-head-num" aria-hidden="true">05</span>
+          <span class="stencil-num wall-head-num" aria-hidden="true">06</span>
           <h2 class="display wall-h">
             Was Bit &amp; Bullshit <span class="text-orange">NICHT</span> ist
           </h2>
@@ -290,11 +335,11 @@ const nichtIst = [
       </div>
     </section>
 
-    {/* ===== 06 Kontakt — geklebtes Panel ===== */}
+    {/* ===== 07 Kontakt — geklebtes Panel ===== */}
     <section class="wall-sec pb-4">
       <div class="mx-auto max-w-5xl px-5">
         <header class="wall-head">
-          <span class="stencil-num wall-head-num" aria-hidden="true">06</span>
+          <span class="stencil-num wall-head-num" aria-hidden="true">07</span>
           <h2 class="display wall-h">Kontakt &amp; Kanäle</h2>
         </header>
         <div class="spray-rule mt-4 max-w-[14rem]"></div>
@@ -444,7 +489,21 @@ const nichtIst = [
     color: var(--color-orange-deep);
   }
 
-  /* ---- 03: Prinzipien-Kacheln ---- */
+  /* ---- 03: Pete ----
+     Bewusst dieselbe Karte wie der Steckbrief, nur andersherum gekippt.
+     Person und Figur gehoeren optisch zusammen, sind aber nicht dasselbe. */
+  .pete {
+    padding: 2rem 1.5rem 1.75rem;
+    transform: rotate(0.8deg);
+    max-width: 46rem;
+  }
+  @media (min-width: 768px) {
+    .pete {
+      padding: 2.5rem 2.25rem 2rem;
+    }
+  }
+
+  /* ---- 04: Prinzipien-Kacheln ---- */
   .prinzip-grid {
     display: grid;
     gap: 1.25rem;
