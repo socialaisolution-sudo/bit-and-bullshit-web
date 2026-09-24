@@ -50,3 +50,23 @@ export const datumLang = (d: Date) =>
 
 /** Aus Dateiname `001-funding-verstummt` wird `funding-verstummt`. */
 export const slugVon = (e: Ausgabeneintrag) => e.id.replace(/^\d+-/, "");
+
+/**
+ * Das Versanddatum der zuletzt verschickten Ausgabe.
+ *
+ * Grundlage für die Zeile „Bewegung seit der letzten Ausgabe" im
+ * Leserbereich: Der Newsletter ist eingefroren, das Log läuft weiter,
+ * und genau diese Differenz ist das, was hinter dem Passwort liegt.
+ *
+ * `draft` zählt nicht — eine Ausgabe, die noch niemand bekommen hat,
+ * ist kein Bezugspunkt. Gibt es keine verschickte, kommt null zurück
+ * und die Seite lässt die Zeile weg.
+ */
+export async function letzterVersand(): Promise<string | null> {
+  const alle = await getCollection("newsletter");
+  const verschickt = alle
+    .filter((e) => !e.data.draft)
+    .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
+  const d = verschickt[0]?.data.datum;
+  return d ? d.toISOString().slice(0, 10) : null;
+}

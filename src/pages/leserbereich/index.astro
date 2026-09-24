@@ -5,8 +5,12 @@ import SiteFooter from "../../components/SiteFooter.astro";
 import ReportBloecke from "../../components/ReportBloecke.astro";
 import KennzahlDefinitionen from "../../components/KennzahlDefinitionen.astro";
 import { aktuellerReport, wochenLabel, oeffentlichAb } from "../../lib/leserbereich";
+import { letzterVersand } from "../../lib/ausgaben";
 
 const report = await aktuellerReport();
+/* Bezugspunkt fuer "Bewegung seit der letzten Ausgabe". Gibt es noch
+   keine verschickte Ausgabe, bleibt die Zeile weg. */
+const seitVersand = await letzterVersand();
 const datumLang = (d: Date) =>
   new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(d);
 
@@ -53,6 +57,7 @@ const datumLang = (d: Date) =>
     <section class="lb-block" data-tiefe>
       <p class="display lb-kicker">// Stand jetzt</p>
       <p class="lb-laden" data-laden>Wird geladen …</p>
+      {seitVersand && <span hidden data-seit={seitVersand} />}
       <div class="lb-inhalt" data-inhalt hidden></div>
     </section>
 
@@ -115,6 +120,51 @@ const datumLang = (d: Date) =>
 
 <script>
   const QUELLE = "https://bitcoin-ampel.social-ai-solution.workers.dev";
+
+  /**
+   * „Bewegung seit der letzten Ausgabe".
+   *
+   * Verglichen wird Stufe gegen Stufe, nicht Wert gegen Wert: Die
+   * Ampel entscheidet nach Stufen, und ein Wert, der sich bewegt hat
+   * ohne die Stufe zu wechseln, hat fuer die Farbe nichts geaendert.
+   *
+   * Hat sich nichts bewegt, steht das auch da. „Unveraendert" ist
+   * eine Aussage, eine leere Zeile ist keine.
+   */
+  function bewegung(jetzt: any, vorher: any, seit?: string): string {
+    if (!vorher || !seit) return "";
+
+    /* Liegt das Versanddatum noch in der Zukunft — die Ausgabe ist
+       fertig, aber noch nicht raus —, vergleicht der Endpunkt den
+       jetzigen Stand mit sich selbst und meldete "unveraendert". Das
+       klingt nach einer Aussage und ist keine. Dann lieber nichts. */
+    const heute = new Date().toISOString().slice(0, 10);
+    if (seit >= heute) return "";
+    const NAMEN: Record<string, string> = NAME;
+    const teile: string[] = [];
+
+    if (vorher.ampel && jetzt.ampel && vorher.ampel !== jetzt.ampel) {
+      teile.push(`die Ampel von <strong>${FARBE[vorher.ampel]}</strong> auf <strong>${FARBE[jetzt.ampel]}</strong>`);
+    }
+    for (const [k, e] of Object.entries<any>(jetzt.eingaenge ?? {})) {
+      const v = vorher.eingaenge?.[k];
+      if (!v) continue;
+      const vs = v.verfuegbar ? v.stufe : null;
+      const js = e.verfuegbar ? e.stufe : null;
+      if (vs === js) continue;
+      const von = vs ? (STUFE[vs] ?? vs) : "ohne Wert";
+      const nach = js ? (STUFE[js] ?? js) : "ohne Wert";
+      teile.push(`${NAMEN[k] ?? k} von <em>${von}</em> auf <em>${nach}</em>`);
+    }
+
+    const datum = new Date(seit + "T00:00:00Z").toLocaleDateString("de-DE", {
+      day: "numeric", month: "long", timeZone: "UTC",
+    });
+    if (!teile.length) {
+      return `<p class="lb-bewegung">Seit der Ausgabe vom ${datum} unverändert.</p>`;
+    }
+    return `<p class="lb-bewegung"><strong>Seit der Ausgabe vom ${datum}:</strong> ${teile.join(", ")}.</p>`;
+  }
   const FARBE: Record<string, string> = { gruen: "Grün", gelb: "Gelb", rot: "Rot" };
   const STUFE: Record<string, string> = {
     ruhig: "ruhig",
@@ -138,6 +188,20 @@ const datumLang = (d: Date) =>
       fetch(`${QUELLE}/bilanz`).then((r) => r.json()),
     ]);
 
+    /* Der Stand zum Tag der letzten Ausgabe. Faellt der Abruf aus
+       oder gibt es noch keine Ausgabe, entfaellt nur die
+       Bewegungszeile — der Rest steht trotzdem. */
+    let vorher: any = null;
+    const seit = document.querySelector<HTMLElement>("[data-seit]")?.dataset.seit;
+    if (seit) {
+      try {
+        const v = await fetch(`${QUELLE}/verlauf?seit=${seit}`).then((r) => r.json());
+        if (v?.gefunden) vorher = v;
+      } catch {
+        /* still */
+      }
+    }
+
     if (inhalt && a?.ampel) {
       const zeilen = Object.entries(a.eingaenge ?? {})
         .map(([k, e]: [string, any]) => {
@@ -154,6 +218,7 @@ const datumLang = (d: Date) =>
           ? `<p class="lb-funding"><strong>${fr.tage_seither} Tage</strong> ohne positiven Funding-Überschuss ` +
             `(zuletzt ${fr.letzter_ueberschuss}). Die Kennzahl zählt derzeit nicht in die Farbe hinein.</p>`
           : "") +
+        bewegung(a, vorher, seit) +
         `<p class="lb-klein">Regelversion ${a.regelversion ?? "—"} · vor ${Math.round((a.alter_sekunden ?? 0) / 60)} Minuten gemessen` +
         (a.quellenangabe?.etf ? ` · ETF-Daten: ${a.quellenangabe.etf}` : "") +
         `</p>`;
@@ -220,6 +285,14 @@ const datumLang = (d: Date) =>
   :global(.lb-klein) { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
   .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
   .lb-links li { margin: 0.3rem 0; }
+  :global(.lb-bewegung) {
+    margin: 1.2rem 0 0;
+    padding: 0.7rem 0.95rem;
+    border-left: 3px solid var(--color-orange, #f7931a);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
   .lb-woche {
     margin: 1.25rem 0 0;
     font-size: 0.82rem;
