@@ -36,6 +36,10 @@ const aufBullshitmelderSeite = Astro.url.pathname.startsWith("/bullshitmelder");
         <a href="/snippets/" class="hover:text-orange">Snippets</a>
         <a href="/ueber-uns/" class="hover:text-orange">Über</a>
         <a href="/sticker/" class="hover:text-orange">Sticker</a>
+        {/* Nur fuer Abonnenten, deshalb nicht in der Hauptnavigation —
+            aber auffindbar. Wer die Mail nicht mehr hat, soll nicht
+            raten muessen, wo der Bereich liegt. */}
+        <a href="/leserbereich/" class="hover:text-orange">Leserbereich</a>
         <a href="/impressum/" class="hover:text-orange">Impressum</a>
         <a href="/datenschutz/" class="hover:text-orange">Datenschutz</a>
       </nav>
