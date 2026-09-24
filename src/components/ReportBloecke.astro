@@ -187,6 +187,42 @@ const deepDive = !!d.deepdive_titel?.trim();
     margin: 1.75rem 0 1.25rem;
     max-width: 40rem;
   }
-  .rb-deep-text { margin-top: 0; }
+  /* Die Absaetze bekommen gesprühte Umriss-Ziffern in der Spalte
+     links, wie die Zwischentitel im Blog. Dennys Deep Dive ist eine
+     Beweisfuehrung in vier Schritten — als vier gleich graue Bloecke
+     sieht man das nicht, als 01 bis 04 sofort.
+
+     Eigener Zaehler, nicht der aus .post-body: Sonst kollidiert es,
+     sobald jemand doch einmal ein ## in den Text setzt. */
+  .rb-deep-text { margin-top: 0; counter-reset: ddabsatz; }
+
+  .rb-deep-text :global(> p) {
+    counter-increment: ddabsatz;
+    position: relative;
+    padding-left: 3.4rem;
+  }
+  .rb-deep-text :global(> p::before) {
+    content: counter(ddabsatz, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.12em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.1rem;
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgb(from var(--color-orange) r g b / 0.5);
+    user-select: none;
+  }
+  /* Ein Zwischentitel setzt die Zaehlung nicht fort — er bekommt die
+     eigene Nummerierung von .post-body. */
+  .rb-deep-text :global(> h2) { padding-left: 0; }
+
+  /* Auf schmalen Schirmen steht die Ziffer ueber dem Absatz statt
+     daneben — 3,4rem Einzug fressen dort ein Achtel der Zeile. */
+  @media (max-width: 40rem) {
+    .rb-deep-text :global(> p) { padding-left: 0; padding-top: 1.9rem; }
+    .rb-deep-text :global(> p::before) { font-size: 1.7rem; top: 0; }
+  }
   .rb-quellen { margin: 1.5rem 0 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.55; max-width: 44rem; }
 </style>

@@ -8,7 +8,6 @@ import { aktuellerReport, wochenLabel, oeffentlichAb } from "../../lib/leserbere
 import { letzterVersand } from "../../lib/ausgaben";
 import { Image } from "astro:assets";
 import pete from "../../assets/pete-kopf.webp";
-import { COMIC_NEUESTE } from "../../data/comics";
 
 const report = await aktuellerReport();
 /* Bezugspunkt fuer "Bewegung seit der letzten Ausgabe". Gibt es noch
@@ -87,27 +86,6 @@ const datumLang = (d: Date) =>
     }
 
     <KennzahlDefinitionen nr="05" />
-
-    {/* Ein Comic-Panel als Zaesur zwischen Report und Seitenteil.
-        Eine Textseite braucht eine Stelle, an der das Auge ausruht —
-        und das juengste Kapitel steht sonst nur auf der Startseite.
-        Inhalt kommt aus data/comics.ts, ein neues Kapitel laesst hier
-        nichts zu tun uebrig. */}
-    <a href={`/comic/${COMIC_NEUESTE.slug}/`} class="lb-comic">
-      <Image
-        src={COMIC_NEUESTE.cover}
-        alt={COMIC_NEUESTE.coverAlt}
-        widths={[480, 720, 1024]}
-        sizes="(min-width: 900px) 46rem, 92vw"
-        class="lb-comic-bild"
-        loading="lazy"
-      />
-      <div class="lb-comic-text">
-        <p class="lb-kicker">// Comic &middot; Teil {COMIC_NEUESTE.teil}</p>
-        <p class="display lb-comic-h">{COMIC_NEUESTE.titel}</p>
-        <p class="lb-comic-anriss">{COMIC_NEUESTE.anriss}</p>
-      </div>
-    </a>
 
     {/* Ab hier nicht mehr der Report, sondern die Seite: Bilanz und
         Abgrenzung gehoeren nicht in Dennys Fuenferfolge und tragen
@@ -337,28 +315,6 @@ const datumLang = (d: Date) =>
   .lb-ghost-sec > .wall-ghost { top: 1.5rem; right: -1rem; font-size: clamp(3rem, 12vw, 7rem); }
   .lb-ghost-sec > *:not(.wall-ghost) { position: relative; }
 
-  /* Das Panel laeuft breiter als der Lesetext — es ist die Pause,
-     nicht die Fortsetzung. */
-  .lb-comic {
-    display: block;
-    margin: 4rem 0 0;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid rgb(from var(--color-paper) r g b / 0.12);
-    border-radius: 0.4rem;
-    overflow: hidden;
-    transform: rotate(-0.5deg);
-    transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .lb-comic:hover { transform: rotate(0deg) translateY(-3px); }
-  .lb-comic-bild { display: block; width: 100%; height: auto; }
-  .lb-comic-text { padding: 1.1rem 1.25rem 1.3rem; }
-  .lb-comic-h { font-size: clamp(1.1rem, 3.5vw, 1.5rem); line-height: 1.2; margin: 0.45rem 0 0; }
-  .lb-comic-anriss { margin: 0.5rem 0 0; font-size: 0.9rem; line-height: 1.6; opacity: 0.7; max-width: 36rem; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .lb-comic, .lb-comic:hover { transform: none; transition: none; }
-  }
 
   .lb-schnitt {
     border: 0;
