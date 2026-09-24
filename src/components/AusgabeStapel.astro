@@ -139,7 +139,7 @@ const BLAETTER = [
         <div class="st-absaetze" aria-hidden="true">
           {
             [0, 1, 2].map((n) => (
-              <div class="st-absatz">
+              <div class={`st-absatz ${n % 2 ? "st-absatz-hell" : ""}`}>
                 <span class="st-ziffer">{String(n + 1).padStart(2, "0")}</span>
                 <span class="st-zeilen">
                   <span class="st-zeile" />
@@ -353,6 +353,27 @@ const BLAETTER = [
     gap: 0.6rem;
     margin-bottom: 0.85rem;
   }
+  /* Jeder zweite Absatz auf einer Flaeche mit Kante — wie im echten
+     Deep Dive. Die Ziffer bleibt links davon. */
+  .st-absatz-hell {
+    position: relative;
+    padding: 0.5rem 0.6rem 0.5rem 0;
+    background: linear-gradient(
+      to right,
+      transparent 0 2.4rem,
+      rgb(from var(--color-paper) r g b / 0.05) 2.4rem
+    );
+  }
+  .st-absatz-hell::after {
+    content: "";
+    position: absolute;
+    left: 2.4rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-orange, #f7931a);
+  }
+  .st-absatz-hell .st-zeilen { padding-left: 0.7rem; }
   .st-ziffer {
     font-family: var(--font-display);
     font-weight: 900;
