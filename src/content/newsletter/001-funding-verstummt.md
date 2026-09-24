@@ -13,24 +13,24 @@
 # Das holt den Stand neu und rechnet den Funding-Zaehler nach. Von
 # Hand nachtippen bitte nicht — der Zaehler steht auch im Titel.
 nummer: 1
-datum: 2026-09-11
-titel: "Die Kennzahl, die alle zitieren, ist seit 415 Tagen verstummt"
+datum: 2026-09-25
+titel: "Die Kennzahl, die alle zitieren, ist seit 429 Tagen verstummt"
 anriss: >-
   Funding Rates gelten als Überhitzungsanzeiger. Nur zeigen sie seit über einem
   Jahr gar nichts mehr an — und das hat einen Grund, über den kaum jemand
   spricht.
-oeffentlichAb: 2026-11-13
+oeffentlichAb: 2026-11-27
 ampel:
   farbe: gruen
-  begruendung: "Eine von vier Kennzahlen erhöht. Für Gelb müssen es zwei sein."
+  begruendung: "Keine der vier Kennzahlen auffällig."
   eingaenge:
     - { name: "ETF-Nettoflüsse", stufe: ruhig }
     - { name: "Stablecoin-Versorgung", stufe: ruhig }
     - { name: "Coinbase-Premium", stufe: ruhig }
-    - { name: "Open Interest", stufe: erhoeht }
-  fundingTage: 415
+    - { name: "Open Interest", stufe: ruhig }
+  fundingTage: 429
   fundingSeit: "2025-07-23"
-  gemessen: 2026-09-10
+  gemessen: 2026-09-24
   regelversion: 6
 
 # Rubrik 3 von 4. Haltung, erste Person — bewusst getrennt vom
@@ -58,7 +58,7 @@ burner:
 
     > „Die Funding Rates zeigen deutliche Überhitzung."
 
-    Nein. Zeigen sie nicht. Zeigen sie seit 415 Tagen nicht.
+    Nein. Zeigen sie nicht. Zeigen sie seit 429 Tagen nicht.
 
     Die Zahl liegt seit dem 23. Juli 2025 auf dem Basiszins fest und rührt sich nicht. Wer da Überhitzung sieht, hat entweder nicht hingeschaut oder weiß nicht, was er anschaut.
 
