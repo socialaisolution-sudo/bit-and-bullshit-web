@@ -7,7 +7,7 @@ order: 15
 aeraLink: "https://bitcoinaera.de/glossar/angebot-und-nachfrage/"
 draft: false
 image: "../../assets/mascots/wer-kauft-im-crash.webp"
-imageAlt: 'Bit & Bullshit Maskottchen steht grinsend und zwinkernd mit den Händen in den Taschen vor einer Betonwand — rechts der gesprühte Schriftzug „Wem nützt deine Panik?“'
+imageAlt: 'Pete steht grinsend und zwinkernd mit den Händen in den Taschen vor einer Betonwand — rechts der gesprühte Schriftzug „Wem nützt deine Panik?“'
 ---
 
 Ok, kleine Frage, die erstaunlich viel erklärt: Bei jedem Kursrutsch prasseln „Panik!“-Schlagzeilen auf dich ein. Aber hast du dich mal gefragt, wer dir in dem Moment eigentlich all die Coins abkauft, die die Panischen abstoßen? Genau, darüber redet komischerweise keiner. Dabei ist das der spannendste Teil der ganzen Geschichte.

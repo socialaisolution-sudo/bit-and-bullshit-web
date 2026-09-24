@@ -8,7 +8,7 @@ order: 60
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
 image: "../../assets/mascots/jackson-hole-rede-bewegt-markt-mondziele.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen zwischen einem Notenbanker am Rednerpult mit Central-Bank-Emblem und einem Mann im Anzug, der durch ein Megafon mit der Aufschrift „CEO“ brüllt, dazwischen ein orange leuchtender Abwärtspfeil — Graffiti-Schriftzug „Eine Rede — und die Party ist vorbei“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen zwischen einem Notenbanker am Rednerpult mit Central-Bank-Emblem und einem Mann im Anzug, der durch ein Megafon mit der Aufschrift „CEO“ brüllt, dazwischen ein orange leuchtender Abwärtspfeil — Graffiti-Schriftzug „Eine Rede — und die Party ist vorbei“'
 quellen:
   - text: "CNBC vom 28.08.2026: „Fed Chairman Warsh warns on inflation at Jackson Hole“ — Warsh nennt die Inflation „concerning“ und stellt Preisstabilität in den Vordergrund"
     url: "https://www.cnbc.com/2026/08/28/kevin-warsh-jackson-hole-federal-reserve-inflation.html"

@@ -7,7 +7,7 @@ order: 50
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
 image: "../../assets/mascots/warum-steigt-heute-alles-liquiditaet.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, daneben eine Geldpresse, aus der Dollarscheine quellen, darüber ein Goldbarren, ein oranges Bitcoin-Zeichen und steigende Pfeile — Graffiti-Schriftzug „Warum steigt heute alles?“'
+imageAlt: 'Pete mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, daneben eine Geldpresse, aus der Dollarscheine quellen, darüber ein Goldbarren, ein oranges Bitcoin-Zeichen und steigende Pfeile — Graffiti-Schriftzug „Warum steigt heute alles?“'
 quellen:
   - text: "US-Finanzministerium, Mitteilung vom 19.08.2026: „Treasury Announces Increased Sizes of Nominal Long-End Liquidity Support Buybacks Beginning September 9“ — Anhebung von 2 auf mindestens 4 Milliarden Dollar je Operation, wirksam ab dem 09.09.2026 bis zum 04.11.2026"
     url: "https://home.treasury.gov/news/press-releases/sb0607"

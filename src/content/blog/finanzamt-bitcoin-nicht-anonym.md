@@ -7,7 +7,7 @@ order: 32
 aeraLink: "https://bitcoinaera.de/praxis/steuer/"
 draft: false
 image: "../../assets/mascots/finanzamt-bitcoin-nicht-anonym.webp"
-imageAlt: 'Bit & Bullshit Maskottchen schleicht davon und blickt über die Schulter, rechts hinter ihm ein großes an die Wand gemaltes Auge — links der gesprühte Schriftzug „Das Finanzamt liest mit“'
+imageAlt: 'Pete schleicht davon und blickt über die Schulter, rechts hinter ihm ein großes an die Wand gemaltes Auge — links der gesprühte Schriftzug „Das Finanzamt liest mit“'
 ---
 
 Ok, ein Irrtum, der viele richtig teuer zu stehen kommen kann: „Meine Krypto ist doch anonym, das kriegt das Finanzamt eh nicht mit.“ Hey, ich muss dich enttäuschen — das Gegenteil ist der Fall. Und du solltest genau wissen, warum, bevor du dich in falscher Sicherheit wiegst.

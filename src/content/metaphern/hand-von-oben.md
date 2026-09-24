@@ -6,7 +6,7 @@ keyword: "wer verteilt Geld Denkbild Hand"
 metaTitel: 'Die Hand, die von oben verteilt — Zuteilung oder Zugang?'
 draft: false
 image: "../../assets/metaphern/hand-von-oben.webp"
-imageAlt: 'Durchgestrichene Kreidezeichnung einer aus Wolken kommenden Hand, daneben ein Loch in der Betonwand, davor das Bit & Bullshit Maskottchen mit Bitcoin-Cap, das nach oben ins Leere zeigt, waehrend orange leuchtende Bitcoin-Muenzen und Barren frei auf dem Boden verteilt liegen'
+imageAlt: 'Durchgestrichene Kreidezeichnung einer aus Wolken kommenden Hand, daneben ein Loch in der Betonwand, davor Pete mit Bitcoin-Cap, der nach oben ins Leere zeigt, waehrend orange leuchtende Bitcoin-Muenzen und Barren frei auf dem Boden verteilt liegen'
 comic: "/comic/niemand-verteilt-bitcoin/"
 ausloeser:
   - "Hand, die von oben verteilt"

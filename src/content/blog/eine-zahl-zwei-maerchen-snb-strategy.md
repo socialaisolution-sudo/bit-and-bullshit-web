@@ -14,7 +14,7 @@ quellen:
   - text: "Schweizerische Nationalbank, Formular 13F-HR vom 29.10.2013 zum Stichtag 30.09.2013: MicroStrategy Inc. ist bereits im Bestand — sieben Jahre vor dem ersten Bitcoin-Kauf des Unternehmens"
     url: "https://www.sec.gov/Archives/edgar/data/1582202/000158220213000008/0001582202-13-000008-index.htm"
 image: "../../assets/mascots/eine-zahl-zwei-maerchen-snb-strategy.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht grinsend mit den Händen in den Hoodie-Taschen vor einer Betonwand, dahinter ein Bankgebäude mit Säulen und Schweizer Kreuz, eine Hand greift danach und ein oranger Kurspfeil zeigt nach oben — Graffiti-Schriftzug „Totgesagt lebt länger“'
+imageAlt: 'Pete mit Bitcoin-Cap steht grinsend mit den Händen in den Hoodie-Taschen vor einer Betonwand, dahinter ein Bankgebäude mit Säulen und Schweizer Kreuz, eine Hand greift danach und ein oranger Kurspfeil zeigt nach oben — Graffiti-Schriftzug „Totgesagt lebt länger“'
 ---
 
 Zwei Lager, eine Zahl, zwei Geschichten. Und das Beste daran: Beide liegen daneben. Es geht um den Aktienbestand, den die Schweizerische Nationalbank an Strategy hält, der früher als MicroStrategy bekannten und [größten Bitcoin-Halterin](/snippets/too-big-to-fail-bitcoin/) unter den börsennotierten Unternehmen. Und je nachdem, wer die Zahl gerade in die Hand nimmt, wird ein komplett anderes Märchen daraus.

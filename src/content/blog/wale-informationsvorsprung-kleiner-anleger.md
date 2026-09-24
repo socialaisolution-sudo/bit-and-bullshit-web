@@ -8,7 +8,7 @@ order: 62
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 image: "../../assets/mascots/wale-informationsvorsprung-kleiner-anleger.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen am Ufer, im Wasser ein riesiger Wal, aus dessen Maul orange leuchtende Bitcoin-Münzen ins Meer fallen, rechts ein Mann im Liegestuhl, der entspannt eine Zeitung mit der Schlagzeile „Good News!“ liest — Graffiti-Schriftzug „Die Großen verkaufen, bevor du’s weisst“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen am Ufer, im Wasser ein riesiger Wal, aus dessen Maul orange leuchtende Bitcoin-Münzen ins Meer fallen, rechts ein Mann im Liegestuhl, der entspannt eine Zeitung mit der Schlagzeile „Good News!“ liest — Graffiti-Schriftzug „Die Großen verkaufen, bevor du’s weisst“'
 ---
 
 Kennst du dieses Gefühl? Kaum bist du in einen Markt eingestiegen, kaum hast du dich getraut, drehen die Kurse nach unten. Und wenn du dann panisch verkaufst, geht es kurz darauf wieder hoch. Als würde der Markt persönlich gegen dich spielen. Das fühlt sich nach Pech an, nach einem verfluchten Timing. In Wahrheit steckt dahinter aber selten Zufall und schon gar kein Fluch. Dahinter steckt ein Muster, das so alt ist wie die Märkte selbst, und wer es einmal durchschaut hat, fühlt sich nie wieder als Opfer eines bösen Zufalls.

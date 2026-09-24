@@ -7,7 +7,7 @@ order: 31
 aeraLink: "https://bitcoinaera.de/geldsystem/fiatgeld-zentralbanken/"
 draft: false
 image: "../../assets/mascots/bitcoin-denkfehler-teil-2.webp"
-imageAlt: 'Bit & Bullshit Maskottchen steht zwinkernd mit den Händen in den Taschen, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Von oben oder von unten?“'
+imageAlt: 'Pete steht zwinkernd mit den Händen in den Taschen, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Von oben oder von unten?“'
 ---
 
 Ok, [im ersten Teil](/snippets/bitcoin-denkfehler-teil-1/) haben wir festgehalten: Niemand verteilt Bitcoin, es war von Anfang an für alle offen. Heute die logische Anschlussfrage — wie entsteht Geld eigentlich normalerweise? Denn erst wenn du das verstehst, siehst du, warum Bitcoin so ein radikal anderer Ansatz ist.

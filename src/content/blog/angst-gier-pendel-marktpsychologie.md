@@ -8,7 +8,7 @@ order: 59
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/volatilitaet/"
 image: "../../assets/mascots/angst-gier-pendel-marktpsychologie.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich zwischen zwei Fratzen — links ein schreiendes Gesicht voller Panik, rechts ein grinsendes mit Dollarzeichen in den Augen —, dazwischen schwingt ein Pendel mit orange leuchtender Bitcoin-Münze, Graffiti-Schriftzug „Warum der Markt nie ruhig bleibt“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich zwischen zwei Fratzen — links ein schreiendes Gesicht voller Panik, rechts ein grinsendes mit Dollarzeichen in den Augen —, dazwischen schwingt ein Pendel mit orange leuchtender Bitcoin-Münze, Graffiti-Schriftzug „Warum der Markt nie ruhig bleibt“'
 ---
 
 Hast du dich schon einmal gefragt, warum an den Finanzmärkten eigentlich nie so etwas wie Ruhe einkehrt? Warum die Stimmung fast immer entweder in himmelhoch jauchzender Euphorie oder in zu Tode betrübter Panik verharrt, aber nur ganz selten in einem entspannten, vernünftigen Dazwischen? Die Antwort liefert ein einfaches Bild, das jeder aus dem Physikunterricht kennt: das Pendel. An die Börse gebracht hat es der amerikanische Investor Howard Marks, der seit über dreißig Jahren damit erklärt, warum Märkte sich so benehmen, wie sie sich benehmen. Und wer dieses Bild einmal verinnerlicht hat, versteht die Launen des Marktes und, was noch wichtiger ist, die eigenen, sehr viel besser.

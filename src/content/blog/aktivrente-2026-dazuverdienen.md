@@ -7,7 +7,7 @@ order: 49
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 image: "../../assets/mascots/aktivrente-2026-dazuverdienen.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter ein älterer Mann in Schürze an einer Ladenkasse, daneben eine Uhr und ein Schild „Fleiß statt Frührente“ — Graffiti-Schriftzug „Rentner müssen arbeiten?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter ein älterer Mann in Schürze an einer Ladenkasse, daneben eine Uhr und ein Schild „Fleiß statt Frührente“ — Graffiti-Schriftzug „Rentner müssen arbeiten?“'
 quellen:
   - text: "Bundesfinanzministerium, „Fragen und Antworten zur Aktivrente“ — bis zu 2.000 Euro monatlich steuerfrei ab dem 01.01.2026, nur für sozialversicherungspflichtig Beschäftigte ab der Regelaltersgrenze; Selbstständige, Beamte und Minijobs sind ausgenommen"
     url: "https://www.bundesfinanzministerium.de/Content/DE/FAQ/FAQ-zur-Aktivrente.html"

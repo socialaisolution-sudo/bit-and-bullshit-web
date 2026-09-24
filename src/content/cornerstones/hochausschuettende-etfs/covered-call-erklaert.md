@@ -8,7 +8,7 @@ metaBeschreibung: "12 % Ausschüttung pro Jahr klingt zu schön, um wahr zu sein
 teil: 1
 draft: false
 image: "../../../assets/cornerstones/hochausschuettende-etfs/covered-call-erklaert.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hält beide Handflächen abwägend nach oben, links ein orange leuchtendes Schild mit „12 %“, rechts ein Berggipfel mit Fahne — Graffiti-Schriftzug „12 % — zu schön um wahr zu sein?“'
+imageAlt: 'Pete mit Bitcoin-Cap hält beide Handflächen abwägend nach oben, links ein orange leuchtendes Schild mit „12 %“, rechts ein Berggipfel mit Fahne — Graffiti-Schriftzug „12 % — zu schön um wahr zu sein?“'
 ausblick: 'Wie manche Anleger aus diesem Tausch mit der Wheel-Strategie eine laufende Cashflow-Maschine bauen — auf Assets, die sie ohnehin halten wollen.'
 ---
 

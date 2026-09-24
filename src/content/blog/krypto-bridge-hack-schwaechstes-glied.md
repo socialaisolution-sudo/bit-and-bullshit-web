@@ -9,7 +9,7 @@ order: 43
 draft: false
 aeraLink: "https://bitcoinaera.de/technologie/sicherheit/"
 image: "../../assets/mascots/krypto-bridge-hack-schwaechstes-glied.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter eine Brücke, aus der mittig Steine herausbrechen — Graffiti-Schriftzug „Nicht die Kette — die Brücke“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter eine Brücke, aus der mittig Steine herausbrechen — Graffiti-Schriftzug „Nicht die Kette — die Brücke“'
 ---
 
 Ok, „schon wieder ein Krypto-Hack“ liest man gefühlt jede Woche, und bei jeder dieser Schlagzeilen denken viele reflexhaft: Also ist Bitcoin, ist die Blockchain doch unsicher. Genau diesen Reflex lohnt es sich mal zu hinterfragen, denn er führt fast immer in die Irre. Auch bei dem Fall im August 2026, bei dem rund 200.000 Dollar erbeutet wurden.

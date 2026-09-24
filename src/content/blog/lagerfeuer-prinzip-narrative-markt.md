@@ -7,7 +7,7 @@ order: 56
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 image: "../../assets/mascots/lagerfeuer-prinzip-narrative-markt.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, rechts steht eine dichte Menschenmenge um ein großes orange loderndes Lagerfeuer — Graffiti-Schriftzug „Das Lagerfeuer-Prinzip“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, rechts steht eine dichte Menschenmenge um ein großes orange loderndes Lagerfeuer — Graffiti-Schriftzug „Das Lagerfeuer-Prinzip“'
 ---
 
 Wir haben ein sauberes, logisches Bild davon, wie Märkte funktionieren sollten: Fakten und Zahlen fließen herein, kühle Köpfe wägen ab, und daraus ergibt sich ein fairer Preis. Dieses Bild ist beruhigend, aber es beschreibt die Wirklichkeit nur zur Hälfte. Denn sehr oft bewegt nicht die Faktenlage den Kurs, sondern etwas viel Menschlicheres und Ansteckenderes: die Geschichte, die gerade über eine Sache erzählt wird. Ökonomen nennen das ein [Narrativ](/snippets/strategy-13-milliarden-minus-plus-narrativ/), und man kann es sich am besten als Lagerfeuer vorstellen.

@@ -9,7 +9,7 @@ order: 58
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 image: "../../assets/mascots/kinopanik-bank-run-selbsterfuellende-prophezeiung.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht regungslos vor einer Betonwand, links ein dunkles Bankgebäude mit Säulen, rechts drängt eine Menschenmenge in ein orange leuchtendes EXIT-Tor — Graffiti-Schriftzug „Ein Wort kann eine Bank töten“'
+imageAlt: 'Pete mit Bitcoin-Cap steht regungslos vor einer Betonwand, links ein dunkles Bankgebäude mit Säulen, rechts drängt eine Menschenmenge in ein orange leuchtendes EXIT-Tor — Graffiti-Schriftzug „Ein Wort kann eine Bank töten“'
 ---
 
 Hier ist eine Tatsache, die im ersten Moment kaum zu glauben ist: Eine völlig gesunde, solide wirtschaftende Bank kann innerhalb eines einzigen Tages zusammenbrechen, ohne dass mit ihren Geschäften irgendetwas nicht stimmt. Der einzige Auslöser, den es dafür braucht, ist, dass genügend Menschen gleichzeitig glauben, sie sei in Gefahr. Um zu verstehen, wie das möglich ist, hilft ein Bild, das jeder sofort begreift: die Panik in einem vollen Kinosaal.

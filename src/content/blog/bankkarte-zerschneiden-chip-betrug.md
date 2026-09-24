@@ -6,7 +6,7 @@ kategorie: betrug-maschen
 order: 68
 draft: false
 image: "../../assets/mascots/bankkarte-zerschneiden-chip-betrug.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hebt abwehrend die Hand, links eine Kapuzengestalt am Telefon, in der Mitte eine zerschnittene Bankkarte mit unbeschädigtem Chip, rechts ein Bote mit Paket an einer Wohnungstür — Graffiti-Schriftzug „Zerschneiden Sie ihre Karte — Auflegen!“'
+imageAlt: 'Pete mit Bitcoin-Cap hebt abwehrend die Hand, links eine Kapuzengestalt am Telefon, in der Mitte eine zerschnittene Bankkarte mit unbeschädigtem Chip, rechts ein Bote mit Paket an einer Wohnungstür — Graffiti-Schriftzug „Zerschneiden Sie ihre Karte — Auflegen!“'
 quellen:
   - text: "Bundesamt für Cybersicherheit BACS (Schweiz), Wochenrückblick 36 vom 8. September 2026: Opfer werden telefonisch angeleitet, die Bankkarte zu zerschneiden, ohne den Chip zu zerstören; die Teile werden versendet oder abgeholt, der Chip wieder zusammengeflickt. In einem Fall wurden über 10.000 Franken abgehoben. Zur PIN hält das BACS fest, dass sie „im Verlauf des Telefongesprächs erfragt oder auf unauffällige Weise in Erfahrung gebracht wurde“ — die genaue Methode bleibt offen"
     url: "https://www.bacs.admin.ch/de/26w36-de"

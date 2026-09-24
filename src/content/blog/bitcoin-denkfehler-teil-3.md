@@ -7,7 +7,7 @@ order: 37
 aeraLink: "https://bitcoinaera.de/geldsystem/zeitpraeferenz/"
 draft: false
 image: "../../assets/mascots/bitcoin-denkfehler-teil-3.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit verschränkten Armen vor einer Betonwand, dahinter zwei Figuren — eine orange leuchtend und lächelnd, eine im Dunkeln. Graffiti-Schriftzug „Warum haben manche mehr?“'
+imageAlt: 'Pete mit verschränkten Armen vor einer Betonwand, dahinter zwei Figuren — eine orange leuchtend und lächelnd, eine im Dunkeln. Graffiti-Schriftzug „Warum haben manche mehr?“'
 ---
 
 Ok, [im zweiten Teil](/snippets/bitcoin-denkfehler-teil-2/) blieb eine Frage offen, und es ist die spannendste der ganzen Serie: Wenn niemand Bitcoin verteilt, wenn es kein „Oben“ gibt, das entscheidet, wer wie viel bekommt — warum haben dann trotzdem manche Leute mehr als andere? Das klingt erstmal wie ein Widerspruch zu allem, was wir bisher gesagt haben.

@@ -9,7 +9,7 @@ order: 41
 draft: false
 aeraLink: "https://bitcoinaera.de/makro/systemalternativen/"
 image: "../../assets/mascots/bitcoin-vs-gold-digitales-gold.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, daneben liegen ein Goldbarren und eine orange leuchtende Bitcoin-Münze — Graffiti-Schriftzug „Digitales Gold — warum?“'
+imageAlt: 'Pete mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, daneben liegen ein Goldbarren und eine orange leuchtende Bitcoin-Münze — Graffiti-Schriftzug „Digitales Gold — warum?“'
 ---
 
 Hey, den Vergleich hast du bestimmt schon gehört: Bitcoin sei das „digitale Gold“. Klingt griffig, aber woher kommt das eigentlich, und stimmt es überhaupt? Schauen wir uns das mal in Ruhe an, ohne Hype in die eine oder andere Richtung.

@@ -13,7 +13,7 @@ quellen:
     url: "https://www.bmjv.de/SharedDocs/Pressemitteilungen/DE/2026/0716_Aktionsplan_gegen_Steuer-_und_Finanzkriminalit%C3%A4t.html"
   - text: "O-Ton Bundesfinanzminister Lars Klingbeil in derselben Pressemitteilung: „Die Ehrlichen dürfen nicht die Dummen sein. Deshalb erhöhen wir im Kampf gegen Steuerbetrug den Ermittlungsdruck und das Entdeckungsrisiko.“"
 image: "../../assets/mascots/haltet-den-dieb-finanzminister.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap zuckt ratlos die Schultern vor einer Betonwand, rechts hält ein Fuchs im Anzug am Rednerpult eine Ansprache vor einer Schar Hühner — Graffiti-Schriftzug „Haltet den Dieb!“'
+imageAlt: 'Pete mit Bitcoin-Cap zuckt ratlos die Schultern vor einer Betonwand, rechts hält ein Fuchs im Anzug am Rednerpult eine Ansprache vor einer Schar Hühner — Graffiti-Schriftzug „Haltet den Dieb!“'
 ---
 
 Der Trick ist so alt wie die Politik selbst, und du kannst ihn gerade live beobachten. Der Bundesfinanzminister tritt vor die Presse und präsentiert einen „Aktionsplan gegen Steuer- und Finanzkriminalität“. Dazu der Satz, der sich besonders gut auf Plakate macht: „Die Ehrlichen dürfen nicht die Dummen sein.“ Klingt entschlossen, klingt gerecht. Und genau deshalb lohnt der zweite Blick.

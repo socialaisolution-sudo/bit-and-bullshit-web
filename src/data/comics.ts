@@ -45,7 +45,7 @@ export const COMICS: Comic[] = [
       "Fünf Panels, ein Zug, der im Kreis fährt. Warum „zu spät“ ein Ende voraussetzt, das es auf einem Markt nicht gibt.",
     cover: coverZuSpaet,
     coverAlt:
-      "Das Maskottchen sitzt bei Sonnenuntergang am Bahnsteig, der Zug zieht seine Kreisbahn über der Stadt",
+      "Pete sitzt bei Sonnenuntergang am Bahnsteig, der Zug zieht seine Kreisbahn über der Stadt",
     langfassung: "/ratgeber/bitcoin-denkfehler/zu-spaet-gibt-es-nicht/",
   },
   {

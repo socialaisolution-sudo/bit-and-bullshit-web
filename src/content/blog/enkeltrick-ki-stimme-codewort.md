@@ -6,7 +6,7 @@ kategorie: betrug-maschen
 order: 54
 draft: false
 image: "../../assets/mascots/enkeltrick-ki-stimme-codewort.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, rechts hält eine ältere Frau erschrocken ein Telefon ans Ohr, auf dem Bildschirm ein glitchendes Gesicht mit Tonwelle — Graffiti-Schriftzug „Dein Enkel ruft an — oder?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, rechts hält eine ältere Frau erschrocken ein Telefon ans Ohr, auf dem Bildschirm ein glitchendes Gesicht mit Tonwelle — Graffiti-Schriftzug „Dein Enkel ruft an — oder?“'
 quellen:
   - text: "Chainalysis, Crypto Crime Report 2026 (Abschnitt Scams): KI-gestützte Betrugsmaschen erbeuten im Schnitt das 4,5-fache herkömmlicher Maschen. Der Durchschnittsschaden je Opfer stieg von 782 Dollar im Jahr 2024 auf 2.764 Dollar im Jahr 2025, ein Plus von 253 Prozent"
     url: "https://www.chainalysis.com/blog/crypto-scams-2026/"

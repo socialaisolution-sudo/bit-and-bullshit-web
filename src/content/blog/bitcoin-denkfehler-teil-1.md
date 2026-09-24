@@ -8,7 +8,7 @@ order: 30
 aeraLink: "https://bitcoinaera.de/bitcoin/21-millionen/"
 draft: false
 image: "../../assets/mascots/bitcoin-denkfehler-teil-1.webp"
-imageAlt: 'Bit & Bullshit Maskottchen tippt sich zwinkernd an die Schläfe, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Warum wurde Bitcoin nicht an alle verteilt?“'
+imageAlt: 'Pete tippt sich zwinkernd an die Schläfe, rechts hinter ihm ein gesprühtes Bitcoin-Zeichen — links der Schriftzug „Warum wurde Bitcoin nicht an alle verteilt?“'
 ---
 
 Hey, neulich kam in den Kommentaren ein richtig guter Einwand: „Wenn Bitcoin echtes Geld wäre, hätte man es doch gleich gerecht an alle Menschen verteilen müssen.“ Klingt erstmal total logisch und fair, oder? Und genau deshalb ist es so ein spannender Denkfehler, den wir uns hier in Ruhe anschauen — Teil 1 einer kleinen Serie.

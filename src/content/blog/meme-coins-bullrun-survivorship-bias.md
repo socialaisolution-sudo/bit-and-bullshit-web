@@ -7,7 +7,7 @@ order: 57
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 image: "../../assets/mascots/meme-coins-bullrun-survivorship-bias.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen und skeptischem Blick vor einer Betonwand, umringt von grinsenden Männern in Anzügen und Hüten, die orange leuchtende Schilder mit „1000x!“ und „Mega Chance!“ hochhalten — Graffiti-Schriftzug „Warum verdoppeln sich plötzlich Meme-Coins?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen und skeptischem Blick vor einer Betonwand, umringt von grinsenden Männern in Anzügen und Hüten, die orange leuchtende Schilder mit „1000x!“ und „Mega Chance!“ hochhalten — Graffiti-Schriftzug „Warum verdoppeln sich plötzlich Meme-Coins?“'
 ---
 
 Kennst du das? Kaum läuft Bitcoin, ploppen überall dieselben Schlagzeilen auf: „Dieser Coin hat sich in einer Woche verdoppelt“, „die nächste Mega-Chance, die es nur einmal pro Zyklus gibt“. Und die spannendste Frage dabei ist nicht, welcher Coin als Nächstes explodiert. Die spannendste Frage ist: Warum werden diese Versprechen ausgerechnet jetzt so laut? Warum nicht vor drei Monaten, als es ruhig war?

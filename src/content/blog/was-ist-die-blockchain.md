@@ -7,7 +7,7 @@ order: 23
 aeraLink: "https://bitcoinaera.de/bitcoin/was-ist-bitcoin/"
 draft: false
 image: "../../assets/mascots/was-ist-die-blockchain.webp"
-imageAlt: 'Bit & Bullshit Maskottchen zeigt mit einem Zeigestock auf drei verschlossene Kisten, die durch orange leuchtende Ketten verbunden sind: Jede Kiste enthält Transaktionen und trägt unten einen Verweis auf die vorherige — links der Schriftzug „Was ist die Blockchain? Einfach erklärt für Einsteiger“'
+imageAlt: 'Pete zeigt mit einem Zeigestock auf drei verschlossene Kisten, die durch orange leuchtende Ketten verbunden sind: Jede Kiste enthält Transaktionen und trägt unten einen Verweis auf die vorherige — links der Schriftzug „Was ist die Blockchain? Einfach erklärt für Einsteiger“'
 ---
 
 Hey, „Blockchain“ ist so ein Wort, bei dem viele sofort abschalten, weil es nach kompliziertem Technik-Kram klingt. Dabei ist die Grundidee erstaunlich einfach. Ohne Fachchinesisch, in einer Minute.

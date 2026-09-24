@@ -7,7 +7,7 @@ order: 34
 aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 draft: false
 image: "../../assets/mascots/fake-wallet-app-store.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit erhobenem Zeigefinger, rechts daneben ein Smartphone mit einer gefälschten „Bitcoin Wallet“-App: Vier-Sterne-Bewertung, rotes Warndreieck über dem Guthaben und ein Senden-Knopf — links der gesprühte Schriftzug „Fake-App im Store?“'
+imageAlt: 'Pete mit erhobenem Zeigefinger, rechts daneben ein Smartphone mit einer gefälschten „Bitcoin Wallet“-App: Vier-Sterne-Bewertung, rotes Warndreieck über dem Guthaben und ein Senden-Knopf — links der gesprühte Schriftzug „Fake-App im Store?“'
 ---
 
 Hey, hier ist eine Geschichte, die dir kurz den Magen umdreht — und die du kennen solltest, bevor sie dir passiert: Drei Menschen haben zusammen 1,8 Millionen Dollar in Bitcoin verloren. Nicht über eine dubiose Seite aus dem Darknet, nicht über einen zwielichtigen Link. Sondern über eine App aus dem ganz normalen, offiziellen App Store.

@@ -9,7 +9,7 @@ order: 39
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/self-custody/"
 image: "../../assets/mascots/marktfuehrer-pleite-not-your-keys.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit den Händen in den Hoodie-Taschen vor einer Betonwand, rechts stürzt ein Hochhaus mit Bitcoin-Zeichen in sich zusammen — Graffiti-Schriftzug „Vom Marktführer zu Pleite“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit den Händen in den Hoodie-Taschen vor einer Betonwand, rechts stürzt ein Hochhaus mit Bitcoin-Zeichen in sich zusammen — Graffiti-Schriftzug „Vom Marktführer zu Pleite“'
 ---
 
 Ok, diese Geschichte ist ein Lehrstück, und zwar ein schmerzhaftes: Ein Unternehmen, das einmal 18 Prozent der gesamten weltweiten Bitcoin-Rechenleistung kontrollierte, also zeitweise der absolute Marktführer war, ist heute insolvent. Der Anteil liegt bei null. Und fast 12.000 Kunden warten auf zusammen rund 163 Millionen Dollar, die sie mit großer Wahrscheinlichkeit nie wiedersehen werden. Vom Thron in die Pleite.

@@ -6,7 +6,7 @@ keyword: "Kartenhaus Finanzmarkt Denkbild"
 metaTitel: 'Das Kartenhaus — das Untergangsbild im Faktencheck'
 draft: false
 image: "../../assets/metaphern/kartenhaus.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hält eine gerade gezogene Pik-Ass-Karte in der Hand, daneben steht ein Kartenhaus unbeirrt weiter — an der Stelle der fehlenden Karte kommt ein orange leuchtender Stahlträger zum Vorschein'
+imageAlt: 'Pete mit Bitcoin-Cap hält eine gerade gezogene Pik-Ass-Karte in der Hand, daneben steht ein Kartenhaus unbeirrt weiter — an der Stelle der fehlenden Karte kommt ein orange leuchtender Stahlträger zum Vorschein'
 ausloeser:
   - "Kartenhaus"
   - "das Kartenhaus wackelt"

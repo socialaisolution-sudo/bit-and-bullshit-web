@@ -7,7 +7,7 @@ order: 45
 draft: false
 aeraLink: "https://bitcoinaera.de/geldsystem/inflation-kaufkraft/"
 image: "../../assets/mascots/zehn-euro-doener-inflation.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap reißt fassungslos die Arme hoch vor einer Betonwand, daneben ein Döner und ein Zehn-Euro-Schein, der am Rand zu Staub zerfällt — Graffiti-Schriftzug „10 € für ’nen Döner?!“'
+imageAlt: 'Pete mit Bitcoin-Cap reißt fassungslos die Arme hoch vor einer Betonwand, daneben ein Döner und ein Zehn-Euro-Schein, der am Rand zu Staub zerfällt — Graffiti-Schriftzug „10 € für ’nen Döner?!“'
 ---
 
 Ok, du stehst am Imbiss, bestellst wie immer, und dann sagt der Mann hinter dem Tresen einen Preis, bei dem du kurz denkst, du hättest dich verhört. Zehn Euro. Für einen Döner. Und die übliche Reaktion darauf ist ein Schulterzucken: alles wird eben teurer, ist halt so. Genau an dieser Stelle lohnt es sich, kurz stehen zu bleiben.

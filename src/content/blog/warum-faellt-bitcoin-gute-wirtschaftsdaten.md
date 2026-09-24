@@ -8,7 +8,7 @@ order: 64
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/geldpolitik/"
 image: "../../assets/mascots/warum-faellt-bitcoin-gute-wirtschaftsdaten.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, rechts ein Stapel Zeitungen mit der Schlagzeile „Good News“ und lauter positiven Meldungen, davor ein orange leuchtender Kurspfeil, der steil nach unten zeigt, dazu Schilder mit „Hype ↑“ und „Price ↓“ — Graffiti-Schriftzug „Gute News = Bitcoin fällt?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, rechts ein Stapel Zeitungen mit der Schlagzeile „Good News“ und lauter positiven Meldungen, davor ein orange leuchtender Kurspfeil, der steil nach unten zeigt, dazu Schilder mit „Hype ↑“ und „Price ↓“ — Graffiti-Schriftzug „Gute News = Bitcoin fällt?“'
 ---
 
 Es gibt Momente an den Finanzmärkten, die auf den ersten Blick jeder Logik zu widersprechen scheinen. Da meldet die US-Wirtschaft plötzlich hervorragende Zahlen, etwa einen boomenden Arbeitsmarkt mit weit mehr neuen Jobs als erwartet, und statt dass die Kurse vor Freude nach oben schießen, passiert das genaue Gegenteil: Bitcoin fällt, Gold gibt nach, die Stimmung kippt. Man reibt sich verwundert die Augen und fragt sich, ob die Welt verrückt geworden ist. Ist sie nicht. Dahinter steckt eine eiskalte, aber vollkommen nachvollziehbare Logik, und wer sie einmal verstanden hat, versteht damit einen der wichtigsten Mechanismen der gesamten modernen Finanzwelt.

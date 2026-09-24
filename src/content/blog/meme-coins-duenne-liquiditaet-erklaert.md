@@ -8,7 +8,7 @@ order: 63
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 image: "../../assets/mascots/meme-coins-duenne-liquiditaet-erklaert.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, rechts eine Katze mit Sonnenbrille auf einer Rakete über einer steil steigenden orangen Kurve, die kurz darauf senkrecht abstürzt, darunter ein Haufen umgefallener Katzenfiguren mit einem Schild „Just a Coin“ — Graffiti-Schriftzug „Ein Katzen-Coin +555 % an einem Tag“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, rechts eine Katze mit Sonnenbrille auf einer Rakete über einer steil steigenden orangen Kurve, die kurz darauf senkrecht abstürzt, darunter ein Haufen umgefallener Katzenfiguren mit einem Schild „Just a Coin“ — Graffiti-Schriftzug „Ein Katzen-Coin +555 % an einem Tag“'
 ---
 
 Du scrollst durch deinen Feed und plötzlich springt dir eine Zahl entgegen, die dir den Atem raubt: Irgendein Coin, von dem du noch nie gehört hast, mit einem Namen wie „Solcat“ oder „Pepeto“, ist an einem einzigen Tag um 555 Prozent gestiegen. Aus einem Euro wären über fünf geworden. Aus tausend Euro wären über fünftausend geworden. Dein erster Gedanke ist verständlich und menschlich: Verdammt, wenn ich da mal rechtzeitig drin gewesen wäre. Und dein zweiter, gefährlicher Gedanke ist: Vielleicht ist es ja noch nicht zu spät, vielleicht sollte ich jetzt schnell rein. Bevor du das tust, lass uns kurz und nüchtern anschauen, wie solche irren Zahlen überhaupt zustande kommen. Denn wer die Mechanik dahinter versteht, klickt danach garantiert nicht mehr voreilig auf „kaufen“.

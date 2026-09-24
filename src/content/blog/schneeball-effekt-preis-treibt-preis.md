@@ -7,7 +7,7 @@ order: 55
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/angebot-und-nachfrage/"
 image: "../../assets/mascots/schneeball-effekt-preis-treibt-preis.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, rechts rollt ein großer Schneeball mit orangem Bitcoin-Zeichen einen Hang hinunter und zerschellt an einem Felsen — Graffiti-Schriftzug „Der Schneeball-Effekt“'
+imageAlt: 'Pete mit Bitcoin-Cap hebt den Zeigefinger vor einer Betonwand, rechts rollt ein großer Schneeball mit orangem Bitcoin-Zeichen einen Hang hinunter und zerschellt an einem Felsen — Graffiti-Schriftzug „Der Schneeball-Effekt“'
 ---
 
 Es gibt ein Phänomen an den Märkten, das sich mit nüchternen Zahlen kaum erklären lässt, mit einem einzigen Bild aber sofort: der Schneeball, der einen Berg hinunterrollt. Anfangs ist er klein und harmlos. Doch während er rollt, nimmt er Schnee auf und wird größer. Und weil er größer wird, rollt er schneller. Und weil er schneller rollt, sammelt er noch mehr Schnee. Ein Kreislauf, der sich selbst antreibt und immer weniger mit dem sanften Anstoß am Anfang zu tun hat. Genau so verhalten sich Märkte in Phasen der Euphorie.

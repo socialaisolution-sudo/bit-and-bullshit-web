@@ -8,7 +8,7 @@ order: 67
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/marktkapitalisierung/"
 image: "../../assets/mascots/bitcoin-840000-prognose-einordnung.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, dahinter ein steil steigender orangefarbener Chart bis zur Marke 840.000, links der Graffiti-Schriftzug „840.000 $? Der Trick steckt im Fragezeichen“, am Boden ein Schild mit „Prognosen sind keine Garantien“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, dahinter ein steil steigender orangefarbener Chart bis zur Marke 840.000, links der Graffiti-Schriftzug „840.000 $? Der Trick steckt im Fragezeichen“, am Boden ein Schild mit „Prognosen sind keine Garantien“'
 quellen:
   - text: "River: Modell mit einer Spanne von 250.000 bis 840.000 Dollar über drei bis fünf Jahre, abgeleitet aus unterstellten Zuflüssen von 1,3 bis 5,3 Billionen Dollar"
     url: "https://river.com/content/the-case-for-a-10-bitcoin-allocation"

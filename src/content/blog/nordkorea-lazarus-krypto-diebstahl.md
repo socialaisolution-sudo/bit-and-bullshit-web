@@ -9,7 +9,7 @@ order: 66
 draft: false
 aeraLink: "https://bitcoinaera.de/technologie/sicherheit/"
 image: "../../assets/mascots/nordkorea-lazarus-krypto-diebstahl.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, links ein vermummter Hacker mit der Aufschrift „State“ vor mehreren Bildschirmen voller Code, davor Kisten mit den Aufschriften „Seized Crypto“ und „War Funding“, rechts hinter einem Stacheldrahtzaun eine startende Rakete — Graffiti-Schriftzug „Ein Staat klaut Krypto für Atombomben“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, links ein vermummter Hacker mit der Aufschrift „State“ vor mehreren Bildschirmen voller Code, davor Kisten mit den Aufschriften „Seized Crypto“ und „War Funding“, rechts hinter einem Stacheldrahtzaun eine startende Rakete — Graffiti-Schriftzug „Ein Staat klaut Krypto für Atombomben“'
 quellen:
   - text: "Chainalysis: Nordkorea zugerechnete Krypto-Diebstähle summieren sich auf rund 6,75 Milliarden Dollar, davon 2,02 Milliarden allein im Jahr 2025"
     url: "https://www.chainalysis.com/blog/2025-crypto-crime-report-introduction/"

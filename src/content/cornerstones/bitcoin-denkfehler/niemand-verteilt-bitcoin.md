@@ -8,7 +8,7 @@ metaBeschreibung: 'Hätte man Bitcoin gerecht an alle verteilen müssen? Warum d
 teil: 2
 draft: false
 image: "../../../assets/cornerstones/bitcoin-denkfehler/niemand-verteilt-bitcoin.webp"
-imageAlt: 'Bit & Bullshit Maskottchen hebt den Zeigefinger; rechts greift eine Hand von oben herab und legt eine Münze auf eine Pyramide aus Anzugträgern, die dick durchgestrichen ist — darunter drängt sich eine Menge Menschen, die nach frei herabschwebenden Bitcoin-Münzen greifen'
+imageAlt: 'Pete hebt den Zeigefinger; rechts greift eine Hand von oben herab und legt eine Münze auf eine Pyramide aus Anzugträgern, die dick durchgestrichen ist — darunter drängt sich eine Menge Menschen, die nach frei herabschwebenden Bitcoin-Münzen greifen'
 comic: "/comic/niemand-verteilt-bitcoin/"
 ausblick: 'Wie dieses „von oben“ beim normalen Geld konkret funktioniert — und warum genau diese Reihenfolge dafür sorgt, dass du fast immer der Letzte in der Reihe bist.'
 ---

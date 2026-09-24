@@ -7,7 +7,7 @@ order: 42
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/risiken/"
 image: "../../assets/mascots/bitcoin-verdoppeln-promi-scam.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen und skeptischem Blick vor einer Betonwand, daneben ein orange leuchtendes Geschenkpaket mit Bitcoin-Zeichen und ein Warndreieck — Graffiti-Schriftzug „Promi verdoppelt dein Bitcoin?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen und skeptischem Blick vor einer Betonwand, daneben ein orange leuchtendes Geschenkpaket mit Bitcoin-Zeichen und ein Warndreieck — Graffiti-Schriftzug „Promi verdoppelt dein Bitcoin?“'
 ---
 
 Diese Masche hat einen Bart bis zum Boden. Und funktioniert trotzdem jede Woche aufs Neue, weil sie perfekt auf die menschliche Hoffnung zielt: Irgendwo taucht ein Video oder eine Seite auf, angeblich von einem berühmten Milliardär, und das Versprechen lautet: „Schick mir einen Bitcoin, und ich schicke dir zwei zurück.“ Ein einmaliges, großzügiges Giveaway, nur für kurze Zeit, du musst nur schnell sein. Klingt verlockend, ist aber zu hundert Prozent Betrug.

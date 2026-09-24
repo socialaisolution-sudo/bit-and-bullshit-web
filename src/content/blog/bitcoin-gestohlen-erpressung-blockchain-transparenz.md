@@ -6,7 +6,7 @@ kategorie: grundwissen
 order: 69
 draft: false
 image: "../../assets/mascots/bitcoin-gestohlen-erpressung-blockchain-transparenz.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, links und rechts Kapuzengestalten mit Bitcoin-Münzen, über denen Standortmarker leuchten, auf zwei Laptops steht „Transaction blocked“ — Graffiti-Schriftzug „Geklaut, erpresst — und er sagt: Nein“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, links und rechts Kapuzengestalten mit Bitcoin-Münzen, über denen Standortmarker leuchten, auf zwei Laptops steht „Transaction blocked“ — Graffiti-Schriftzug „Geklaut, erpresst — und er sagt: Nein“'
 quellen:
   - text: "Decrypt, 11.09.2026: Blockstream lehnt Lösegeld für die Rückgabe von 47 Millionen Dollar in Bitcoin ab. Rund 4.000 BTC (etwa 320 Millionen Dollar) wurden am Sonntag aus dem Liquid-Netzwerk abgezogen, 3.400 BTC gaben die Angreifer am Montag zurück, 598,5 BTC verbleiben auf ihrer Adresse. Die Forderung lautete auf 10 Prozent als „Bug Bounty“. Blockstream: „Taking assets without authorization and withholding their return is a crime“"
     url: "https://decrypt.co/377959/blockstream-refuses-ransom-for-return-of-47m-in-bitcoin-from-liquid-hack-it-is-theft"

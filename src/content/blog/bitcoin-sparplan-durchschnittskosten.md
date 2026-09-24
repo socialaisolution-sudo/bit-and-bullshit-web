@@ -9,7 +9,7 @@ order: 40
 draft: false
 aeraLink: "https://bitcoinaera.de/praxis/bitcoin-kaufen/"
 image: "../../assets/mascots/bitcoin-sparplan-durchschnittskosten.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit den Händen in den Hoodie-Taschen vor einer Betonwand, rechts ein Loch in der Mauer mit herausgebrochenen Steinen — Graffiti-Schriftzug „Bitcoin zu teuer? Denkfehler.“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit den Händen in den Hoodie-Taschen vor einer Betonwand, rechts ein Loch in der Mauer mit herausgebrochenen Steinen — Graffiti-Schriftzug „Bitcoin zu teuer? Denkfehler.“'
 ---
 
 Ok, der Satz, der die meisten Leute vom Einstieg abhält, geht ungefähr so: „Bitcoin ist doch viel zu teuer, das kann ich mir gar nicht leisten.“ Und ich verstehe, woher das kommt — du schaust auf den Kurs, siehst eine große Zahl und denkst dir, so viel Geld hast du nicht übrig. Nur beruht dieser Gedanke auf einem Missverständnis.

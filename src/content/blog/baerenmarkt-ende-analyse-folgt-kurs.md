@@ -6,7 +6,7 @@ kategorie: markt-mythen
 order: 70
 draft: false
 image: "../../assets/mascots/baerenmarkt-ende-analyse-folgt-kurs.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, links ein Bär und ein fallender Chart, rechts ein Analyst im Anzug, der vor Kameras auf einen steigenden Chart zeigt — Graffiti-Schriftzug „Bärenmarkt vorbei? Woher wollen die das wissen?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, links ein Bär und ein fallender Chart, rechts ein Analyst im Anzug, der vor Kameras auf einen steigenden Chart zeigt — Graffiti-Schriftzug „Bärenmarkt vorbei? Woher wollen die das wissen?“'
 quellen:
   - text: "Benzinga, 21.09.2026: Bitcoin über 87.000 Dollar, Stimmungsindex auf „Extreme Greed“. Alex Thorn, Head of Firmwide Research bei Galaxy, erklärt den Bärenmarkt für beendet — Begründung ist die zurückeroberte 50-Wochen-Linie, die in vier der letzten fünf abgeschlossenen Bärenmärkte den Boden bestätigt habe"
     url: "https://www.benzinga.com/crypto/cryptocurrency/26/09/61911457/bitcoin-ethereum-xrp-dogecoin-crypto-greed-sentiment"

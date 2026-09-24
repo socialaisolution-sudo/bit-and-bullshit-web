@@ -7,7 +7,7 @@ order: 51
 draft: false
 aeraLink: "https://bitcoinaera.de/makro/adoption/"
 image: "../../assets/mascots/wall-street-tokenisierung-blockchain-umbau.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter ein Börsengebäude mit Säulen, das auf einem orange leuchtenden Blockchain-Fundament aus Ketten und Blöcken neu aufgebaut wird, daneben Baukräne — Graffiti-Schriftzug „Wall Street baut heimlich um“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, dahinter ein Börsengebäude mit Säulen, das auf einem orange leuchtenden Blockchain-Fundament aus Ketten und Blöcken neu aufgebaut wird, daneben Baukräne — Graffiti-Schriftzug „Wall Street baut heimlich um“'
 quellen:
   - text: "DTCC, Mitteilung vom 15.07.2026: „DTCC Turns Tokenization into Reality: U.S. Trades Successfully Processed Using DTC-Tokenized Assets“"
     url: "https://www.dtcc.com/news/2026/july/15/dtcc-turns-tokenization-into-reality"

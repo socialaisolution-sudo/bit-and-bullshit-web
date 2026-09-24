@@ -7,7 +7,7 @@ order: 53
 draft: false
 aeraLink: "https://bitcoinaera.de/glossar/kurs/"
 image: "../../assets/mascots/strategy-13-milliarden-minus-plus-narrativ.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen und schiefem Grinsen vor einer Betonwand, dahinter eine orange leuchtende Achterbahn, die erst tief hinunter und dann steil hinauf führt, oben ein kleines Maskottchen im Wagen mit erhobenen Armen — Graffiti-Schriftzug „13 Mrd Minus → 1,4 Mrd Plus“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen und schiefem Grinsen vor einer Betonwand, dahinter eine orange leuchtende Achterbahn, die erst tief hinunter und dann steil hinauf führt, oben eine kleine Figur im Wagen mit erhobenen Armen — Graffiti-Schriftzug „13 Mrd Minus → 1,4 Mrd Plus“'
 quellen:
   - text: "CoinDesk vom 21.08.2026: „Strategy's Bitcoin Position Swings to a $1.4 Billion Unrealized Gain“ — nach rund 22 Prozent Kursplus in fünf Handelstagen"
     url: "https://www.coindesk.com/markets/2026/08/21/strategy-sits-on-usd1-4-billion-profit-on-bitcoin-holdings-as-price-surges"

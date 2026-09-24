@@ -7,7 +7,7 @@ order: 36
 draft: false
 aeraLink: "https://bitcoinaera.de/macht/regulierung/"
 image: "../../assets/mascots/krypto-boerse-geschlossen-kyc-kontrolle.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht mit verschränkten Armen vor einer nassen Betonwand, darüber eine Überwachungskamera und ein heruntergelassenes Rolltor — Graffiti-Schriftzug „Behörden machen Krypto-Börse dicht: Verbraucherschutz oder Kontrolle?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer nassen Betonwand, darüber eine Überwachungskamera und ein heruntergelassenes Rolltor — Graffiti-Schriftzug „Behörden machen Krypto-Börse dicht: Verbraucherschutz oder Kontrolle?“'
 ---
 
 Ok, das ist eine dieser Nachrichten, bei denen man zweimal hinschauen sollte: Die Behörden zwingen gerade eine der ältesten Krypto-Börsen der Welt in die Knie. Eine Plattform, die es seit den frühen Tagen gibt, muss ihr Ende verkünden. Der offizielle Grund klingt erstmal trocken: Sie habe nicht ausreichend geprüft, wer ihre Kunden eigentlich sind. Aber genau dahinter steckt eine größere Frage.

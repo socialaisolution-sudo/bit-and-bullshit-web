@@ -7,7 +7,7 @@ order: 35
 aeraLink: "https://bitcoinaera.de/glossar/liquiditaet/"
 draft: false
 image: "../../assets/mascots/bitcoin-boerse-zufluss-crash.webp"
-imageAlt: 'Bit & Bullshit Maskottchen steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links davon ein roter Abwärts-Chart mit Kerzen — rechts der gesprühte Schriftzug „Kommt der nächste Crash?“'
+imageAlt: 'Pete steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links davon ein roter Abwärts-Chart mit Kerzen — rechts der gesprühte Schriftzug „Kommt der nächste Crash?“'
 ---
 
 Ok, diese Schlagzeile lässt jeden Bitcoin-Halter kurz den Atem anhalten: Auf einer der größten Krypto-Börsen der Welt ist das Bitcoin-Guthaben in nur einem Monat um satte 1,5 Milliarden Dollar gestiegen. Und sofort schrillen überall die Alarmglocken: Kommt jetzt der große Ausverkauf? Der nächste Absturz? Bevor du in Panik verfällst, lass uns das mal ruhig auseinandernehmen.

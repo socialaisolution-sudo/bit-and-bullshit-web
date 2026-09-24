@@ -7,7 +7,7 @@ order: 52
 draft: false
 aeraLink: "https://bitcoinaera.de/makro/positionierung/"
 image: "../../assets/mascots/bitcoin-24-prozent-short-squeeze.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, rechts rennt eine Menge kleiner Figuren mit „Buy!“-Schildern einem steil nach oben zeigenden orangen Kurspfeil hinterher — Graffiti-Schriftzug „+24 % — aber warum?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, rechts rennt eine Menge kleiner Figuren mit „Buy!“-Schildern einem steil nach oben zeigenden orangen Kurspfeil hinterher — Graffiti-Schriftzug „+24 % — aber warum?“'
 quellen:
   - text: "CoinDesk vom 21.08.2026: „Bitcoin Tops $77,000 as Best Week Since 2023 Pulls Altcoins Along for the Ride“ — in der Spitze 79.400 Dollar, rund 24 Prozent seit Wochenbeginn, stärkste Woche seit März 2023"
     url: "https://www.coindesk.com/markets/2026/08/21/bitcoin-tops-usd77-000-as-best-week-since-2023-pulls-altcoins-along-for-the-ride"

@@ -8,7 +8,7 @@ order: 61
 draft: false
 aeraLink: "https://bitcoinaera.de/bitcoin/nodes/"
 image: "../../assets/mascots/ist-bitcoin-anonym-blockchain-transparenz.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, daneben ein aufgeschlagenes riesiges Buch mit der Überschrift „Blockchain“ voller Adressen und Beträge, darüber eine Lupe, die eine Zeile vergrößert — Graffiti-Schriftzug „Bitcoin ist anonym? Genau falsch“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, daneben ein aufgeschlagenes riesiges Buch mit der Überschrift „Blockchain“ voller Adressen und Beträge, darüber eine Lupe, die eine Zeile vergrößert — Graffiti-Schriftzug „Bitcoin ist anonym? Genau falsch“'
 ---
 
 Kaum ein Irrtum über Bitcoin hält sich so hartnäckig wie dieser: Bitcoin sei anonym, das perfekte, unsichtbare Geld für Kriminelle, Geldwäscher und alle, die etwas zu verbergen haben. Diese Vorstellung ist so weit verbreitet, dass sie kaum noch jemand hinterfragt. Das Dumme daran ist nur: Sie ist grundfalsch. In Wahrheit ist Bitcoin so ungefähr das Gegenteil von anonym. Und wer das einmal verstanden hat, sieht nicht nur Bitcoin mit anderen Augen, sondern durchschaut auch eine ganze Reihe von reißerischen Schlagzeilen.

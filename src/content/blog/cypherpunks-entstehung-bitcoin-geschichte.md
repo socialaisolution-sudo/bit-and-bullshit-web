@@ -8,7 +8,7 @@ order: 65
 draft: false
 aeraLink: "https://bitcoinaera.de/bitcoin/was-ist-bitcoin/"
 image: "../../assets/mascots/cypherpunks-entstehung-bitcoin-geschichte.webp"
-imageAlt: 'Bit & Bullshit Maskottchen mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, im Hintergrund vermummte Gestalten an alten Röhrenmonitoren, an der Wand Parolen wie „Ideas can’t be banned“ und „Don’t trust central banks“, rechts ein Stapel Bücher mit den Aufschriften Bitcoin, Freedom, Self Custody, Sovereignty — Graffiti-Schriftzug „1992 erklärten sie dem Staat den Krieg“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand, im Hintergrund vermummte Gestalten an alten Röhrenmonitoren, an der Wand Parolen wie „Ideas can’t be banned“ und „Don’t trust central banks“, rechts ein Stapel Bücher mit den Aufschriften Bitcoin, Freedom, Self Custody, Sovereignty — Graffiti-Schriftzug „1992 erklärten sie dem Staat den Krieg“'
 quellen:
   - text: "Eric Hughes: „A Cypherpunk’s Manifesto“, 9. März 1993 — Ursprung des Satzes „Cypherpunks write code“"
     url: "https://www.activism.net/cypherpunk/manifesto.html"

@@ -6,7 +6,7 @@ kategorie: grundwissen
 order: 71
 draft: false
 image: "../../assets/mascots/wo-kauft-man-sicher-bitcoin.webp"
-imageAlt: 'Bit & Bullshit Maskottchen Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand und zeigt mit offener Hand auf einen Stapel Bitcoin-Münzen, rechts zwei leuchtende Sprechblasen mit Fragezeichen — Graffiti-Schriftzug „Frag Pete #1: Wo kauf ich sicher Bitcoin?“'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich vor einer Betonwand und zeigt mit offener Hand auf einen Stapel Bitcoin-Münzen, rechts zwei leuchtende Sprechblasen mit Fragezeichen — Graffiti-Schriftzug „Frag Pete #1: Wo kauf ich sicher Bitcoin?“'
 quellen:
   - text: "Verordnung (EU) 2023/1114 über Märkte für Kryptowerte (MiCA). Die Vorschriften für Anbieter von Kryptowerte-Dienstleistungen gelten seit dem 30. Dezember 2024; eine Zulassung in einem Mitgliedstaat gilt über den sogenannten Pass im gesamten Binnenmarkt"
     url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32023R1114"

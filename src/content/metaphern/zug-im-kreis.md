@@ -6,7 +6,7 @@ keyword: "zu spät für Bitcoin Denkbild Zug"
 metaTitel: 'Der Zug, der im Kreis fährt — wann „zu spät“ wirklich gilt'
 draft: false
 image: "../../assets/metaphern/zug-im-kreis.webp"
-imageAlt: 'Bit & Bullshit Maskottchen sitzt bei Sonnenuntergang am Bahnsteig, während der Zug seine Kreisbahn über der Stadt zieht'
+imageAlt: 'Pete sitzt bei Sonnenuntergang am Bahnsteig, während der Zug seine Kreisbahn über der Stadt zieht'
 comic: "/comic/zu-spaet-gibt-es-nicht/"
 ausloeser:
   - "Zug, der im Kreis fährt"

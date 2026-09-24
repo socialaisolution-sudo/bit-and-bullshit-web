@@ -7,7 +7,7 @@ order: 38
 aeraLink: "https://bitcoinaera.de/glossar/volatilitaet/"
 draft: false
 image: "../../assets/mascots/875-dollar-797000-insider.webp"
-imageAlt: 'Bit & Bullshit Maskottchen tippt sich grinsend an die Schläfe, dahinter der gesprühte Schriftzug „875 € → 797.000 €?“ auf einer Betonwand'
+imageAlt: 'Pete tippt sich grinsend an die Schläfe, dahinter der gesprühte Schriftzug „875 € → 797.000 €?“ auf einer Betonwand'
 ---
 
 Ok, diese Zahl klingt wie der feuchte Traum jedes Krypto-Einsteigers: Ein anonymer Trader hat aus rund 875 Dollar beinahe 797.000 gemacht. Mit einem einzigen Coin. An einem einzigen Tag. Genau solche Geschichten werden dir überall vor die Nase gehalten, mit dem stillen Versprechen: Das könntest auch du sein.
