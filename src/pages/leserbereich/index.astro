@@ -8,6 +8,7 @@ import { aktuellerReport, wochenLabel, oeffentlichAb } from "../../lib/leserbere
 import { letzterVersand } from "../../lib/ausgaben";
 import { Image } from "astro:assets";
 import pete from "../../assets/pete-kopf.webp";
+import { COMIC_NEUESTE } from "../../data/comics";
 
 const report = await aktuellerReport();
 /* Bezugspunkt fuer "Bewegung seit der letzten Ausgabe". Gibt es noch
@@ -86,6 +87,27 @@ const datumLang = (d: Date) =>
     }
 
     <KennzahlDefinitionen nr="05" />
+
+    {/* Ein Comic-Panel als Zaesur zwischen Report und Seitenteil.
+        Eine Textseite braucht eine Stelle, an der das Auge ausruht —
+        und das juengste Kapitel steht sonst nur auf der Startseite.
+        Inhalt kommt aus data/comics.ts, ein neues Kapitel laesst hier
+        nichts zu tun uebrig. */}
+    <a href={`/comic/${COMIC_NEUESTE.slug}/`} class="lb-comic">
+      <Image
+        src={COMIC_NEUESTE.cover}
+        alt={COMIC_NEUESTE.coverAlt}
+        widths={[480, 720, 1024]}
+        sizes="(min-width: 900px) 46rem, 92vw"
+        class="lb-comic-bild"
+        loading="lazy"
+      />
+      <div class="lb-comic-text">
+        <p class="lb-kicker">// Comic &middot; Teil {COMIC_NEUESTE.teil}</p>
+        <p class="display lb-comic-h">{COMIC_NEUESTE.titel}</p>
+        <p class="lb-comic-anriss">{COMIC_NEUESTE.anriss}</p>
+      </div>
+    </a>
 
     {/* Ab hier nicht mehr der Report, sondern die Seite: Bilanz und
         Abgrenzung gehoeren nicht in Dennys Fuenferfolge und tragen
@@ -250,21 +272,55 @@ const datumLang = (d: Date) =>
 
     if (bilanz && b) {
       const anteil = b.anteil_prozent ?? {};
-      const reihen = ["gruen", "gelb", "rot"]
-        .map(
-          (f) =>
-            `<tr><td>${FARBE[f]}</td><td>${(anteil[f] ?? 0).toFixed(1)} %</td><td class="lb-soll">${
-              f === "gelb" ? b.erwartet?.gelb_prozent : f === "rot" ? b.erwartet?.rot_prozent : "—"
-            }${f === "gruen" ? "" : " %"}</td></tr>`,
-        )
+      const gelbErw = b.erwartet?.gelb_prozent ?? 0;
+      const rotErw = b.erwartet?.rot_prozent ?? 0;
+
+      /* Rot ist eine TEILMENGE von Gelb — das Regelwerk sagt "Rot
+         erzwingt Gelb". Die erwarteten 14,3 % Gelb enthalten also die
+         2,7 % Rot. Angezeigt werden aber exklusive Farben, weil die
+         Ampel immer genau eine zeigt. Wer die drei Erwartungswerte
+         einfach nebeneinanderstellt, zeigt 117 % und eine falsche
+         Aussage. */
+      const erwartet: Record<string, number> = {
+        gruen: Math.max(0, 100 - gelbErw),
+        gelb: Math.max(0, gelbErw - rotErw),
+        rot: rotErw,
+      };
+
+      const balken = ["gruen", "gelb", "rot"]
+        .map((f) => {
+          const ist = anteil[f] ?? 0;
+          const soll = erwartet[f];
+          return (
+            `<div class="bi-zeile" data-wert="${f}">` +
+            `<p class="bi-name">${FARBE[f]}</p>` +
+            `<div class="bi-bahn">` +
+            `<div class="bi-balken" style="width:${Math.max(ist, 0.4)}%"></div>` +
+            `<span class="bi-soll" style="left:${soll}%" title="erwartet ${soll.toFixed(1)} %"></span>` +
+            `</div>` +
+            `<p class="bi-zahl"><strong>${ist.toFixed(1)} %</strong>` +
+            `<span class="bi-erw">erwartet ${soll.toFixed(1)} %</span></p>` +
+            `</div>`
+          );
+        })
         .join("");
+
+      /* Die eine Zahl, die der Leser wirklich mitnehmen soll. */
+      const gelbIst = anteil.gelb ?? 0;
+      const fazit =
+        gelbIst === 0 && (anteil.rot ?? 0) === 0
+          ? `Die Ampel stand in ${b.vollstaendige_laeufe ?? 0} vollständigen Läufen <strong>kein einziges Mal</strong> auf Gelb oder Rot. Erwartet waren ${gelbErw.toFixed(1)} %. Entweder war der Markt die ganze Zeit ruhig, oder die Schwellen sitzen zu hoch — nach so kurzer Laufzeit weiß das niemand.`
+          : `Gemessen an ${b.vollstaendige_laeufe ?? 0} vollständigen Läufen.`;
+
       bilanz.innerHTML =
-        `<table class="lb-tabelle"><thead><tr><th>Farbe</th><th>gemessen</th><th>erwartet</th></tr></thead>` +
-        `<tbody>${reihen}</tbody></table>` +
-        `<p class="lb-klein">${b.vollstaendige_laeufe ?? 0} Läufe mit allen vier Eingängen. ` +
-        `Neu gerechnet wird spätestens am ${b.neu_rechnen_ab ?? "—"}. ${b.hinweis ?? ""}</p>`;
+        `<div class="bi-grid">${balken}</div>` +
+        `<p class="bi-fazit">${fazit}</p>` +
+        `<p class="lb-klein">Verglichen wird nur, was mit allen vier Eingängen gerechnet wurde. ` +
+        `Neu gerechnet wird spätestens am ${b.neu_rechnen_ab ?? "—"}. ` +
+        `Der Strich in der Bahn markiert den Erwartungswert aus der Kalibrierung.</p>`;
       bilanz.hidden = false;
     }
+
   } catch {
     if (laden) laden.textContent = "Die Auswertung ist gerade nicht erreichbar.";
   }
@@ -280,6 +336,29 @@ const datumLang = (d: Date) =>
   .lb-ghost-sec { position: relative; overflow: hidden; }
   .lb-ghost-sec > .wall-ghost { top: 1.5rem; right: -1rem; font-size: clamp(3rem, 12vw, 7rem); }
   .lb-ghost-sec > *:not(.wall-ghost) { position: relative; }
+
+  /* Das Panel laeuft breiter als der Lesetext — es ist die Pause,
+     nicht die Fortsetzung. */
+  .lb-comic {
+    display: block;
+    margin: 4rem 0 0;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgb(from var(--color-paper) r g b / 0.12);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    transform: rotate(-0.5deg);
+    transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .lb-comic:hover { transform: rotate(0deg) translateY(-3px); }
+  .lb-comic-bild { display: block; width: 100%; height: auto; }
+  .lb-comic-text { padding: 1.1rem 1.25rem 1.3rem; }
+  .lb-comic-h { font-size: clamp(1.1rem, 3.5vw, 1.5rem); line-height: 1.2; margin: 0.45rem 0 0; }
+  .lb-comic-anriss { margin: 0.5rem 0 0; font-size: 0.9rem; line-height: 1.6; opacity: 0.7; max-width: 36rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lb-comic, .lb-comic:hover { transform: none; transition: none; }
+  }
 
   .lb-schnitt {
     border: 0;

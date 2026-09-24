@@ -811,3 +811,76 @@ body::after {
   font-size: 0.93rem;
   line-height: 1.65;
 }
+
+/* ── Trefferbilanz als Balken ──────────────────────────────────────
+   Drei Bahnen, je eine Farbe. Der gefuellte Balken ist das Gemessene,
+   der senkrechte Strich der Erwartungswert aus der Kalibrierung.
+   
+   Die Aussage steckt im Abstand zwischen beiden — und der ist bei
+   Gelb gerade maximal: gemessen null, erwartet vierzehn Prozent.
+   Als Tabelle war das eine Zeile, als Balken sieht man es. */
+
+.bi-grid { margin: 1.75rem 0 0; display: grid; gap: 1.1rem; }
+
+.bi-zeile {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0.3rem 0.9rem;
+  align-items: center;
+}
+@media (min-width: 640px) {
+  .bi-zeile { grid-template-columns: 4.5rem 1fr 9rem; }
+}
+
+.bi-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+.bi-zeile[data-wert="gruen"] .bi-name { color: #6fbf8e; }
+.bi-zeile[data-wert="gelb"] .bi-name { color: #e0b13c; }
+.bi-zeile[data-wert="rot"] .bi-name { color: #e2705f; }
+
+.bi-bahn {
+  position: relative;
+  height: 1.5rem;
+  background: rgb(from var(--color-paper) r g b / 0.07);
+  border-radius: 0.15rem;
+  overflow: hidden;
+}
+.bi-balken { height: 100%; border-radius: 0.15rem 0 0 0.15rem; }
+.bi-zeile[data-wert="gruen"] .bi-balken { background: #6fbf8e; }
+.bi-zeile[data-wert="gelb"] .bi-balken { background: #e0b13c; }
+.bi-zeile[data-wert="rot"] .bi-balken { background: #e2705f; }
+
+/* Der Erwartungswert. Gestrichelt, damit er nicht wie ein gemessener
+   Wert aussieht — eine Erwartung ist keine Messung. */
+.bi-soll {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 0;
+  border-left: 2px dashed rgb(from var(--color-paper) r g b / 0.65);
+}
+
+.bi-zahl { margin: 0; grid-column: 2 / -1; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.85rem; }
+@media (min-width: 640px) {
+  .bi-zahl { grid-column: auto; display: block; text-align: right; }
+}
+.bi-erw { opacity: 0.45; font-size: 0.78rem; display: block; }
+@media (max-width: 639px) {
+  .bi-erw { display: inline; }
+}
+
+.bi-fazit {
+  margin: 1.6rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--color-orange);
+  background: rgb(from var(--color-paper) r g b / 0.04);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 38rem;
+}
