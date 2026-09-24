@@ -760,11 +760,39 @@ body::after {
 .lb-tabelle th:first-child { padding-right: 1.25rem; }
 .lb-tabelle td + td { text-align: right; white-space: nowrap; }
 
-.lb-farbe { font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 700; margin: 1.25rem 0 0; line-height: 1.05; }
+/* Die Farbe ist die Aussage der Seite — sie wird gesetzt wie eine
+   Ueberschrift, nicht wie ein Absatz. Display-Schrift, gesprueht,
+   leicht gekippt. */
+.lb-farbe {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.6rem, 9vw, 4.2rem);
+  line-height: 0.95;
+  margin: 1.5rem 0 0;
+  transform: rotate(-1.2deg);
+  transform-origin: left center;
+}
 .lb-farbe[data-wert="gruen"] { color: #6fbf8e; }
 .lb-farbe[data-wert="gelb"] { color: #e0b13c; }
 .lb-farbe[data-wert="rot"] { color: #e2705f; }
-.lb-grund { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.35rem; }
+.lb-grund {
+  display: block;
+  font-family: var(--font-sans, inherit);
+  font-size: 0.97rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.72;
+  margin-top: 0.7rem;
+  transform: rotate(1.2deg);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lb-farbe, .lb-grund { transform: none; }
+}
 
 .lb-stufe[data-wert="erhoeht"] { color: #e0b13c; }
 .lb-stufe[data-wert="extrem"] { color: #e2705f; }

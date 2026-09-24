@@ -61,7 +61,8 @@ const datumLang = (d: Date) =>
       )
     }
 
-    <section class="wall-sec" data-tiefe>
+    <section class="wall-sec lb-ghost-sec" data-tiefe>
+      <span class="wall-ghost" aria-hidden="true">JETZT</span>
       <header class="wall-head">
         <span class="stencil-num wall-head-num" aria-hidden="true">01</span>
         <h2 class="display wall-h">Stand jetzt</h2>
@@ -276,6 +277,10 @@ const datumLang = (d: Date) =>
   .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
   .lb-links li { margin: 0.3rem 0; }
   /* Trennt den Report von der Seite darunter. */
+  .lb-ghost-sec { position: relative; overflow: hidden; }
+  .lb-ghost-sec > .wall-ghost { top: 1.5rem; right: -1rem; font-size: clamp(3rem, 12vw, 7rem); }
+  .lb-ghost-sec > *:not(.wall-ghost) { position: relative; }
+
   .lb-schnitt {
     border: 0;
     border-top: 1px solid rgb(from var(--color-paper) r g b / 0.14);
