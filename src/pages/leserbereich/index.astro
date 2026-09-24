@@ -165,23 +165,29 @@ import SiteFooter from "../../components/SiteFooter.astro";
   .lb-hinweis { max-width: 42rem; opacity: 0.8; font-size: 0.95rem; }
   .lb-laden { opacity: 0.6; }
 
-  .lb-farbe { font-size: 2rem; font-weight: 700; margin: 0 0 1rem; line-height: 1.1; }
-  .lb-farbe[data-wert="gruen"] { color: #6fbf8e; }
-  .lb-farbe[data-wert="gelb"] { color: #e0b13c; }
-  .lb-farbe[data-wert="rot"] { color: #e2705f; }
-  .lb-grund { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.2rem; }
+  :global(.lb-farbe) { font-size: 2rem; font-weight: 700; margin: 0 0 1rem; line-height: 1.1; }
+  :global(.lb-farbe[data-wert="gruen"]) { color: #6fbf8e; }
+  :global(.lb-farbe[data-wert="gelb"]) { color: #e0b13c; }
+  :global(.lb-farbe[data-wert="rot"]) { color: #e2705f; }
+  :global(.lb-grund) { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.2rem; }
 
-  .lb-tabelle { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.5rem 0 0; }
-  .lb-tabelle th { text-align: left; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.5; padding-bottom: 0.4rem; }
-  .lb-tabelle td { padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-  .lb-tabelle td + td { text-align: right; }
-  .lb-stufe[data-wert="erhoeht"] { color: #e0b13c; }
-  .lb-stufe[data-wert="extrem"] { color: #e2705f; }
-  .lb-stufe[data-wert="fehlt"] { opacity: 0.5; font-style: italic; }
-  .lb-soll { opacity: 0.5; }
+  :global(.lb-tabelle) { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.5rem 0 0; }
+  :global(.lb-tabelle th) { text-align: left; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.5; padding-bottom: 0.4rem; }
+  :global(.lb-tabelle td) { padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  /* Ohne Abstand stossen lange Beschriftungen auf schmalen Schirmen
+     an den Wert — „Stablecoin-Versorgungruhig“. Der Wert bricht nicht
+     um, die Beschriftung darf. */
+  :global(.lb-tabelle td:first-child) { padding-right: 1.25rem; }
+  :global(.lb-tabelle td + td) { white-space: nowrap; }
+  :global(.lb-tabelle th:first-child) { padding-right: 1.25rem; }
+  :global(.lb-tabelle td + td) { text-align: right; }
+  :global(.lb-stufe[data-wert="erhoeht"]) { color: #e0b13c; }
+  :global(.lb-stufe[data-wert="extrem"]) { color: #e2705f; }
+  :global(.lb-stufe[data-wert="fehlt"]) { opacity: 0.5; font-style: italic; }
+  :global(.lb-soll) { opacity: 0.5; }
 
-  .lb-funding { margin: 1.2rem 0 0; font-size: 0.98rem; }
-  .lb-klein { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
+  :global(.lb-funding) { margin: 1.2rem 0 0; font-size: 0.98rem; }
+  :global(.lb-klein) { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
   .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
   .lb-links li { margin: 0.3rem 0; }
   .lb-fuss { margin: 3rem 0 0; font-size: 0.8rem; opacity: 0.55; }
