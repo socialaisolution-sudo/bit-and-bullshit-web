@@ -6,6 +6,8 @@ import ReportBloecke from "../../components/ReportBloecke.astro";
 import KennzahlDefinitionen from "../../components/KennzahlDefinitionen.astro";
 import { aktuellerReport, wochenLabel, oeffentlichAb } from "../../lib/leserbereich";
 import { letzterVersand } from "../../lib/ausgaben";
+import { Image } from "astro:assets";
+import pete from "../../assets/pete-kopf.webp";
 
 const report = await aktuellerReport();
 /* Bezugspunkt fuer "Bewegung seit der letzten Ausgabe". Gibt es noch
@@ -38,8 +40,13 @@ const datumLang = (d: Date) =>
   <SiteHeader />
 
   <main class="mx-auto max-w-4xl px-5 py-14 md:py-20">
-    <p class="display text-xs tracking-[0.3em] text-orange">// Leserbereich</p>
-    <h1 class="display mt-4 text-3xl md:text-4xl">Die ausführliche Auswertung</h1>
+    <div class="lb-kopf">
+      <Image src={pete} alt="Pete, das Maskottchen von Bit & Bullshit" width={88} height={88} class="lb-pete" loading="eager" />
+      <div>
+        <p class="lb-kicker">// Leserbereich</p>
+        <h1 class="display spray-head lb-h1">Die ausführliche Auswertung</h1>
+      </div>
+    </div>
     <p class="mt-4 max-w-2xl opacity-80">
       Der Stand jetzt, was er für die Positionierung heißt, und einmal in der
       Woche ein Blick auf das größere Bild. Die Freitagsausgabe ist
@@ -54,17 +61,21 @@ const datumLang = (d: Date) =>
       )
     }
 
-    <section class="lb-block" data-tiefe>
-      <p class="display lb-kicker">// Stand jetzt</p>
+    <section class="wall-sec" data-tiefe>
+      <header class="wall-head">
+        <span class="stencil-num wall-head-num" aria-hidden="true">01</span>
+        <h2 class="display wall-h">Stand jetzt</h2>
+      </header>
+      <div class="spray-rule mt-4 max-w-[12rem]"></div>
       <p class="lb-laden" data-laden>Wird geladen …</p>
       {seitVersand && <span hidden data-seit={seitVersand} />}
       <div class="lb-inhalt" data-inhalt hidden></div>
     </section>
 
-    {report && <ReportBloecke report={report} />}
+    {report && <ReportBloecke report={report} ab={2} />}
     {
       !report && (
-        <section class="lb-block">
+        <section class="wall-sec">
           <p class="lb-hinweis">
             Für diese Woche liegt noch kein Report vor. Der Stand oben ist
             trotzdem aktuell.
@@ -73,8 +84,17 @@ const datumLang = (d: Date) =>
       )
     }
 
-    <section class="lb-block">
-      <p class="display lb-kicker">// Trefferbilanz</p>
+    <KennzahlDefinitionen nr="05" />
+
+    {/* Ab hier nicht mehr der Report, sondern die Seite: Bilanz und
+        Abgrenzung gehoeren nicht in Dennys Fuenferfolge und tragen
+        deshalb keine Nummer. */}
+    <hr class="lb-schnitt" />
+
+    <section class="wall-sec">
+      <p class="lb-kicker">// Trefferbilanz</p>
+      <h2 class="display lb-h2">Trifft die Ampel, was sie soll?</h2>
+      </header>
       <p class="lb-hinweis">
         Wie oft die Ampel welche Farbe gezeigt hat, gegen das, was die
         Kalibrierung erwarten ließ. Diese Zahlen stehen auch
@@ -85,8 +105,9 @@ const datumLang = (d: Date) =>
       <div class="lb-inhalt" data-bilanz hidden></div>
     </section>
 
-    <section class="lb-block">
-      <p class="display lb-kicker">// Was hier nicht liegt</p>
+    <section class="wall-sec">
+      <p class="lb-kicker">// Was hier nicht liegt</p>
+      <h2 class="display lb-h2">Was öffentlich bleibt</h2>
       <p class="lb-hinweis">
         Das Regelwerk, die Erklärungen zu jeder Kennzahl und die aktuelle
         Ampelfarbe sind öffentlich und bleiben es. Hinter dem Passwort liegt
@@ -103,8 +124,6 @@ const datumLang = (d: Date) =>
         <li><a href="https://bitcoinaera.de/glossar/stablecoin-versorgung/" rel="noopener">Stablecoin-Versorgung</a></li>
       </ul>
     </section>
-
-    <KennzahlDefinitionen />
 
     <p class="lb-fuss">
       Kein Konto, keine gespeicherten Daten — nur ein Cookie mit der laufenden
@@ -251,48 +270,34 @@ const datumLang = (d: Date) =>
 </script>
 
 <style>
-  .lb-block {
-    margin: 3rem 0 0;
-    padding-top: 1.75rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .lb-kicker { font-size: 0.7rem; letter-spacing: 0.28em; color: var(--color-orange, #f7931a); margin: 0 0 0.9rem; }
-  .lb-hinweis { max-width: 42rem; opacity: 0.8; font-size: 0.95rem; }
-  .lb-laden { opacity: 0.6; }
-
-  :global(.lb-farbe) { font-size: 2rem; font-weight: 700; margin: 0 0 1rem; line-height: 1.1; }
-  :global(.lb-farbe[data-wert="gruen"]) { color: #6fbf8e; }
-  :global(.lb-farbe[data-wert="gelb"]) { color: #e0b13c; }
-  :global(.lb-farbe[data-wert="rot"]) { color: #e2705f; }
-  :global(.lb-grund) { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.2rem; }
-
-  :global(.lb-tabelle) { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 0.5rem 0 0; }
-  :global(.lb-tabelle th) { text-align: left; font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.5; padding-bottom: 0.4rem; }
-  :global(.lb-tabelle td) { padding: 0.5rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
   /* Ohne Abstand stossen lange Beschriftungen auf schmalen Schirmen
      an den Wert — „Stablecoin-Versorgungruhig“. Der Wert bricht nicht
      um, die Beschriftung darf. */
-  :global(.lb-tabelle td:first-child) { padding-right: 1.25rem; }
-  :global(.lb-tabelle td + td) { white-space: nowrap; }
-  :global(.lb-tabelle th:first-child) { padding-right: 1.25rem; }
-  :global(.lb-tabelle td + td) { text-align: right; }
-  :global(.lb-stufe[data-wert="erhoeht"]) { color: #e0b13c; }
-  :global(.lb-stufe[data-wert="extrem"]) { color: #e2705f; }
-  :global(.lb-stufe[data-wert="fehlt"]) { opacity: 0.5; font-style: italic; }
-  :global(.lb-soll) { opacity: 0.5; }
-
-  :global(.lb-funding) { margin: 1.2rem 0 0; font-size: 0.98rem; }
-  :global(.lb-klein) { margin: 1rem 0 0; font-size: 0.78rem; opacity: 0.55; }
   .lb-links { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
   .lb-links li { margin: 0.3rem 0; }
-  :global(.lb-bewegung) {
-    margin: 1.2rem 0 0;
-    padding: 0.7rem 0.95rem;
-    border-left: 3px solid var(--color-orange, #f7931a);
-    background: rgba(255, 255, 255, 0.04);
-    font-size: 0.93rem;
-    line-height: 1.6;
+  /* Trennt den Report von der Seite darunter. */
+  .lb-schnitt {
+    border: 0;
+    border-top: 1px solid rgb(from var(--color-paper) r g b / 0.14);
+    margin: 3.5rem 0 0;
   }
+  .lb-h2 { font-size: clamp(1.2rem, 3.5vw, 1.6rem); line-height: 1.2; margin: 0.6rem 0 0; }
+  .lb-kopf {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+  .lb-pete {
+    flex: none;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 0.5rem;
+    transform: rotate(-2deg);
+  }
+  @media (min-width: 768px) {
+    .lb-pete { width: 5.5rem; height: 5.5rem; }
+  }
+  .lb-h1 { font-size: clamp(1.6rem, 5.5vw, 2.6rem); line-height: 1.05; margin-top: 0.3rem; }
   .lb-woche {
     margin: 1.25rem 0 0;
     font-size: 0.82rem;

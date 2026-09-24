@@ -16,8 +16,12 @@ import type { Report } from "../lib/leserbereich";
 
 interface Props {
   report: Report;
+  /* Die Nummerierung laeuft ueber die ganze Seite und beginnt bei 1
+     (dem Live-Stand), der hier nicht steckt. Deshalb von aussen. */
+  ab?: number;
 }
-const { report } = Astro.props;
+const { report, ab = 2 } = Astro.props;
+const nr = (n: number) => String(n).padStart(2, "0");
 const d = report.data;
 const { Content } = await render(report);
 
@@ -29,8 +33,12 @@ const deepDive = !!d.deepdive_titel?.trim();
 ---
 
 {/* ===== 2 · Was bedeutet das konkret ===== */}
-<section class="lb-block">
-  <p class="display lb-kicker">// Was bedeutet das konkret</p>
+<section class="wall-sec">
+  <header class="wall-head">
+    <span class="stencil-num wall-head-num" aria-hidden="true">{nr(ab)}</span>
+    <h2 class="display wall-h">Was bedeutet das</h2>
+  </header>
+  <div class="spray-rule mt-4 max-w-[12rem]"></div>
   {
     !hatBausteine && (
       <p class="lb-hinweis">
@@ -56,8 +64,12 @@ const deepDive = !!d.deepdive_titel?.trim();
 {/* ===== 3 · Gesamtkontext ===== */}
 {
   d.gesamtkontext?.trim() && (
-    <section class="lb-block">
-      <p class="display lb-kicker">// Gesamtkontext</p>
+    <section class="wall-sec">
+      <header class="wall-head">
+        <span class="stencil-num wall-head-num" aria-hidden="true">{nr(ab + 1)}</span>
+        <h2 class="display wall-h">Gesamtkontext</h2>
+      </header>
+      <div class="spray-rule mt-4 max-w-[12rem]" />
       <p class="rb-gesamt">{d.gesamtkontext}</p>
     </section>
   )
@@ -68,8 +80,8 @@ const deepDive = !!d.deepdive_titel?.trim();
      leer, entfällt der Block ganz — kein leerer Kasten. */}
 {
   notiz && (
-    <section class="lb-block rb-notiz">
-      <p class="display lb-kicker">// Meinung</p>
+    <section class="wall-sec rb-notiz">
+      <p class="lb-kicker">// Meinung</p>
       <h2 class="display rb-notiz-h">Wie ich das sehe</h2>
       <p class="rb-text">{notiz}</p>
     </section>
@@ -81,9 +93,13 @@ const deepDive = !!d.deepdive_titel?.trim();
      eine Ueberschrift ohne Inhalt. */}
 {
   deepDive && (
-    <section class="lb-block rb-deep">
-      <p class="display lb-kicker">// Deep Dive</p>
-      <h2 class="display rb-deep-h">{d.deepdive_titel}</h2>
+    <section class="wall-sec rb-deep">
+      <header class="wall-head">
+        <span class="stencil-num wall-head-num" aria-hidden="true">{nr(ab + 2)}</span>
+        <h2 class="display wall-h">Deep Dive</h2>
+      </header>
+      <div class="spray-rule mt-4 max-w-[12rem]" />
+      <h3 class="display rb-deep-h">{d.deepdive_titel}</h3>
       <div class="rb-deep-text">
         <Content />
       </div>
@@ -97,11 +113,11 @@ const deepDive = !!d.deepdive_titel?.trim();
 }
 
 <style>
-  .rb-karten {
+    .rb-karten {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    margin-top: 1.25rem;
+    margin-top: 1.75rem;
   }
   @media (min-width: 720px) {
     .rb-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
@@ -121,7 +137,7 @@ const deepDive = !!d.deepdive_titel?.trim();
   .rb-text { margin: 0.6rem 0 0; font-size: 0.95rem; line-height: 1.65; opacity: 0.85; }
 
   .rb-gesamt {
-    margin: 1rem 0 0;
+    margin: 1.75rem 0 0;
     font-size: 1.05rem;
     line-height: 1.7;
     max-width: 44rem;
@@ -130,16 +146,22 @@ const deepDive = !!d.deepdive_titel?.trim();
   /* Die Meinung setzt sich ab wie im Newsletter: eigene Flaeche,
      Ueberschrift in Textfarbe statt in Orange — sie ist kein
      Zwischentitel, sondern ein anderer Sprecher. */
+  /* Die Meinung setzt sich als Flaeche ab, nicht als nummerierter
+     Abschnitt — sie gehoert nicht in die Zaehlung der Bausteine. */
   .rb-notiz {
-    background: rgba(255, 255, 255, 0.04);
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 1.75rem 1.25rem 1.5rem;
-    border-radius: 0 0 0.4rem 0.4rem;
+    background: rgb(from var(--color-paper) r g b / 0.045);
+    border-left: 3px solid var(--color-orange, #f7931a);
+    padding: 1.75rem 1.5rem 1.6rem;
+    margin-top: 1rem;
   }
   .rb-notiz-h { font-size: 1.3rem; margin: 0 0 0.75rem; }
 
-  .rb-deep { border-top-width: 3px; border-top-color: var(--color-orange, #f7931a); }
-  .rb-deep-h { font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.2; margin: 0.25rem 0 1rem; }
+  .rb-deep-h {
+    font-size: clamp(1.3rem, 4vw, 1.9rem);
+    line-height: 1.25;
+    margin: 1.75rem 0 1.25rem;
+    max-width: 40rem;
+  }
   .rb-deep-text { max-width: 44rem; line-height: 1.75; }
   .rb-deep-text :global(p) { margin: 0 0 1.1em; }
   .rb-quellen { margin: 1.5rem 0 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.55; max-width: 44rem; }

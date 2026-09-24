@@ -9,10 +9,17 @@
  * ist.
  */
 import { KENNZAHLEN, REIHENFOLGE } from "../lib/kennzahlen";
+
+interface Props { nr?: string }
+const { nr = "05" } = Astro.props;
 ---
 
-<section class="lb-block">
-  <p class="display lb-kicker">// Was die Zahlen messen</p>
+<section class="wall-sec">
+  <header class="wall-head">
+    <span class="stencil-num wall-head-num" aria-hidden="true">{nr}</span>
+    <h2 class="display wall-h">Was die Zahlen messen</h2>
+  </header>
+  <div class="spray-rule mt-4 max-w-[12rem]"></div>
   <p class="lb-hinweis">
     Diese vier Definitionen ändern sich nicht. Sie stehen unter jedem Report,
     damit niemand nachschlagen muss, um ihn zu lesen.
@@ -34,7 +41,7 @@ import { KENNZAHLEN, REIHENFOLGE } from "../lib/kennzahlen";
 </section>
 
 <style>
-  .kd-defs { margin: 1.25rem 0 0; }
+  .kd-defs { margin: 1.75rem 0 0; }
   .kd-def { padding: 0.9rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
   .kd-def dt { font-size: 0.9rem; color: var(--color-orange, #f7931a); }
   .kd-def dd { margin: 0.35rem 0 0; font-size: 0.9rem; line-height: 1.6; opacity: 0.75; }

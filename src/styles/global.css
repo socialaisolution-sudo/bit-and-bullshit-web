@@ -707,3 +707,76 @@ body::after {
   border-radius: 0.25em;
   font-size: 0.9em;
 }
+
+/* ── Leserbereich und Leserreports ─────────────────────────────────
+   Diese Klassen stehen hier und nicht im Seitenkopf, weil sie ueber
+   drei Dateien laufen: die gesperrte Seite, das oeffentliche Archiv
+   und zwei geteilte Bauteile.
+
+   Vorher lagen sie gescopet in leserbereich/index.astro. Die
+   Abschnitte stecken aber in eigenen Komponenten und trugen das
+   Scope-Attribut nicht — Abstand, Trennlinie und Kicker fielen
+   komplett aus, und die Seite war ein einziger Block. Gesehen hat
+   das niemand beim Bauen; es brauchte einen Blick auf den Bildschirm.
+   ────────────────────────────────────────────────────────────────── */
+
+.lb-kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  margin: 0;
+}
+
+.lb-hinweis {
+  max-width: 44rem;
+  margin: 1.25rem 0 0;
+  opacity: 0.78;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+.lb-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin: 1rem 0 0;
+}
+.lb-tabelle th {
+  text-align: left;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  padding-bottom: 0.4rem;
+}
+.lb-tabelle td {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgb(from var(--color-paper) r g b / 0.09);
+}
+.lb-tabelle td:first-child,
+.lb-tabelle th:first-child { padding-right: 1.25rem; }
+.lb-tabelle td + td { text-align: right; white-space: nowrap; }
+
+.lb-farbe { font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 700; margin: 1.25rem 0 0; line-height: 1.05; }
+.lb-farbe[data-wert="gruen"] { color: #6fbf8e; }
+.lb-farbe[data-wert="gelb"] { color: #e0b13c; }
+.lb-farbe[data-wert="rot"] { color: #e2705f; }
+.lb-grund { display: block; font-size: 0.95rem; font-weight: 400; opacity: 0.7; margin-top: 0.35rem; }
+
+.lb-stufe[data-wert="erhoeht"] { color: #e0b13c; }
+.lb-stufe[data-wert="extrem"] { color: #e2705f; }
+.lb-stufe[data-wert="fehlt"] { opacity: 0.5; font-style: italic; }
+.lb-soll { opacity: 0.5; }
+
+.lb-funding { margin: 1.4rem 0 0; font-size: 0.98rem; line-height: 1.65; }
+.lb-klein { margin: 1.1rem 0 0; font-size: 0.78rem; opacity: 0.5; line-height: 1.6; }
+.lb-laden { opacity: 0.55; margin: 1.25rem 0 0; }
+
+.lb-bewegung {
+  margin: 1.4rem 0 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--color-orange);
+  background: rgb(from var(--color-paper) r g b / 0.04);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}

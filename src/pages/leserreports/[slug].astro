@@ -98,10 +98,10 @@ const jsonLd = {
       <a href="https://bitcoinaera.de/ampel/" rel="noopener">Ampelseite</a>.
     </p>
 
-    <ReportBloecke report={report} />
+    <ReportBloecke report={report} ab={2} />
 
-    <section class="lb-block">
-      <p class="display lb-kicker">// Wie du das früher liest</p>
+    <section class="wall-sec">
+      <p class="lb-kicker">// Wie du das früher liest</p>
       <p class="lb-hinweis">
         Reports werden drei Wochen nach ihrer Woche öffentlich. Vorher stehen
         sie im Leserbereich — das Passwort dafür steht in jeder Ausgabe des
@@ -109,7 +109,7 @@ const jsonLd = {
       </p>
     </section>
 
-    <KennzahlDefinitionen />
+    <KennzahlDefinitionen nr="05" />
   </main>
 
   <SiteFooter />
