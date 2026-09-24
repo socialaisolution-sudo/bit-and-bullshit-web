@@ -218,6 +218,17 @@ const deepDive = !!d.deepdive_titel?.trim();
      eigene Nummerierung von .post-body. */
   .rb-deep-text :global(> h2) { padding-left: 0; }
 
+  /* Sobald der Text Zwischentitel hat, zaehlen die — und die Absaetze
+     hoeren auf zu zaehlen. Zwei Nummerierungen uebereinander liest
+     niemand, und die Ziffern in der Spalte sind ohnehin nur der Ersatz
+     fuer die Gliederung, die ein Text ohne ## nicht hat.
+     Stellt sich von selbst um, je nachdem was in der Wochendatei steht. */
+  /* padding-top muss mit weg, sonst klafft unter 40rem ueber jedem
+     Absatz die Luecke, in der sonst die Ziffer sitzt. */
+  .rb-deep-text:has(> h2) :global(> p) { padding-left: 0; padding-top: 0; }
+  .rb-deep-text:has(> h2) :global(> p::before) { content: none; }
+  .rb-deep-text:has(> h2) :global(> blockquote) { margin-left: 0; }
+
   /* Ein Zitat mit > steht sonst am linken Rand des Abschnitts, waehrend
      alle Absaetze um 3,4rem eingerueckt sind — das sah aus wie ein
      Versehen. Jetzt steht es in derselben Spalte, mit einer Flaeche
