@@ -218,60 +218,27 @@ const deepDive = !!d.deepdive_titel?.trim();
      eigene Nummerierung von .post-body. */
   .rb-deep-text :global(> h2) { padding-left: 0; }
 
-  /* Jeder zweite Absatz liegt auf einer Flaeche mit orangener Kante —
-     derselbe Griff, den die Meinung weiter oben schon traegt. Im
-     Wechsel mit den flachen Absaetzen bekommt der Text einen Takt,
-     ohne dass ein Wort daran geaendert wird.
-     :nth-of-type zaehlt nur die p, ein eingeschobenes Zitat oder ein
-     Zwischentitel bringt den Wechsel also nicht durcheinander.
+  /* Ein Zitat mit > steht sonst am linken Rand des Abschnitts, waehrend
+     alle Absaetze um 3,4rem eingerueckt sind — das sah aus wie ein
+     Versehen. Jetzt steht es in derselben Spalte, mit einer Flaeche
+     hinter der Kante wie die Meinung weiter oben.
 
-     Die Ziffer bleibt LINKS der Kante stehen, nicht auf der Flaeche:
-     Sie gehoert zur Zaehlung des Abschnitts, nicht zum hervorgehobenen
-     Block. Deshalb ein Verlauf mit hartem Knick statt background-color
-     und eine Kante aus ::after statt border-left — ein Rahmen sitzt
-     immer aussen, und aussen steht die Ziffer. */
-  .rb-deep-text :global(> p:nth-of-type(even)) {
-    padding-left: 4.7rem;
-    padding-right: 1.2rem;
-    padding-top: 1.1rem;
-    padding-bottom: 1.1rem;
-    background: linear-gradient(
-      to right,
-      transparent 0 3.2rem,
-      rgb(from var(--color-paper) r g b / 0.045) 3.2rem
-    );
+     Hervorhebung geht ueber das >, nicht ueber die Position im Text.
+     Welcher Satz heraussticht, ist eine Entscheidung beim Schreiben. */
+  .rb-deep-text :global(> blockquote) {
+    margin-left: 3.4rem;
+    padding: 1rem 1.2rem 1rem 1.15rem;
+    background: rgb(from var(--color-paper) r g b / 0.045);
   }
-  .rb-deep-text :global(> p:nth-of-type(even)::before) {
-    top: calc(1.1rem + 0.12em);
-  }
-  .rb-deep-text :global(> p:nth-of-type(even)::after) {
-    content: "";
-    position: absolute;
-    left: 3.2rem;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--color-orange, #f7931a);
+  @media (max-width: 40rem) {
+    .rb-deep-text :global(> blockquote) { margin-left: 0; }
   }
 
   /* Auf schmalen Schirmen steht die Ziffer ueber dem Absatz statt
-     daneben — 3,4rem Einzug fressen dort ein Achtel der Zeile. Die
-     Kante rutscht dann an den linken Rand, die Flaeche mit ihr. */
+     daneben — 3,4rem Einzug fressen dort ein Achtel der Zeile. */
   @media (max-width: 40rem) {
     .rb-deep-text :global(> p) { padding-left: 0; padding-top: 1.9rem; }
     .rb-deep-text :global(> p::before) { font-size: 1.7rem; top: 0; }
-
-    .rb-deep-text :global(> p:nth-of-type(even)) {
-      padding-left: 1.1rem;
-      padding-right: 1rem;
-      padding-top: 2.4rem;
-      background: rgb(from var(--color-paper) r g b / 0.045);
-    }
-    .rb-deep-text :global(> p:nth-of-type(even)::before) {
-      top: 0.5rem;
-      left: 1.1rem;
-    }
-    .rb-deep-text :global(> p:nth-of-type(even)::after) { left: 0; }
   }
   .rb-quellen { margin: 1.5rem 0 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.55; max-width: 44rem; }
 </style>
