@@ -72,7 +72,10 @@ const jsonLd = {
         </p>
       </div>
 
-      <div class="order-1 flex justify-center md:order-2 md:justify-end">
+      {/* Der Sticker steht nicht mehr namenlos da. Die Vorstellung haengt
+          direkt am Bild, nicht im Fliesstext links — wer zuerst auf die
+          Figur schaut, soll dort auch erfahren, wer sie ist. */}
+      <figure class="order-1 m-0 flex flex-col items-center md:order-2 md:items-end">
         <div class="hero-sticker w-64 sm:w-80 md:w-[26rem]">
           <Image
             src={mascot}
@@ -83,7 +86,15 @@ const jsonLd = {
             loading="eager"
           />
         </div>
-      </div>
+
+        <figcaption class="pete-vorstellung">
+          <p class="display pete-name">Das ist <span>Pete</span></p>
+          <p class="pete-zeile">
+            Er stellt die Fragen, die man sich selbst nicht traut —
+            <a href="/ueber-uns/#pete" class="drip-underline text-paper hover:text-orange">wer er ist</a>.
+          </p>
+        </figcaption>
+      </figure>
     </section>
 
     {/* Der lange Text steht vor allem anderen. Die Snippets bringen die
@@ -394,6 +405,46 @@ const jsonLd = {
     .comic-buehne-bild:hover {
       transform: none;
       transition: none;
+    }
+  }
+
+  /* ---- Pete-Vorstellung unter dem Sticker ----
+     Das Namensschild ist ein geklebter Streifen, kein Bildtitel: Es
+     kippt gegen den Sticker, damit die beiden nicht parallel stehen.
+     Auf Mobil zentriert unter dem Bild, ab Tablet rechtsbuendig. */
+  .pete-vorstellung {
+    margin-top: 1.5rem;
+    max-width: 22rem;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .pete-vorstellung {
+      text-align: right;
+      margin-top: 1.75rem;
+    }
+  }
+  .pete-name {
+    display: inline-block;
+    font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+    color: var(--color-paper);
+    transform: rotate(1.4deg);
+  }
+  .pete-name span {
+    color: var(--color-ink);
+    background: var(--color-orange);
+    padding: 0.1em 0.38em;
+    margin-left: 0.15em;
+    box-shadow: 0 8px 18px -8px rgba(247, 147, 26, 0.55);
+  }
+  .pete-zeile {
+    margin-top: 0.7rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgb(from var(--color-paper) r g b / 0.62);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pete-name {
+      transform: none;
     }
   }
 
