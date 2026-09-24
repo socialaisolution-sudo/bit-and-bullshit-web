@@ -100,7 +100,11 @@ const deepDive = !!d.deepdive_titel?.trim();
       </header>
       <div class="spray-rule mt-4 max-w-[12rem]" />
       <h3 class="display rb-deep-h">{d.deepdive_titel}</h3>
-      <div class="rb-deep-text">
+      {/* Dieselbe Lesespalte wie die Artikel: 44rem BEI 19px, also
+          rund 74 Zeichen je Zeile. Vorher stand hier 44rem bei 16px —
+          gleiche Breite, kleinere Schrift, 88 Zeichen. Das liest sich
+          als Wand, und genau so sah es aus. */}
+      <div class="post-body rb-deep-text">
         <Content />
       </div>
       {d.deepdive_quellen?.trim() && (
@@ -134,13 +138,16 @@ const deepDive = !!d.deepdive_titel?.trim();
     color: var(--color-orange, #f7931a);
     margin: 0;
   }
-  .rb-text { margin: 0.6rem 0 0; font-size: 0.95rem; line-height: 1.65; opacity: 0.85; }
+  .rb-text { margin: 0.6rem 0 0; font-size: 0.97rem; line-height: 1.7; opacity: 0.85; max-width: 34rem; }
 
+  /* Die Verdichtung darf lauter sein als der Rest, aber nicht
+     breiter — dieselbe Zeichenzahl je Zeile wie der Deep Dive. */
   .rb-gesamt {
     margin: 1.75rem 0 0;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 44rem;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    max-width: 38rem;
+    color: rgb(from var(--color-paper) r g b / 0.88);
   }
 
   /* Die Meinung setzt sich ab wie im Newsletter: eigene Flaeche,
@@ -162,7 +169,6 @@ const deepDive = !!d.deepdive_titel?.trim();
     margin: 1.75rem 0 1.25rem;
     max-width: 40rem;
   }
-  .rb-deep-text { max-width: 44rem; line-height: 1.75; }
-  .rb-deep-text :global(p) { margin: 0 0 1.1em; }
+  .rb-deep-text { margin-top: 0; }
   .rb-quellen { margin: 1.5rem 0 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.55; max-width: 44rem; }
 </style>

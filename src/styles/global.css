@@ -729,7 +729,10 @@ body::after {
 }
 
 .lb-hinweis {
-  max-width: 44rem;
+  /* 36rem bei 0.97rem sind rund 70 Zeichen. Vorher 44rem — dieselbe
+     Spalte wie der Artikeltext, aber mit kleinerer Schrift, also
+     deutlich mehr Zeichen je Zeile. */
+  max-width: 36rem;
   margin: 1.25rem 0 0;
   opacity: 0.78;
   font-size: 0.97rem;

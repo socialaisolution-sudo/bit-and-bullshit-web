@@ -33,15 +33,28 @@ deepdive_titel: "Überschrift des Makro-Themas"
 deepdive_quellen: "Woher die Zahlen stammen. Keine Anlageberatung."
 ---
 
-Hier der Deep-Dive-Fließtext.
+Hier der erste Absatz. Er wird größer gesetzt als der Rest und trägt den
+Einstieg — wie bei den Artikeln.
 
-Absätze durch Leerzeilen trennen. Fußnoten, Tabellen und Bilder kann das
-Gerüst nicht — was hier steht, wird als Fließtext ausgegeben.
+## Zwischentitel setzen
+
+Absätze durch Leerzeilen trennen, und alle drei bis vier Absätze einen
+Zwischentitel mit `##`. Der wird automatisch nummeriert, so wie im Blog.
+
+> Ein Satz mit `>` davor wird zur Hervorhebung.
+
+Fußnoten, Tabellen und Bilder kann das Gerüst nicht.
 ```
 
 ---
 
-## Zwei Fallen
+## Drei Fallen
+
+**Absätze über neun Zeilen liest niemand.** Der Text läuft in derselben
+Spalte wie die Artikel, rund 74 Zeichen je Zeile. Ein Absatz mit 150 Wörtern
+sind vierzehn Zeilen am Stück — das sieht aus wie eine Wand, egal wie gut der
+Satzbau ist. Lieber teilen und einen `##` dazwischen.
+
 
 **Der Deep-Dive-Titel ist die Adresse.** Zwei Wochen mit demselben Titel
 bekommen nicht dieselbe Seite — bei der zweiten hängt die Kalenderwoche
