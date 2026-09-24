@@ -45,7 +45,7 @@ meinung: |
 
   Für mich heißt das: Jede Kennzahl braucht ein Verfallsdatum. Nicht in dem Sinn, dass man sie wegwirft, sondern dass man sie regelmäßig gegen die Frage prüft, ob sie noch dasselbe misst wie bei ihrer Einführung. Beim Funding war der Bruch der Januar 2024. Was die anderen vier betrifft, weiß ich es noch nicht – und genau deshalb steht in unserem Protokoll ein Datum, an dem alles neu gerechnet wird.
 
-  Und was die Ampel gerade anzeigt, ist kein Freibrief. Grün heißt hier: An dem, was wir messen konnten, war nichts auffällig. Es war diese Woche nur weniger, als mir lieb ist.
+  Und was die Ampel gerade anzeigt, ist kein Freibrief. Grün heißt hier: An dem, was wir messen konnten, war nichts auffällig. Mehr heißt es nicht.
 
 # Rubrik 4 von 4. Der Markenblock. Der Tonbruch zur Rubrik davor ist
 # beabsichtigt und wird auch optisch nicht abgemildert.
@@ -77,7 +77,7 @@ kennzahlen:
 # durchgerechnet, drittes Bein durch den Referenzkorb ersetzt), und
 # die Ampel laeuft auf vier von vier Eingaengen. Umstellen ist seine
 # Entscheidung, nicht meine.
-draft: true
+draft: false
 ---
 
 Erste Ausgabe. Der Plan ist einfach: Einmal die Woche steht hier, wie der
