@@ -311,4 +311,56 @@ const newsletter = defineCollection({
   }),
 });
 
-export const collections = { blog, ratgeber, cornerstones, metaphern, newsletter };
+
+/**
+ * Der wöchentliche Leserreport.
+ *
+ * Steht erst hinter dem Passwort, wird nach einer Frist von selbst
+ * öffentlich — dieselbe Mechanik wie beim Newsletter und aus
+ * demselben Grund: Ein Versprechen, das an einem Handgriff hängt,
+ * wird irgendwann gebrochen. Die Frist steht in src/lib/leserbereich.ts.
+ *
+ * Der Deep-Dive-Text ist der Dateikörper, kein Frontmatter-Feld.
+ * Fließtext gehört dorthin, wo man ihn schreibt.
+ */
+const leserbereich = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/leserbereich" }),
+  schema: z.object({
+    /** Kalenderwoche als `JJJJ-WW`, zugleich der Dateiname. */
+    kw: z
+      .string()
+      .regex(/^\d{4}-\d{1,2}$/, "kw muss JJJJ-WW sein, etwa 2026-40"),
+
+    /**
+     * Baustein 2: je Kennzahl ein Einordnungsabsatz.
+     *
+     * Die Schlüssel entsprechen den Kennzahlen der Ampel. Fehlt das
+     * Feld ganz, zeigt die Seite die festen Basis-Erklärungen aus
+     * Baustein 5 — dann steht dort nie eine Lücke.
+     */
+    bausteine: z
+      .object({
+        etf: z.string().min(20),
+        premium: z.string().min(20),
+        stablecoin: z.string().min(20),
+        openinterest: z.string().min(20),
+      })
+      .optional(),
+
+    /** Baustein 3: zwei, drei Sätze, die die vier Befunde verdichten. */
+    gesamtkontext: z.string().min(40).optional(),
+
+    /** Optional, zwischen 3 und 4. Leer heißt: Block entfällt. */
+    notiz: z.string().optional(),
+
+    /**
+     * Baustein 4. Titel und Quellenzeile stehen im Kopf, der Text im
+     * Körper. Fehlt der Titel, entfällt der ganze Block — lieber kein
+     * Deep Dive als ein leerer Kasten.
+     */
+    deepdive_titel: z.string().optional(),
+    deepdive_quellen: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, ratgeber, cornerstones, metaphern, newsletter, leserbereich };
