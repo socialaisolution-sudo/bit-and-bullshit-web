@@ -4,7 +4,7 @@ description: "Hohe Bewertungen, rote Zahlen, Weltuntergangs-Überschriften. Was 
 keyword: "platzt die KI-Blase"
 kategorie: markt-mythen
 order: 72
-draft: true
+draft: false
 image: "../../assets/mascots/ki-blase-platzt-angstnarrativ.webp"
 imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links entsetzte Menschen vor Zeitungen mit Schlagzeilen wie „AI CRASH!" und roten Abwärtspfeilen, rechts feiernde Anzugträger mit Geldstapeln vor einem steigenden Kurs — Graffiti-Schriftzug „Die KI-Blase platzt! – Wer verdient daran?"'
 quellen:
