@@ -4,7 +4,7 @@ description: "Immer wenn Bitcoin abstürzt, heißt es „der Kurs wird manipulie
 keyword: "wird Bitcoin manipuliert"
 kategorie: markt-mythen
 order: 73
-draft: true
+draft: false
 image: "../../assets/mascots/wird-bitcoin-manipuliert-kursabsturz.webp"
 imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links ein wütender Mann, der auf einen fallenden roten Kerzenchart zeigt, in der Mitte eine dunkle Puppenspieler-Silhouette mit Fäden an einer orangen Bitcoin-Münze — Graffiti-Schriftzug „Bitcoin wird manipuliert! Oder?"'
 quellen:
