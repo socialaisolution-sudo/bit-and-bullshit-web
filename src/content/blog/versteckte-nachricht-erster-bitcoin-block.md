@@ -4,7 +4,7 @@ description: "Im allerersten Bitcoin-Block versteckte Satoshi Nakamoto eine Zeit
 keyword: "erste Nachricht Bitcoin Genesis Block"
 kategorie: grundwissen
 order: 74
-draft: true
+draft: false
 image: "../../assets/mascots/versteckte-nachricht-erster-bitcoin-block.webp"
 imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, links ein Zeitungsausriss mit der Schlagzeile „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks" über einem Hex-Ausdruck, rechts eine orange leuchtende Bitcoin-Münze — Graffiti-Schriftzug „Der erste Satz in Bitcoin war eine Kampfansage"'
 quellen:
