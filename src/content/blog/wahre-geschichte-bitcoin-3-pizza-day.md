@@ -1,0 +1,25 @@
+---
+title: "Die wahre Geschichte von Bitcoin, Teil 3: Die teuerste Pizza der Welt"
+description: "Am 22. Mai 2010 zahlte Laszlo Hanyecz 10.000 Bitcoin für zwei Pizzen. Warum er trotzdem kein Trottel war, sondern der Mann, der Bitcoin erst zu Geld machte."
+keyword: "Bitcoin Pizza Day 10000 Bitcoin"
+kategorie: grundwissen
+order: 77
+draft: false
+aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
+quellen:
+  - text: "Laszlo Hanyecz im Bitcointalk-Forum, 18. Mai 2010: „Pizza for bitcoins?\" — das Angebot, 10.000 Bitcoin für zwei Pizzen zu zahlen. Am 22. Mai meldet er im selben Faden den Vollzug"
+    url: "https://bitcointalk.org/index.php?topic=137.0"
+  - text: "Die Zahlung steht in Block 57043, Zeitstempel 22. Mai 2010, 18:16 UTC, Betrag 10.000 BTC — nachlesbar in jedem Block-Explorer"
+    url: "https://mempool.space/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"
+  - text: "Kurs am 1. Oktober 2026: rund 83.900 US-Dollar je Bitcoin (Coinbase und Kraken, übereinstimmend). 10.000 Bitcoin entsprachen an diesem Tag rund 839 Millionen US-Dollar"
+---
+
+Es ist die wohl berühmteste und mit Abstand teuerste Pizza-Bestellung der Weltgeschichte. Und sie steckt voller Lektionen, die weit über zwei Pizzen hinausgehen. Nach den eher ernsten Kapiteln [dieser Reihe](/snippets/wahre-geschichte-bitcoin-2-hal-finney/) wird es heute mal etwas leichter, aber nicht weniger lehrreich. Es geht um den Tag, an dem jemand ein Vermögen für zwei Pizzen ausgab, ohne es zu ahnen.
+
+Wir schreiben den 22. Mai 2010. Ein Programmierer namens Laszlo Hanyecz hat Hunger und Lust auf Pizza. Aber er will dabei etwas ausprobieren, das vorher noch niemand getan hat. Er will zum allerersten Mal etwas Echtes mit dieser neuen, seltsamen digitalen Währung bezahlen, mit Bitcoin. Also schreibt er in ein Internetforum: Ich zahle 10.000 Bitcoin für zwei Pizzen. Jemand nimmt das Angebot an, bestellt ihm zwei Papa-John's-Pizzen und bekommt dafür die 10.000 Bitcoin. Das klingt erst mal völlig unspektakulär. Doch jetzt rechne nach. Beim Kurs von Anfang Oktober 2026 wären diese 10.000 Bitcoin rund 840 Millionen Dollar wert. Fast eine Milliarde. Für zwei Pizzen. Da zuckt jeder zusammen und denkt dasselbe: Was für ein unfassbarer Vollidiot.
+
+Aber genau dieser Gedanke ist der eigentliche Denkfehler. Und ihn zu durchschauen, sagt dir sehr viel über das Thema Geld und über die Rolle, die Zeit dabei spielt. Spul also zurück ins Jahr 2010. Damals war Bitcoin fast nichts wert. Es war ein exotisches Experiment für eine Handvoll Technik-Nerds, kaum jemand kannte es, und niemand wusste, ob daraus jemals etwas werden würde. Die 10.000 Bitcoin, die Laszlo da ausgab, hatten zu diesem Zeitpunkt einen Gegenwert von sage und schreibe 41 Dollar. Lies das ruhig nochmal. 41 Dollar. Laszlo hat also keine 840 Millionen für zwei Pizzen bezahlt. Er hat rund 41 Dollar bezahlt, also ziemlich genau das, was zwei Pizzen eben kosten. Diese Summe existiert nur im Rückblick, mit dem Wissen von heute. Mit diesem Wissen über ihn zu urteilen, ist genauso unfair, wie jemanden auszulachen, der in den 90ern eine Internet-Aktie für ein paar Dollar verkauft hat, bevor die Firma zum Weltkonzern wurde. Keiner konnte damals ahnen, was kommt.
+
+Und jetzt kommt der Punkt, der aus Laszlo vom vermeintlichen Trottel einen echten Helden macht. Sein Pizza-Kauf war die allererste dokumentierte Bezahlung einer echten Ware mit Bitcoin überhaupt. Das klingt klein, ist aber riesig. Denn vorher war Bitcoin reines Spielgeld, nur hin- und hergeschoben zwischen ein paar Enthusiasten, ohne echten Nutzen. Hier liegt der entscheidende Gedanke: Geld wird erst dann wirklich zu Geld, wenn man damit auch tatsächlich etwas kaufen kann. Solange niemand es benutzt, bleibt es eine leere Zahl. Und genau das hat Laszlo an diesem Tag bewiesen. Er hat der Welt gezeigt, dass das hier funktioniert, dass man mit Bitcoin in der echten Welt bezahlen kann. Ohne mutige Leute wie ihn, die Bitcoin einfach benutzten, als es noch völlig wertlos war, hätte es niemals einen Wert entwickeln können. Jeder, der heute einen Bitcoin besitzt, profitiert indirekt davon, dass damals jemand den ersten Schritt gewagt hat.
+
+Das Schöne an der Geschichte ist, dass Laszlo selbst bis heute keine Reue zeigt. Er sagt ganz entspannt, damals hätten die Coins eben keinen Wert gehabt, und die Idee, damit einfach mal Pizza zu kaufen, habe er großartig gefunden. Er fühlte sich an diesem Tag, als hätte er das Internet gewonnen. Die Krypto-Welt liebt ihn dafür und feiert ihn jedes Jahr. Der 22. Mai ist seither als Bitcoin Pizza Day bekannt, an dem Bitcoiner rund um den Globus Pizza bestellen und an diesen kuriosen Moment erinnern. Was du für dich mitnehmen kannst, ist dieser eine Gedanke: Der Wert einer Sache hängt immer von der Zeit ab, in der du sie betrachtest. Was heute ein Vermögen ist, war gestern vielleicht ein Witz, und niemand kann sicher sagen, wie es morgen aussieht. Und manchmal sind die, die früh etwas scheinbar Verrücktes tun, nicht die Dummen, sondern genau die Mutigen, die alles erst möglich machen.
