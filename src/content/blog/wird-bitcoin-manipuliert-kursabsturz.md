@@ -1,12 +1,12 @@
 ---
 title: "Wird Bitcoin manipuliert? Warum dieser Vorwurf fast nur bei fallenden Kursen kommt"
-description: "Immer wenn Bitcoin abstürzt, heißt es „der Kurs wird manipuliert\". Was an dem Vorwurf dran ist, warum er bei steigenden Kursen nie fällt und was das über uns verrät."
+description: "Immer wenn Bitcoin abstürzt, heißt es „der Kurs wird manipuliert“. Was an dem Vorwurf dran ist, warum er bei steigenden Kursen nie fällt und was das über uns verrät."
 keyword: "wird Bitcoin manipuliert"
 kategorie: markt-mythen
 order: 73
 draft: false
 image: "../../assets/mascots/wird-bitcoin-manipuliert-kursabsturz.webp"
-imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links ein wütender Mann, der auf einen fallenden roten Kerzenchart zeigt, in der Mitte eine dunkle Puppenspieler-Silhouette mit Fäden an einer orangen Bitcoin-Münze — Graffiti-Schriftzug „Bitcoin wird manipuliert! Oder?"'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links ein wütender Mann, der auf einen fallenden roten Kerzenchart zeigt, in der Mitte eine dunkle Puppenspieler-Silhouette mit Fäden an einer orangen Bitcoin-Münze — Graffiti-Schriftzug „Bitcoin wird manipuliert! Oder?“'
 quellen:
   - text: "Kursverlauf vom 23.09.2026: Bitcoin markierte mit rund 87.300 Dollar ein Acht-Monats-Hoch und schloss den Tag bei etwa 84.400 Dollar — rund 2.900 Dollar tiefer, minus 2,1 Prozent"
     url: "https://www.riotimesonline.com/crypto-markets-bitcoin-majors-thursday-september-24-2026/"
@@ -14,7 +14,7 @@ quellen:
     url: "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-monday-september-21-2026-crypto-prices-hit-highest-levels-in-8-months-143444230.html"
   - text: "Bitwise Asset Management in einer Eingabe an die US-Börsenaufsicht SEC (2019): Rund 95 Prozent des damals gemeldeten Bitcoin-Handelsvolumens waren gefälscht oder nicht ökonomisch"
     url: "https://www.sec.gov/comments/sr-nysearca-2019-01/srnysearca201901-5164833-183434.pdf"
-  - text: "John M. Griffin und Amin Shams, „Is Bitcoin Really Untethered?\", The Journal of Finance (2020) — untersucht, wie gezielte Käufe den Kurs 2017 gestützt haben"
+  - text: "John M. Griffin und Amin Shams, „Is Bitcoin Really Untethered?“, The Journal of Finance (2020) — untersucht, wie gezielte Käufe den Kurs 2017 gestützt haben"
     url: "https://onlinelibrary.wiley.com/doi/10.1111/jofi.12903"
 ---
 

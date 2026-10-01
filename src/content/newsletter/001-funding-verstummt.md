@@ -56,7 +56,7 @@ burner:
   text: |
     Behauptung dieser Woche, sinngemäß so oder ähnlich in jedem zweiten Marktkommentar:
 
-    > „Die Funding Rates zeigen deutliche Überhitzung."
+    > „Die Funding Rates zeigen deutliche Überhitzung.“
 
     Nein. Zeigen sie nicht. Zeigen sie seit 429 Tagen nicht.
 

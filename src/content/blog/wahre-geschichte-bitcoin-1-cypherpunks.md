@@ -7,13 +7,13 @@ order: 75
 draft: false
 aeraLink: "https://bitcoinaera.de/bitcoin/was-ist-bitcoin/"
 image: "../../assets/mascots/wahre-geschichte-bitcoin-1-cypherpunks.webp"
-imageAlt: 'Pete mit Bitcoin-Cap steht zeigend in einem heruntergekommenen Raum, im Hintergrund vermummte Gestalten an Röhrenmonitoren mit orangem Code und einem Bitcoin-Zeichen, an den Wänden „Cypher Punk 1990s" und „Freedom Privacy Money" — Graffiti-Schriftzug „Bitcoin hatte Rebellen als Eltern"'
+imageAlt: 'Pete mit Bitcoin-Cap steht zeigend in einem heruntergekommenen Raum, im Hintergrund vermummte Gestalten an Röhrenmonitoren mit orangem Code und einem Bitcoin-Zeichen, an den Wänden „Cypher Punk 1990s“ und „Freedom Privacy Money“ — Graffiti-Schriftzug „Bitcoin hatte Rebellen als Eltern“'
 quellen:
-  - text: "Eric Hughes: „A Cypherpunk’s Manifesto\", 9. März 1993 — der Grundsatz, dass Privatsphäre nicht erbeten, sondern selbst gebaut werden muss"
+  - text: "Eric Hughes: „A Cypherpunk’s Manifesto“, 9. März 1993 — der Grundsatz, dass Privatsphäre nicht erbeten, sondern selbst gebaut werden muss"
     url: "https://www.activism.net/cypherpunk/manifesto.html"
   - text: "Phil Zimmermann veröffentlichte 1991 die Verschlüsselung PGP für jedermann. Die US-Zollbehörde ermittelte von Februar 1993 bis Januar 1996 gegen ihn wegen des Verdachts auf illegalen Waffenexport — starke Verschlüsselung galt als Kriegswaffe"
     url: "https://philzimmermann.com/EN/background/index.html"
-  - text: "Satoshi Nakamoto: „Bitcoin: A Peer-to-Peer Electronic Cash System\", 31.10.2008 — die Quellenangaben nennen unter anderem Adam Backs Hashcash und Wei Dais b-money"
+  - text: "Satoshi Nakamoto: „Bitcoin: A Peer-to-Peer Electronic Cash System“, 31.10.2008 — die Quellenangaben nennen unter anderem Adam Backs Hashcash und Wei Dais b-money"
     url: "https://bitcoin.org/bitcoin.pdf"
 ---
 

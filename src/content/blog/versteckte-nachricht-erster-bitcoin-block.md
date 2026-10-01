@@ -6,11 +6,11 @@ kategorie: grundwissen
 order: 74
 draft: false
 image: "../../assets/mascots/versteckte-nachricht-erster-bitcoin-block.webp"
-imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, links ein Zeitungsausriss mit der Schlagzeile „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks" über einem Hex-Ausdruck, rechts eine orange leuchtende Bitcoin-Münze — Graffiti-Schriftzug „Der erste Satz in Bitcoin war eine Kampfansage"'
+imageAlt: 'Pete mit Bitcoin-Cap steht mit verschränkten Armen vor einer Betonwand, links ein Zeitungsausriss mit der Schlagzeile „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks“ über einem Hex-Ausdruck, rechts eine orange leuchtende Bitcoin-Münze — Graffiti-Schriftzug „Der erste Satz in Bitcoin war eine Kampfansage“'
 quellen:
-  - text: "Der Genesis-Block trägt den Zeitstempel 3. Januar 2009, 18:15:05 UTC. Im Coinbase-Feld steht der Text „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks\" — nachlesbar in jedem Block-Explorer"
+  - text: "Der Genesis-Block trägt den Zeitstempel 3. Januar 2009, 18:15:05 UTC. Im Coinbase-Feld steht der Text „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks“ — nachlesbar in jedem Block-Explorer"
     url: "https://mempool.space/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-  - text: "The Times vom 3. Januar 2009, Titelseite: „Chancellor Alistair Darling on brink of second bailout for banks\" — Schatzkanzler war zu diesem Zeitpunkt Alistair Darling"
+  - text: "The Times vom 3. Januar 2009, Titelseite: „Chancellor Alistair Darling on brink of second bailout for banks“ — Schatzkanzler war zu diesem Zeitpunkt Alistair Darling"
     url: "https://www.thetimes.com/article/chancellor-alistair-darling-on-brink-of-second-bailout-for-banks-n9l382mn62h"
   - text: "Bitcoin-Whitepaper von Satoshi Nakamoto, Oktober 2008 — der technische Entwurf, zwei Monate vor dem ersten Block"
     url: "https://bitcoin.org/bitcoin.pdf"

@@ -6,7 +6,7 @@ kategorie: markt-mythen
 order: 72
 draft: false
 image: "../../assets/mascots/ki-blase-platzt-angstnarrativ.webp"
-imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links entsetzte Menschen vor Zeitungen mit Schlagzeilen wie „AI CRASH!" und roten Abwärtspfeilen, rechts feiernde Anzugträger mit Geldstapeln vor einem steigenden Kurs — Graffiti-Schriftzug „Die KI-Blase platzt! – Wer verdient daran?"'
+imageAlt: 'Pete mit Bitcoin-Cap steht nachdenklich mit der Hand am Kinn vor einer Betonwand, links entsetzte Menschen vor Zeitungen mit Schlagzeilen wie „AI CRASH!“ und roten Abwärtspfeilen, rechts feiernde Anzugträger mit Geldstapeln vor einem steigenden Kurs — Graffiti-Schriftzug „Die KI-Blase platzt! – Wer verdient daran?“'
 quellen:
   - text: "CNBC vom 06.02.2026: Amazon, Alphabet, Microsoft und Meta planen für 2026 zusammen Investitionen in der Größenordnung von 630 bis 700 Milliarden Dollar — gegenüber rund 388 Milliarden im Vorjahr"
     url: "https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html"

@@ -9,7 +9,7 @@ aeraLink: "https://bitcoinaera.de/geldsystem/was-ist-geld/"
 image: "../../assets/mascots/wahre-geschichte-bitcoin-3-pizza-day.webp"
 imageAlt: 'Pete mit Bitcoin-Cap steht achselzuckend vor einer Betonwand, links zwei geöffnete Pizzakartons mit Salamipizza, in der Mitte ein Haufen goldener Bitcoin-Münzen — Graffiti-Schriftzug „1 Mrd für Pizza?“'
 quellen:
-  - text: "Laszlo Hanyecz im Bitcointalk-Forum, 18. Mai 2010: „Pizza for bitcoins?\" — das Angebot, 10.000 Bitcoin für zwei Pizzen zu zahlen. Am 22. Mai meldet er im selben Faden den Vollzug"
+  - text: "Laszlo Hanyecz im Bitcointalk-Forum, 18. Mai 2010: „Pizza for bitcoins?“ — das Angebot, 10.000 Bitcoin für zwei Pizzen zu zahlen. Am 22. Mai meldet er im selben Faden den Vollzug"
     url: "https://bitcointalk.org/index.php?topic=137.0"
   - text: "Die Zahlung steht in Block 57043, Zeitstempel 22. Mai 2010, 18:16 UTC, Betrag 10.000 BTC — nachlesbar in jedem Block-Explorer"
     url: "https://mempool.space/tx/a1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"
