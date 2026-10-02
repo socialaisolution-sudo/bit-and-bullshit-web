@@ -7,6 +7,8 @@ kategorie: grundwissen
 order: 79
 draft: false
 aeraLink: "https://bitcoinaera.de/whitepaper/10-privacy/"
+image: "../../assets/mascots/wahre-geschichte-bitcoin-5-verbrecher-ruf.webp"
+imageAlt: 'Pete mit Bitcoin-Cap steht rechts mit der Hand am Kinn vor einer Betonwand, links ein Browserfenster mit Zwiebel-Symbol und einer .onion-Adresse samt Menü aus Markets, Wallets, Services und Forums, davor eine Kapuzengestalt am Laptop, von der eine Kette leuchtender Bitcoin-Münzen zu einer Polizeimarke führt — Graffiti-Schriftzug „Nur für Kriminelle?“'
 quellen:
   - text: "Der Darknet-Marktplatz Silk Road ging im Februar 2011 online. Am 1. Oktober 2013 wurde der Betreiber Ross Ulbricht verhaftet, einen Tag später nahm das FBI die Plattform vom Netz. Am 29. Mai 2015 verurteilte ihn ein New Yorker Gericht zu lebenslanger Haft"
     url: "https://www.justice.gov/usao-sdny/pr/ross-ulbricht-aka-dread-pirate-roberts-sentenced-life-prison-creating-running-silk-road"
