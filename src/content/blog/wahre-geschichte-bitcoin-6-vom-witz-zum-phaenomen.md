@@ -1,5 +1,5 @@
 ---
-title: "Die wahre Geschichte von Bitcoin, Teil 6: Vom Witz zum Phänomen"
+title: "Die wahre Geschichte von Bitcoin, Teil 6: Vom Witz zum Welt-Phänomen"
 description: "Über 400 Mal wurde Bitcoin für tot erklärt. Wie aus einem belächelten Nerd-Experiment ein Thema für Notenbanken und Staaten wurde und was uns das lehrt."
 keyword: "Bitcoin totgesagt"
 kategorie: grundwissen
