@@ -30,7 +30,7 @@ const stickerTon: Record<string, string> = {
     posts.map((post) => {
       const kat = KATEGORIE_MAP[post.data.kategorie];
       return (
-        <a href={`/snippets/${post.id}`} class:list={["sticker", stickerTon[post.data.kategorie]]}>
+        <a href={`/snippets/${post.id}/`} class:list={["sticker", stickerTon[post.data.kategorie]]}>
           <span class="sticker-kicker">
             <span class="sticker-num">
               #{String(post.data.order).padStart(2, "0")}
