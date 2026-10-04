@@ -14,7 +14,7 @@ Ok, [im zweiten Teil](/snippets/bitcoin-denkfehler-teil-2/) blieb eine Frage off
 
 Die Antwort ist unbequem einfach: Sie haben früher verstanden. Das ist alles. Nicht früher etwas geschenkt bekommen, nicht an einer geheimen Zuteilung teilgenommen, zu der du keine Einladung hattest. Sie haben schlicht eher hingeschaut, eher kapiert, worum es geht, und danach gehandelt. Kein Insider-Vorsprung, kein Vitamin B, kein Trick. Nur Timing im Verstehen.
 
-Und genau hier liegt der fundamentale Unterschied zu unserem gewohnten Geld, den kaum jemand sieht. Beim Fiatgeld wirst du ärmer, weil oben mehr gedruckt wird. Das passiert über deinen Kopf hinweg, ohne dein Zutun, und du kannst rein gar nichts dagegen machen. Du sitzt am Ende der Schlange, egal wie schlau du bist. Bei Bitcoin dagegen liegt der einzige „Nachteil“ im späteren Verstehen. Und das ist ein Nachteil, den nur du selbst auflösen kannst.
+Und genau hier liegt der fundamentale Unterschied zu unserem gewohnten Geld, den kaum jemand sieht. Beim [Fiatgeld](/snippets/was-ist-fiatgeld/) wirst du ärmer, weil oben mehr gedruckt wird. Das passiert über deinen Kopf hinweg, ohne dein Zutun, und du kannst rein gar nichts dagegen machen. Du sitzt am Ende der Schlange, egal wie schlau du bist. Bei Bitcoin dagegen liegt der einzige „Nachteil“ im späteren Verstehen. Und das ist ein Nachteil, den nur du selbst auflösen kannst.
 
 Denn Verstehen ist das Einzige in diesem ganzen Spiel, das dir niemand von oben zuteilen oder verwehren kann. Keine Bank, kein Staat, kein Gremium entscheidet, ob du es begreifst. Das entscheidest allein du, und zwar jederzeit. Wer früher verstanden hat, hatte keinen Vorteil, den es heute nicht mehr gäbe. Er hat nur eher angefangen. Und anfangen kannst du ab genau diesem Moment.
 

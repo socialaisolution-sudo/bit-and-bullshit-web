@@ -12,7 +12,7 @@ imageAlt: 'Pete zeigt auf ein Fließband: links eine Maschine mit der Aufschrift
 
 Hey, wenn du dich mit Bitcoin beschäftigst, stolperst du früher oder später über dieses eine Wort: Halving. Und keine Sorge, das ist viel einfacher, als es klingt. Es ist sogar einer der cleversten Bausteine im ganzen System — und der Grund, warum Bitcoin knapper ist als Gold.
 
-Ok, ganz einfach: Neue Bitcoin entstehen nach und nach als Belohnung fürs sogenannte Mining. Und ungefähr alle vier Jahre passiert etwas Festes, ins System Eingebautes — diese Belohnung wird halbiert. Genau das ist das Halving. Von heute auf morgen kommt nur noch halb so viel neuer Nachschub dazu. Weniger frische Bitcoin, bei gleichbleibender oder steigender Nachfrage. Du ahnst, in welche Richtung das den Wert tendenziell schiebt.
+Ok, ganz einfach: Neue Bitcoin entstehen nach und nach als Belohnung fürs sogenannte [Mining](/snippets/was-ist-bitcoin-mining/). Und ungefähr alle vier Jahre passiert etwas Festes, ins System Eingebautes — diese Belohnung wird halbiert. Genau das ist das Halving. Von heute auf morgen kommt nur noch halb so viel neuer Nachschub dazu. Weniger frische Bitcoin, bei gleichbleibender oder steigender Nachfrage. Du ahnst, in welche Richtung das den Wert tendenziell schiebt.
 
 Das Besondere: Das ist keine Entscheidung, die irgendein Chef trifft. Kein Gremium, keine Notenbank, kein „diesmal machen wir's anders“. Es ist im Code festgeschrieben, für alle Zeiten, unveränderbar. Diese eingebaute, planbare Verknappung gibt es bei normalem Geld schlicht nicht — da wird nachgedruckt, wenn's gerade passt.
 

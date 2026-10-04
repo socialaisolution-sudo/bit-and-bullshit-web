@@ -16,4 +16,4 @@ Ok, so läuft's: Weltweit rechnen tausende spezialisierte Computer um die Wette.
 
 Und dieses „um die Wette rechnen“ hat einen tieferen Sinn, als es zuerst wirkt. Es macht das ganze Netzwerk fälschungssicher. Wer betrügen wollte, müsste mehr Rechenpower aufbringen als der ganze Rest der Welt zusammen — praktisch unmöglich und vor allem unbezahlbar. Die schiere Menge an ehrlicher Rechenleistung schützt das System. Das nennt sich „Proof of Work“, also Nachweis über erbrachte Arbeit.
 
-Gleichzeitig sorgt das Mining dafür, dass neue Bitcoin nur langsam und nach festen Regeln dazukommen — kein wildes Nachdrucken möglich. Wie die Rechenaufgabe genau aussieht, warum Mining so viel Energie braucht und wie das mit dem Halving zusammenhängt, findest du ausführlich in unserer Bitcoin-Enzyklopädie.
+Gleichzeitig sorgt das Mining dafür, dass neue Bitcoin nur langsam und nach festen Regeln dazukommen — kein wildes Nachdrucken möglich. Wie die Rechenaufgabe genau aussieht, warum Mining so viel Energie braucht und wie das mit dem [Halving](/snippets/was-ist-das-halving/) zusammenhängt, findest du ausführlich in unserer Bitcoin-Enzyklopädie.
