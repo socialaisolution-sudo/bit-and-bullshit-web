@@ -135,6 +135,12 @@ for (const p of [
   "/leserbereich/",
 ]) OHNE_SITEMAP.add(p);
 
+/* Arbeitsstände. /dev/newsletter/ trug noindex, stand aber in der Sitemap und
+   lieferte dort zusätzlich einen 404 — Search Console hat genau diese Adresse
+   als „Nicht gefunden" gemeldet. Als Präfix, damit der nächste Arbeitsstand
+   nicht wieder einzeln nachgetragen werden muss. */
+const SITEMAP_PRAEFIXE_AUS = ["/dev/"];
+
 /** Ordnet einer fertigen Adresse die Quelldatei zu, aus der sie entsteht. */
 function quelleZuUrl(pfad) {
   const m = (re) => pfad.match(re);
@@ -487,7 +493,11 @@ export default defineConfig({
   integrations: [
     blindtextWache(),
     sitemap({
-      filter: (url) => !OHNE_SITEMAP.has(new URL(url).pathname),
+      filter: (url) => {
+        const pfad = new URL(url).pathname;
+        if (OHNE_SITEMAP.has(pfad)) return false;
+        return !SITEMAP_PRAEFIXE_AUS.some((pr) => pfad.startsWith(pr));
+      },
       serialize(eintrag) {
         const pfad = new URL(eintrag.url).pathname;
         const quelle = quelleZuUrl(pfad);
