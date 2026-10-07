@@ -5,6 +5,8 @@ keyword: "was ist ein Pleb Bitcoin"
 kategorie: grundwissen
 order: 83
 draft: false
+image: "../../assets/mascots/was-ist-ein-pleb-bitcoin.webp"
+imageAlt: 'Pete mit Bitcoin-Cap grinst und hebt den Daumen, hinter ihm eine antike Säule und Stapel von Bitcoin-Münzen — Graffiti-Schriftzug „Pleb? Beleidigung oder Ehrentitel?“ mit Krone über dem Wort'
 ---
 
 Pleb. Klingt erstmal nach Beleidigung. In der Bitcoin-Welt ist es ein Ehrentitel.
