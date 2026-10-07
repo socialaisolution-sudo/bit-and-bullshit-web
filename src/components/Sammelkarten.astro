@@ -52,30 +52,16 @@ const BASE = "/sammelkarten/";
     --sk-card-w: min(78vw, 340px);
   }
 
+  /* Nur noch Hülle, kein eigener Hintergrund. Der Prototyp brachte einen
+     eigenen Verlauf mit — eingebaut in die Seite ergab das eine sichtbare
+     Kante dort, wo das fremde Stück anfing. Das Raster sitzt jetzt auf dem
+     Seitengrund, und der Seitenkopf steht in sammelkarten.astro, im selben
+     Stil wie das Metaphern-Register. */
   .sk-root {
-    background:
-      radial-gradient(120% 80% at 50% -10%, #1c1a17 0%, var(--sk-bg) 55%),
-      var(--sk-bg);
     color: var(--sk-fg);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
-  .sk-wrap { max-width: 1120px; margin: 0 auto; padding-inline: 18px; }
-  .sk-hero { padding-block: 34px 18px; text-align: center; }
-  /* Vorher Permanent Marker. Die Drehung und die Markenfarbe tragen den
-     Graffiti-Ton auch ohne dritte Schrift. */
-  .sk-tag {
-    display: inline-block; font-family: var(--font-display);
-    color: var(--sk-accent); font-size: 13px; letter-spacing: .14em;
-    text-transform: uppercase; transform: rotate(-2deg); margin-bottom: 6px;
-  }
-  .sk-h1 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(38px, 9vw, 78px); line-height: .92;
-    margin: .1em 0 .18em; text-transform: uppercase; text-wrap: balance;
-  }
-  .sk-h1 .amp { color: var(--sk-accent); }
-  .sk-sub { color: var(--sk-muted); max-width: 52ch; margin: 0 auto; font-size: 16px; line-height: 1.5; }
   .sk-count {
     display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
     font-family: var(--font-display); font-size: 14px; letter-spacing: .08em;
@@ -189,21 +175,11 @@ const BASE = "/sammelkarten/";
 </style>
 
 <div class="sk-root">
-  <div class="sk-wrap">
-    <header class="sk-hero">
-      <div class="sk-tag">Bit &amp; Bullshit Collectors</div>
-      <h1 class="sk-h1">Pete-Sammel<span class="amp">karten</span></h1>
-      <p class="sk-sub">
-        Einundzwanzig Karten. Jede ein Prinzip, das dich vor Finanz-Bullshit
-        schützt. Tipp eine Karte an, dreh sie um — und lies die Story dahinter.
-      </p>
-      <div class="sk-count">21 Karten · <b>/21</b> wie 21 Mio.</div>
-    </header>
-    <div class="sk-grid" id="skGrid" aria-label="Alle 21 Sammelkarten"></div>
-    <div class="sk-foot">
-      Zieh oder wisch über die Karte, um sie zu drehen. · Erhältlich nur als
-      komplettes 21er-Set.
-    </div>
+  <div class="sk-count">21 Karten · <b>/21</b> wie 21 Mio.</div>
+  <div class="sk-grid" id="skGrid" aria-label="Alle 21 Sammelkarten"></div>
+  <div class="sk-foot">
+    Zieh oder wisch über die Karte, um sie zu drehen. · Erhältlich nur als
+    komplettes 21er-Set.
   </div>
 </div>
 

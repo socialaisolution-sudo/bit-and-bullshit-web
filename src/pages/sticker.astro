@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SocialLinks from "../components/SocialLinks.astro";
+import Brotkrumen from "../components/Brotkrumen.astro";
 ---
 
 <Layout
@@ -11,16 +12,25 @@ import SocialLinks from "../components/SocialLinks.astro";
 >
   <SiteHeader />
 
-  <main class="mx-auto max-w-3xl px-5 py-16 md:py-28">
-    <p class="display text-xs tracking-[0.3em] text-orange">// COMING SOON</p>
-    <h1 class="display mt-4 text-4xl md:text-6xl">
-      Sticker sind in <span class="drip-underline">Produktion.</span>
-    </h1>
-    <p class="mt-6 text-lg leading-relaxed text-paper/80">
-      Sobald sie da sind, gibt&apos;s hier die Motive zum Anschauen.
-      Bis dahin: schreib uns direkt, welches Motiv du willst — DM oder Mail.
-      Solange der Vorrat reicht, sind sie kostenlos.
-    </p>
+  {/* Derselbe Seitenkopf wie im Metaphern-Register: Brotkrume, Kicker,
+      Wandschrift im Hintergrund, Marker-Strich unter dem Schlusswort.
+      `overflow-hidden` gehört dazu — die Wandschrift ragt mit -1.5rem über
+      den rechten Rand hinaus und erzeugt sonst eine Querleiste. */}
+  <main class="relative mx-auto max-w-3xl overflow-hidden px-5 py-16 md:py-24">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "Sticker" }]} />
+
+    <header class="relative mt-8 max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">KLEBEN</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// COMING SOON</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Sticker sind in <span class="marker">Produktion.</span>
+      </h1>
+      <p class="hero-layer mt-8 text-lg leading-relaxed text-paper/80">
+        Sobald sie da sind, gibt&apos;s hier die Motive zum Anschauen.
+        Bis dahin: schreib uns direkt, welches Motiv du willst — DM oder Mail.
+        Solange der Vorrat reicht, sind sie kostenlos.
+      </p>
+    </header>
 
     <div class="mt-10 space-y-4">
       <a

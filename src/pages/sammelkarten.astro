@@ -2,9 +2,12 @@
 /**
  * Die Sammelkarten-Rubrik.
  *
- * Die Seite selbst ist nur Rahmen — Ueberschrift, Raster, Kartenansicht und
- * Story stecken in der Komponente, damit die Rubrik an einer Stelle gepflegt
- * wird. Die Daten liegen in src/data/sammelkarten.json.
+ * Seitenkopf hier, Raster und Kartenansicht in der Komponente. Der Kopf stand
+ * zunaechst mit in der Komponente — mit eigener Ueberschriftengroesse,
+ * eigenem Hintergrund und eigener Schriftfarbe. Eingebaut in die Seite sah
+ * das aus wie ein fremdes Stueck mit sichtbarer Kante. Jetzt traegt die Seite
+ * denselben Kopf wie das Metaphern-Register, und die Komponente kuemmert sich
+ * nur noch um die Karten.
  *
  * Kein eigenes Ziel-Keyword: Die Keyword-Wache im Build liest nur die
  * Markdown-Bestaende. Diese Seite bewirbt sich nicht um eine Suchanfrage,
@@ -13,6 +16,7 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import Brotkrumen from "../components/Brotkrumen.astro";
 import Sammelkarten from "../components/Sammelkarten.astro";
 ---
 
@@ -21,6 +25,28 @@ import Sammelkarten from "../components/Sammelkarten.astro";
   description="Einundzwanzig Pete-Sammelkarten, jede mit einem Prinzip gegen Finanz-Bullshit. Karte antippen, umdrehen, Story lesen. Nur als komplettes 21er-Set."
 >
   <SiteHeader />
-  <Sammelkarten />
+
+  {/* `overflow-hidden` gehört zum Kopf: die Wandschrift ragt mit -1.5rem
+      über den rechten Rand hinaus und erzeugt sonst eine Querleiste. */}
+  <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "Sammelkarten" }]} />
+
+    <header class="relative mt-8 max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">21/21</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// COLLECTORS</p>
+      {/* Wortlaut aus dem Prototyp. Der Produktname gehört in die
+          Überschrift — danach sucht jemand, nicht nach einer Umschreibung. */}
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Die Pete-<span class="marker">Sammelkarten.</span>
+      </h1>
+      <p class="hero-layer mt-8 text-lg leading-relaxed text-paper/80">
+        Einundzwanzig Karten. Jede ein Prinzip, das dich vor Finanz-Bullshit
+        schützt. Tipp eine Karte an, dreh sie um — und lies die Story dahinter.
+      </p>
+    </header>
+
+    <Sammelkarten />
+  </main>
+
   <SiteFooter />
 </Layout>
