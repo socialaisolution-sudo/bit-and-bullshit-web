@@ -1,0 +1,194 @@
+{
+  "cards": [
+    {
+      "nr": 1,
+      "id": "BNB-0001",
+      "title": "PETE DER ENTLARVER",
+      "spruch": "Glaub nicht jeder Schlagzeile. Frag nach, wer profitiert.",
+      "story": "Jede Schlagzeile will was von dir. Angst, einen Klick, dein Geld. Pete liest die Nachricht und stellt eine einzige Frage: Wer verdient daran, dass ich das glaube? Meistens ist die Antwort schon die halbe Wahrheit.",
+      "front": "img/01.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 2,
+      "id": "BNB-0002",
+      "title": "PETE DER GEDULDIGE",
+      "spruch": "Panik verkauft. Geduld sammelt ein.",
+      "story": "Wenn alle schreien, wird verkauft. Wenn's still ist, wird gekauft. Pete macht's umgekehrt zur Herde. Kein Drama, kein Hin und Her. Einfach dranbleiben, während die anderen sich verrückt machen.",
+      "front": "img/02.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 3,
+      "id": "BNB-0003",
+      "title": "PETE DER SELBSTVERWAHRER",
+      "spruch": "Deine Keys, dein Bitcoin. Sonst nur ein Versprechen.",
+      "story": "Liegt dein Bitcoin auf einer Börse, gehört er erstmal der Börse. Du hast nur ein Versprechen, dass du ihn wiederkriegst. Erst mit deinen eigenen Schlüsseln ist es wirklich deiner. Not your keys, not your coins. Klingt hart, ist aber so.",
+      "front": "img/03.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 4,
+      "id": "BNB-0004",
+      "title": "PETE DER INFLATIONSJÄGER",
+      "spruch": "Inflation ist die Steuer, die keiner beschlossen hat.",
+      "story": "Keiner hat dafür gestimmt. Trotzdem zahlst du jeden Tag. Dein Geld wird leiser weniger wert, während die Zahl auf dem Konto gleich bleibt. Pete nennt das die stille Steuer. Niemand schickt dir dafür einen Bescheid.",
+      "front": "img/04.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 5,
+      "id": "BNB-0005",
+      "title": "PETE DER SKEPTIKER",
+      "spruch": "Klingt zu gut? Dann zahlst du am Ende drauf.",
+      "story": "Garantierte Rendite, kein Risiko, nur für dich. Immer wenn's zu schön klingt, fehlt ein Teil der Geschichte. Pete sucht den Haken, bevor er unterschreibt. Der Haken ist nämlich immer da. Du findest ihn nur später, wenn du nicht suchst.",
+      "front": "img/05.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 6,
+      "id": "BNB-0006",
+      "title": "PETE DER RECHNER",
+      "spruch": "Schulden mit Schulden zahlen. Was soll schon schiefgehen.",
+      "story": "Alte Schulden mit neuen Schulden stopfen. Privat würdest du da sofort stutzen. Staaten machen genau das, nur mit mehr Nullen. Pete rechnet nach und wundert sich, dass sich keiner wundert.",
+      "front": "img/06.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 7,
+      "id": "BNB-0007",
+      "title": "PETE DER UNBESTECHLICHE",
+      "spruch": "Ich verkauf dir keine Kursziele. Nur die Fragen dazu.",
+      "story": "Pete hat kein Depot, das du nachkaufen sollst. Keine heiße Aktie, keinen Kurs für nächste Woche. Er gibt dir die Fragen, nicht die Antworten zum Mitschreiben. Was du draus machst, ist deine Sache.",
+      "front": "img/07.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 8,
+      "id": "BNB-0008",
+      "title": "PETE DER HISTORIKER",
+      "spruch": "Wer die Geschichte kennt, fällt nicht aufs Märchen rein.",
+      "story": "Jede Blase, jeder Crash, jedes Wundergeld gab's schon mal. Nur die Namen ändern sich. Pete kennt die alten Geschichten und erkennt das Muster wieder. Deshalb fällt er nicht auf das neue Märchen rein.",
+      "front": "img/08.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 9,
+      "id": "BNB-0009",
+      "title": "PETE DER REALIST",
+      "spruch": "Keiner weiß den Kurs von morgen. Ich auch nicht.",
+      "story": "Jeder zweite im Internet kennt angeblich den Kurs von morgen. Pete ist ehrlich: keiner weiß es, er auch nicht. Wer dir was anderes erzählt, verkauft dir meistens was. Die Glaskugel bleibt im Schrank.",
+      "front": "img/09.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 10,
+      "id": "BNB-0010",
+      "title": "PETE DER WÄCHTER",
+      "spruch": "21 Millionen. Mehr gibt's nie. Das ist der ganze Trick.",
+      "story": "Mehr als 21 Millionen Bitcoin wird es nie geben. Keine Druckerpresse, keine Ausnahme, kein Nachschlag. Diese eine Zahl ist der ganze Trick an der Sache. Pete passt drauf auf, dass du sie nicht vergisst.",
+      "front": "img/10.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 11,
+      "id": "BNB-0011",
+      "title": "PETE DER RISIKOWÄGER",
+      "spruch": "Setz nur, was du auch verlieren kannst.",
+      "story": "Die wichtigste Regel steht vor jedem Kurs. Setz nur Geld ein, dessen Verlust dich nicht umwirft. Pete balanciert, aber mit Netz. Wer ohne Netz läuft, fällt irgendwann. Und dann richtig.",
+      "front": "img/11.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 12,
+      "id": "BNB-0012",
+      "title": "PETE DER SPARER",
+      "spruch": "Jede Woche ein Stück. Langweilig. Funktioniert.",
+      "story": "Kein Timing, kein Nervenkrieg. Jede Woche ein kleines Stück weglegen, egal was der Kurs macht. Langweilig? Total. Aber es funktioniert, gerade weil es langweilig ist. Pete nennt das stacken.",
+      "front": "img/12.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 13,
+      "id": "BNB-0013",
+      "title": "PETE DER UNBEEINDRUCKTE",
+      "spruch": "Schon 400 Mal beerdigt. Steht immer noch da.",
+      "story": "Über 400 Mal wurde Bitcoin in den Schlagzeilen für tot erklärt. Steht trotzdem noch da. Pete sammelt die alten Nachrufe und grinst. Totgesagte leben manchmal erstaunlich lange.",
+      "front": "img/13.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 14,
+      "id": "BNB-0014",
+      "title": "PETE DER DURCHBLICKER",
+      "spruch": "Hinter jedem heißen Tipp steckt meist eine Provision.",
+      "story": "Der Typ mit dem heißen Tipp meint selten dich. Er meint seine Provision. Pete schaut hinter den glänzenden Post und findet das Kleingedruckte. Gratis-Tipps sind fast nie gratis.",
+      "front": "img/14.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 15,
+      "id": "BNB-0015",
+      "title": "PETE DER FREIE",
+      "spruch": "Dein Geld braucht keine Öffnungszeiten.",
+      "story": "Keine Filiale, kein Feierabend, kein Wochenende. Pete schickt Wert um die halbe Welt, wenn die Banken längst zu haben. Dein Geld muss nicht warten, bis jemand aufschließt.",
+      "front": "img/15.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 16,
+      "id": "BNB-0016",
+      "title": "PETE DER STOIKER",
+      "spruch": "Der Markt schreit. Ich trink Tee.",
+      "story": "Rote Kerzen, Panik, Weltuntergang im Minutentakt. Pete sitzt da und trinkt seinen Tee. Der Markt schreit jeden Tag irgendwas. Zuhören muss man ihm nicht.",
+      "front": "img/16.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 17,
+      "id": "BNB-0017",
+      "title": "PETE DER LEHRER",
+      "spruch": "Verstehen schlägt Vertrauen. Immer.",
+      "story": "Vertrau mir, sagen die, die wollen, dass du nicht nachfragst. Pete will, dass du es selbst verstehst. Wer versteht, braucht niemandem blind zu glauben. Verstehen schlägt Vertrauen. Jedes Mal.",
+      "front": "img/17.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 18,
+      "id": "BNB-0018",
+      "title": "PETE DER DETEKTIV",
+      "spruch": "Frisches Geld kommt nie bei dir zuerst an.",
+      "story": "Neues Geld kommt zuerst bei denen an, die ganz vorne stehen. Banken, Staat, die Großen. Bei dir kommt es an, wenn die Preise schon gestiegen sind. Pete folgt der Spur und zeigt, wer zuerst zugreift.",
+      "front": "img/18.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 19,
+      "id": "BNB-0019",
+      "title": "PETE DER SCHÜRFER",
+      "spruch": "Echte Knappheit kostet echte Energie.",
+      "story": "Bitcoin fällt nicht vom Himmel. Er wird geschürft, mit echten Rechnern und echtem Strom. Genau das macht ihn knapp. Was nichts kostet, ist auch nichts wert. Pete schwingt die Spitzhacke.",
+      "front": "img/19.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 20,
+      "id": "BNB-0020",
+      "title": "PETE DER ABWÄGER",
+      "spruch": "Gold hat 5000 Jahre. Bitcoin hat Mathe.",
+      "story": "Gold überzeugt seit 5000 Jahren. Schwer, selten, bewährt. Bitcoin kontert mit Mathe: fälschungssicher, teilbar, in Sekunden um die Welt. Pete hält beides in der Hand und wägt ab. Muss ja keiner allein gewinnen.",
+      "front": "img/20.jpg",
+      "back": "img/back.jpg"
+    },
+    {
+      "nr": 21,
+      "id": "BNB-0021",
+      "title": "PETE DIE LEGENDE",
+      "spruch": "Du hast alle 21. Jetzt weißt du mehr als die meisten.",
+      "story": "Einundzwanzig Karten, einundzwanzig Mal hingeschaut statt weggehört. Wer bis hier gesammelt hat, fragt selber nach, rechnet selber nach, fällt nicht mehr so leicht rein. Das ist die ganze Idee. Willkommen im Club, Pleb.",
+      "front": "img/21.jpg",
+      "back": "img/back.jpg"
+    }
+  ],
+  "back": "img/back.jpg"
+}

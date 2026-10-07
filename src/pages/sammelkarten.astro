@@ -1,0 +1,26 @@
+---
+/**
+ * Die Sammelkarten-Rubrik.
+ *
+ * Die Seite selbst ist nur Rahmen — Ueberschrift, Raster, Kartenansicht und
+ * Story stecken in der Komponente, damit die Rubrik an einer Stelle gepflegt
+ * wird. Die Daten liegen in src/data/sammelkarten.json.
+ *
+ * Kein eigenes Ziel-Keyword: Die Keyword-Wache im Build liest nur die
+ * Markdown-Bestaende. Diese Seite bewirbt sich nicht um eine Suchanfrage,
+ * sie ist das Ziel der QR-Codes auf den gedruckten Karten.
+ */
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Sammelkarten from "../components/Sammelkarten.astro";
+---
+
+<Layout
+  title="Pete-Sammelkarten — alle 21 Karten | Bit & Bullshit"
+  description="Einundzwanzig Pete-Sammelkarten, jede mit einem Prinzip gegen Finanz-Bullshit. Karte antippen, umdrehen, Story lesen. Nur als komplettes 21er-Set."
+>
+  <SiteHeader />
+  <Sammelkarten />
+  <SiteFooter />
+</Layout>

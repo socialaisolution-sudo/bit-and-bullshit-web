@@ -14,6 +14,7 @@ const links = [
   { href: "/metaphern/", label: "Metaphern" },
   { href: "/bullshitmelder/", label: "Bullshitmelder" },
   { href: "/ueber-uns/", label: "Über" },
+  { href: "/sammelkarten/", label: "Sammelkarten" },
   { href: "/sticker/", label: "Sticker" },
 ];
 ---
@@ -24,10 +25,18 @@ const links = [
       Bit <span class="text-orange">&amp;</span> Bullshit
     </a>
     <div class="flex items-center gap-3 sm:gap-6">
-      {/* Ab 900px die volle Leiste. Mit dem Metaphern-Register sind es
-          sieben Punkte; darunter passen Logo + Links + Suche nicht mehr
-          nebeneinander und der letzte Eintrag wurde abgeschnitten. */}
-      <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[900px]:flex sm:gap-6">
+      {/* Ab 1100px die volle Leiste. Vorher stand hier 900px — das reichte
+          für sieben Punkte. Mit „Sammelkarten“ sind es neun, und der längste
+          Eintrag ist zugleich der neue; bei 900px wurde die Leiste umbrochen.
+
+          Derselbe Wert steht unten im @media für den Burger. Das ist kein
+          Zufall, sondern Bedingung: Stehen die beiden Grenzen auseinander,
+          entsteht dazwischen ein Bereich ganz ohne Navigation. Genau das war
+          der Fall — die Leiste begann bei 900px, der Burger verschwand schon
+          bei 560px, und zwischen 560 und 899 Pixeln hatte der Header weder
+          das eine noch das andere. Wer die eine Zahl ändert, muss die andere
+          mitändern. */}
+      <ul class="hidden items-center gap-4 text-xs uppercase tracking-widest min-[1100px]:flex sm:gap-6">
         {
           links.map((link) =>
             link.href === "/snippets" ? (
@@ -350,7 +359,9 @@ const links = [
   /* Ein- und Ausblenden bewusst hier statt per Tailwind-Variante: Astro scopt
      Komponenten-Styles mit einem Attribut-Selektor, dadurch schlägt das
      display aus diesem Block jede Utility-Klasse gleicher Spezifität. */
-  @media (min-width: 560px) {
+  /* Muss derselbe Wert sein wie das min-[…] der breiten Leiste oben —
+     siehe die Begründung dort. */
+  @media (min-width: 1100px) {
     .burger,
     .mobile-nav {
       display: none;
