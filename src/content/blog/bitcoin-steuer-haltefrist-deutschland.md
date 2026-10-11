@@ -10,7 +10,7 @@ image: "../../assets/mascots/bitcoin-steuer-haltefrist-deutschland.webp"
 imageAlt: 'Pete hockt nachdenklich vor einem Kalenderblatt mit der Aufschrift „1 Jahr“ und einem großen Paragrafenzeichen, im Hintergrund die Umrisse Deutschlands — links der Schriftzug „Bitcoin-Steuer in Deutschland: Fällt die einjährige Haltefrist?“ und darunter vier Punkte: ein Jahr Haltefrist aktuell, geplante Änderungen im Check, Steuerregeln einfach erklärt, Auswirkungen für Investoren'
 ---
 
-Ok, mal ehrlich, das betrifft in Deutschland fast jeden, der Krypto hält: Jahrelang hieß es „lang halten, nicht zocken, Geduld haben“. Und der eine echte Vorteil dafür war die Haltefrist — wer seine Bitcoin länger als ein Jahr hält, kassiert die Gewinne steuerfrei. Und ausgerechnet die soll jetzt kippen. Riecht komisch, oder?
+Ok, mal ehrlich, das betrifft in Deutschland fast jeden, der Krypto hält: Jahrelang hieß es „lang halten, nicht zocken, Geduld haben“. Und der eine echte Vorteil dafür war die Haltefrist — wer seine Bitcoin länger als ein Jahr hält, kassiert die Gewinne steuerfrei. Und ausgerechnet die soll jetzt kippen. Riecht komisch, oder? Was genau im Entwurf steht, ab wann es greifen soll und wen der Bestandsschutz schützt, steht in [„Krypto-Steuer ab 2027“](/snippets/krypto-steuer-haltefrist-2027/).
 
 Denn schau mal, was da eigentlich passiert. Erst wird die Steuerfreiheit als Belohnung für langfristiges, vernünftiges Verhalten aufgebaut. Genau das, was man von einem seriösen Anleger will. Und kaum machen mehr Leute genau das — halten statt traden — soll die Belohnung weg. Die Regel, die Geduld belohnt, verschwindet also genau in dem Moment, wo sie den Staat etwas kosten würde.
 
