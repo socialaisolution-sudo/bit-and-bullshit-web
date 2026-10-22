@@ -1,0 +1,334 @@
+---
+/**
+ * Evergreen: Was ist 1971 passiert? — die Bit-&-Bullshit-Fassung als Comic-Zeitstrahl mit drei Bullshit-Checks.
+ *
+ * Schwesterseite zu blindinsights.de/beitraege/was-ist-1971-passiert/ (gleiche Recherche, gleiche Zahlen).
+ * Jede Zahl hier steht im Faktenblatt dieses Beitrags (Trinity, Paket 20261022-154650) mit Primärquelle und
+ * Rechenweg: Bundesbank (Kaufkraftäquivalente, Goldfixing, Jahresabschluss 2025), BLS, Federal Reserve History.
+ */
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Brotkrumen from "../components/Brotkrumen.astro";
+
+const zeitstrahl = [
+  { jahr: "1944", titel: "Der Deal", text: "Bretton Woods: Alle Währungen hängen am Dollar, der Dollar hängt am Gold. 35 Dollar pro Feinunze, fest." },
+  { jahr: "Mai 1971", titel: "Die Mark läuft über", text: "Die Bundesbank muss in wenigen Wochen 6 Milliarden Dollar aufkaufen — und dafür 22 Milliarden D-Mark schaffen. Am 6. Mai wird die Mark freigegeben." },
+  { jahr: "15. Aug. 1971", titel: "Goldfenster zu", text: "Nixon im Fernsehen: Andere Staaten können ihre Dollar nicht mehr in Gold tauschen. Eigentlich „vorübergehend“." },
+  { jahr: "März 1973", titel: "Alles schwimmt", text: "Die Bundesbank muss den Dollar nicht mehr stützen. Seitdem schwanken die Kurse frei — bis heute." },
+  { jahr: "1973", titel: "Ölschock", text: "Ölembargo: Der Barrel springt von 2,90 auf 11,65 Dollar. Die Preise fliegen — aus mehr als einem Grund." },
+  { jahr: "2009", titel: "Plan B", text: "Der erste Bitcoin-Block. Geld mit fester Menge, ohne Fenster, das jemand zumachen kann." },
+];
+
+const kaufkraft = [
+  { jahr: 1971, wert: 100 },
+  { jahr: 1980, wert: 64.1 },
+  { jahr: 1990, wert: 50.0 },
+  { jahr: 2000, wert: 40.3 },
+  { jahr: 2010, wert: 34.3 },
+  { jahr: 2020, wert: 30.3 },
+  { jahr: 2025, wert: 24.8 },
+];
+const z = (x: number) => x.toLocaleString("de-DE", { maximumFractionDigits: 1 });
+
+const faq = [
+  {
+    f: "Was ist am 15. August 1971 passiert?",
+    a: "US-Präsident Nixon hat das sogenannte Goldfenster geschlossen: Andere Staaten konnten ihre Dollar nicht mehr zum festen Preis von 35 Dollar je Feinunze in Gold tauschen. Damit war das System von Bretton Woods praktisch am Ende, 1973 kam der Übergang zu frei schwankenden Wechselkursen.",
+  },
+  {
+    f: "Ist seit 1971 die Inflation explodiert?",
+    a: "In Deutschland kaum: Von 1950 bis 1971 lag die Teuerung bei 2,4 Prozent im Jahr, von 1971 bis 2025 bei 2,6 Prozent. Von 100 D-Mark aus 1971 ist trotzdem nur noch eine Kaufkraft von 24,8 D-Mark übrig. In den USA ging die Inflation schon 1965 los, sechs Jahre vor Nixons Rede.",
+  },
+  {
+    f: "Was hat das mit Bitcoin zu tun?",
+    a: "Bitcoin ist die Antwort einer Szene, die festes Geld will, das keine Regierung umstellen kann. Ob das die bessere Lösung ist, ist eine eigene Frage — die Daten zu 1971 sagen dazu nichts. Keine Anlageberatung.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((x) => ({ "@type": "Question", name: x.f, acceptedAnswer: { "@type": "Answer", text: x.a } })),
+};
+---
+
+<Layout
+  title="Was ist 1971 passiert? Das Ende von Bretton Woods, erklärt | Bit & Bullshit"
+  description="15. August 1971: Nixon macht das Goldfenster zu. Was danach mit Geld, Löhnen und Gold passiert ist — und welche Bitcoin-Mythen dazu Bullshit sind. Mit Bundesbank-Zahlen."
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "1971" }]} />
+
+    <header class="relative mt-8 max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">1971</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// GESCHICHTE</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Was ist <span class="marker">1971</span> passiert?
+      </h1>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="hero-layer mt-6 text-lg leading-relaxed text-paper/80">
+        „WTF happened in 1971?“ ist der Lieblingssatz der Bitcoin-Szene. Seit Nixon das Gold vom Dollar getrennt hat,
+        sei alles kaputt: Inflation, Löhne, Häuser. Ein Teil davon stimmt. Ein Teil ist Bullshit. Hier ist, welcher.
+      </p>
+    </header>
+
+    {/* ─── Zeitstrahl ─────────────────────────────────────────────── */}
+    <section class="mt-16">
+      <p class="display text-xs tracking-[0.3em] text-orange">// ZEITSTRAHL</p>
+      <ol class="zs mt-8">
+        {
+          zeitstrahl.map((e, i) => (
+            <li class="zs-karte" style={`--dreh:${i % 2 ? 1.2 : -1.4}deg`}>
+              <span class="zs-jahr display">{e.jahr}</span>
+              <h3 class="display zs-titel">{e.titel}</h3>
+              <p class="zs-text">{e.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    {/* ─── Check 1: Inflation ─────────────────────────────────────── */}
+    <section class="mt-24 grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+      <div>
+        <p class="display text-xs tracking-[0.3em] text-orange">// BULLSHIT-CHECK 1</p>
+        <h2 class="display spray-head mt-4 text-3xl md:text-5xl">„Seit 1971 frisst die Inflation dein Geld.“</h2>
+        <div class="spray-rule mt-5 max-w-[14rem]"></div>
+        <p class="urteil mt-6"><span>Halb wahr.</span></p>
+        <p class="mt-4 leading-relaxed text-paper/80">
+          Von 100 D-Mark aus 1971 ist heute eine Kaufkraft von <strong>24,8 D-Mark</strong> übrig. Drei Viertel weg. Das
+          stimmt. Aber: Von 1950 bis 1971 — also mitten im Goldstandard — hat die Mark auch schon <strong>2,4 Prozent</strong>
+          im Jahr verloren. Seit 1971 sind es <strong>2,6 Prozent</strong>. Der Unterschied ist kleiner, als die Memes tun.
+        </p>
+        <p class="mt-4 leading-relaxed text-paper/80">
+          In den USA sieht’s anders aus: 2,5 Prozent vorher, 3,9 Prozent danach. Von 100 Dollar aus 1971 bleiben rund
+          12,6 Dollar. Nur: Die große US-Inflation ging schon 1965 los — sechs Jahre vor Nixons Rede. Wer genauer wissen
+          will, wer vom neuen Geld zuerst profitiert: <a href="/snippets/cantillon-effekt-einfach-erklaert/">Cantillon-Effekt</a>.
+        </p>
+      </div>
+      <figure class="kk" aria-label="Kaufkraft von 100 D-Mark aus 1971">
+        {
+          kaufkraft.map((k) => (
+            <div class="kk-zeile">
+              <span class="kk-jahr display">{k.jahr}</span>
+              <span class="kk-bahn"><span class:list={["kk-balken", k.jahr === 2025 && "kk-heute"]} style={`width:${k.wert}%`} /></span>
+              <span class="kk-wert display">{z(k.wert)}</span>
+            </div>
+          ))
+        }
+        <figcaption class="mt-3 text-xs text-paper/55">
+          Kaufkraft von 100 D-Mark aus 1971, in D-Mark von 1971. Quelle: Deutsche Bundesbank, Kaufkraftäquivalente historischer Beträge (Stand Januar 2026).
+        </figcaption>
+      </figure>
+    </section>
+
+    {/* ─── Check 2: Löhne ─────────────────────────────────────────── */}
+    <section class="mt-24 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// BULLSHIT-CHECK 2</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">„Seit 1971 steigen die Löhne nicht mehr mit.“</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="urteil mt-6"><span>Kommt drauf an, wie du rechnest.</span></p>
+      <p class="mt-4 leading-relaxed text-paper/80">
+        Das berühmte Chart vergleicht die Produktivität (USA: <strong>+173,5 %</strong> seit 1971) mit dem Stundenlohn
+        einfacher Angestellter nach Verbraucherpreisen (<strong>+8,7 %</strong>). Riesige Schere. Rechnet man aber
+        alle Vergütungen mit denselben Preisen wie die Produktivität, sind es <strong>+136,8 %</strong> — die Lücke
+        schrumpft auf rund 15 Prozent. In Deutschland auf rund 9 Prozent. Dazu kommt: Ein Arbeitnehmer arbeitet
+        heute rund 1.303 Stunden im Jahr statt 1.845.
+      </p>
+      <div class="vergleich mt-8">
+        <div class="vg-karte"><span class="display">+173,5 %</span><p>Produktivität USA</p></div>
+        <div class="vg-karte vg-grau"><span class="display">+8,7 %</span><p>Lohn einfacher Jobs, Verbraucherpreise</p></div>
+        <div class="vg-karte vg-grau"><span class="display">+136,8 %</span><p>alle Vergütungen, gleiche Preise</p></div>
+      </div>
+      <p class="mt-3 text-xs text-paper/55">
+        USA 1971–2025, je Arbeitsstunde. Quellen: U.S. Bureau of Labor Statistics (Labor Productivity and Costs, CES, CPI-U);
+        Deutschland: Destatis, VGR Lange Reihen ab 1970.
+      </p>
+    </section>
+
+    {/* ─── Check 3: Gold ──────────────────────────────────────────── */}
+    <section class="mt-24 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// BULLSHIT-CHECK 3</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">„Gold kennt nur eine Richtung.“</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="urteil mt-6"><span>Bullshit.</span></p>
+      <p class="mt-4 leading-relaxed text-paper/80">
+        Ein Kilo Gold: 1971 im Schnitt <strong>2.340 Euro</strong> (umgerechnet aus D-Mark), Ende 2025 <strong>117.964 Euro</strong>.
+        Ungefähr das 50-Fache. Klingt nach Rakete. Aber von 1980 bis 1998 ist der Goldpreis in D-Mark um <strong>53,5 Prozent</strong>
+        gefallen, nach Kaufkraft sogar um <strong>70,4 Prozent</strong>. Achtzehn Jahre. Wer 1980 gekauft hat, hat lange gewartet.
+      </p>
+      <p class="mt-3 text-xs text-paper/55">
+        Quellen: Deutsche Bundesbank, Goldfixing Frankfurt (Zeitreihe BBEX3.D.XAU.DEM.EA.AC.C01), Jahresabschluss 2025, Kaufkraftäquivalente.
+      </p>
+    </section>
+
+    {/* ─── Fazit ──────────────────────────────────────────────────── */}
+    <section class="mt-24 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// UND JETZT?</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">1971 ist kein Meme. Aber auch keine Ausrede.</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="mt-6 leading-relaxed text-paper/80">
+        1971 ist wirklich das Jahr, in dem Geld zu reinem Vertrauen wurde. Dass danach Inflation, Ölkrisen, Globalisierung
+        und Zinswende kamen, heißt aber nicht, dass Nixon an allem schuld ist. Wer dir ein Chart ohne Beschriftung zeigt
+        und sagt „deshalb Bitcoin“, macht es sich zu leicht. Die ehrliche Version: Das Geld verliert Wert — schon immer, seit
+        1971 ohne Anker. Was du daraus machst, ist deine Entscheidung. Wie es mit dem ersten Bitcoin-Block anfing, steht im
+        Snippet zur <a href="/snippets/versteckte-nachricht-erster-bitcoin-block/">versteckten Nachricht im ersten Block</a>.
+      </p>
+      <p class="mt-4 leading-relaxed text-paper/80">
+        Die ausführliche Fassung mit allen Diagrammen gibt’s bei unseren Freunden von
+        <a href="https://blindinsights.de/beitraege/was-ist-1971-passiert/">Blind Insights</a>.
+      </p>
+    </section>
+
+    <section class="mt-20 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// FRAGEN</p>
+      <div class="mt-6 space-y-8">
+        {
+          faq.map((x) => (
+            <div>
+              <h3 class="display text-lg md:text-xl">{x.f}</h3>
+              <p class="mt-2 leading-relaxed text-paper/80">{x.a}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="display mt-16 text-xs tracking-[0.3em] text-orange">// QUELLEN</p>
+      <ul class="mt-4 space-y-2 text-sm text-paper/70">
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.federalreservehistory.org/essays/gold-convertibility-ends">Federal Reserve History: Nixon Ends Convertibility of U.S. Dollars to Gold</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.federalreservehistory.org/essays/great-inflation">Federal Reserve History: The Great Inflation</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.federalreservehistory.org/essays/oil-shock-of-1973-74">Federal Reserve History: Oil Shock of 1973–74</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.bundesbank.de/">Deutsche Bundesbank: 1973 – Das Ende von Bretton Woods; Kaufkraftäquivalente historischer Beträge; Goldfixing Frankfurt; Jahresabschluss 2025</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.bls.gov/lpc/">U.S. Bureau of Labor Statistics: Labor Productivity and Costs, CES, CPI-U</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://www.destatis.de/">Statistisches Bundesamt: VGR, Lange Reihen ab 1970</a></li>
+        <li><a class="underline decoration-orange/60 underline-offset-4" href="https://bitcoin.org/bitcoin.pdf">Satoshi Nakamoto: Bitcoin – A Peer-to-Peer Electronic Cash System</a></li>
+      </ul>
+      <p class="mt-6 text-xs text-paper/50">Keine Anlageberatung. Stand: Oktober 2026.</p>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  .zs {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    list-style: none;
+    padding: 0;
+    counter-reset: zs;
+  }
+  .zs-karte {
+    position: relative;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    border-radius: 0.6rem;
+    padding: 2.4rem 1.4rem 1.4rem;
+    transform: rotate(var(--dreh));
+    box-shadow: 6px 7px 0 rgba(196, 111, 0, 0.55);
+    transition: transform 0.25s ease;
+  }
+  .zs-karte:hover {
+    transform: rotate(0deg) translateY(-4px);
+  }
+  .zs-jahr {
+    position: absolute;
+    top: -0.9rem;
+    left: 1rem;
+    background: var(--color-orange);
+    color: var(--color-ink);
+    padding: 0.25rem 0.7rem;
+    font-size: 0.95rem;
+    box-shadow: 3px 3px 0 var(--color-ink);
+  }
+  .zs-titel {
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+  .zs-text {
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgb(10 10 10 / 0.78);
+  }
+  .urteil span {
+    display: inline-block;
+    font-family: var(--font-display);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    padding: 0.35rem 0.9rem;
+    transform: rotate(-2deg);
+    box-shadow: 4px 4px 0 var(--color-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  main a:not([class]) {
+    color: var(--color-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .kk {
+    background: rgb(245 244 239 / 0.04);
+    border: 1px solid rgb(245 244 239 / 0.1);
+    border-radius: 0.8rem;
+    padding: 1.4rem;
+  }
+  .kk-zeile {
+    display: grid;
+    grid-template-columns: 3.4rem 1fr 3.2rem;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.35rem 0;
+  }
+  .kk-jahr,
+  .kk-wert {
+    font-size: 0.95rem;
+  }
+  .kk-wert {
+    text-align: right;
+  }
+  .kk-bahn {
+    height: 1.1rem;
+    background: rgb(245 244 239 / 0.06);
+    border-radius: 0.2rem;
+  }
+  .kk-balken {
+    display: block;
+    height: 100%;
+    background: var(--color-paper);
+    border-radius: 0.2rem;
+  }
+  .kk-heute {
+    background: var(--color-orange);
+  }
+  .vergleich {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  }
+  .vg-karte {
+    background: var(--color-orange);
+    color: var(--color-ink);
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+    transform: rotate(-1deg);
+    box-shadow: 5px 5px 0 var(--color-paper);
+  }
+  .vg-karte span {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .vg-karte p {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+  }
+  .vg-grau {
+    background: var(--color-paper);
+    box-shadow: 5px 5px 0 var(--color-orange);
+    transform: rotate(1deg);
+  }
+</style>
