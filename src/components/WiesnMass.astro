@@ -1,0 +1,249 @@
+---
+/**
+ * Wiesn-Maß-Index als Comic-Bühne: ein Maßkrug, der sich beim Hineinscrollen füllt, und ein Schieberegler
+ * durch die Jahre. Links der Preis in Euro, rechts in Satoshi. Ohne JavaScript steht alles auf dem neuesten Jahr.
+ * Gezeichnet von Hand als SVG — keine Bibliothek.
+ */
+import { JAHRE, ERSTES, LETZTES, SATS_MAX, euro, sats } from "../lib/wiesn";
+
+interface Props {
+  kompakt?: boolean;
+}
+const { kompakt = false } = Astro.props;
+
+// Füllhöhe: Euro-Preis relativ zum teuersten Jahr (der Krug ist bei der teuersten Maß voll)
+const MAX_EURO = Math.max(...JAHRE.map((j) => j.euro));
+const fuell = (e: number) => Math.max(0.08, e / MAX_EURO);
+// Krug-Innenraum im SVG
+const BODEN = 300;
+const OBEN = 62;
+const yBier = (e: number) => BODEN - fuell(e) * (BODEN - OBEN);
+const plus = Math.round((LETZTES.euro / ERSTES.euro - 1) * 100);
+const daten = JSON.stringify(JAHRE.map((j) => [j.jahr, j.euro, j.sats ?? null]));
+---
+
+<div class="wm" data-wm data-jahre={daten} data-max={MAX_EURO}>
+  <div class="wm-buehne">
+    <svg class="wm-krug" viewBox="0 0 300 340" role="img" aria-label={`Maßkrug, gefüllt bis ${euro(LETZTES.euro)}`}>
+      <defs>
+        <clipPath id="wm-innen"><path d="M64 70 L232 70 L222 306 Q220 318 206 318 L90 318 Q76 318 74 306 Z" /></clipPath>
+        <linearGradient id="wm-bier" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#ffc24a" />
+          <stop offset="1" stop-color="#f7931a" />
+        </linearGradient>
+      </defs>
+      <!-- Henkel -->
+      <path d="M232 120 Q290 124 286 190 Q282 252 224 254" fill="none" stroke="#f5f4ef" stroke-width="16" stroke-linecap="round" />
+      <path d="M232 120 Q290 124 286 190 Q282 252 224 254" fill="none" stroke="#0a0a0a" stroke-width="6" stroke-linecap="round" />
+      <!-- Bier + Schaum -->
+      <g clip-path="url(#wm-innen)">
+        <rect x="40" y="0" width="220" height="340" fill="rgba(245,244,239,.06)" />
+        <g class="wm-pegel" style={`transform: translateY(${yBier(LETZTES.euro) - OBEN}px)`}>
+          <rect x="40" y={OBEN + 30} width="220" height="300" fill="url(#wm-bier)" />
+          <path class="wm-schaum" d={`M40 ${OBEN + 26} q18 -16 36 -4 q16 -18 38 -3 q18 -16 38 -1 q16 -16 36 -3 q16 -14 34 -1 q14 -12 38 0 v26 h-220 z`} fill="#f5f4ef" />
+          <rect x="40" y={OBEN + 24} width="220" height="12" fill="#f5f4ef" />
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <circle class="wm-blase" cx={86 + i * 26} cy={OBEN + 60 + (i % 3) * 50} r={3 + (i % 2)} fill="rgba(255,255,255,.55)" style={`animation-delay:${i * 0.45}s`} />
+          ))}
+        </g>
+      </g>
+      <!-- Glas -->
+      <path d="M64 70 L232 70 L222 306 Q220 318 206 318 L90 318 Q76 318 74 306 Z" fill="none" stroke="#f5f4ef" stroke-width="8" stroke-linejoin="round" />
+      <path d="M96 96 L102 290" stroke="rgba(255,255,255,.35)" stroke-width="7" stroke-linecap="round" />
+      <path d="M124 96 L126 150" stroke="rgba(255,255,255,.25)" stroke-width="5" stroke-linecap="round" />
+      <!-- Eichstrich -->
+      <path d="M150 104 h60" stroke="#0a0a0a" stroke-width="3" opacity=".5" />
+      <text x="210" y="98" text-anchor="end" class="wm-eich">1 L</text>
+    </svg>
+    <p class="wm-jahr display" data-wm-jahr>{LETZTES.jahr}</p>
+  </div>
+
+  <div class="wm-zahlen">
+    <div class="wm-karte wm-karte-euro">
+      <p class="wm-k-kicker display">In Euro</p>
+      <p class="wm-k-wert display" data-wm-euro>{euro(LETZTES.euro)}</p>
+      <p class="wm-k-text">
+        {ERSTES.jahr}: {euro(ERSTES.euro)}. Seitdem <strong>+{plus} %</strong>. Jedes Jahr ein Stück teurer.
+      </p>
+    </div>
+    <div class="wm-karte wm-karte-sats">
+      <p class="wm-k-kicker display">In Bitcoin</p>
+      <p class="wm-k-wert display" data-wm-sats>{LETZTES.sats ? sats(LETZTES.sats) : "–"}</p>
+      <p class="wm-k-text">
+        {SATS_MAX.jahr}: {sats(SATS_MAX.sats!)} — fast ein ganzer Bitcoin für eine Maß. Heute ein Bruchteil davon.
+      </p>
+    </div>
+    <label class="wm-regler">
+      <span class="display">Jahr wählen</span>
+      <input type="range" min="0" max={JAHRE.length - 1} value={JAHRE.length - 1} step="1" data-wm-regler aria-label="Jahr" />
+      <span class="wm-regler-skala"><span>{ERSTES.jahr}</span><span>{LETZTES.jahr}</span></span>
+    </label>
+    {
+      kompakt && (
+        <a href="/wiesn-mass-index/" class="wm-cta display">Zum Wiesn-Maß-Index &rarr;</a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .wm {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 860px) {
+    .wm {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+  }
+  .wm-buehne {
+    position: relative;
+    max-width: 22rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .wm-krug {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(6px 8px 0 rgba(196, 111, 0, 0.45));
+    transform: rotate(-4deg);
+  }
+  .wm-pegel {
+    transition: transform 1.8s cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+  .wm-blase {
+    animation: wm-steigen 3.2s ease-in infinite;
+  }
+  @keyframes wm-steigen {
+    from { transform: translateY(0); opacity: 0.8; }
+    to { transform: translateY(-120px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wm-blase { animation: none; }
+    .wm-pegel { transition: none; }
+  }
+  .wm-eich {
+    font: 700 14px var(--font-body);
+    fill: #0a0a0a;
+    opacity: 0.55;
+  }
+  .wm-jahr {
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+    background: var(--color-orange);
+    color: var(--color-ink);
+    font-size: 1.4rem;
+    padding: 0.3rem 0.8rem;
+    transform: rotate(6deg);
+    box-shadow: 4px 4px 0 var(--color-paper);
+  }
+  .wm-zahlen {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .wm-karte {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    padding: 1.4rem 1.6rem;
+    border-radius: 0.6rem;
+    box-shadow: 6px 7px 0 rgba(196, 111, 0, 0.55);
+  }
+  .wm-karte-euro {
+    transform: rotate(-1.2deg);
+  }
+  .wm-karte-sats {
+    transform: rotate(1deg);
+    background: linear-gradient(180deg, #ffe7c4, var(--color-paper) 60%);
+  }
+  .wm-k-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-orange-deep);
+  }
+  .wm-k-wert {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    line-height: 1;
+    margin: 0.4rem 0 0.6rem;
+  }
+  .wm-k-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgb(10 10 10 / 0.75);
+  }
+  .wm-regler {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .wm-regler > span.display {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-orange);
+  }
+  .wm-regler input {
+    width: 100%;
+    accent-color: var(--color-orange);
+  }
+  .wm-regler-skala {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: rgb(245 244 239 / 0.6);
+  }
+  .wm-cta {
+    justify-self: start;
+    background: var(--color-orange);
+    color: var(--color-ink);
+    padding: 0.8rem 1.3rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    box-shadow: 4px 4px 0 var(--color-paper);
+    transition: transform 0.2s ease;
+  }
+  .wm-cta:hover {
+    transform: translate(-2px, -2px);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-wm]").forEach((root) => {
+    const jahre: [number, number, number | null][] = JSON.parse(root.dataset.jahre || "[]");
+    const max = parseFloat(root.dataset.max || "1");
+    const pegel = root.querySelector<SVGGElement>(".wm-pegel");
+    const regler = root.querySelector<HTMLInputElement>("[data-wm-regler]");
+    const jahrEl = root.querySelector("[data-wm-jahr]");
+    const euroEl = root.querySelector("[data-wm-euro]");
+    const satsEl = root.querySelector("[data-wm-sats]");
+    const BODEN = 300, OBEN = 62;
+    const fmtEuro = (x: number) => x.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+    const fmtSats = (x: number | null) =>
+      x === null ? "noch kein Kurs" : x >= 1e6 ? (x / 1e6).toLocaleString("de-DE", { maximumFractionDigits: 1 }) + " Mio. Sats" : x.toLocaleString("de-DE") + " Sats";
+    const zeigen = (i: number) => {
+      const [j, e, s] = jahre[i];
+      const y = BODEN - Math.max(0.08, e / max) * (BODEN - OBEN);
+      if (pegel) pegel.style.transform = `translateY(${y - OBEN}px)`;
+      if (jahrEl) jahrEl.textContent = String(j);
+      if (euroEl) euroEl.textContent = fmtEuro(e);
+      if (satsEl) satsEl.textContent = fmtSats(s);
+    };
+    regler?.addEventListener("input", () => zeigen(parseInt(regler.value)));
+    // Beim Hineinscrollen: leerer Krug, dann füllen
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && pegel) {
+      pegel.style.transition = "none";
+      pegel.style.transform = `translateY(${BODEN - OBEN}px)`;
+      new IntersectionObserver((e, o) => {
+        if (e.some((x) => x.isIntersecting)) {
+          pegel.style.transition = "";
+          requestAnimationFrame(() => zeigen(jahre.length - 1));
+          o.disconnect();
+        }
+      }, { threshold: 0.4 }).observe(root);
+    }
+  });
+</script>

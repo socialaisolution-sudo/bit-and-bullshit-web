@@ -1,0 +1,214 @@
+---
+/**
+ * Der Wiesn-Maß-Index: Was kostet eine Maß auf dem Oktoberfest — in Euro und in Bitcoin?
+ *
+ * Bit & Bullshits Antwort auf den Big-Mac-Index. Daten aus src/data/wiesn-mass-index.json, die Trinity monatlich
+ * neu schreibt (trinity/web/indizes.py): Maßpreis der Landeshauptstadt München (Open Data, Durchschnitt der
+ * Festzelte), BTC-Kurs am 30.09. (Bitstamp ÷ EZB-Referenzkurs), amtliche Bier- und Lohnindizes von Eurostat.
+ * Jede Zahl auf der Seite wird aus der JSON-Datei gerechnet, keine steht von Hand im Text.
+ */
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Brotkrumen from "../components/Brotkrumen.astro";
+import WiesnMass from "../components/WiesnMass.astro";
+import { WIESN, JAHRE, ERSTES, LETZTES, MIT_SATS, SATS_MAX, euro, sats, wiesnGegenAmtlich } from "../lib/wiesn";
+
+const vergleich = wiesnGegenAmtlich();
+const plus = Math.round((LETZTES.euro / ERSTES.euro - 1) * 100);
+const faktorSats = Math.round(SATS_MAX.sats! / (LETZTES.sats ?? 1));
+const vorjahr = MIT_SATS[MIT_SATS.length - 2];
+const billigerJahre = JAHRE.slice(1).filter((j, i) => j.euro < JAHRE[i].euro).map((j) => j.jahr);
+const satsHoch = LETZTES.sats && vorjahr?.sats && LETZTES.sats > vorjahr.sats;
+
+// Balken Euro (linear)
+const B = 900, H = 300, L = 40, U = 34;
+const alleJahre = Array.from({ length: LETZTES.jahr - ERSTES.jahr + 1 }, (_, i) => ERSTES.jahr + i);
+const bw = (B - L - 10) / alleJahre.length;
+const maxE = Math.max(...JAHRE.map((j) => j.euro));
+const eH = (e: number) => (e / maxE) * (H - U - 30);
+// Balken Sats (logarithmisch, sonst sieht man nach 2017 nichts mehr)
+const lmin = Math.log10(Math.min(...MIT_SATS.map((j) => j.sats!)) / 2);
+const lmax = Math.log10(SATS_MAX.sats!);
+const sH = (s: number) => ((Math.log10(s) - lmin) / (lmax - lmin)) * (H - U - 30);
+const sw = (B - L - 10) / MIT_SATS.length;
+
+const faq = [
+  {
+    f: "Was ist der Wiesn-Maß-Index?",
+    a: `Unsere deutsche Antwort auf den Big-Mac-Index: der Durchschnittspreis einer Maß Bier in den Festzelten des Oktoberfests, jedes Jahr, seit ${ERSTES.jahr}. Einmal in Euro, einmal in Satoshi (dem kleinsten Bitcoin-Bruchteil).`,
+  },
+  {
+    f: "Woher kommen die Preise?",
+    a: "Von der Landeshauptstadt München. Die Stadt veröffentlicht den Durchschnittspreis der Maß in den Festzelten als offene Daten (Lizenz dl-by-de 2.0). Fehlt ein Jahr dort noch, nehmen wir den Wert von der städtischen Wiesn-Infoseite.",
+  },
+  {
+    f: "Wie wird der Preis in Satoshi gerechnet?",
+    a: "Maßpreis geteilt durch den Bitcoin-Kurs in Euro am 30. September, also mitten in der Wiesn. Den Kurs nehmen wir als Tagesschluss von Bitstamp in US-Dollar und rechnen ihn mit dem Referenzkurs der Europäischen Zentralbank in Euro um. Ein Bitcoin sind 100 Millionen Satoshi.",
+  },
+  {
+    f: "Heißt das, Bitcoin macht Bier billiger?",
+    a: "Nein. Es heißt nur, dass der Bitcoin-Kurs bisher schneller gestiegen ist als der Maßpreis. Das kann sich drehen, und es hat sich auch schon gedreht — in einzelnen Jahren wurde die Maß in Satoshi teurer. Keine Anlageberatung, kein Kursziel.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Wiesn-Maß-Index",
+    description: `Durchschnittspreis einer Maß Bier auf dem Oktoberfest in Euro und in Satoshi, ${ERSTES.jahr} bis ${LETZTES.jahr}.`,
+    url: "https://bitandbullshit.com/wiesn-mass-index/",
+    creator: { "@type": "Organization", name: "Bit & Bullshit" },
+    temporalCoverage: `${ERSTES.jahr}/${LETZTES.jahr}`,
+    spatialCoverage: { "@type": "Place", name: "München" },
+    dateModified: WIESN.erzeugt,
+    isBasedOn: WIESN.quellen.map((q) => q.url),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((x) => ({ "@type": "Question", name: x.f, acceptedAnswer: { "@type": "Answer", text: x.a } })),
+  },
+];
+---
+
+<Layout
+  title={`Wiesn-Maß-Index: Was kostet die Maß in Euro und in Bitcoin? | Bit & Bullshit`}
+  description={`Eine Maß auf der Wiesn kostet ${euro(LETZTES.euro)} — ${ERSTES.jahr} waren es ${euro(ERSTES.euro)}. In Bitcoin ist sie seit ${SATS_MAX.jahr} um den Faktor ${faktorSats} billiger geworden. Der deutsche Big-Mac-Index, mit offiziellen Daten.`}
+  jsonLd={jsonLd}
+>
+  <SiteHeader />
+
+  <main class="relative mx-auto max-w-6xl overflow-hidden px-5 py-16 md:py-24">
+    <Brotkrumen pfad={[{ label: "Start", href: "/" }, { label: "Wiesn-Maß-Index" }]} />
+
+    <header class="relative mt-8 max-w-3xl">
+      <span class="wall-ghost" aria-hidden="true">PROST</span>
+      <p class="display hero-layer text-xs tracking-[0.3em] text-orange">// INDEX</p>
+      <h1 class="display spray-head hero-layer mt-4 text-4xl md:text-6xl">
+        Der Wiesn-<span class="marker">Maß</span>-Index.
+      </h1>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="hero-layer mt-6 text-lg leading-relaxed text-paper/80">
+        Die Amis haben den Big Mac. Wir haben die Maß. Was kostet ein Liter Festbier auf dem Oktoberfest — in Euro und in
+        Bitcoin? Jedes Jahr seit {ERSTES.jahr}, mit offiziellen Zahlen der Stadt München.
+      </p>
+    </header>
+
+    <section class="mt-14">
+      <WiesnMass />
+    </section>
+
+    <section class="mt-20 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// IN EURO</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">Immer nur nach oben.</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="mt-6 text-base leading-relaxed text-paper/80">
+        {ERSTES.jahr} hat die Maß umgerechnet {euro(ERSTES.euro)} gekostet, {LETZTES.jahr} sind es {euro(LETZTES.euro)} —
+        plus {plus} Prozent.
+        {billigerJahre.length === 0 ? " Kein einziges Jahr ist sie billiger geworden." : ` Billiger wurde sie nur ${billigerJahre.join(", ")}.`} 2020 und 2021 gibt es keinen Wert: Die Wiesn ist
+        wegen Corona ausgefallen.
+      </p>
+      <p class="mt-4 text-base leading-relaxed text-paper/80">
+        Und jetzt der Teil, der fast immer weggelassen wird: Von {vergleich.von} bis {vergleich.bis} ist die Maß auf der Wiesn
+        um <strong>{vergleich.wiesn} Prozent</strong> teurer geworden. Bier im Laden laut amtlicher Statistik um
+        <strong>{vergleich.amtlich} Prozent</strong>. Die Bruttostundenlöhne um <strong>{vergleich.lohn} Prozent</strong>.
+        Die Wiesn zieht also davon — gegen den Supermarkt und gegen deinen Lohn.
+      </p>
+    </section>
+
+    <figure class="mt-10">
+      <svg viewBox={`0 0 ${B} ${H}`} width="100%" role="img" aria-label="Maßpreis in Euro je Jahr">
+        <line x1={L} y1={H - U} x2={B - 10} y2={H - U} stroke="rgba(255,255,255,.25)" />
+        {alleJahre.map((jahr, i) => {
+          const j = JAHRE.find((x) => x.jahr === jahr);
+          const x = L + i * bw;
+          return (
+            <>
+              {j ? (
+                <rect x={x + 1} y={H - U - eH(j.euro)} width={bw - 2} height={eH(j.euro)} fill={jahr === LETZTES.jahr ? "#f7931a" : "rgba(247,147,26,.55)"} />
+              ) : (
+                <text x={x + bw / 2} y={H - U - 6} text-anchor="middle" fill="rgba(245,244,239,.5)" font-size="10">✕</text>
+              )}
+              {jahr % 5 === 0 && (
+                <text x={x + bw / 2} y={H - 12} text-anchor="middle" fill="rgba(245,244,239,.6)" font-size="12">{jahr}</text>
+              )}
+            </>
+          );
+        })}
+        <text x={L} y="18" fill="#f5f4ef" font-size="14" font-weight="700">{euro(ERSTES.euro)} → {euro(LETZTES.euro)}</text>
+      </svg>
+      <figcaption class="mt-2 text-xs text-paper/55">
+        Durchschnittspreis 1 Maß in den Festzelten, bis 2001 von D-Mark umgerechnet. ✕ = Wiesn ausgefallen. Quelle: Landeshauptstadt München, Open Data.
+      </figcaption>
+    </figure>
+
+    <section class="mt-20 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// IN BITCOIN</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">Und hier wird’s lustig.</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <p class="mt-6 text-base leading-relaxed text-paper/80">
+        {SATS_MAX.jahr} hat eine Maß {sats(SATS_MAX.sats!)} gekostet — fast einen ganzen Bitcoin. {LETZTES.jahr} sind es
+        {LETZTES.sats ? ` ${sats(LETZTES.sats)}` : " noch keine Angabe"}. Das ist Faktor {faktorSats.toLocaleString("de-DE")}.
+        {satsHoch && ` Ehrlich gesagt: Gegenüber ${vorjahr.jahr} ist die Maß in Satoshi wieder teurer geworden, weil der Kurs gefallen ist. Bitcoin schwankt, und zwar heftig.`}
+      </p>
+      <p class="mt-4 text-base leading-relaxed text-paper/80">
+        Was das <em>nicht</em> heißt: dass du mit Bitcoin automatisch reich wirst. Es heißt, dass der Euro über die Jahre
+        an Kaufkraft verliert — auch beim Bier — und dass der Bitcoin-Kurs bisher schneller gestiegen ist. Ob das so bleibt,
+        weiß niemand. Wer dir etwas anderes erzählt, will dir was verkaufen.
+      </p>
+    </section>
+
+    <figure class="mt-10">
+      <svg viewBox={`0 0 ${B} ${H}`} width="100%" role="img" aria-label="Maßpreis in Satoshi je Jahr, logarithmische Skala">
+        <line x1={L} y1={H - U} x2={B - 10} y2={H - U} stroke="rgba(255,255,255,.25)" />
+        {MIT_SATS.map((j, i) => {
+          const x = L + i * sw;
+          const h = sH(j.sats!);
+          return (
+            <>
+              <rect x={x + 4} y={H - U - h} width={sw - 8} height={h} fill={j.jahr === LETZTES.jahr ? "#f7931a" : "#f5f4ef"} opacity={j.jahr === LETZTES.jahr ? 1 : 0.85} />
+              <text x={x + sw / 2} y={H - U - h - 6} text-anchor="middle" fill="#f5f4ef" font-size="10">{sats(j.sats!).replace(" Sats", "")}</text>
+              <text x={x + sw / 2} y={H - 12} text-anchor="middle" fill="rgba(245,244,239,.6)" font-size="12">{String(j.jahr).slice(2)}</text>
+            </>
+          );
+        })}
+      </svg>
+      <figcaption class="mt-2 text-xs text-paper/55">
+        Maßpreis in Satoshi, logarithmische Skala (jede Stufe = Faktor 10). Kurs am 30. September: Bitstamp BTC/USD ÷ EZB-Referenzkurs.
+      </figcaption>
+    </figure>
+
+    <section class="mt-20 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// FRAGEN</p>
+      <h2 class="display spray-head mt-4 text-3xl md:text-5xl">Häufige Fragen.</h2>
+      <div class="spray-rule mt-5 max-w-[14rem]"></div>
+      <div class="mt-8 space-y-8">
+        {
+          faq.map((x) => (
+            <div>
+              <h3 class="display text-lg md:text-xl">{x.f}</h3>
+              <p class="mt-2 leading-relaxed text-paper/80">{x.a}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-20 max-w-3xl">
+      <p class="display text-xs tracking-[0.3em] text-orange">// QUELLEN</p>
+      <ul class="mt-4 space-y-2 text-sm text-paper/70">
+        {WIESN.quellen.map((q) => (
+          <li><a href={q.url} rel="noopener" class="underline decoration-orange/60 underline-offset-4">{q.text}</a>{q.stand ? ` — Stand ${q.stand.split("-").reverse().join(".")}` : ""}</li>
+        ))}
+        {LETZTES.quelle && <li><a href={LETZTES.quelle} rel="noopener" class="underline decoration-orange/60 underline-offset-4">Landeshauptstadt München, Wiesn-Bierpreise {LETZTES.jahr}</a></li>}
+      </ul>
+      <p class="mt-6 text-xs text-paper/50">
+        Aktualisiert {WIESN.erzeugt.split("-").reverse().join(".")} · Keine Anlageberatung · Prost.
+      </p>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Layout>

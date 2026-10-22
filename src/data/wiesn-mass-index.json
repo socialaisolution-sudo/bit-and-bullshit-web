@@ -1,0 +1,296 @@
+{
+ "name": "Wiesn-Maß-Index",
+ "erzeugt": "2026-10-22",
+ "quellen": [
+  {
+   "text": "Landeshauptstadt München, Open Data: Oktoberfest Bierpreise (Durchschnitt der Festzelte, 1 Maß), Lizenz dl-by-de 2.0",
+   "url": "https://opendata.muenchen.de/dataset/oktoberfest"
+  },
+  {
+   "text": "Eurostat, Verbraucherpreisindex Deutschland, Bier (prc_hicp_minr, CP0213)",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table",
+   "stand": "2026-10-16"
+  },
+  {
+   "text": "Eurostat, Arbeitskostenindex Deutschland, Bruttolöhne je Stunde (lc_lci_r2_q)",
+   "url": "https://ec.europa.eu/eurostat/databrowser/view/lc_lci_r2_q/default/table"
+  },
+  {
+   "text": "Bitstamp, BTC/USD-Tagesschlusskurs am 30. September",
+   "url": "https://www.bitstamp.net/api/"
+  },
+  {
+   "text": "Europäische Zentralbank, Referenzkurs EUR/USD (letzter Handelstag bis 30. September)",
+   "url": "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A"
+  }
+ ],
+ "jahre": [
+  {
+   "jahr": 1985,
+   "euro": 3.2,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1986,
+   "euro": 3.3,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1987,
+   "euro": 3.37,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1988,
+   "euro": 3.45,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1989,
+   "euro": 3.6,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1990,
+   "euro": 3.77,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1991,
+   "euro": 4.21,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1992,
+   "euro": 4.42,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1993,
+   "euro": 4.71,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1994,
+   "euro": 4.89,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1995,
+   "euro": 5.15,
+   "bier_index": null,
+   "lohn_index": null
+  },
+  {
+   "jahr": 1996,
+   "euro": 5.24,
+   "bier_index": 82.15,
+   "lohn_index": 59.55
+  },
+  {
+   "jahr": 1997,
+   "euro": 5.45,
+   "bier_index": 82.61,
+   "lohn_index": 60.42
+  },
+  {
+   "jahr": 1998,
+   "euro": 5.6,
+   "bier_index": 82.81,
+   "lohn_index": 61.22
+  },
+  {
+   "jahr": 1999,
+   "euro": 5.8,
+   "bier_index": 82.83,
+   "lohn_index": 62.58
+  },
+  {
+   "jahr": 2000,
+   "euro": 6.35,
+   "bier_index": 82.77,
+   "lohn_index": 64.47
+  },
+  {
+   "jahr": 2001,
+   "euro": 6.47,
+   "bier_index": 83.46,
+   "lohn_index": 66.22
+  },
+  {
+   "jahr": 2002,
+   "euro": 6.75,
+   "bier_index": 84.89,
+   "lohn_index": 67.72
+  },
+  {
+   "jahr": 2003,
+   "euro": 6.75,
+   "bier_index": 86.94,
+   "lohn_index": 69.22
+  },
+  {
+   "jahr": 2004,
+   "euro": 7.02,
+   "bier_index": 88.05,
+   "lohn_index": 69.6
+  },
+  {
+   "jahr": 2005,
+   "euro": 7.15,
+   "bier_index": 88.75,
+   "lohn_index": 70.4
+  },
+  {
+   "jahr": 2006,
+   "euro": 7.42,
+   "bier_index": 89.26,
+   "lohn_index": 71.65
+  },
+  {
+   "jahr": 2007,
+   "euro": 7.85,
+   "bier_index": 90.48,
+   "lohn_index": 73.0
+  },
+  {
+   "jahr": 2008,
+   "euro": 8.25,
+   "bier_index": 92.3,
+   "lohn_index": 74.92
+  },
+  {
+   "jahr": 2009,
+   "euro": 8.53,
+   "bier_index": 93.81,
+   "lohn_index": 76.83
+  },
+  {
+   "jahr": 2010,
+   "euro": 8.79,
+   "bier_index": 94.28,
+   "lohn_index": 77.15
+  },
+  {
+   "jahr": 2011,
+   "euro": 9.09,
+   "bier_index": 94.16,
+   "lohn_index": 79.47
+  },
+  {
+   "jahr": 2012,
+   "euro": 9.41,
+   "bier_index": 94.53,
+   "lohn_index": 82.42,
+   "btc_eur": 9.45,
+   "sats": 99567349
+  },
+  {
+   "jahr": 2013,
+   "euro": 9.78,
+   "bier_index": 95.34,
+   "lohn_index": 83.57,
+   "btc_eur": 93.48,
+   "sats": 10461695
+  },
+  {
+   "jahr": 2014,
+   "euro": 9.98,
+   "bier_index": 98.64,
+   "lohn_index": 85.45,
+   "btc_eur": 310.81,
+   "sats": 3210983
+  },
+  {
+   "jahr": 2015,
+   "euro": 10.27,
+   "bier_index": 100.18,
+   "lohn_index": 87.47,
+   "btc_eur": 210.84,
+   "sats": 4871076
+  },
+  {
+   "jahr": 2016,
+   "euro": 10.57,
+   "bier_index": 101.0,
+   "lohn_index": 89.35,
+   "btc_eur": 544.96,
+   "sats": 1939591
+  },
+  {
+   "jahr": 2017,
+   "euro": 10.87,
+   "bier_index": 101.65,
+   "lohn_index": 92.25,
+   "btc_eur": 3664.31,
+   "sats": 296645
+  },
+  {
+   "jahr": 2018,
+   "euro": 11.3,
+   "bier_index": 105.17,
+   "lohn_index": 94.95,
+   "btc_eur": 5699.56,
+   "sats": 198261
+  },
+  {
+   "jahr": 2019,
+   "euro": 11.71,
+   "bier_index": 107.05,
+   "lohn_index": 97.83,
+   "btc_eur": 7620.95,
+   "sats": 153655
+  },
+  {
+   "jahr": 2022,
+   "euro": 13.45,
+   "bier_index": 113.67,
+   "lohn_index": 105.05,
+   "btc_eur": 19927.16,
+   "sats": 67496
+  },
+  {
+   "jahr": 2023,
+   "euro": 14.33,
+   "bier_index": 127.23,
+   "lohn_index": 109.83,
+   "btc_eur": 25454.03,
+   "sats": 56298
+  },
+  {
+   "jahr": 2024,
+   "euro": 14.9,
+   "bier_index": 131.17,
+   "lohn_index": 115.42,
+   "btc_eur": 56539.84,
+   "sats": 26353
+  },
+  {
+   "jahr": 2025,
+   "euro": 15.33,
+   "bier_index": 134.11,
+   "lohn_index": 119.95,
+   "btc_eur": 97151.01,
+   "sats": 15780
+  },
+  {
+   "jahr": 2026,
+   "euro": 15.61,
+   "quelle": "https://www.muenchen.de/veranstaltungen/oktoberfest/bier-preise-2026-wiesn-mass",
+   "bier_index": null,
+   "lohn_index": null,
+   "btc_eur": 73591.0,
+   "sats": 21212
+  }
+ ]
+}
