@@ -25,7 +25,7 @@ quellen:
 
 „Mit 0,1 Bitcoin in Rente.“ Der Satz klingt nach einem Plan. Prüfen wir ihn, und zwar gegen die gesetzliche Rente. Ein Kursziel brauchen wir dafür nicht.
 
-Erst mal das ehrliche Zugeständnis. Die Idee hat einen wahren Kern. Es wird nie mehr als 21 Millionen Bitcoin geben. Wer 0,1 davon hält, besitzt einen festen Anteil, den niemand verwässern kann. Dass Leute darauf ihre Träume vom Ruhestand bauen, ist nachvollziehbar.
+Erst mal das ehrliche Zugeständnis. Die Idee hat einen wahren Kern. Es wird nie mehr als 21 Millionen Bitcoin geben. Wer 0,1 davon hält, besitzt [einen festen Anteil](/snippets/mehr-millionaere-als-bitcoin/), den niemand verwässern kann. Dass Leute darauf ihre Träume vom Ruhestand bauen, ist nachvollziehbar.
 
 Jetzt zum Maßstab. Seit dem 1. Juli 2026 ist ein Entgeltpunkt in der gesetzlichen Rente 42,52 Euro im Monat wert. So steht es in der Rentenwertbestimmungsverordnung. Die sogenannte Standardrente rechnet mit 45 Entgeltpunkten, also mit 45 Jahren zu genau durchschnittlichem Verdienst. Das ergibt 1.913 Euro brutto im Monat. Wichtig: Das ist eine Rechengröße, keine Durchschnittsrente. Wer Lücken im Lebenslauf hat oder weniger verdient hat, bekommt weniger.
 
