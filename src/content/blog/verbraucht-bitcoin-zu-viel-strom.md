@@ -29,7 +29,7 @@ Und woher kommt der Strom? Nach den Daten von Cambridge stammen über die Hälft
 
 Dann gibt es zwei Dinge, die kaum einer kennt. Erstens: Miner verstromen Gas, das bei der Ölförderung sonst einfach abgefackelt wird. Nutzloses Verbrennen wird zu Rechenleistung. Zweitens: Mining lässt sich in Sekunden abschalten. Wird der Strom im Netz knapp, gehen Miner vom Netz. Gibt es Überschuss aus Wind und Sonne, nehmen sie ihn auf. Sie stabilisieren das Netz, statt es zu belasten.
 
-Bleibt die eigentliche Frage. Wofür der ganze Strom? Die Antwort ist: Genau dieser Energieeinsatz macht Bitcoin sicher. Er sorgt dafür, dass niemand das Netzwerk fälschen oder abschalten kann. Wie viel Rechenleistung dahintersteckt, zeigt [die Hashrate](/snippets/was-ist-die-hashrate/). Der Strom ist kein Selbstzweck. Er ist der Preis für Geld, das keiner kontrolliert.
+Bleibt die eigentliche Frage. Wofür der ganze Strom? Die Antwort ist: Genau dieser Energieeinsatz macht Bitcoin sicher. Er sorgt dafür, dass niemand das Netzwerk fälschen oder [abschalten](/snippets/kann-man-bitcoin-abschalten/) kann. Wie viel Rechenleistung dahintersteckt, zeigt [die Hashrate](/snippets/was-ist-die-hashrate/). Der Strom ist kein Selbstzweck. Er ist der Preis für Geld, das keiner kontrolliert.
 
 Deshalb ist „verbraucht Bitcoin zu viel Strom?“ die falsche Frage. Die richtige lautet: Ist dir ein Geld, das niemand fälschen und niemand abschalten kann, diesen Preis wert?
 
