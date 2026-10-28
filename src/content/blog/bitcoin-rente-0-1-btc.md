@@ -29,7 +29,7 @@ Erst mal das ehrliche Zugeständnis. Die Idee hat einen wahren Kern. Es wird nie
 
 Jetzt zum Maßstab. Seit dem 1. Juli 2026 ist ein Entgeltpunkt in der gesetzlichen Rente 42,52 Euro im Monat wert. So steht es in der Rentenwertbestimmungsverordnung. Die sogenannte Standardrente rechnet mit 45 Entgeltpunkten, also mit 45 Jahren zu genau durchschnittlichem Verdienst. Das ergibt 1.913 Euro brutto im Monat. Wichtig: Das ist eine Rechengröße, keine Durchschnittsrente. Wer Lücken im Lebenslauf hat oder weniger verdient hat, bekommt weniger.
 
-Und jetzt der Teil, der fast immer weggelassen wird: der Taschenrechner. Am 26. Oktober 2026 kostet ein Bitcoin rund 71.700 Euro. 0,1 Bitcoin sind damit etwa 7.170 Euro. Geteilt durch 1.913 Euro sind das knapp vier Monatsrenten. Vier Monate. Das ist kein Rentnerleben, das ist ein langer Urlaub. Zum heutigen Kurs ist der Satz Bullshit.
+Und jetzt der Teil, der fast immer weggelassen wird: der [Taschenrechner](/snippets/3-prozent-am-tag-rendite/). Am 26. Oktober 2026 kostet ein Bitcoin rund 71.700 Euro. 0,1 Bitcoin sind damit etwa 7.170 Euro. Geteilt durch 1.913 Euro sind das knapp vier Monatsrenten. Vier Monate. Das ist kein Rentnerleben, das ist ein langer Urlaub. Zum heutigen Kurs ist der Satz Bullshit.
 
 Wann würde er stimmen? Rechnen wir mit zwanzig Jahren Standardrente. 1.913,40 Euro mal zwölf mal zwanzig, zusammen rund 459.000 Euro. Damit 0,1 Bitcoin das abdecken, müsste ein ganzer Bitcoin rund 4,6 Millionen Euro kosten. Gut das Sechzigfache von heute. Mit 0,01 Bitcoin wären es 46 Millionen pro Coin. Und das ist noch freundlich gerechnet, ohne Geldentwertung und ohne Rentenerhöhungen. Allein 2026 ist der Rentenwert um 4,24 Prozent gestiegen. Die Messlatte wandert also mit.
 
