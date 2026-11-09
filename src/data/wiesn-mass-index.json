@@ -1,6 +1,6 @@
 {
  "name": "Wiesn-Maß-Index",
- "erzeugt": "2026-10-22",
+ "erzeugt": "2026-11-09",
  "quellen": [
   {
    "text": "Landeshauptstadt München, Open Data: Oktoberfest Bierpreise (Durchschnitt der Festzelte, 1 Maß), Lizenz dl-by-de 2.0",
@@ -9,7 +9,7 @@
   {
    "text": "Eurostat, Verbraucherpreisindex Deutschland, Bier (prc_hicp_minr, CP0213)",
    "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table",
-   "stand": "2026-10-16"
+   "stand": "2026-11-04"
   },
   {
    "text": "Eurostat, Arbeitskostenindex Deutschland, Bruttolöhne je Stunde (lc_lci_r2_q)",
